@@ -478,7 +478,8 @@
                     以下のフォームよりお気軽にご連絡ください。
                 </p>
                 
-                <form name="contact" method="POST" data-netlify="true" class="text-left space-y-8 max-w-2xl mx-auto bg-white/40 p-8 md:p-12 rounded-2xl border border-white shadow-sm">
+                <form name="contact" method="POST" action="/success" data-netlify="true" class="text-left space-y-8 max-w-2xl mx-auto bg-white/40 p-8 md:p-12 rounded-2xl border border-white shadow-sm">
+                    <input type="hidden" name="form-name" value="contact">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div class="relative">
                             <input type="text" id="name" name="name" required placeholder=" " class="peer w-full bg-white/60 border-b-2 border-borderSub focus:border-accent px-4 py-3 outline-none transition-all duration-300 text-textMain placeholder-transparent rounded-t-sm">
