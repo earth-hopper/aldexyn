@@ -1,0 +1,415 @@
+[
+    {
+      "division": "スキー男子",
+      "athlete": "Arno Vuarnier",
+      "place": 1,
+      "point": 2500,
+      "nation": "SWZ"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Yuki Shibata",
+      "place": 2,
+      "point": 2200,
+      "nation": "JPN"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Julian Unterbrunner",
+      "place": 3,
+      "point": 1950,
+      "nation": "AUT"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Ryo Osozawa",
+      "place": 4,
+      "point": 1750,
+      "nation": "JPN"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Maxime Pezet",
+      "place": 5,
+      "point": 1550,
+      "nation": "FRA"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Tomoya Tezuka",
+      "place": 6,
+      "point": 1400,
+      "nation": "JPN"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Kei Ohta",
+      "place": 7,
+      "point": 1300,
+      "nation": "JPN"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Finn Jacobsen",
+      "place": 8,
+      "point": 1200,
+      "nation": "AUS"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Jason Havlicek",
+      "place": 9,
+      "point": 1100,
+      "nation": "USA"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Dmitrii Udodov",
+      "place": 10,
+      "point": 1010,
+      "nation": "RUS"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Hayato Horie",
+      "place": 11,
+      "point": 930,
+      "nation": "JPN"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Takashi Koyama",
+      "place": 12,
+      "point": 860,
+      "nation": "JPN"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Rentaro Kunimoto",
+      "place": 13,
+      "point": 790,
+      "nation": "JPN"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Nikita Mastryukov",
+      "place": 14,
+      "point": 730,
+      "nation": "RUS"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Finn Bowes",
+      "place": 15,
+      "point": 680,
+      "nation": "AUS"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Rennosuke Takeuchi",
+      "place": 16,
+      "point": 630,
+      "nation": "JPN"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Shang Shang Chen",
+      "place": 17,
+      "point": 590,
+      "nation": "CHN"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Thomas Benson",
+      "place": 18,
+      "point": 550,
+      "nation": "NZL"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "William Cattaneo",
+      "place": 19,
+      "point": 510,
+      "nation": "SWZ"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Jorge Rosano",
+      "place": 20,
+      "point": 475,
+      "nation": "ESP"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Will Martin",
+      "place": 21,
+      "point": 445,
+      "nation": "AUS"
+    },
+    {
+      "division": "スキー女子",
+      "athlete": "Shoko Suzuki",
+      "place": 1,
+      "point": 2500,
+      "nation": "JPN"
+    },
+    {
+      "division": "スキー女子",
+      "athlete": "Mika Imai",
+      "place": 2,
+      "point": 2100,
+      "nation": "JPN"
+    },
+    {
+      "division": "スキー女子",
+      "athlete": "Sachi Hirakawa",
+      "place": 3,
+      "point": 1800,
+      "nation": "JPN"
+    },
+    {
+      "division": "スキー女子",
+      "athlete": "Georgia Chambers",
+      "place": 4,
+      "point": 1550,
+      "nation": "NZL"
+    },
+    {
+      "division": "スキー女子",
+      "athlete": "Yuko Katono",
+      "place": 5,
+      "point": 1340,
+      "nation": "JPN"
+    },
+    {
+      "division": "スキー女子",
+      "athlete": "Kaede Yashiro",
+      "place": 6,
+      "point": 1160,
+      "nation": "JPN"
+    },
+    {
+      "division": "スキー女子",
+      "athlete": "Rachel Little",
+      "place": 7,
+      "point": 1010,
+      "nation": "FRA"
+    },
+    {
+      "division": "スキー女子",
+      "athlete": "Ziqi Kang",
+      "place": 8,
+      "point": 900,
+      "nation": "CHN"
+    },
+    {
+      "division": "スキー女子",
+      "athlete": "Ayana Onozuka",
+      "place": 9,
+      "point": 810,
+      "nation": "JPN"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Taketo Kinoshita",
+      "place": 1,
+      "point": 2500,
+      "nation": "JPN"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Igor Ilinykh",
+      "place": 2,
+      "point": 2100,
+      "nation": "RUS"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Brian Bozack",
+      "place": 3,
+      "point": 1800,
+      "nation": "USA"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Brian Stenerson",
+      "place": 4,
+      "point": 1550,
+      "nation": "USA"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Asahi Yoshino",
+      "place": 5,
+      "point": 1340,
+      "nation": "JPN"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Hyuga Honjyo",
+      "place": 6,
+      "point": 1160,
+      "nation": "JPN"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Mathieu Martineau",
+      "place": 7,
+      "point": 1010,
+      "nation": "CAN"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Yuta Yokoe",
+      "place": 8,
+      "point": 900,
+      "nation": "JPN"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Jiahao Zhang",
+      "place": 9,
+      "point": 810,
+      "nation": "USA"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Shuzaburo Otsubo",
+      "place": 10,
+      "point": 730,
+      "nation": "JPN"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Timo Fitzpatrick",
+      "place": 11,
+      "point": 660,
+      "nation": "NZL"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Da Ermin",
+      "place": 12,
+      "point": 600,
+      "nation": "CHN"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Temma Tamai",
+      "place": 13,
+      "point": 550,
+      "nation": "JPN"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Yuto Yashiro",
+      "place": 14,
+      "point": 505,
+      "nation": "JPN"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Haruki Takeuchi",
+      "place": 15,
+      "point": 465,
+      "nation": "JPN"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Jonatan Laland",
+      "place": 16,
+      "point": 430,
+      "nation": "NOR"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Kuya Kubota",
+      "place": 17,
+      "point": 400,
+      "nation": "JPN"
+    },
+    {
+      "division": "スノボ女子",
+      "athlete": "Sayaka Kato",
+      "place": 1,
+      "point": 2500,
+      "nation": "JPN"
+    },
+    {
+      "division": "スノボ女子",
+      "athlete": "Mutsumi Ido",
+      "place": 2,
+      "point": 2100,
+      "nation": "CAN"
+    },
+    {
+      "division": "スノボ女子",
+      "athlete": "Audrey Hebert",
+      "place": 3,
+      "point": 1800,
+      "nation": "CAN"
+    },
+    {
+      "division": "スノボ女子",
+      "athlete": "Tatiana Shevchenko",
+      "place": 4,
+      "point": 1550,
+      "nation": "RUS"
+    },
+    {
+      "division": "スノボ女子",
+      "athlete": "Lisa Peck",
+      "place": 5,
+      "point": 1340,
+      "nation": "AUT"
+    },
+    {
+      "division": "スノボ女子",
+      "athlete": "Tatiana Golovanova",
+      "place": 6,
+      "point": 1160,
+      "nation": "RUS"
+    },
+    {
+      "division": "スノボ女子",
+      "athlete": "Xianqi He",
+      "place": 7,
+      "point": 1010,
+      "nation": "CHN"
+    },
+    {
+      "division": "スノボ女子",
+      "athlete": "Kiana Putman",
+      "place": 8,
+      "point": 900,
+      "nation": "USA"
+    },
+    {
+      "division": "スノボ女子",
+      "athlete": "Marie Ramparany",
+      "place": 9,
+      "point": 810,
+      "nation": "FRA"
+    },
+    {
+      "division": "スノボ女子",
+      "athlete": "Chen Tzuhui",
+      "place": 10,
+      "point": 730,
+      "nation": "TWN"
+    },
+    {
+      "division": "スノボ女子",
+      "athlete": "Sayuki Aida",
+      "place": 11,
+      "point": 660,
+      "nation": "JPN"
+    },
+    {
+      "division": "スノボ女子",
+      "athlete": "Sadhi Sonja Vornberger",
+      "place": "",
+      "point": 0,
+      "nation": "AUT"
+    }
+  ]

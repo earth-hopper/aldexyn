@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnowPass Admin - 販売履歴</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            background-color: #f1f5f9;
+            color: #1e293b;
+        }
+
+        .status-badge {
+            padding: 4px 10px;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .status-issued { background-color: #dcfce7; color: #15803d; }
+        .status-pending { background-color: #fef9c3; color: #854d0e; }
+
+        /* スクロールバーのカスタマイズ */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- Main Content -->
+    <main class="max-w-[1400px] mx-auto p-4 md:p-8">
+        
+        <!-- Page Header -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+            <div>
+                <h1 class="text-2xl font-black text-slate-900 flex items-center gap-3">
+                    <i class="fa-solid fa-ticket text-blue-600"></i>
+                    販売履歴・発券状況
+                </h1>
+                <p class="text-sm text-slate-500 mt-1">すべてのチャネルからの購入データをリアルタイムで表示しています</p>
+            </div>
+            <div class="flex items-center gap-3">
+                <button id="refresh-btn" class="px-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm font-semibold hover:bg-slate-50 transition shadow-sm">
+                    <i class="fa-solid fa-rotate-right"></i>
+                </button>
+                <button class="px-5 py-2.5 bg-slate-900 text-white rounded-xl text-sm font-semibold hover:bg-black transition shadow-md flex items-center gap-2">
+                    <i class="fa-solid fa-file-csv"></i> CSVエクスポート
+                </button>
+            </div>
+        </div>
+
+        <!-- Table Container -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+            
+            <!-- Filters Bar -->
+            <div class="p-5 border-b border-slate-100 flex flex-col lg:flex-row lg:items-center justify-between gap-4 bg-white">
+                <div class="relative flex-1 max-w-lg">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                    <input id="search-input" type="text" placeholder="メールアドレス、商品名、注文番号で検索..." class="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-500 text-sm transition">
+                </div>
+                <div class="flex items-center gap-3">
+                    <select id="status-filter" class="px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm outline-none focus:ring-2 focus:ring-blue-500 transition">
+                        <option value="all">すべてのステータス</option>
+                        <option value="pending">未発券</option>
+                        <option value="issued">発券済</option>
+                    </select>
+                    <select id="channel-filter" class="px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm outline-none focus:ring-2 focus:ring-blue-500 transition">
+                        <option value="all">すべてのチャネル</option>
+                        <option value="kioski">キオスキ</option>
+                        <option value="asoview">アソビュー</option>
+                        <option value="wamazing">ワメージング</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Table -->
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-50/50 text-[11px] font-bold text-slate-500 uppercase tracking-widest border-b border-slate-100">
+                            <th class="px-6 py-5">日付</th>
+                            <th class="px-4 py-5">購入</th>
+                            <th class="px-4 py-5">利用</th>
+                            <th class="px-4 py-5 text-center">ステータス</th>
+                            <th class="px-6 py-5">商品名</th>
+                            <th class="px-4 py-5 text-right">価格</th>
+                            <th class="px-6 py-5">チャネル</th>
+                            <th class="px-6 py-5">メールアドレス</th>
+                        </tr>
+                    </thead>
+                    <tbody id="orders-tbody" class="divide-y divide-slate-100 text-sm"></tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="px-6 py-5 bg-slate-50/50 flex items-center justify-between border-t border-slate-100">
+                <p id="results-label" class="text-xs text-slate-500">-</p>
+                <div class="flex gap-1.5">
+                    <button class="w-10 h-10 flex items-center justify-center border border-slate-200 rounded-lg bg-white text-slate-400 hover:text-slate-600 transition"><i class="fa-solid fa-chevron-left text-xs"></i></button>
+                    <button class="w-10 h-10 flex items-center justify-center bg-blue-600 text-white rounded-lg text-xs font-bold">1</button>
+                    <button class="w-10 h-10 flex items-center justify-center bg-white border border-slate-200 rounded-lg text-xs text-slate-600 hover:bg-slate-50 transition">2</button>
+                    <button class="w-10 h-10 flex items-center justify-center bg-white border border-slate-200 rounded-lg text-xs text-slate-600 hover:bg-slate-50 transition">3</button>
+                    <button class="w-10 h-10 flex items-center justify-center border border-slate-200 rounded-lg bg-white text-slate-400 hover:text-slate-600 transition"><i class="fa-solid fa-chevron-right text-xs"></i></button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // ---- Supabase config (fill these before sharing the mock) ----
+        const SUPABASE_URL = "https://iihxkmqxqcyjqtdxhuyk.supabase.co";
+        const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlpaHhrbXF4cWN5anF0ZHhodXlrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUxMjgxNjMsImV4cCI6MjA5MDcwNDE2M30.tLiOYdjOGWhN_duMOR9FcJ_uMBtsOSqOogaEU78MmUc";
+
+        const supabase = (window.supabase && window.supabase.createClient)
+            ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+            : null;
+
+        function hasSupabaseConfig() {
+            // Accept any real project URL/key; only block obvious placeholders.
+            if (!SUPABASE_URL || !SUPABASE_ANON_KEY) return false;
+            if (SUPABASE_URL.includes("YOUR_PROJECT_REF")) return false;
+            if (SUPABASE_ANON_KEY.includes("YOUR_SUPABASE_ANON_KEY")) return false;
+            // Basic sanity checks (not security checks)
+            if (!/^https:\/\/.+\.supabase\.co$/.test(SUPABASE_URL)) return false;
+            if (!/^eyJ/.test(SUPABASE_ANON_KEY)) return false;
+            return true;
+        }
+
+        function pad2(n) { return String(n).padStart(2, "0"); }
+        function formatDate(d) {
+            const dt = new Date(d);
+            return `${dt.getFullYear()}/${pad2(dt.getMonth() + 1)}/${pad2(dt.getDate())}`;
+        }
+        function formatTime(d) {
+            const dt = new Date(d);
+            return `${pad2(dt.getHours())}:${pad2(dt.getMinutes())}:${pad2(dt.getSeconds())}`;
+        }
+        function formatYen(amount) {
+            return Number(amount || 0).toLocaleString();
+        }
+
+        function channelBadge(channel) {
+            if (channel === "asoview") {
+                return `
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-orange-50 text-orange-700 text-xs font-bold">
+                        <i class="fa-solid fa-globe text-[10px]"></i> アソビュー
+                    </span>
+                `;
+            }
+            if (channel === "wamazing") {
+                return `
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-pink-50 text-pink-700 text-xs font-bold">
+                        <i class="fa-solid fa-plane-arrival text-[10px]"></i> ワメージング
+                    </span>
+                `;
+            }
+            return `
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-blue-50 text-blue-700 text-xs font-bold">
+                    <i class="fa-solid fa-shop text-[10px]"></i> キオスキ
+                </span>
+            `;
+        }
+
+        function statusBadge(usedAt) {
+            if (usedAt) return `<span class="status-badge status-issued">発券済</span>`;
+            return `<span class="status-badge status-pending">未発券</span>`;
+        }
+
+        let allRows = [];
+
+        function normalize(s) { return (s || "").toString().toLowerCase(); }
+        function escapeHtml(str) {
+            return (str || "").replace(/[&<>"']/g, (c) => ({
+                "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;"
+            }[c]));
+        }
+
+        function renderTable(rows) {
+            const tbody = document.getElementById("orders-tbody");
+            if (!rows || rows.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="8" class="px-6 py-10 text-center text-sm text-slate-400">
+                            データがありません（Supabase設定、または購入がまだありません）
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            tbody.innerHTML = rows.map(r => `
+                <tr class="hover:bg-blue-50/30 transition">
+                    <td class="px-6 py-4 whitespace-nowrap font-medium text-slate-700">${formatDate(r.purchased_at)}</td>
+                    <td class="px-4 py-4 text-slate-500">${formatTime(r.purchased_at)}</td>
+                    <td class="px-4 py-4 ${r.used_at ? "text-slate-500" : "text-slate-400 italic font-light"}">${r.used_at ? formatTime(r.used_at) : "未利用"}</td>
+                    <td class="px-4 py-4 text-center">${statusBadge(r.used_at)}</td>
+                    <td class="px-6 py-4 font-semibold text-slate-800">${escapeHtml(r.product_name)}</td>
+                    <td class="px-4 py-4 text-right font-mono text-slate-900">${formatYen(r.price_yen)}</td>
+                    <td class="px-6 py-4">${channelBadge(r.channel)}</td>
+                    <td class="px-6 py-4 text-slate-500">${escapeHtml(r.email)}</td>
+                </tr>
+            `).join("");
+        }
+
+        function applyFilters() {
+            const q = normalize(document.getElementById("search-input").value.trim());
+            const status = document.getElementById("status-filter").value;
+            const channel = document.getElementById("channel-filter").value;
+
+            const filtered = allRows.filter(r => {
+                const matchesQuery = !q || (
+                    normalize(r.email).includes(q) ||
+                    normalize(r.product_name).includes(q) ||
+                    normalize(r.order_number).includes(q) ||
+                    normalize(r.ticket_code).includes(q)
+                );
+
+                const matchesStatus = (status === "all")
+                    || (status === "issued" && !!r.used_at)
+                    || (status === "pending" && !r.used_at);
+
+                const matchesChannel = (channel === "all") || (normalize(r.channel) === normalize(channel));
+
+                return matchesQuery && matchesStatus && matchesChannel;
+            });
+
+            renderTable(filtered);
+            document.getElementById("results-label").innerText = `${filtered.length}件を表示`;
+        }
+
+        async function loadRows() {
+            if (!supabase || !hasSupabaseConfig()) {
+                allRows = [];
+                applyFilters();
+                document.getElementById("results-label").innerText = `Supabase未設定（SUPABASE_URL / SUPABASE_ANON_KEY）`;
+                return;
+            }
+
+            const { data, error } = await supabase
+                .from('tickets')
+                .select(`
+                    ticket_code,
+                    used_at,
+                    issued_at,
+                    orders:order_id ( order_number, email, channel, created_at ),
+                    products:product_id ( name, price_yen )
+                `)
+                .order('issued_at', { ascending: false })
+                .limit(200);
+
+            if (error) {
+                allRows = [];
+                applyFilters();
+                document.getElementById("results-label").innerText = `読み込み失敗: ${error.message}`;
+                return;
+            }
+
+            allRows = (data || []).map(x => ({
+                ticket_code: x.ticket_code,
+                used_at: x.used_at,
+                purchased_at: x.orders?.created_at || x.issued_at,
+                order_number: x.orders?.order_number || "-",
+                email: x.orders?.email || "-",
+                channel: x.orders?.channel || "kioski",
+                product_name: x.products?.name || "-",
+                price_yen: x.products?.price_yen ?? 0
+            }));
+
+            applyFilters();
+        }
+
+        function bindUi() {
+            document.getElementById("search-input").addEventListener("input", applyFilters);
+            document.getElementById("status-filter").addEventListener("change", applyFilters);
+            document.getElementById("channel-filter").addEventListener("change", applyFilters);
+            document.getElementById("refresh-btn").addEventListener("click", loadRows);
+        }
+
+        window.onload = () => {
+            bindUi();
+            loadRows();
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,650 @@
+[
+  {
+    "division": "スキー男子",
+    "place": 1,
+    "athlete": "Yuki Shibata",
+    "best": 2200,
+    "next": 650,
+    "point": 2850
+  },
+  {
+    "division": "スキー男子",
+    "place": 2,
+    "athlete": "Ryo Osozawa",
+    "best": 1750,
+    "next": 530,
+    "point": 2280
+  },
+  {
+    "division": "スキー男子",
+    "place": 3,
+    "athlete": "Rentaro Kunimoto",
+    "best": 1350,
+    "next": 850,
+    "point": 2200
+  },
+  {
+    "division": "スキー男子",
+    "place": 4,
+    "athlete": "Kei Ohta",
+    "best": 1300,
+    "next": 660,
+    "point": 1960
+  },
+  {
+    "division": "スキー男子",
+    "place": 5,
+    "athlete": "Tomoya Tezuka",
+    "best": 1400,
+    "next": 410,
+    "point": 1810
+  },
+  {
+    "division": "スキー男子",
+    "place": 6,
+    "athlete": "Takumi Okamura",
+    "best": 1050,
+    "next": 590,
+    "point": 1640
+  },
+  {
+    "division": "スキー男子",
+    "place": 7,
+    "athlete": "Koga Hoshino",
+    "best": 1600,
+    "next": "-",
+    "point": 1600
+  },
+  {
+    "division": "スキー男子",
+    "place": 8,
+    "athlete": "Hayato Horie",
+    "best": 930,
+    "next": 300,
+    "point": 1230
+  },
+  {
+    "division": "スキー男子",
+    "place": 9,
+    "athlete": "Ippo Wada",
+    "best": 595,
+    "next": 475,
+    "point": 1070
+  },
+  {
+    "division": "スキー男子",
+    "place": 10,
+    "athlete": "Rennosuke Takeuchi",
+    "best": 630,
+    "next": 335,
+    "point": 965
+  },
+  {
+    "division": "スキー男子",
+    "place": 11,
+    "athlete": "Kakeru Maekawa",
+    "best": 930,
+    "next": "-",
+    "point": 930
+  },
+  {
+    "division": "スキー男子",
+    "place": 12,
+    "athlete": "Yuta Nakazato",
+    "best": 450,
+    "next": 450,
+    "point": 900
+  },
+  {
+    "division": "スキー男子",
+    "place": 13,
+    "athlete": "Takashi Koyama",
+    "best": 860,
+    "next": "-",
+    "point": 860
+  },
+  {
+    "division": "スキー男子",
+    "place": 14,
+    "athlete": "Takuma Fujita",
+    "best": 390,
+    "next": 350,
+    "point": 740
+  },
+  {
+    "division": "スキー男子",
+    "place": 15,
+    "athlete": "Takuya Nakahama",
+    "best": 430,
+    "next": 290,
+    "point": 720
+  },
+  {
+    "division": "スキー男子",
+    "place": 16,
+    "athlete": "Atsuya Wada",
+    "best": 360,
+    "next": 244,
+    "point": 604
+  },
+  {
+    "division": "スキー男子",
+    "place": 17,
+    "athlete": "Ryoma Igeta",
+    "best": 320,
+    "next": 250,
+    "point": 570
+  },
+  {
+    "division": "スキー男子",
+    "place": 18,
+    "athlete": "Thomas Espitau",
+    "best": 310,
+    "next": 185,
+    "point": 495
+  },
+  {
+    "division": "スキー男子",
+    "place": 19,
+    "athlete": "Kaiwa Namiki",
+    "best": 277,
+    "next": 206,
+    "point": 483
+  },
+  {
+    "division": "スキー男子",
+    "place": 20,
+    "athlete": "Kotaro Yamamoto",
+    "best": 475,
+    "next": "-",
+    "point": 475
+  },
+  {
+    "division": "スキー男子",
+    "place": 21,
+    "athlete": "Kai Hanada",
+    "best": 290,
+    "next": 175,
+    "point": 465
+  },
+  {
+    "division": "スキー男子",
+    "place": 22,
+    "athlete": "Mark Yokokawa",
+    "best": 270,
+    "next": 192,
+    "point": 462
+  },
+  {
+    "division": "スキー男子",
+    "place": 23,
+    "athlete": "Takuto Ogawa",
+    "best": 253,
+    "next": 186,
+    "point": 439
+  },
+  {
+    "division": "スキー男子",
+    "place": 24,
+    "athlete": "Ryoya Takashima",
+    "best": 230,
+    "next": 123,
+    "point": 353
+  },
+  {
+    "division": "スキー男子",
+    "place": 25,
+    "athlete": "Shuya Kaneko",
+    "best": 199,
+    "next": 147,
+    "point": 346
+  },
+  {
+    "division": "スキー男子",
+    "place": 26,
+    "athlete": "Yosuke Fujii",
+    "best": 264,
+    "next": "-",
+    "point": 264
+  },
+  {
+    "division": "スキー男子",
+    "place": 27,
+    "athlete": "Shogo Morifuji",
+    "best": 260,
+    "next": "-",
+    "point": 260
+  },
+  {
+    "division": "スキー男子",
+    "place": 28,
+    "athlete": "Daichi Furuya",
+    "best": 258,
+    "next": "-",
+    "point": 258
+  },
+  {
+    "division": "スキー男子",
+    "place": 29,
+    "athlete": "RINTO TAJIMA",
+    "best": 141,
+    "next": "-",
+    "point": 141
+  },
+  {
+    "division": "スキー女子",
+    "place": 1,
+    "athlete": "Sachi Hirakawa",
+    "best": 1800,
+    "next": 1600,
+    "point": 3400
+  },
+  {
+    "division": "スキー女子",
+    "place": 2,
+    "athlete": "Shoko Suzuki",
+    "best": 2500,
+    "next": 820,
+    "point": 3320
+  },
+  {
+    "division": "スキー女子",
+    "place": 3,
+    "athlete": "Mika Imai",
+    "best": 2100,
+    "next": 1100,
+    "point": 3200
+  },
+  {
+    "division": "スキー女子",
+    "place": 4,
+    "athlete": "Yuko Katono",
+    "best": 1340,
+    "next": 1300,
+    "point": 2640
+  },
+  {
+    "division": "スキー女子",
+    "place": 5,
+    "athlete": "Kaede Yashiro",
+    "best": 1160,
+    "next": "-",
+    "point": 1160
+  },
+  {
+    "division": "スキー女子",
+    "place": 6,
+    "athlete": "Kaede Hayashi",
+    "best": 600,
+    "next": 365,
+    "point": 965
+  },
+  {
+    "division": "スキー女子",
+    "place": 7,
+    "athlete": "Kahori Aida",
+    "best": 580,
+    "next": 350,
+    "point": 930
+  },
+  {
+    "division": "スキー女子",
+    "place": 8,
+    "athlete": "Mizuki Yamaguchi",
+    "best": 460,
+    "next": 450,
+    "point": 910
+  },
+  {
+    "division": "スキー女子",
+    "place": 9,
+    "athlete": "Mayu Himoto",
+    "best": 425,
+    "next": 410,
+    "point": 835
+  },
+  {
+    "division": "スキー女子",
+    "place": 10,
+    "athlete": "Ayana Onozuka",
+    "best": 810,
+    "next": "-",
+    "point": 810
+  },
+  {
+    "division": "スキー女子",
+    "place": 11,
+    "athlete": "Chisato Sasada",
+    "best": 690,
+    "next": "-",
+    "point": 690
+  },
+  {
+    "division": "スキー女子",
+    "place": 12,
+    "athlete": "Takeuchi Yukine",
+    "best": 258,
+    "next": "-",
+    "point": 258
+  },
+  {
+    "division": "スノボ男子",
+    "place": 1,
+    "athlete": "Taketo Kinoshita",
+    "best": 2500,
+    "next": 1300,
+    "point": 3800
+  },
+  {
+    "division": "スノボ男子",
+    "place": 2,
+    "athlete": "Hyuga Honjyo",
+    "best": 1160,
+    "next": 940,
+    "point": 2100
+  },
+  {
+    "division": "スノボ男子",
+    "place": 3,
+    "athlete": "Haruki Takeuchi",
+    "best": 1600,
+    "next": 465,
+    "point": 2065
+  },
+  {
+    "division": "スノボ男子",
+    "place": 4,
+    "athlete": "Asahi Yoshino",
+    "best": 1340,
+    "next": 690,
+    "point": 2030
+  },
+  {
+    "division": "スノボ男子",
+    "place": 5,
+    "athlete": "Temma Tamai",
+    "best": 805,
+    "next": 550,
+    "point": 1355
+  },
+  {
+    "division": "スノボ男子",
+    "place": 6,
+    "athlete": "Kaito Jinguji",
+    "best": 1000,
+    "next": 258,
+    "point": 1258
+  },
+  {
+    "division": "スノボ男子",
+    "place": 7,
+    "athlete": "Yuta Yokoe",
+    "best": 900,
+    "next": 280,
+    "point": 1180
+  },
+  {
+    "division": "スノボ男子",
+    "place": 8,
+    "athlete": "Asato Yoshida",
+    "best": 1100,
+    "next": "-",
+    "point": 1100
+  },
+  {
+    "division": "スノボ男子",
+    "place": 9,
+    "athlete": "Junnosuke Yamaji",
+    "best": 495,
+    "next": 450,
+    "point": 945
+  },
+  {
+    "division": "スノボ男子",
+    "place": 10,
+    "athlete": "Toi Hatta",
+    "best": 520,
+    "next": 350,
+    "point": 870
+  },
+  {
+    "division": "スノボ男子",
+    "place": 11,
+    "athlete": "Takuro Tanaka",
+    "best": 425,
+    "next": 370,
+    "point": 795
+  },
+  {
+    "division": "スノボ男子",
+    "place": 12,
+    "athlete": "Shuzaburo Otsubo",
+    "best": 730,
+    "next": "-",
+    "point": 730
+  },
+  {
+    "division": "スノボ男子",
+    "place": 13,
+    "athlete": "Yoshikazu Arai",
+    "best": 680,
+    "next": "-",
+    "point": 680
+  },
+  {
+    "division": "スノボ男子",
+    "place": 14,
+    "athlete": "Kaito Ichinose",
+    "best": 600,
+    "next": "-",
+    "point": 600
+  },
+  {
+    "division": "スノボ男子",
+    "place": 15,
+    "athlete": "Kotaro Takeda",
+    "best": 595,
+    "next": "-",
+    "point": 595
+  },
+  {
+    "division": "スノボ男子",
+    "place": 16,
+    "athlete": "Yuto Yashiro",
+    "best": 505,
+    "next": "-",
+    "point": 505
+  },
+  {
+    "division": "スノボ男子",
+    "place": 17,
+    "athlete": "shusuke uchikata",
+    "best": 460,
+    "next": "-",
+    "point": 460
+  },
+  {
+    "division": "スノボ男子",
+    "place": 18,
+    "athlete": "Kuya Kubota",
+    "best": 400,
+    "next": "-",
+    "point": 400
+  },
+  {
+    "division": "スノボ男子",
+    "place": 19,
+    "athlete": "Riku Shioya",
+    "best": 238,
+    "next": 131,
+    "point": 369
+  },
+  {
+    "division": "スノボ男子",
+    "place": 20,
+    "athlete": "Masaaki Horisawa",
+    "best": 180,
+    "next": 146,
+    "point": 326
+  },
+  {
+    "division": "スノボ男子",
+    "place": 21,
+    "athlete": "Takashi Yao",
+    "best": 153,
+    "next": 140,
+    "point": 293
+  },
+  {
+    "division": "スノボ男子",
+    "place": 22,
+    "athlete": "Yudai Yokoyama",
+    "best": 290,
+    "next": "-",
+    "point": 290
+  },
+  {
+    "division": "スノボ男子",
+    "place": 23,
+    "athlete": "Ryohei Yamaguchi",
+    "best": 170,
+    "next": 106,
+    "point": 276
+  },
+  {
+    "division": "スノボ男子",
+    "place": 24,
+    "athlete": "Takahiro Nishii",
+    "best": 220,
+    "next": "-",
+    "point": 220
+  },
+  {
+    "division": "スノボ男子",
+    "place": 25,
+    "athlete": "RIKUTO WATANABE",
+    "best": 220,
+    "next": "-",
+    "point": 220
+  },
+  {
+    "division": "スノボ男子",
+    "place": 26,
+    "athlete": "Masaru Shibata",
+    "best": 180,
+    "next": "-",
+    "point": 180
+  },
+  {
+    "division": "スノボ男子",
+    "place": 27,
+    "athlete": "Yoshiaki Takamura",
+    "best": 161,
+    "next": "-",
+    "point": 161
+  },
+  {
+    "division": "スノボ男子",
+    "place": 28,
+    "athlete": "Yuki Arakawa",
+    "best": 131,
+    "next": "-",
+    "point": 131
+  },
+  {
+    "division": "スノボ男子",
+    "place": 29,
+    "athlete": "Yasutoshi Suzuki",
+    "best": 120,
+    "next": "-",
+    "point": 120
+  },
+  {
+    "division": "スノボ男子",
+    "place": 30,
+    "athlete": "Koji Ueno",
+    "best": 114,
+    "next": "-",
+    "point": 114
+  },
+  {
+    "division": "スノボ女子",
+    "place": 1,
+    "athlete": "Sayaka Kato",
+    "best": 2500,
+    "next": 595,
+    "point": 3095
+  },
+  {
+    "division": "スノボ女子",
+    "place": 2,
+    "athlete": "Sayuki Aida",
+    "best": 1600,
+    "next": 820,
+    "point": 2420
+  },
+  {
+    "division": "スノボ女子",
+    "place": 3,
+    "athlete": "Mutsumi Ido",
+    "best": 2100,
+    "next": "-",
+    "point": 2100
+  },
+  {
+    "division": "スノボ女子",
+    "place": 4,
+    "athlete": "Koharu Hatta",
+    "best": 1300,
+    "next": 450,
+    "point": 1750
+  },
+  {
+    "division": "スノボ女子",
+    "place": 5,
+    "athlete": "Haruno Take",
+    "best": 940,
+    "next": 580,
+    "point": 1520
+  },
+  {
+    "division": "スノボ女子",
+    "place": 6,
+    "athlete": "Rina Kawanami",
+    "best": 1000,
+    "next": 370,
+    "point": 1370
+  },
+  {
+    "division": "スノボ女子",
+    "place": 7,
+    "athlete": "Hana Kinoshita",
+    "best": 1100,
+    "next": "-",
+    "point": 1100
+  },
+  {
+    "division": "スノボ女子",
+    "place": 8,
+    "athlete": "Hitomi Ito",
+    "best": 690,
+    "next": 365,
+    "point": 1055
+  },
+  {
+    "division": "スノボ女子",
+    "place": 9,
+    "athlete": "Yui Kotani",
+    "best": 600,
+    "next": "-",
+    "point": 600
+  },
+  {
+    "division": "スノボ女子",
+    "place": 10,
+    "athlete": "Kizuna Takahashi",
+    "best": 280,
+    "next": "-",
+    "point": 280
+  }
+]

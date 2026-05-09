@@ -1,0 +1,422 @@
+[
+    {
+      "division": "スキー男子",
+      "athlete": "Rentaro Kunimoto",
+      "place": 1,
+      "point": 600,
+      "nation": "JPN"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Yuta Nakazato",
+      "place": 2,
+      "point": 450,
+      "nation": "JPN"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Takuma Fujita",
+      "place": 3,
+      "point": 350,
+      "nation": "JPN"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Kai Hanada",
+      "place": 4,
+      "point": 290,
+      "nation": "JPN"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Takuya Nakahama",
+      "place": 5,
+      "point": 250,
+      "nation": "JPN"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Takumi Okamura",
+      "place": 6,
+      "point": 220,
+      "nation": "JPN"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Rennosuke Takeuchi",
+      "place": 7,
+      "point": 200,
+      "nation": "JPN"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Thomas Espitau",
+      "place": 8,
+      "point": 185,
+      "nation": "FRA"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Tomoya Tezuka",
+      "place": 9,
+      "point": 175,
+      "nation": "JPN"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Kei Ohta",
+      "place": 10,
+      "point": 167,
+      "nation": "JPN"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Piotr Pajda",
+      "place": 11,
+      "point": 160,
+      "nation": "GBR"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Hao Zhang",
+      "place": 12,
+      "point": 153,
+      "nation": "CHN"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Shuya Kaneko",
+      "place": 13,
+      "point": 147,
+      "nation": "JPN"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "RINTO TAJIMA",
+      "place": 14,
+      "point": 141,
+      "nation": "JPN"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Ascanio Galbiati",
+      "place": 15,
+      "point": 136,
+      "nation": "ITA"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Jakub Warmuz",
+      "place": 16,
+      "point": 131,
+      "nation": "CHE"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Ryoma Igeta",
+      "place": 17,
+      "point": 127,
+      "nation": "JPN"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Ryoya Takashima",
+      "place": 18,
+      "point": 123,
+      "nation": "JPN"
+    },
+    {
+      "division": "スキー男子",
+      "athlete": "Paweł Pajda",
+      "place": 19,
+      "point": 120,
+      "nation": "POL"
+    },
+    {
+      "division": "スキー女子",
+      "athlete": "Kaede Hayashi",
+      "place": 1,
+      "point": 600,
+      "nation": "JPN"
+    },
+    {
+      "division": "スキー女子",
+      "athlete": "Mizuki Yamaguchi",
+      "place": 2,
+      "point": 450,
+      "nation": "JPN"
+    },
+    {
+      "division": "スキー女子",
+      "athlete": "Kahori Aida",
+      "place": 3,
+      "point": 350,
+      "nation": "JPN"
+    },
+    {
+      "division": "スキー女子",
+      "athlete": "Mayu Himoto",
+      "place": 4,
+      "point": 290,
+      "nation": "JPN"
+    },
+    {
+      "division": "スキー女子",
+      "athlete": "Morgan Kilmain",
+      "place": 5,
+      "point": 250,
+      "nation": "USA"
+    },
+    {
+      "division": "スキー女子",
+      "athlete": "Chloe Chilcott",
+      "place": 6,
+      "point": 220,
+      "nation": "AUS"
+    },
+    {
+      "division": "スキー女子",
+      "athlete": "Lu Cao",
+      "place": 7,
+      "point": 200,
+      "nation": "CHN"
+    },
+    {
+      "division": "スキー女子",
+      "athlete": "Muqi Zhang",
+      "place": 8,
+      "point": 185,
+      "nation": "USA"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Kaito Ichinose",
+      "place": 1,
+      "point": 600,
+      "nation": "JPN"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Junnosuke Yamaji",
+      "place": 2,
+      "point": 450,
+      "nation": "JPN"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Toi Hatta",
+      "place": 3,
+      "point": 350,
+      "nation": "JPN"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Yudai Yokoyama",
+      "place": 4,
+      "point": 290,
+      "nation": "JPN"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Pierre Chauty",
+      "place": 5,
+      "point": 250,
+      "nation": "FRA"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "RIKUTO WATANABE",
+      "place": 6,
+      "point": 220,
+      "nation": "JPN"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Chan Lun",
+      "place": 7,
+      "point": 200,
+      "nation": "CHN"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Howie Zhang",
+      "place": 8,
+      "point": 185,
+      "nation": "AUS"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Shengda Miao",
+      "place": 9,
+      "point": 170,
+      "nation": "CHN"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Adrien Descours",
+      "place": 10,
+      "point": 160,
+      "nation": "JPN"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Wong Ming Sum",
+      "place": 11,
+      "point": 150,
+      "nation": "HKG"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Takuro Tanaka",
+      "place": 12,
+      "point": 140,
+      "nation": "JPN"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Songyu Xing",
+      "place": 13,
+      "point": 130,
+      "nation": "USA"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Greg Leahy",
+      "place": 14,
+      "point": 120,
+      "nation": "AUS"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Masaaki Horisawa",
+      "place": 15,
+      "point": 115,
+      "nation": "JPN"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Pohan Chiang",
+      "place": 16,
+      "point": 110,
+      "nation": "TWN"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Wai Cheong Chan",
+      "place": 17,
+      "point": 105,
+      "nation": "AUS"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Chung Man Hei",
+      "place": 18,
+      "point": 100,
+      "nation": "CHN"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Nathaniel Santos",
+      "place": 19,
+      "point": 95,
+      "nation": "AUS"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Yang Fan",
+      "place": 20,
+      "point": 90,
+      "nation": "CHN"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Takashi Yao",
+      "place": 21,
+      "point": 85,
+      "nation": "JPN"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Jack O’Gara",
+      "place": "",
+      "point": 0,
+      "nation": "USA"
+    },
+    {
+      "division": "スノボ男子",
+      "athlete": "Yongfei xu",
+      "place": "",
+      "point": 0,
+      "nation": "CHN"
+    },
+    {
+      "division": "スノボ女子",
+      "athlete": "Yui Kotani",
+      "place": 1,
+      "point": 600,
+      "nation": "JPN"
+    },
+    {
+      "division": "スノボ女子",
+      "athlete": "Koharu Hatta",
+      "place": 2,
+      "point": 450,
+      "nation": "JPN"
+    },
+    {
+      "division": "スノボ女子",
+      "athlete": "Tara Purvis",
+      "place": 3,
+      "point": 350,
+      "nation": "NZL"
+    },
+    {
+      "division": "スノボ女子",
+      "athlete": "Anruo He",
+      "place": 4,
+      "point": 290,
+      "nation": "SGP"
+    },
+    {
+      "division": "スノボ女子",
+      "athlete": "Sayuki Aida",
+      "place": 5,
+      "point": 250,
+      "nation": "JPN"
+    },
+    {
+      "division": "スノボ女子",
+      "athlete": "Summer Lam",
+      "place": 6,
+      "point": 220,
+      "nation": "HKG"
+    },
+    {
+      "division": "スノボ女子",
+      "athlete": "Yanrong Yu",
+      "place": 7,
+      "point": 200,
+      "nation": "CAN"
+    },
+    {
+      "division": "スノボ女子",
+      "athlete": "Xianqi He",
+      "place": 8,
+      "point": 185,
+      "nation": "CHN"
+    },
+    {
+      "division": "スノボ女子",
+      "athlete": "Sabrina Spano",
+      "place": 9,
+      "point": 170,
+      "nation": "AUS"
+    },
+    {
+      "division": "スノボ女子",
+      "athlete": "Brenda Fung",
+      "place": 10,
+      "point": 160,
+      "nation": "JPN"
+    }
+  ]

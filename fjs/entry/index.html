@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ja" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FWT JAPAN SERIES | Freeride World Tour Japan 公式サイト</title>
+  <meta name="description" content="Freeride World Tour（FWT）JAPAN SERIESの公式サイト。自然のままの地形を滑り、そのテクニックやスタイルを競うフリーライドの世界一を決めるツアー。">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="FWT JAPAN SERIES | Freeride World Tour Japan">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cardo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.5.0/remixicon.min.css">
+  <link rel="stylesheet" href="/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="min-h-screen bg-white text-slate-900">
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 flex items-center px-4 md:px-8 justify-between h-16 text-white bg-transparent">
+    <a href="/" class="flex items-center">
+      <img src="/img/logo.png" alt="FWT JAPAN SERIES" style="height: 30px">
+    </a>
+    
+    <div class="hidden xl:flex items-center gap-1 text-sm font-medium tracking-widest">
+      <a href="/about" class="px-3 py-2 uppercase hover:opacity-70 transition">FWTとは</a>
+      <a href="/series" class="px-3 py-2 uppercase hover:opacity-70 transition">シリーズ</a>
+      <a href="/rankings" class="px-3 py-2 uppercase hover:opacity-70 transition">ランキング</a>
+      <a href="/riders" class="px-3 py-2 uppercase hover:opacity-70 transition">ライダー</a>
+      <a href="/replay" class="px-3 py-2 uppercase hover:opacity-70 transition">リプレイ</a>
+      <a href="/sustainability" class="px-3 py-2 uppercase hover:opacity-70 transition">サステナビリティ</a>
+      <a href="/news" class="px-3 py-2 uppercase hover:opacity-70 transition">ニュース</a>
+      <a href="/zone" class="px-3 py-2 uppercase hover:opacity-70 transition">ZONE</a>
+    </div>
+
+    <div class="hidden xl:flex items-center gap-4">
+
+      <a href="/contact" class="px-5 py-2 text-xs font-semibold tracking-widest uppercase border border-current hover:opacity-70 rounded-full transition">CONTACT</a>
+      <a href="/entry" class="px-5 py-2 text-xs font-semibold tracking-widest uppercase text-white bg-red-600 hover:bg-red-700 rounded-full transition">ENTRY</a>
+    </div>
+
+    <button id="menu-toggle" class="xl:hidden flex items-center justify-center w-10 h-10" aria-label="Toggle menu">
+      <i class="ri-menu-line text-xl"></i>
+    </button>
+  </nav>
+  <div id="mobile-menu" class="fixed inset-0 z-40 bg-slate-900/95 text-white flex flex-col items-center justify-center gap-6 p-8 transition-opacity duration-300 opacity-0 pointer-events-none xl:hidden">
+    <a href="/about" class="text-lg tracking-widest uppercase hover:opacity-70 transition">FWTとは</a>
+    <a href="/series" class="text-lg tracking-widest uppercase hover:opacity-70 transition">シリーズ</a>
+    <a href="/rankings" class="text-lg tracking-widest uppercase hover:opacity-70 transition">ランキング</a>
+    <a href="/riders" class="text-lg tracking-widest uppercase hover:opacity-70 transition">ライダー</a>
+    <a href="/replay" class="text-lg tracking-widest uppercase hover:opacity-70 transition">リプレイ</a>
+    <a href="/sustainability" class="text-lg tracking-widest uppercase hover:opacity-70 transition">サステナビリティ</a>
+    <a href="/news" class="text-lg tracking-widest uppercase hover:opacity-70 transition">ニュース</a>
+    <a href="/zone" class="text-lg tracking-widest uppercase hover:opacity-70 transition">ZONE FWT</a>
+<div class="flex flex-col gap-4 mt-2 w-full max-w-[240px]">
+      <a href="/contact" class="flex justify-center px-8 py-3 text-sm font-semibold tracking-widest uppercase text-white border border-white/50 hover:bg-white hover:text-slate-900 rounded-full transition">CONTACT</a>
+      <a href="/entry" class="flex justify-center px-8 py-3 text-sm font-semibold tracking-widest uppercase text-white bg-red-600 hover:bg-red-700 rounded-full transition">ENTRY</a>
+    </div>
+  </div>
+  <section class="relative w-full h-[420px] md:h-[520px] overflow-hidden flex items-center justify-center text-center px-4">
+    <div class="absolute inset-0">
+      <img alt="FWT Rankings" class="w-full h-full object-cover" src="/img/entry_hero.jpg">
+      <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/70"></div>
+    </div>
+  </section>
+
+  <!-- START -->
+  <section class="relative bg-white py-20 md:py-24 overflow-hidden text-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-16 relative z-10">
+      <div class="max-w-3xl mb-20">
+        <span class="font-mono text-[10px] text-red-600 font-bold tracking-[0.4em] uppercase mb-4 block flex items-center gap-2">
+          <span class="w-4 h-[1px] bg-red-600"></span> Please Read First
+        </span>
+        <h2 class="text-2xl md:text-3xl font-bold mb-6">エントリー前にご確認ください</h2>
+        <p class="text-slate-600 leading-relaxed">
+          FWT JAPAN SERIESへのエントリーを検討いただきありがとうございます。フリーライドの世界は、年齢やスキルに応じたピラミッド構造になっています。ご自身がどのカテゴリー（ステージ）に該当するか、また昇格の仕組みや安全ルールを事前に正しく理解しておくことが、安全で公平な競技への第一歩となります。
+        </p>
+      </div>
+
+      <div class="text-center mb-16 md:mb-20">
+        <span class="font-mono text-[10px] text-slate-400 font-bold tracking-[0.4em] uppercase mb-4 block">01 // The Pyramid</span>
+        <h3 class="font-extreme text-3xl sm:text-4xl md:text-5xl font-black tracking-tighter uppercase mb-6">
+          FWTピラミッド
+        </h3>
+      </div>
+
+      <div class="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center mb-16 md:mb-24">
+        <div class="w-full lg:w-1/3 flex justify-center lg:justify-center relative">
+          <div class="relative w-full max-w-sm flex justify-center mix-blend-multiply">
+            <img src="/img/about_pyramid.jpg" alt="FWT Pyramid Structure" class="w-full h-auto relative z-10">
+          </div>
+        </div>
+
+        <div class="w-full lg:w-2/3 space-y-4 md:space-y-6">
+          <div class="group relative border border-red-200 border-l-4 border-l-red-600 bg-red-50/50 p-6 overflow-hidden hover:bg-red-50 transition-colors">
+            <div class="relative z-10 flex flex-col md:flex-row gap-4 md:items-start">
+              <div class="md:w-1/3">
+                <span class="font-mono text-[10px] text-red-600 font-bold tracking-widest uppercase">Stage 3 : 最高峰</span>
+                <h4 class="font-extreme text-2xl font-black text-slate-900 uppercase mt-1">PRO</h4>
+              </div>
+              <div class="md:w-2/3 text-sm text-slate-600 leading-relaxed">
+                世界最高峰の舞台。厳しい戦いを勝ち抜いたトップライダーだけが立てるステージ。シーズン途中の第4戦終了時点で「THE CUT（足切り）」が行われ、半数が脱落する過酷なリーグ。
+              </div>
+            </div>
+          </div>
+
+          <div class="group border border-slate-200 border-l-4 border-l-purple-500 bg-slate-50 p-6 hover:bg-white transition-colors">
+            <div class="flex flex-col md:flex-row gap-4 md:items-center">
+              <div class="md:w-1/3">
+                <span class="font-mono text-[10px] text-purple-600 font-bold tracking-widest uppercase">Stage 2 : 登竜門</span>
+                <h4 class="font-extreme text-2xl font-black text-slate-900 uppercase mt-1">Challenger</h4>
+              </div>
+              <div class="md:w-2/3 text-sm text-slate-600 leading-relaxed">
+                QUALIFIERの勝者とPROからの降格者が激突する、PRO昇格をかけた激戦区。完全招待制の特別シリーズです。
+              </div>
+            </div>
+          </div>
+
+          <div class="group border border-slate-200 border-l-4 border-l-emerald-400 bg-slate-50 p-6 hover:bg-white transition-colors">
+            <div class="flex flex-col md:flex-row gap-4 md:items-center">
+              <div class="md:w-1/3">
+                <span class="font-mono text-[10px] text-emerald-600 font-bold tracking-widest uppercase">Stage 1 : 選抜戦</span>
+                <h4 class="font-extreme text-2xl font-black text-slate-900 uppercase mt-1">Qualifier</h4>
+              </div>
+              <div class="md:w-2/3 text-sm text-slate-600 leading-relaxed">
+                18歳以上なら誰でも出られる1★大会からスタート。ポイントを稼ぎランキング上位に入ると、Challengerへの招待状を受け取ることができます。
+              </div>
+            </div>
+          </div>
+
+          <div class="group border border-slate-200 border-l-4 border-l-yellow-400 bg-slate-50 p-6 hover:bg-white transition-colors">
+            <div class="flex flex-col md:flex-row gap-4 md:items-center">
+              <div class="md:w-1/3">
+                <h4 class="font-extreme text-2xl font-black text-slate-900 uppercase mt-1">Junior</h4>
+                <span class="inline-block bg-slate-200 text-slate-600 text-[10px] font-bold px-2 py-1 mt-2 font-mono tracking-widest">AGE: 10-18</span>
+              </div>
+              <div class="md:w-2/3 text-sm text-slate-600 leading-relaxed">
+                10歳から参加可能なユースカテゴリー。次世代のフリーライダーたちがスキルを磨き、競い合う場です。
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+        <div class="flex flex-col gap-4">
+          <h4 class="font-bold text-lg md:text-xl text-slate-900 border-l-4 border-slate-900 pl-3">
+            FWTピラミッドの解説動画
+          </h4>
+          <div class="aspect-video w-full rounded-xl overflow-hidden shadow-lg border border-slate-100 bg-slate-50">
+            <iframe 
+              class="w-full h-full"
+              src="https://www.youtube.com/embed/xOnnciel9pA?si=IUWkCKzWSKd0p-55" 
+              title="YouTube video player" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              referrerpolicy="strict-origin-when-cross-origin" 
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-4">
+          <h4 class="font-bold text-lg md:text-xl text-slate-900 border-l-4 border-slate-900 pl-3">
+            日本人初のPro進出 - 勝野天欄選手
+          </h4>
+          <div class="aspect-video w-full rounded-xl overflow-hidden shadow-lg border border-slate-100 bg-slate-50">
+            <iframe 
+              class="w-full h-full"
+              src="https://www.youtube.com/embed/Fvj6756jlUU?si=cYtkoC7NAb_Je5hr" 
+              title="YouTube video player" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              referrerpolicy="strict-origin-when-cross-origin" 
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="relative bg-slate-50 py-24 md:py-32 overflow-hidden border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-16">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-16 text-slate-900">
+        <div class="lg:col-span-5">
+          <span class="font-mono text-[10px] text-red-600 font-bold tracking-[0.4em] uppercase mb-4 block">02 // Safety Rules</span>
+          <h2 class="font-extreme text-4xl sm:text-5xl font-black tracking-tighter uppercase mb-6 leading-tight">安全とルールの遵守</h2>
+          <p class="text-slate-600 text-sm md:text-base leading-relaxed mb-10">
+            競技者の安全を守るため、以下の必須アイテムを装備し、重大なペナルティルールを理解しておく必要があります。
+          </p>
+          <div class="space-y-4">
+            <div class="group border-2 border-red-600 p-6 bg-white shadow-[4px_4px_0px_rgba(220,38,38,1)]">
+              <h4 class="font-bold text-red-600 mb-2 flex items-center gap-2 text-base uppercase">No Score</h4>
+              <p class="text-xs text-slate-600">転倒して板が外れた場合はノー・スコアとなります。安全のため元のラインには戻らず安全にゴールしてください。</p>
+            </div>
+            <div class="group border border-slate-300 p-6 bg-white">
+              <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2 text-base uppercase">Disqualified</h4>
+              <p class="text-xs text-slate-600">進入禁止エリア（NO-GO ZONE）や競技エリア外に侵入した場合は直ちに失格となります。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lg:col-span-7">
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4 mb-10">
+            <div class="bg-white border border-slate-200 p-5 text-center flex flex-col items-center justify-center gap-3">
+              <i class="ri-shield-user-line text-3xl text-slate-300"></i>
+              <span class="block font-bold text-[10px] text-slate-900 uppercase">Helmet</span>
+            </div>
+            <div class="bg-white border border-slate-200 p-5 text-center flex flex-col items-center justify-center gap-3">
+              <i class="ri-rfid-line text-3xl text-slate-300"></i>
+              <span class="block font-bold text-[10px] text-slate-900 uppercase tracking-tighter">Avalanche Beacon</span>
+            </div>
+            <div class="bg-white border border-slate-200 p-5 text-center flex flex-col items-center justify-center gap-3">
+              <i class="ri-tools-line text-3xl text-slate-300"></i>
+              <span class="block font-bold text-[10px] text-slate-900 uppercase">Shovel & Probe</span>
+            </div>
+            <div class="bg-white border border-slate-200 p-5 text-center flex flex-col items-center justify-center gap-3">
+              <i class="ri-body-scan-line text-3xl text-slate-300"></i>
+              <span class="block font-bold text-[10px] text-slate-900 uppercase tracking-tighter">Back Protector</span>
+            </div>
+            <div class="bg-white border border-slate-200 p-5 text-center flex flex-col items-center justify-center gap-3">
+              <i class="ri-briefcase-4-line text-3xl text-slate-300"></i>
+              <span class="block font-bold text-[10px] text-slate-900 uppercase">Backpack</span>
+            </div>
+            <div class="bg-white border border-slate-200 p-5 text-center flex flex-col items-center justify-center gap-3">
+              <i class="ri-radar-line text-3xl text-slate-300"></i>
+              <span class="block font-bold text-[10px] text-slate-900 uppercase">RECCO Reflector</span>
+            </div>
+          </div>
+          <div class="bg-white p-6 border-l-4 border-slate-900 shadow-sm">
+            <h4 class="font-bold text-slate-900 mb-2 text-sm">ライダーズミーティング</h4>
+            <p class="text-xs text-slate-500 leading-relaxed">前日または当朝のミーティングは参加必須です。雪の状態や危険エリアの最終確認を行います。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative bg-white py-24 md:py-32 overflow-hidden border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-16 text-center text-slate-900">
+      <span class="font-mono text-[10px] text-red-600 font-bold tracking-[0.4em] uppercase mb-4 block">03 // How to Entry</span>
+      <h2 class="font-extreme text-4xl sm:text-5xl font-black tracking-tighter uppercase mb-8">エントリー方法</h2>
+      
+      <div class="bg-slate-50 border border-slate-200 p-6 md:p-8 rounded-lg mb-16 max-w-2xl mx-auto">
+        <h3 class="font-bold text-red-600 flex items-center justify-center gap-2 mb-4">
+          <i class="ri-notification-3-line"></i> 2026年シーズン エントリー開始前
+        </h3>
+        <p class="text-sm text-slate-600 mb-6">
+          エントリーは<strong>10月末</strong>にオープン予定です。開始まで今しばらくお待ちください。最新情報は各種SNS・ニュースレターでいち早くお届けします。
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a href="#" class="flex items-center gap-2 px-6 py-2 bg-slate-900 text-white text-xs font-bold rounded-full hover:bg-red-600 transition tracking-widest">
+            <i class="ri-mail-line"></i> NEWSLETTER
+          </a>
+          <a href="#" class="flex items-center gap-2 px-6 py-2 border-2 border-slate-900 text-slate-900 text-xs font-bold rounded-full hover:bg-slate-900 hover:text-white transition tracking-widest">
+            <i class="ri-instagram-line"></i> INSTAGRAM
+          </a>
+        </div>
+      </div>
+
+      <div class="flex flex-col md:flex-row items-stretch justify-center gap-8 md:gap-12 relative z-10 max-w-5xl mx-auto">
+        <div class="hidden md:block absolute top-[40%] left-1/4 right-1/4 h-[2px] bg-slate-900 border-dashed border-t-2 border-slate-200 -z-10"></div>
+        
+        <div class="bg-white border-2 border-slate-900 p-8 md:p-10 w-full md:w-1/2 relative shadow-[8px_8px_0px_rgba(15,23,42,1)] flex flex-col">
+          <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-red-600 text-white font-mono text-[10px] px-6 py-2 uppercase tracking-[0.2em] font-bold">STEP 01</div>
+          <h3 class="font-extreme text-xl md:text-2xl font-bold mb-4 uppercase">ライセンスの取得</h3>
+          <p class="text-sm text-slate-500 text-left leading-relaxed flex-grow">
+            エントリーにはFWT公式WEBサイトでのライセンス購入が必要です。募集開始前にアカウント登録を済ませておくことを推奨します。
+          </p>
+          <button disabled class="mt-8 flex items-center justify-center gap-4 border-2 border-slate-200 bg-slate-100 px-6 py-4 text-xs font-bold tracking-[0.2em] uppercase text-slate-400 cursor-not-allowed">
+            COMING SOON (OCT LATE)
+          </button>
+        </div>
+
+        <div class="bg-white border-2 border-slate-900 p-8 md:p-10 w-full md:w-1/2 relative shadow-[8px_8px_0px_rgba(15,23,42,1)] mt-8 md:mt-0 flex flex-col">
+          <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-red-600 text-white font-mono text-[10px] px-6 py-2 uppercase tracking-[0.2em] font-bold">STEP 02</div>
+          <h3 class="font-extreme text-xl md:text-2xl font-bold mb-4 uppercase">エントリー</h3>
+          <p class="text-sm text-slate-500 text-left leading-relaxed flex-grow">
+            募集開始後、ライセンスアカウントから各大会へエントリーします。定員に達し次第締め切りとなるため、早めのエントリーを推奨します。
+          </p>
+          <button disabled class="mt-8 flex items-center justify-center gap-4 border-2 border-slate-200 bg-slate-100 px-6 py-4 text-xs font-bold tracking-[0.2em] uppercase text-slate-400 cursor-not-allowed">
+            COMING SOON (OCT LATE)
+          </button>
+        </div>
+      </div>
+      
+      <div class="mt-32 border-t-2 border-slate-900 pt-20">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center text-left">
+          <div class="lg:col-span-5">
+            <span class="font-mono text-[10px] text-red-600 font-bold tracking-[0.4em] uppercase mb-4 block">Practice Field</span>
+            <h3 class="font-extreme text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase mb-6 leading-tight">
+              まずは体験してみよう！<br><span class="text-red-600">ZONE FWT</span>
+            </h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-8">
+              ZONE FWT は全国各地のスキー場と提携し、大会開催基準をクリアした斜面を常設しているコース。自然地形の滑り込みや大会に向けた練習に最適です。
+            </p>
+            <a href="/zone" class="group inline-flex items-center gap-4 font-bold text-sm uppercase text-slate-900 border-b-2 border-slate-900 pb-1 hover:text-red-600 hover:border-red-600 transition">
+              View All Zones <i class="ri-arrow-right-line transform group-hover:translate-x-2 transition"></i>
+            </a>
+          </div>
+          <div class="lg:col-span-7">
+            <img src="/img/entry_zone.png" alt="ZONE FWT Map" class="w-full h-auto block">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- END -->
+
+  <section class="bg-slate-50 py-20 md:py-28 border-y border-slate-200 z-20 fwt-partners-component">
+    <div class="max-w-5xl mx-auto px-6 md:px-12">
+      
+      <div class="text-center mb-16 md:mb-20">
+        <h2 class="font-extreme text-3xl md:text-4xl font-black text-slate-900 uppercase tracking-wider">PARTNERS</h2>
+      </div>
+
+      <div class="mb-16 md:mb-20 last:mb-0">
+        <div class="flex items-center gap-4 mb-10">
+          <div class="h-px flex-1 bg-slate-200"></div>
+          <span class="font-extreme text-[10px] font-bold text-slate-400 tracking-[0.2em] uppercase whitespace-nowrap">Title Partner</span>
+          <div class="h-px flex-1 bg-slate-200"></div>
+        </div>
+        <div class="flex items-center justify-center gap-8 md:gap-12">
+          <a href="#" class="block px-6 py-4 grayscale hover:grayscale-0 transition duration-300 opacity-90 hover:opacity-100">
+            <img src="/img/logo.png" alt="Title Partner" class="h-16 md:h-20 w-auto object-contain">
+          </a>
+        </div>
+      </div>
+
+      <div class="mb-16 md:mb-20 last:mb-0">
+        <div class="flex items-center gap-4 mb-10">
+          <div class="h-px flex-1 bg-slate-200"></div>
+          <span class="font-extreme text-[10px] font-bold text-slate-400 tracking-[0.2em] uppercase whitespace-nowrap">Main Sponsors</span>
+          <div class="h-px flex-1 bg-slate-200"></div>
+        </div>
+        <div class="flex flex-wrap md:flex-nowrap items-center justify-center gap-10 md:gap-20">
+          <a href="#" class="block px-6 py-4 grayscale hover:grayscale-0 transition duration-300 opacity-80 hover:opacity-100">
+            <img src="/img/logo.png" alt="Main Sponsor 1" class="h-8 md:h-10 w-auto object-contain">
+          </a>
+          <a href="#" class="block px-6 py-4 grayscale hover:grayscale-0 transition duration-300 opacity-80 hover:opacity-100">
+            <img src="/img/logo.png" alt="Main Sponsor 2" class="h-8 md:h-10 w-auto object-contain">
+          </a>
+        </div>
+      </div>
+
+      <div class="mb-16 md:mb-20 last:mb-0">
+        <div class="flex items-center gap-4 mb-10">
+          <div class="h-px flex-1 bg-slate-200"></div>
+          <span class="font-extreme text-[10px] font-bold text-slate-400 tracking-[0.2em] uppercase whitespace-nowrap">Destination Partners</span>
+          <div class="h-px flex-1 bg-slate-200"></div>
+        </div>
+        <div class="flex flex-wrap md:flex-nowrap items-center justify-center gap-8 md:gap-16">
+          <a href="#" class="block px-6 py-4 grayscale hover:grayscale-0 transition duration-300 opacity-80 hover:opacity-100">
+            <img src="/img/logo.png" alt="Destination Partner 1" class="h-8 md:h-10 w-auto object-contain">
+          </a>
+          <a href="#" class="block px-6 py-4 grayscale hover:grayscale-0 transition duration-300 opacity-80 hover:opacity-100">
+            <img src="/img/logo.png" alt="Destination Partner 2" class="h-8 md:h-10 w-auto object-contain">
+          </a>
+          <a href="#" class="block px-6 py-4 grayscale hover:grayscale-0 transition duration-300 opacity-80 hover:opacity-100">
+            <img src="/img/logo.png" alt="Destination Partner 3" class="h-8 md:h-10 w-auto object-contain">
+          </a>
+        </div>
+      </div>
+
+      <div class="mb-16 md:mb-20 last:mb-0">
+        <div class="flex items-center gap-4 mb-10">
+          <div class="h-px flex-1 bg-slate-200"></div>
+          <span class="font-extreme text-[10px] font-bold text-slate-400 tracking-[0.2em] uppercase whitespace-nowrap">Special Supporter</span>
+          <div class="h-px flex-1 bg-slate-200"></div>
+        </div>
+        <div class="flex items-center justify-center gap-8 md:gap-12">
+          <a href="#" class="block px-6 py-4 grayscale hover:grayscale-0 transition duration-300 opacity-70 hover:opacity-100">
+            <img src="/img/logo.png" alt="Special Supporter" class="h-8 md:h-10 w-auto object-contain">
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <section class="bg-slate-900 py-16 md:py-20">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <span class="text-xs tracking-[0.3em] text-slate-500 uppercase">Become a Partner</span>
+      <h2 class="mt-4 text-2xl md:text-4xl font-bold text-white tracking-tight leading-snug">「挑戦」と「革新」を、あなたのブランドに</h2>
+      <p class="mt-4 text-sm text-slate-400 leading-relaxed max-w-2xl mx-auto">
+        FWT JAPAN SERIESは、極限に挑む熱狂と感動を共に創り上げるパートナー企業を募集しています。大会スポンサーシップから、独自のコンテンツ共創、ローカルコミュニティへの貢献まで、貴社のビジネス課題に合わせた柔軟な協業プランをご提案します。
+      </p>
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="/contact" class="px-8 py-3 text-sm font-semibold tracking-wider text-white bg-red-600 rounded-full hover:bg-red-700 transition-colors whitespace-nowrap">お問い合わせ</a>
+      </div>
+    </div>
+  </section>
+  <div class="fwt-ticker pointer-events-auto">
+    <div class="fwt-ticker-track font-extreme text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase">
+      <span class="fwt-ticker-item">
+        CHOOSE YOUR LINE // NO RULES // JUST THE MOUNTAIN // FREERIDE WORLD TOUR // PUSH THE LIMITS // &nbsp;
+      </span>
+    </div>
+  </div>
+<footer class="bg-slate-50 border-t border-slate-200 py-12 md:py-16">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 flex flex-col lg:flex-row gap-12 lg:gap-16">
+      <div class="lg:w-1/3">
+        <a href="/" class="inline-block">
+          <img src="/img/logo.png" alt="FWT JAPAN SERIES" style="height: 30px;">
+        </a>
+        <p class="mt-4 text-sm text-slate-600 leading-relaxed max-w-xs">
+          自然のままの地形を滑り、テクニックとスタイルを競うフリーライドの世界一を決めるツアー。
+        </p>
+        <div class="mt-6 flex items-center gap-4">
+          <a href="https://www.youtube.com/@FreerideWorldTourJapan" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-red-600 transition-colors text-2xl" aria-label="YouTube">
+            <i class="ri-youtube-fill"></i>
+          </a>
+          <a href="https://www.instagram.com/freerideworldtour_jp/" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-red-600 transition-colors text-2xl" aria-label="Instagram">
+            <i class="ri-instagram-line"></i>
+          </a>
+        </div>
+      </div>
+      
+      <div class="lg:w-2/3 grid grid-cols-2 sm:grid-cols-4 gap-x-8 gap-y-6">
+        <a href="/about" class="text-xs tracking-wider uppercase font-medium text-slate-500 hover:text-red-600 transition">FWTとは</a>
+        <a href="/series" class="text-xs tracking-wider uppercase font-medium text-slate-500 hover:text-red-600 transition">シリーズ</a>
+        <a href="/rankings" class="text-xs tracking-wider uppercase font-medium text-slate-500 hover:text-red-600 transition">ランキング</a>
+        <a href="/riders" class="text-xs tracking-wider uppercase font-medium text-slate-500 hover:text-red-600 transition">ライダー</a>
+        <a href="/replay" class="text-xs tracking-wider uppercase font-medium text-slate-500 hover:text-red-600 transition">リプレイ</a>
+        <a href="/sustainability" class="text-xs tracking-wider uppercase font-medium text-slate-500 hover:text-red-600 transition">サステナビリティ</a>
+        <a href="/news" class="text-xs tracking-wider uppercase font-medium text-slate-500 hover:text-red-600 transition">ニュース</a>
+        <a href="/zone" class="text-xs tracking-wider uppercase font-medium text-slate-500 hover:text-red-600 transition">ZONE</a>
+      </div>
+    </div>
+    
+    <div class="max-w-7xl mx-auto px-4 md:px-8 mt-12 pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs tracking-wider text-slate-500">
+      <p>&copy; Freeride World Tour. All rights reserved.</p>
+      <div class="flex items-center gap-6">
+        <a href="/contact/team.html" class="hover:text-slate-900 transition">運営団体</a>
+    <a href="/policy/privacy.html" class="hover:text-slate-900 transition">プライバシーポリシー</a>
+        <a href="/policy/use.html" class="hover:text-slate-900 transition">利用規約</a>
+      </div>
+    </div>
+    </footer>
+  <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
+    <a href="https://www.youtube.com/@FreerideWorldTourJapan" target="_blank" rel="noopener noreferrer" class="w-12 h-12 flex items-center justify-center rounded-full bg-[#FF0000] text-white hover:-translate-y-1 hover:brightness-110 transition-all duration-300 shadow-lg text-xl" aria-label="YouTube">
+      <i class="ri-youtube-fill"></i>
+    </a>
+    <a href="https://www.instagram.com/freerideworldtour_jp/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white hover:-translate-y-1 hover:brightness-110 transition-all duration-300 shadow-lg text-xl" aria-label="Instagram">
+      <i class="ri-instagram-line"></i>
+    </a>
+  </div>
+  <script src="/js/script.js"></script>
+</body>
+</html>

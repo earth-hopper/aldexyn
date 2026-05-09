@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SnowPass - リフト券オンライン販売</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;700&display=swap');
+
+        :root {
+            --primary: #2563eb;
+            --bg-gradient: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            color: #1e293b;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* チケット風のUIデザイン */
+        .ticket-card {
+            position: relative;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+
+        .ticket-card::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: -10px;
+            width: 20px;
+            height: 20px;
+            background: var(--bg-gradient);
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+
+        .ticket-card::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: -10px;
+            width: 20px;
+            height: 20px;
+            background: var(--bg-gradient);
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+
+        .dashed-line {
+            border-top: 2px dashed #e2e8f0;
+            margin: 0 20px;
+        }
+
+        /* アニメーション */
+        .fade-in {
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hidden { display: none; }
+
+        /* スピナー */
+        .spinner {
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top: 3px solid #fff;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="pb-32">
+
+    <!-- Header -->
+    <header class="p-6 flex items-center justify-between">
+        <div>
+            <h1 class="text-2xl font-bold text-blue-600 tracking-tight">SnowPass</h1>
+            <p class="text-xs text-slate-500 font-medium uppercase tracking-widest" data-i18n="appTagline">Digital Ticket System</p>
+        </div>
+        <div class="flex items-center gap-2">
+            <select id="lang-select" class="text-xs font-bold bg-white/80 backdrop-blur px-3 py-2 rounded-full shadow-sm border border-slate-200 outline-none">
+                <option value="ja">日本語</option>
+                <option value="en">English</option>
+                <option value="zh">中文</option>
+            </select>
+            <div class="bg-white/80 backdrop-blur p-2 rounded-full shadow-sm">
+                <i class="fa-solid fa-snowflake text-blue-400 text-xl"></i>
+            </div>
+        </div>
+    </header>
+
+    <main class="px-5 max-w-md mx-auto">
+        
+        <!-- STEP 1: チケット選択 -->
+        <section id="step-selection" class="fade-in">
+            <div class="mb-6">
+                <h2 class="text-xl font-bold mb-1" data-i18n="selectTitle">リフト券を選ぶ</h2>
+                <p class="text-sm text-slate-500" data-i18n="selectSubtitle">本日利用可能なチケットです</p>
+            </div>
+
+            <div id="ticket-list" class="space-y-4">
+                <!-- JavaScriptでレンダリング -->
+            </div>
+        </section>
+
+        <!-- STEP 2: 決済画面 -->
+        <section id="step-payment" class="hidden fade-in">
+            <button onclick="showStep('selection')" class="mb-4 text-sm text-blue-600 font-semibold flex items-center">
+                <i class="fa-solid fa-chevron-left mr-2"></i> <span data-i18n="back">戻る</span>
+            </button>
+            
+            <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100">
+                <h2 class="text-xl font-bold mb-6" data-i18n="paymentTitle">お支払い情報</h2>
+                
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-500 mb-1 uppercase" data-i18n="emailLabel">メールアドレス</label>
+                        <input type="email" id="email" placeholder="email@example.com" class="w-full p-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition">
+                        <p class="text-[10px] text-slate-400 mt-1" data-i18n="emailHint">※このアドレスにチケット（PDF）が届きます</p>
+                    </div>
+
+                    <div class="pt-2">
+                        <label class="block text-xs font-bold text-slate-500 mb-1 uppercase" data-i18n="cardLabel">カード情報</label>
+                        <div class="relative">
+                            <input type="text" placeholder="1234 5678 1234 5678" class="w-full p-3 pl-11 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition">
+                            <i class="fa-solid fa-credit-card absolute left-4 top-4 text-slate-400"></i>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mt-3">
+                            <input type="text" placeholder="MM / YY" class="p-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none">
+                            <input type="text" placeholder="CVC" class="p-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-slate-100">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="text-slate-500" data-i18n="totalLabel">合計金額</span>
+                        <span id="payment-total" class="text-2xl font-bold text-slate-900">¥0</span>
+                    </div>
+                    <button id="pay-btn" onclick="processPayment()" class="w-full bg-slate-900 hover:bg-black text-white font-bold py-4 rounded-xl shadow-lg transition-all flex justify-center items-center">
+                        <span id="pay-text" data-i18n="payCta">支払いを確定する</span>
+                        <div id="pay-spinner" class="spinner hidden"></div>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 3: QRコード表示 -->
+        <section id="step-success" class="hidden fade-in text-center">
+            <div class="bg-white p-8 rounded-3xl shadow-xl border border-blue-50 px-4">
+                <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fa-solid fa-check text-4xl"></i>
+                </div>
+                <h2 class="text-2xl font-bold mb-2" data-i18n="successTitle">購入完了！</h2>
+                <p class="text-sm text-slate-500 mb-8" data-i18n="successSubtitle">自動発券機にこのQRをかざしてください</p>
+
+                <!-- QR Placeholder -->
+                <div class="relative bg-slate-50 p-6 rounded-2xl inline-block mb-8">
+                    <div id="qr-code" class="w-48 h-48 bg-white flex items-center justify-center rounded-lg border-4 border-white shadow-inner"></div>
+                    <div id="order-label" class="mt-4 text-xs font-mono text-slate-400">ORDER: -</div>
+                </div>
+
+                <!-- Mock issue/redeem trigger -->
+                <div class="mb-8">
+                    <button id="redeem-btn" onclick="redeemPurchasedTickets()" class="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-slate-300 text-white font-bold py-4 rounded-xl shadow-lg transition-all active:scale-95">
+                        <span data-i18n="redeemCta">発券する（モック：購入したチケットをまとめて利用処理）</span>
+                    </button>
+                    <p id="redeem-msg" class="text-xs text-slate-500 mt-3 hidden"></p>
+                    <p class="text-[10px] text-slate-400 mt-2" data-i18n="redeemNote">※このモックでは「発券＝利用（消費）」として扱います</p>
+                </div>
+
+                <div class="text-left space-y-4 bg-slate-50 p-4 rounded-xl text-sm">
+                    <div class="flex gap-3">
+                        <i class="fa-solid fa-circle-info text-blue-500 mt-1"></i>
+                        <div>
+                            <p class="font-bold" data-i18n="notesTitle">注意事項</p>
+                            <ul class="text-xs text-slate-600 list-disc ml-4 mt-1 space-y-1">
+                                <li data-i18n="note1">本QRコードは１回のみ有効です（発券後無効）。</li>
+                                <li data-i18n="note2">メールにも同一のQRコードを添付しております。</li>
+                                <li data-i18n="note3">発券機が読み取れない場合は、画面を明るくしてください。</li>
+                                <li data-i18n="note4">払い戻しはできませんのでご注意ください。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- リカバリーフォーム -->
+            <div class="mt-8 bg-white/50 p-6 rounded-2xl border border-dashed border-slate-300">
+                <p class="text-sm font-semibold mb-4 text-slate-600" data-i18n="resendTitle">メールが届かない場合</p>
+                <div class="flex gap-2">
+                    <input type="email" id="resend-email" placeholder="再送信先のアドレス" class="flex-1 p-3 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-blue-500 outline-none">
+                    <button onclick="resendEmail()" class="bg-blue-600 text-white px-4 py-2 rounded-xl text-sm font-bold shadow-md hover:bg-blue-700 transition">
+                        <span data-i18n="resendBtn">再送信</span>
+                    </button>
+                </div>
+                <p id="resend-msg" class="text-[10px] text-green-600 mt-2 hidden" data-i18n="resendDone">送信しました。迷惑メールフォルダもご確認ください。</p>
+            </div>
+
+            <button onclick="location.reload()" class="mt-8 text-slate-400 text-sm font-medium" data-i18n="backToTop">トップへ戻る</button>
+        </section>
+
+    </main>
+
+    <!-- 固定フッター -->
+    <footer id="fixed-footer" class="fixed bottom-0 left-0 right-0 p-5 bg-white/90 backdrop-blur-md border-t border-slate-100 shadow-[0_-10px_20px_-5px_rgba(0,0,0,0.05)] z-50 transition-transform duration-300">
+        <div class="max-w-md mx-auto flex items-center justify-between">
+            <div class="flex flex-col">
+                <span class="text-xs text-slate-400 font-bold uppercase">合計金額</span>
+                <span id="footer-total" class="text-2xl font-black text-slate-900 leading-tight">¥0</span>
+            </div>
+            <button id="buy-now-btn" onclick="showStep('payment')" disabled class="bg-blue-600 disabled:bg-slate-300 text-white font-bold py-4 px-8 rounded-2xl shadow-lg shadow-blue-200 transition-all active:scale-95 flex items-center gap-2">
+                <span data-i18n="buyNow">当日券を買う</span>
+                <i class="fa-solid fa-arrow-right text-sm"></i>
+            </button>
+        </div>
+    </footer>
+
+    <script>
+        // --- i18n (ja/en/zh) ---
+        const I18N = {
+            ja: {
+                appTagline: "Digital Ticket System",
+                selectTitle: "リフト券を選ぶ",
+                selectSubtitle: "本日利用可能なチケットです",
+                back: "戻る",
+                paymentTitle: "お支払い情報",
+                emailLabel: "メールアドレス",
+                emailHint: "※このアドレスにチケット（PDF）が届きます",
+                cardLabel: "カード情報",
+                totalLabel: "合計金額",
+                payCta: "支払いを確定する",
+                successTitle: "購入完了！",
+                successSubtitle: "自動発券機にこのQRをかざしてください",
+                redeemCta: "発券する（モック：購入したチケットをまとめて利用処理）",
+                redeemNote: "※このモックでは「発券＝利用（消費）」として扱います",
+                notesTitle: "注意事項",
+                note1: "本QRコードは１回のみ有効です（発券後無効）。",
+                note2: "メールにも同一のQRコードを添付しております。",
+                note3: "発券機が読み取れない場合は、画面を明るくしてください。",
+                note4: "払い戻しはできませんのでご注意ください。",
+                resendTitle: "メールが届かない場合",
+                resendPlaceholder: "再送信先のアドレス",
+                resendBtn: "再送信",
+                resendDone: "送信しました。迷惑メールフォルダもご確認ください。",
+                backToTop: "トップへ戻る",
+                buyNow: "当日券を買う",
+                alertEmailRequired: "メールアドレスを入力してください",
+                purchaseFailedPrefix: "購入（モック）に失敗しました: ",
+                redeemNoTicket: "チケットが見つかりません。",
+                redeemNoSupabase: "Supabase未設定です（SUPABASE_URL / SUPABASE_ANON_KEY）",
+                redeemPartialFail: (used, total) => `一部のチケットで利用更新に失敗しました（${used}/${total}）`,
+                redeemSuccess: (used) => `発券（利用）しました（${used}枚）。この購入分のQRは無効になりました。`,
+                redeemFailPrefix: "発券（利用）できません: ",
+                orderLabel: (orderNumber, firstCode, extra) => `ORDER: ${orderNumber} / TICKET: ${firstCode}${extra > 0 ? ` (+${extra})` : ""}`
+            },
+            en: {
+                appTagline: "Digital Ticket System",
+                selectTitle: "Choose a lift pass",
+                selectSubtitle: "Tickets available for today",
+                back: "Back",
+                paymentTitle: "Payment details",
+                emailLabel: "Email",
+                emailHint: "We will send your ticket (PDF) to this address.",
+                cardLabel: "Card details",
+                totalLabel: "Total",
+                payCta: "Confirm payment",
+                successTitle: "Purchase complete!",
+                successSubtitle: "Hold this QR up to the ticket machine.",
+                redeemCta: "Issue tickets (mock: mark all purchased tickets as used)",
+                redeemNote: "* In this mock, “issue” = “use (consume)”.",
+                notesTitle: "Notes",
+                note1: "This QR code is valid only once (invalid after issuing).",
+                note2: "We also attach the same QR code to your email.",
+                note3: "If the machine cannot read it, increase your screen brightness.",
+                note4: "Refunds are not available.",
+                resendTitle: "Didn’t receive the email?",
+                resendPlaceholder: "Email address to resend to",
+                resendBtn: "Resend",
+                resendDone: "Sent. Please also check your spam folder.",
+                backToTop: "Back to top",
+                buyNow: "Buy today’s pass",
+                alertEmailRequired: "Please enter your email address.",
+                purchaseFailedPrefix: "Purchase (mock) failed: ",
+                redeemNoTicket: "No ticket found.",
+                redeemNoSupabase: "Supabase is not configured (SUPABASE_URL / SUPABASE_ANON_KEY).",
+                redeemPartialFail: (used, total) => `Some tickets could not be updated (${used}/${total}).`,
+                redeemSuccess: (used) => `Issued/used ${used} ticket(s). This QR is now invalid.`,
+                redeemFailPrefix: "Could not issue/use: ",
+                orderLabel: (orderNumber, firstCode, extra) => `ORDER: ${orderNumber} / TICKET: ${firstCode}${extra > 0 ? ` (+${extra})` : ""}`
+            },
+            zh: {
+                appTagline: "数字票务系统",
+                selectTitle: "选择缆车票",
+                selectSubtitle: "今日可用票券",
+                back: "返回",
+                paymentTitle: "支付信息",
+                emailLabel: "邮箱",
+                emailHint: "我们会把票券（PDF）发送到该邮箱。",
+                cardLabel: "银行卡信息",
+                totalLabel: "合计",
+                payCta: "确认支付",
+                successTitle: "购买完成！",
+                successSubtitle: "请将此二维码对准自助取票机。",
+                redeemCta: "发券（模拟：将本次购买的全部票券标记为已使用）",
+                redeemNote: "※ 本模拟中“发券”=“使用（核销）”。",
+                notesTitle: "注意事项",
+                note1: "本二维码仅限使用一次（发券后失效）。",
+                note2: "同一二维码也会随邮件发送。",
+                note3: "如无法识别，请调高屏幕亮度。",
+                note4: "不支持退款，敬请谅解。",
+                resendTitle: "未收到邮件？",
+                resendPlaceholder: "重新发送的邮箱地址",
+                resendBtn: "重新发送",
+                resendDone: "已发送。也请检查垃圾邮件箱。",
+                backToTop: "返回首页",
+                buyNow: "购买当日票",
+                alertEmailRequired: "请输入邮箱地址。",
+                purchaseFailedPrefix: "购买（模拟）失败：",
+                redeemNoTicket: "未找到票券。",
+                redeemNoSupabase: "Supabase 未配置（SUPABASE_URL / SUPABASE_ANON_KEY）。",
+                redeemPartialFail: (used, total) => `部分票券更新失败（${used}/${total}）。`,
+                redeemSuccess: (used) => `已发券/核销 ${used} 张，本次二维码已失效。`,
+                redeemFailPrefix: "无法发券/核销：",
+                orderLabel: (orderNumber, firstCode, extra) => `ORDER: ${orderNumber} / TICKET: ${firstCode}${extra > 0 ? ` (+${extra})` : ""}`
+            }
+        };
+
+        function parseLang() {
+            const params = new URLSearchParams(location.search);
+            const q = (params.get("lang") || "").toLowerCase();
+            if (q === "en") return "en";
+            if (q === "zh" || q === "zh-cn" || q === "zh-hans") return "zh";
+            const nav = (navigator.language || "").toLowerCase();
+            if (nav.startsWith("en")) return "en";
+            if (nav.startsWith("zh")) return "zh";
+            return "ja";
+        }
+
+        let LANG = parseLang();
+        function t(key, ...args) {
+            const dict = I18N[LANG] || I18N.ja;
+            const v = dict[key] ?? I18N.ja[key] ?? key;
+            return (typeof v === "function") ? v(...args) : v;
+        }
+
+        function applyI18n() {
+            document.documentElement.lang = LANG;
+            const sel = document.getElementById("lang-select");
+            if (sel) sel.value = LANG;
+
+            document.querySelectorAll("[data-i18n]").forEach(el => {
+                const key = el.getAttribute("data-i18n");
+                el.textContent = t(key);
+            });
+
+            // Placeholders
+            const resend = document.getElementById("resend-email");
+            if (resend) resend.placeholder = t("resendPlaceholder");
+        }
+
+        // ---- Supabase config (fill these before sharing the mock) ----
+        const SUPABASE_URL = "https://iihxkmqxqcyjqtdxhuyk.supabase.co";
+        const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlpaHhrbXF4cWN5anF0ZHhodXlrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUxMjgxNjMsImV4cCI6MjA5MDcwNDE2M30.tLiOYdjOGWhN_duMOR9FcJ_uMBtsOSqOogaEU78MmUc";
+
+        const supabase = (window.supabase && window.supabase.createClient)
+            ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+            : null;
+
+        // products loaded from DB; fallback to local list if DB not available yet
+        let products = [
+            { id: "local-1", name: '1日券（大人）', price_yen: 6500, product_type: 'Day' },
+            { id: "local-2", name: '1日券（子供）', price_yen: 3500, product_type: 'Day' },
+            { id: "local-3", name: '午後券（大人）', price_yen: 4800, product_type: 'Afternoon' },
+            { id: "local-4", name: '午後券（子供）', price_yen: 2500, product_type: 'Afternoon' },
+            { id: "local-5", name: 'ナイター券（大人）', price_yen: 3000, product_type: 'Night' },
+            { id: "local-6", name: 'ナイター券（子供）', price_yen: 1500, product_type: 'Night' }
+        ];
+
+        let cart = {};
+        let currentOrder = null; // { orderId, orderNumber, ticketCodes: string[] }
+
+        function hasSupabaseConfig() {
+            // Accept any real project URL/key; only block obvious placeholders.
+            if (!SUPABASE_URL || !SUPABASE_ANON_KEY) return false;
+            if (SUPABASE_URL.includes("YOUR_PROJECT_REF")) return false;
+            if (SUPABASE_ANON_KEY.includes("YOUR_SUPABASE_ANON_KEY")) return false;
+            // Basic sanity checks (not security checks)
+            if (!/^https:\/\/.+\.supabase\.co$/.test(SUPABASE_URL)) return false;
+            if (!/^eyJ/.test(SUPABASE_ANON_KEY)) return false;
+            return true;
+        }
+
+        function formatYen(amount) {
+            return `¥${Number(amount || 0).toLocaleString()}`;
+        }
+
+        function toISODateParts(d) {
+            const pad = (n) => String(n).padStart(2, '0');
+            return `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}`;
+        }
+
+        function randomCode(prefix, bytesLen = 10) {
+            const bytes = new Uint8Array(bytesLen);
+            crypto.getRandomValues(bytes);
+            const base32 = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; // no confusing chars
+            let out = "";
+            for (let i = 0; i < bytes.length; i++) out += base32[bytes[i] % base32.length];
+            return `${prefix}-${out}`;
+        }
+
+        async function loadProducts() {
+            if (!supabase || !hasSupabaseConfig()) return;
+            const { data, error } = await supabase
+                .from('products')
+                .select('id,name,price_yen,product_type,is_active')
+                .eq('is_active', true)
+                .order('created_at', { ascending: true });
+            if (!error && Array.isArray(data) && data.length > 0) {
+                products = data;
+            }
+        }
+
+        async function init() {
+            await loadProducts();
+            const list = document.getElementById('ticket-list');
+            list.innerHTML = products.map(p => `
+                <div class="ticket-card fade-in border border-slate-100">
+                    <div class="p-5">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="bg-blue-50 text-blue-600 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">${p.product_type} Pass</span>
+                            <span class="text-sm font-bold text-slate-400">#${String(p.id).slice(0, 8)}</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800">${p.name}</h3>
+                        <div class="mt-4 flex justify-between items-end">
+                            <div class="text-xl font-black text-slate-900">
+                                <span class="text-sm font-normal">¥</span>${Number(p.price_yen).toLocaleString()}
+                            </div>
+                            <div class="flex items-center gap-4 bg-slate-50 px-3 py-2 rounded-xl border border-slate-100">
+                                <button onclick="updateQty('${p.id}', -1)" class="w-8 h-8 flex items-center justify-center text-slate-400 hover:text-blue-600 transition">
+                                    <i class="fa-solid fa-minus"></i>
+                                </button>
+                                <span id="qty-${p.id}" class="w-4 text-center font-bold text-lg">0</span>
+                                <button onclick="updateQty('${p.id}', 1)" class="w-8 h-8 flex items-center justify-center text-slate-600 hover:text-blue-600 transition">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            updateTotal();
+        }
+
+        function updateQty(id, delta) {
+            cart[id] = (cart[id] || 0) + delta;
+            if (cart[id] < 0) cart[id] = 0;
+            document.getElementById(`qty-${id}`).innerText = cart[id];
+            updateTotal();
+        }
+
+        function updateTotal() {
+            let total = 0;
+            let count = 0;
+            products.forEach(p => {
+                const q = cart[p.id] || 0;
+                total += Number(p.price_yen) * q;
+                count += q;
+            });
+
+            const totalStr = formatYen(total);
+            document.getElementById('footer-total').innerText = totalStr;
+            document.getElementById('payment-total').innerText = totalStr;
+            
+            const btn = document.getElementById('buy-now-btn');
+            btn.disabled = count === 0;
+
+            const footer = document.getElementById('fixed-footer');
+            if (count === 0) {
+                footer.style.transform = 'translateY(100%)';
+            } else {
+                footer.style.transform = 'translateY(0)';
+            }
+        }
+
+        function showStep(step) {
+            document.getElementById('step-selection').classList.add('hidden');
+            document.getElementById('step-payment').classList.add('hidden');
+            document.getElementById('step-success').classList.add('hidden');
+            document.getElementById('fixed-footer').classList.add('hidden');
+
+            const target = document.getElementById(`step-${step}`);
+            target.classList.remove('hidden');
+
+            if (step === 'selection') {
+                document.getElementById('fixed-footer').classList.remove('hidden');
+                updateTotal();
+            }
+            window.scrollTo(0, 0);
+        }
+
+        async function createOrderInDb(email) {
+            if (!supabase || !hasSupabaseConfig()) {
+                throw new Error("Supabase未設定です（SUPABASE_URL / SUPABASE_ANON_KEY）");
+            }
+
+            // Build items from cart
+            const items = products
+                .map(p => ({ product: p, quantity: cart[p.id] || 0 }))
+                .filter(x => x.quantity > 0);
+            if (items.length === 0) throw new Error("カートが空です");
+
+            const total = items.reduce((acc, x) => acc + Number(x.product.price_yen) * x.quantity, 0);
+
+            const orderNumber = `SP-${toISODateParts(new Date())}-${randomCode("O", 6).slice(2)}`;
+
+            const { data: orderRow, error: orderErr } = await supabase
+                .from('orders')
+                .insert({
+                    order_number: orderNumber,
+                    email,
+                    channel: 'kioski',
+                    total_yen: total
+                })
+                .select('id,order_number')
+                .single();
+            if (orderErr) throw orderErr;
+
+            const orderItemsPayload = items.map(x => ({
+                order_id: orderRow.id,
+                product_id: x.product.id,
+                product_name: x.product.name,
+                unit_price_yen: Number(x.product.price_yen),
+                quantity: x.quantity
+            }));
+
+            const { error: itemsErr } = await supabase
+                .from('order_items')
+                .insert(orderItemsPayload);
+            if (itemsErr) throw itemsErr;
+
+            const ticketsPayload = [];
+            for (const x of items) {
+                for (let i = 0; i < x.quantity; i++) {
+                    ticketsPayload.push({
+                        ticket_code: randomCode("KT", 10),
+                        order_id: orderRow.id,
+                        product_id: x.product.id
+                    });
+                }
+            }
+
+            const { data: createdTickets, error: ticketErr } = await supabase
+                .from('tickets')
+                .insert(ticketsPayload)
+                .select('ticket_code');
+            if (ticketErr) throw ticketErr;
+
+            const ticketCodes = (createdTickets || []).map(t => t.ticket_code);
+            return { orderId: orderRow.id, orderNumber: orderRow.order_number, ticketCodes, totalYen: total };
+        }
+
+        function renderQr(ticketCode) {
+            const target = document.getElementById('qr-code');
+            target.innerHTML = "";
+            if (window.QRCode) {
+                // eslint-disable-next-line no-new
+                new QRCode(target, {
+                    text: ticketCode,
+                    width: 192,
+                    height: 192,
+                    correctLevel: QRCode.CorrectLevel.M
+                });
+            } else {
+                target.classList.add('bg-slate-200');
+                target.innerHTML = `<div class="text-xs font-mono text-slate-600 p-4 break-all">${ticketCode}</div>`;
+            }
+        }
+
+        function setRedeemUi(state, message) {
+            const btn = document.getElementById('redeem-btn');
+            const msg = document.getElementById('redeem-msg');
+            if (state === "ready") {
+                btn.disabled = false;
+                msg.classList.add('hidden');
+                msg.innerText = "";
+            } else if (state === "success") {
+                btn.disabled = true;
+                msg.classList.remove('hidden');
+                msg.classList.remove('text-red-600');
+                msg.classList.add('text-green-700');
+                msg.innerText = message || "発券（利用）しました。";
+            } else if (state === "error") {
+                btn.disabled = false;
+                msg.classList.remove('hidden');
+                msg.classList.remove('text-green-700');
+                msg.classList.add('text-red-600');
+                msg.innerText = message || "発券（利用）に失敗しました。";
+            } else if (state === "working") {
+                btn.disabled = true;
+                msg.classList.add('hidden');
+                msg.innerText = "";
+            }
+        }
+
+        async function processPayment() {
+            const email = document.getElementById('email').value;
+            if (!email) {
+                alert(t("alertEmailRequired"));
+                return;
+            }
+
+            const btnText = document.getElementById('pay-text');
+            const spinner = document.getElementById('pay-spinner');
+            const btn = document.getElementById('pay-btn');
+
+            btnText.classList.add('hidden');
+            spinner.classList.remove('hidden');
+            btn.disabled = true;
+
+            try {
+                // 決済シミュレーション (0.9秒)
+                await new Promise(r => setTimeout(r, 900));
+
+                currentOrder = await createOrderInDb(email);
+
+                // show QR for the first ticket code (mock)
+                const firstCode = currentOrder.ticketCodes[0] || "-";
+                renderQr(firstCode);
+                document.getElementById('order-label').innerText =
+                    t("orderLabel", currentOrder.orderNumber, firstCode, Math.max(0, currentOrder.ticketCodes.length - 1));
+
+                setRedeemUi("ready");
+                showStep('success');
+            } catch (e) {
+                const msg = (e && (e.message || e.error_description)) ? (e.message || e.error_description) : String(e);
+                alert(`${t("purchaseFailedPrefix")}${msg}`);
+                btnText.classList.remove('hidden');
+                spinner.classList.add('hidden');
+                btn.disabled = false;
+            }
+        }
+
+        async function redeemPurchasedTickets() {
+            if (!currentOrder || !currentOrder.ticketCodes || currentOrder.ticketCodes.length === 0) {
+                setRedeemUi("error", t("redeemNoTicket"));
+                return;
+            }
+            if (!supabase || !hasSupabaseConfig()) {
+                setRedeemUi("error", t("redeemNoSupabase"));
+                return;
+            }
+
+            setRedeemUi("working");
+            try {
+                const results = [];
+                for (const ticketCode of currentOrder.ticketCodes) {
+                    // Redeem sequentially for simplicity (mock 규모想定)
+                    const { data, error } = await supabase.rpc('redeem_ticket', { p_ticket_code: ticketCode });
+                    if (error) throw error;
+                    results.push(data);
+                }
+
+                const usedCount = results.filter(r => r && r.used_at).length;
+                if (usedCount !== currentOrder.ticketCodes.length) {
+                    setRedeemUi("error", t("redeemPartialFail", usedCount, currentOrder.ticketCodes.length));
+                    return;
+                }
+                setRedeemUi("success", t("redeemSuccess", usedCount));
+            } catch (e) {
+                const msg = (e && (e.message || e.error_description)) ? (e.message || e.error_description) : String(e);
+                setRedeemUi("error", `${t("redeemFailPrefix")}${msg}`);
+            }
+        }
+
+        function resendEmail() {
+            const msg = document.getElementById('resend-msg');
+            msg.classList.remove('hidden');
+            setTimeout(() => {
+                msg.classList.add('hidden');
+            }, 3000);
+        }
+
+        window.onload = () => {
+            const sel = document.getElementById("lang-select");
+            if (sel) {
+                sel.value = LANG;
+                sel.addEventListener("change", () => {
+                    LANG = sel.value;
+                    applyI18n();
+                });
+            }
+            applyI18n();
+            init();
+        };
+    </script>
+</body>
+</html>
