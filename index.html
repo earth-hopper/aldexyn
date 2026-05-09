@@ -9,7 +9,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;600&family=Noto+Serif+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,200,0,0" rel="stylesheet" />
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -18,13 +18,13 @@
             theme: {
                 extend: {
                     colors: {
-                        background: '#FDFCFB', 
-                        surface: 'rgba(255, 255, 255, 0.75)', 
-                        accent: '#C5A865', // より洗練されたシャンパンゴールド
-                        accentDark: '#967E47',
-                        textMain: '#1A1A1A', // 完全な黒を避け可読性を向上
-                        textSub: '#5A5A5A',
-                        borderSub: 'rgba(197, 168, 101, 0.2)', 
+                        background: '#FAFAFA', // より透明感のあるクリーンなパールホワイト
+                        surface: 'rgba(255, 255, 255, 0.85)', 
+                        accent: '#B8904D', // 視認性と高級感を両立したリッチゴールド
+                        accentDark: '#8A6A32',
+                        textMain: '#232220', // 温かみのあるリッチなチャコールブラック
+                        textSub: '#68645D',
+                        borderSub: 'rgba(184, 144, 77, 0.2)', 
                     },
                     fontFamily: {
                         sans: ['"Noto Sans JP"', 'sans-serif'],
@@ -45,12 +45,17 @@
 
     <style>
         body {
-            background-color: #FDFCFB;
-            color: #1A1A1A;
+            background-color: #FAFAFA;
+            color: #232220;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             overflow-x: hidden;
-            background-image: radial-gradient(circle at 50% 0%, #FFFFFF 0%, #FDFCFB 100%);
+            /* より複雑で上品な多層グラデーションベース */
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(255, 255, 255, 1) 0px, transparent 60%),
+                radial-gradient(at 100% 0%, rgba(245, 240, 230, 0.8) 0px, transparent 60%),
+                radial-gradient(at 100% 100%, rgba(255, 255, 255, 1) 0px, transparent 60%),
+                radial-gradient(at 0% 100%, rgba(242, 238, 228, 0.8) 0px, transparent 60%);
         }
 
         /* --- Background Effects (Depth & Light) --- */
@@ -64,40 +69,49 @@
             pointer-events: none;
         }
 
+        /* Ambient Orbs: より立体的で複雑な光の交差を演出 */
         .ambient-orb {
             position: fixed;
             border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.15;
+            filter: blur(140px);
             z-index: -10;
             pointer-events: none;
-            mix-blend-mode: normal;
+            mix-blend-mode: multiply;
         }
         .orb-1 {
-            width: 70vw;
-            height: 70vw;
-            max-width: 800px;
-            max-height: 800px;
-            background: radial-gradient(circle, #C5A865, transparent 70%);
-            top: -20%;
-            left: -10%;
-            animation: orbFloat 25s infinite alternate ease-in-out;
+            width: 80vw; height: 80vw;
+            max-width: 900px; max-height: 900px;
+            background: radial-gradient(circle, rgba(184, 144, 77, 0.15), transparent 70%);
+            top: -20%; left: -10%;
+            animation: orbFloat1 35s infinite alternate ease-in-out;
         }
         .orb-2 {
-            width: 60vw;
-            height: 60vw;
-            max-width: 600px;
-            max-height: 600px;
-            background: radial-gradient(circle, #EBE1CB, transparent 70%);
-            bottom: -10%;
-            right: -10%;
-            animation: orbFloat 30s infinite alternate-reverse ease-in-out;
+            width: 70vw; height: 70vw;
+            max-width: 800px; max-height: 800px;
+            background: radial-gradient(circle, rgba(235, 225, 210, 0.6), transparent 70%);
+            bottom: -20%; right: -10%;
+            animation: orbFloat2 40s infinite alternate-reverse ease-in-out;
+            mix-blend-mode: normal;
+        }
+        .orb-3 {
+            width: 50vw; height: 50vw;
+            max-width: 600px; max-height: 600px;
+            background: radial-gradient(circle, rgba(197, 180, 150, 0.1), transparent 70%);
+            top: 40%; left: 40%;
+            animation: orbFloat3 30s infinite alternate ease-in-out;
         }
 
-        @keyframes orbFloat {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(5vw, 8vh) scale(1.05); }
-            100% { transform: translate(-5vw, 12vh) scale(0.95); }
+        @keyframes orbFloat1 {
+            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            100% { transform: translate(8vw, 12vh) scale(1.1) rotate(10deg); }
+        }
+        @keyframes orbFloat2 {
+            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            100% { transform: translate(-10vw, -10vh) scale(1.15) rotate(-15deg); }
+        }
+        @keyframes orbFloat3 {
+            0% { transform: translate(0, 0) scale(0.9); }
+            100% { transform: translate(-5vw, 15vh) scale(1.05); }
         }
 
         /* --- Smooth Reveal Animations --- */
@@ -122,22 +136,22 @@
 
         /* --- Next-Gen Glassmorphism & Spotlight Card --- */
         .glass-nav {
-            background: rgba(253, 252, 251, 0.65);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.01);
+            background: rgba(250, 250, 250, 0.7);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.02);
         }
 
         .spotlight-card {
-            background: linear-gradient(145deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 100%);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.9);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.02), inset 0 1px 0 rgba(255,255,255,1);
+            background: linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.7) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.03), inset 0 1px 0 rgba(255,255,255,1);
             position: relative;
             overflow: hidden;
-            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s;
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.6s;
         }
         
         /* Spotlight Hover Effect */
@@ -145,15 +159,15 @@
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(197, 168, 101, 0.12), transparent 40%);
+            background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(184, 144, 77, 0.08), transparent 40%);
             opacity: 0;
             transition: opacity 0.5s;
             pointer-events: none;
             z-index: 1;
         }
         .spotlight-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255,255,255,1);
+            transform: translateY(-6px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255,255,255,1);
         }
         .spotlight-card:hover::before {
             opacity: 1;
@@ -176,7 +190,7 @@
             height: 1px;
             bottom: 0;
             left: 0;
-            background-color: #C5A865;
+            background-color: #B8904D;
             transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .nav-link:hover::after {
@@ -196,12 +210,12 @@
 
         /* Beautiful Typography Gradients */
         .text-gradient {
-            background: linear-gradient(135deg, #1A1A1A 0%, #4A4A4A 100%);
+            background: linear-gradient(135deg, #1A1918 0%, #4A4742 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .gold-gradient {
-            background: linear-gradient(135deg, #C5A865 0%, #967E47 100%);
+            background: linear-gradient(135deg, #B8904D 0%, #8A6A32 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -212,6 +226,7 @@
     <canvas id="particle-canvas"></canvas>
     <div class="ambient-orb orb-1"></div>
     <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
 
     <nav id="navbar" class="fixed w-full z-50 glass-nav py-6 px-8 md:px-16 flex justify-between items-center transition-all duration-500 ease-apple">
         <a href="#" class="flex items-center opacity-90 hover:opacity-100 transition-opacity">
@@ -219,18 +234,18 @@
         </a>
         <div class="flex items-center gap-12">
             <div class="hidden md:flex gap-10 text-[10px] tracking-superwide font-cinzel text-textSub font-medium">
-                <a href="#expertise" class="nav-link hover:text-accent transition-colors duration-300">EXPERTISE</a>
-                <a href="#philosophy" class="nav-link hover:text-accent transition-colors duration-300">PHILOSOPHY</a>
-                <a href="#leadership" class="nav-link hover:text-accent transition-colors duration-300">LEADERSHIP</a>
-                <a href="#record" class="nav-link hover:text-accent transition-colors duration-300">TRACK RECORD</a>
+                <a href="#solution" class="nav-link hover:text-accent transition-colors duration-300">ソリューション</a>
+                <a href="#philosophy" class="nav-link hover:text-accent transition-colors duration-300">フィロソフィー</a>
+                <a href="#leadership" class="nav-link hover:text-accent transition-colors duration-300">マネジメント</a>
+                <a href="#record" class="nav-link hover:text-accent transition-colors duration-300">案件実績</a>
             </div>
-            <a href="#contact" class="hidden md:block font-cinzel text-[10px] tracking-superwide px-7 py-3.5 border border-accent/50 text-accent hover:bg-accent hover:text-white transition-all duration-500 ease-apple bg-white/50 backdrop-blur-sm">CONTACT</a>
+            <a href="#contact" class="hidden md:block font-cinzel text-[10px] tracking-superwide px-7 py-3.5 border border-accent/40 text-accent hover:bg-accent hover:text-white transition-all duration-500 ease-apple bg-white/70 backdrop-blur-md shadow-sm">CONTACT</a>
         </div>
     </nav>
 
     <section class="relative min-h-screen flex items-center justify-center pt-24 px-6 overflow-hidden">
         <div class="max-w-5xl w-full text-center z-10 relative">
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-white/30 blur-3xl rounded-full -z-10"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-white/40 blur-[100px] rounded-full -z-10"></div>
             
             <div class="reveal-up">
                 <div class="inline-flex items-center gap-4 mb-12 opacity-90">
@@ -261,19 +276,19 @@
         </div>
     </section>
 
-    <section id="expertise" class="py-32 md:py-48 relative z-10">
+    <section id="solution" class="py-32 md:py-48 relative z-10">
         <div class="max-w-7xl mx-auto px-6 md:px-16">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 gap-10 reveal-up">
                 <div class="max-w-2xl">
                     <h2 class="flex items-center gap-4 font-cinzel text-accent text-[10px] tracking-superwide mb-6 font-medium">
                         <span class="w-12 h-[1px] bg-accent"></span>
-                        OUR EXPERTISE
+                        OUR SOLUTIONS
                     </h2>
                     <h3 class="font-serif text-4xl md:text-5xl leading-[1.3] tracking-wide text-gradient">
                         専門知識を、<br>お客様の力に変える。
                     </h3>
                 </div>
-                <p class="text-textSub text-[15px] font-normal max-w-md leading-loose border-l border-accent/30 pl-8 bg-white/30 backdrop-blur-sm p-4 rounded-r-sm">
+                <p class="text-textSub text-[15px] font-normal max-w-md leading-loose border-l border-accent/30 pl-8 bg-white/40 backdrop-blur-sm p-4 rounded-r-lg shadow-[0_4px_20px_rgba(0,0,0,0.01)]">
                     私たちは、お客様の「複雑な課題」を紐解き、実行可能な「成長のシナリオ」へと変換します。
                 </p>
             </div>
@@ -281,45 +296,45 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="spotlight-card p-10 lg:p-14 reveal-scale rounded-xl group">
                     <div class="content-layer">
-                        <span class="material-symbols-outlined text-accent text-5xl mb-8 font-light group-hover:scale-110 transition-transform duration-500 ease-apple">handshake</span>
+                        <span class="material-symbols-outlined text-accent text-5xl mb-8 font-light group-hover:scale-110 group-hover:text-accentDark transition-all duration-500 ease-apple">handshake</span>
                         <h4 class="font-serif text-xl md:text-2xl mb-5 tracking-wide text-textMain">M&Aアドバイザリー</h4>
                         <p class="text-[14px] text-textSub font-normal leading-[2.4] mb-10 text-justify">
                             戦略立案からPMIまで。お客様の事業の転換点において、客観的なデータと深い洞察に基づき、最適なパートナーシップの構築を支援します。
                         </p>
                         <ul class="text-[13px] text-textMain/80 font-normal tracking-wide space-y-4 pt-6 border-t border-borderSub">
-                            <li class="flex items-center gap-4"><span class="w-1.5 h-1.5 bg-accent/70 transform rotate-45 group-hover:bg-accent transition-colors"></span>事業承継支援</li>
-                            <li class="flex items-center gap-4"><span class="w-1.5 h-1.5 bg-accent/70 transform rotate-45 group-hover:bg-accent transition-colors"></span>クロスボーダーM&A</li>
-                            <li class="flex items-center gap-4"><span class="w-1.5 h-1.5 bg-accent/70 transform rotate-45 group-hover:bg-accent transition-colors"></span>業界再編戦略の立案</li>
+                            <li class="flex items-center gap-4"><span class="w-1.5 h-1.5 bg-accent/60 transform rotate-45 group-hover:bg-accent transition-colors"></span>事業承継支援</li>
+                            <li class="flex items-center gap-4"><span class="w-1.5 h-1.5 bg-accent/60 transform rotate-45 group-hover:bg-accent transition-colors"></span>クロスボーダーM&A</li>
+                            <li class="flex items-center gap-4"><span class="w-1.5 h-1.5 bg-accent/60 transform rotate-45 group-hover:bg-accent transition-colors"></span>業界再編戦略の立案</li>
                         </ul>
                     </div>
                 </div>
                 
                 <div class="spotlight-card p-10 lg:p-14 reveal-scale rounded-xl group" style="transition-delay: 0.1s;">
                     <div class="content-layer">
-                        <span class="material-symbols-outlined text-accent text-5xl mb-8 font-light group-hover:scale-110 transition-transform duration-500 ease-apple">currency_exchange</span>
+                        <span class="material-symbols-outlined text-accent text-5xl mb-8 font-light group-hover:scale-110 group-hover:text-accentDark transition-all duration-500 ease-apple">currency_exchange</span>
                         <h4 class="font-serif text-xl md:text-2xl mb-5 tracking-wide text-textMain">プライベートエクイティ</h4>
                         <p class="text-[14px] text-textSub font-normal leading-[2.4] mb-10 text-justify">
                             資本の提供を通じて、共に汗をかくパートナーへ。お客様の事業が持つ真の可能性を信じ、中長期的な視点でハンズオンの成長支援を行います。
                         </p>
                         <ul class="text-[13px] text-textMain/80 font-normal tracking-wide space-y-4 pt-6 border-t border-borderSub">
-                            <li class="flex items-center gap-4"><span class="w-1.5 h-1.5 bg-accent/70 transform rotate-45 group-hover:bg-accent transition-colors"></span>事業成長資金の提供</li>
-                            <li class="flex items-center gap-4"><span class="w-1.5 h-1.5 bg-accent/70 transform rotate-45 group-hover:bg-accent transition-colors"></span>経営体制の強化支援</li>
-                            <li class="flex items-center gap-4"><span class="w-1.5 h-1.5 bg-accent/70 transform rotate-45 group-hover:bg-accent transition-colors"></span>グローバル展開サポート</li>
+                            <li class="flex items-center gap-4"><span class="w-1.5 h-1.5 bg-accent/60 transform rotate-45 group-hover:bg-accent transition-colors"></span>事業成長資金の提供</li>
+                            <li class="flex items-center gap-4"><span class="w-1.5 h-1.5 bg-accent/60 transform rotate-45 group-hover:bg-accent transition-colors"></span>経営体制の強化支援</li>
+                            <li class="flex items-center gap-4"><span class="w-1.5 h-1.5 bg-accent/60 transform rotate-45 group-hover:bg-accent transition-colors"></span>グローバル展開サポート</li>
                         </ul>
                     </div>
                 </div>
                 
                 <div class="spotlight-card p-10 lg:p-14 reveal-scale rounded-xl group" style="transition-delay: 0.2s;">
                     <div class="content-layer">
-                        <span class="material-symbols-outlined text-accent text-5xl mb-8 font-light group-hover:scale-110 transition-transform duration-500 ease-apple">account_balance</span>
+                        <span class="material-symbols-outlined text-accent text-5xl mb-8 font-light group-hover:scale-110 group-hover:text-accentDark transition-all duration-500 ease-apple">account_balance</span>
                         <h4 class="font-serif text-xl md:text-2xl mb-5 tracking-wide text-textMain">コーポレートファイナンス</h4>
                         <p class="text-[14px] text-textSub font-normal leading-[2.4] mb-10 text-justify">
                             資本政策は経営の根幹です。市場動向を踏まえた最適な資本構成の設計や、株主との対話戦略など、企業価値の向上を実務面から支えます。
                         </p>
                         <ul class="text-[13px] text-textMain/80 font-normal tracking-wide space-y-4 pt-6 border-t border-borderSub">
-                            <li class="flex items-center gap-4"><span class="w-1.5 h-1.5 bg-accent/70 transform rotate-45 group-hover:bg-accent transition-colors"></span>資本政策の策定</li>
-                            <li class="flex items-center gap-4"><span class="w-1.5 h-1.5 bg-accent/70 transform rotate-45 group-hover:bg-accent transition-colors"></span>アクティビスト対応支援</li>
-                            <li class="flex items-center gap-4"><span class="w-1.5 h-1.5 bg-accent/70 transform rotate-45 group-hover:bg-accent transition-colors"></span>ガバナンス体制の構築</li>
+                            <li class="flex items-center gap-4"><span class="w-1.5 h-1.5 bg-accent/60 transform rotate-45 group-hover:bg-accent transition-colors"></span>資本政策の策定</li>
+                            <li class="flex items-center gap-4"><span class="w-1.5 h-1.5 bg-accent/60 transform rotate-45 group-hover:bg-accent transition-colors"></span>アクティビスト対応支援</li>
+                            <li class="flex items-center gap-4"><span class="w-1.5 h-1.5 bg-accent/60 transform rotate-45 group-hover:bg-accent transition-colors"></span>ガバナンス体制の構築</li>
                         </ul>
                     </div>
                 </div>
@@ -332,7 +347,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-20 md:gap-12 lg:gap-24">
                 <div class="reveal-up relative group">
                     <div class="absolute -top-16 -left-8 text-9xl font-cinzel text-accent/5 font-light -z-10 group-hover:scale-105 group-hover:-translate-y-2 group-hover:text-accent/10 transition-all duration-700 ease-apple">01</div>
-                    <div class="w-14 h-14 rounded-full border border-accent/30 bg-white/50 backdrop-blur-sm flex items-center justify-center mb-10 group-hover:bg-accent group-hover:border-accent group-hover:shadow-[0_0_20px_rgba(197,168,101,0.3)] transition-all duration-500 ease-apple">
+                    <div class="w-14 h-14 rounded-full border border-accent/30 bg-white/70 backdrop-blur-md shadow-sm flex items-center justify-center mb-10 group-hover:bg-accent group-hover:border-accent group-hover:shadow-[0_10px_30px_rgba(184,144,77,0.3)] transition-all duration-500 ease-apple">
                         <span class="material-symbols-outlined text-accent group-hover:text-white text-2xl transition-colors">visibility</span>
                     </div>
                     <h3 class="font-cinzel text-accent text-[11px] tracking-widest mb-4 font-medium">CLIENT CENTRIC</h3>
@@ -343,7 +358,7 @@
                 </div>
                 <div class="reveal-up relative group" style="transition-delay: 0.1s;">
                     <div class="absolute -top-16 -left-8 text-9xl font-cinzel text-accent/5 font-light -z-10 group-hover:scale-105 group-hover:-translate-y-2 group-hover:text-accent/10 transition-all duration-700 ease-apple">02</div>
-                    <div class="w-14 h-14 rounded-full border border-accent/30 bg-white/50 backdrop-blur-sm flex items-center justify-center mb-10 group-hover:bg-accent group-hover:border-accent group-hover:shadow-[0_0_20px_rgba(197,168,101,0.3)] transition-all duration-500 ease-apple">
+                    <div class="w-14 h-14 rounded-full border border-accent/30 bg-white/70 backdrop-blur-md shadow-sm flex items-center justify-center mb-10 group-hover:bg-accent group-hover:border-accent group-hover:shadow-[0_10px_30px_rgba(184,144,77,0.3)] transition-all duration-500 ease-apple">
                         <span class="material-symbols-outlined text-accent group-hover:text-white text-2xl transition-colors">trending_up</span>
                     </div>
                     <h3 class="font-cinzel text-accent text-[11px] tracking-widest mb-4 font-medium">LONG-TERM VIEW</h3>
@@ -354,7 +369,7 @@
                 </div>
                 <div class="reveal-up relative group" style="transition-delay: 0.2s;">
                     <div class="absolute -top-16 -left-8 text-9xl font-cinzel text-accent/5 font-light -z-10 group-hover:scale-105 group-hover:-translate-y-2 group-hover:text-accent/10 transition-all duration-700 ease-apple">03</div>
-                    <div class="w-14 h-14 rounded-full border border-accent/30 bg-white/50 backdrop-blur-sm flex items-center justify-center mb-10 group-hover:bg-accent group-hover:border-accent group-hover:shadow-[0_0_20px_rgba(197,168,101,0.3)] transition-all duration-500 ease-apple">
+                    <div class="w-14 h-14 rounded-full border border-accent/30 bg-white/70 backdrop-blur-md shadow-sm flex items-center justify-center mb-10 group-hover:bg-accent group-hover:border-accent group-hover:shadow-[0_10px_30px_rgba(184,144,77,0.3)] transition-all duration-500 ease-apple">
                         <span class="material-symbols-outlined text-accent group-hover:text-white text-2xl transition-colors">architecture</span>
                     </div>
                     <h3 class="font-cinzel text-accent text-[11px] tracking-widest mb-4 font-medium">ALTERNATIVE DESIGN</h3>
@@ -368,9 +383,9 @@
     </section>
 
     <section id="leadership" class="py-32 md:py-48 relative z-10 overflow-hidden">
-        <div class="absolute inset-0 bg-[#F8F7F3] -z-20"></div>
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(197,168,101,0.08),_transparent_60%)] -z-10"></div>
-        <div class="absolute inset-0 bg-[linear-gradient(to_bottom,_transparent_0%,_#FDFCFB_100%)] -z-10"></div>
+        <div class="absolute inset-0 bg-[#F4F2EC] -z-20"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(184,144,77,0.06),_transparent_70%)] -z-10"></div>
+        <div class="absolute inset-0 bg-[linear-gradient(to_bottom,_transparent_0%,_#FAFAFA_100%)] -z-10"></div>
         
         <div class="max-w-7xl mx-auto px-6 md:px-16 relative">
             <div class="mb-24 text-center reveal-up">
@@ -380,8 +395,8 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
-                <div class="reveal-up group relative bg-white/60 backdrop-blur-md p-10 md:p-14 rounded-xl border border-white shadow-[0_10px_40px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(197,168,101,0.08)] transition-all duration-700 ease-apple">
-                    <div class="absolute left-0 top-0 w-1 h-full bg-accent/20 group-hover:bg-accent transition-colors duration-700 ease-apple rounded-l-xl"></div>
+                <div class="reveal-up group relative bg-white/70 backdrop-blur-xl p-10 md:p-14 rounded-xl border border-white shadow-[0_15px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_25px_60px_rgba(184,144,77,0.08)] transition-all duration-700 ease-apple">
+                    <div class="absolute left-0 top-0 w-1.5 h-full bg-accent/20 group-hover:bg-accent transition-colors duration-700 ease-apple rounded-l-xl"></div>
                     <div class="pl-4">
                         <h4 class="font-serif text-3xl md:text-4xl mb-2 tracking-wide text-textMain">佐藤 隆太朗</h4>
                         <p class="font-cinzel text-accent text-[10px] tracking-superwide mb-8 pb-8 border-b border-borderSub font-medium">CEO</p>
@@ -390,8 +405,8 @@
                         </p>
                     </div>
                 </div>
-                <div class="reveal-up group relative bg-white/60 backdrop-blur-md p-10 md:p-14 rounded-xl border border-white shadow-[0_10px_40px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(197,168,101,0.08)] transition-all duration-700 ease-apple" style="transition-delay: 0.1s;">
-                    <div class="absolute left-0 top-0 w-1 h-full bg-accent/20 group-hover:bg-accent transition-colors duration-700 ease-apple rounded-l-xl"></div>
+                <div class="reveal-up group relative bg-white/70 backdrop-blur-xl p-10 md:p-14 rounded-xl border border-white shadow-[0_15px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_25px_60px_rgba(184,144,77,0.08)] transition-all duration-700 ease-apple" style="transition-delay: 0.1s;">
+                    <div class="absolute left-0 top-0 w-1.5 h-full bg-accent/20 group-hover:bg-accent transition-colors duration-700 ease-apple rounded-l-xl"></div>
                     <div class="pl-4">
                         <h4 class="font-serif text-3xl md:text-4xl mb-2 tracking-wide text-textMain">善波 優太</h4>
                         <p class="font-cinzel text-accent text-[10px] tracking-superwide mb-8 pb-8 border-b border-borderSub font-medium">DIRECTOR</p>
@@ -413,11 +428,11 @@
             
             <div class="space-y-4 border-l border-accent/20 ml-4 md:ml-8 relative">
                 
-                <div class="relative pl-12 md:pl-20 py-8 hover:bg-white/60 backdrop-blur-sm rounded-r-xl transition-all duration-500 ease-apple reveal-up group">
-                    <div class="absolute left-0 top-10 w-4 h-4 -translate-x-[8px] bg-background border-[3px] border-accent rounded-full group-hover:scale-125 group-hover:bg-accent group-hover:shadow-[0_0_20px_rgba(197,168,101,0.5)] transition-all duration-500 ease-apple"></div>
+                <div class="relative pl-12 md:pl-20 py-8 hover:bg-white/70 backdrop-blur-md rounded-r-xl transition-all duration-500 ease-apple reveal-up group shadow-sm hover:shadow-[0_10px_30px_rgba(0,0,0,0.02)] border border-transparent hover:border-white">
+                    <div class="absolute left-0 top-10 w-4 h-4 -translate-x-[8px] bg-background border-[3px] border-accent rounded-full group-hover:scale-125 group-hover:bg-accent group-hover:shadow-[0_0_20px_rgba(184,144,77,0.5)] transition-all duration-500 ease-apple"></div>
                     <div class="flex flex-wrap items-center gap-5 mb-5">
                         <p class="font-cinzel text-accent text-sm font-semibold tracking-widest">2025.12</p>
-                        <span class="text-[9px] text-textMain border border-accent/40 px-3 py-1.5 tracking-superwide bg-accent/5 font-medium rounded-sm">PRIVATE EQUITY</span>
+                        <span class="text-[9px] text-textMain border border-accent/40 px-3 py-1.5 tracking-superwide bg-accent/10 font-medium rounded-sm">PRIVATE EQUITY</span>
                     </div>
                     <h4 class="font-serif text-xl md:text-2xl mb-4 tracking-wide text-textMain">国内未上場企業：全株式譲受による資本参画と経営支援</h4>
                     <p class="text-[14px] text-textSub font-normal leading-[2.4] text-justify max-w-2xl">
@@ -425,11 +440,11 @@
                     </p>
                 </div>
 
-                <div class="relative pl-12 md:pl-20 py-8 hover:bg-white/60 backdrop-blur-sm rounded-r-xl transition-all duration-500 ease-apple reveal-up group">
-                    <div class="absolute left-0 top-10 w-4 h-4 -translate-x-[8px] bg-background border-[3px] border-borderSub rounded-full group-hover:border-accent group-hover:scale-125 group-hover:bg-accent group-hover:shadow-[0_0_20px_rgba(197,168,101,0.5)] transition-all duration-500 ease-apple"></div>
+                <div class="relative pl-12 md:pl-20 py-8 hover:bg-white/70 backdrop-blur-md rounded-r-xl transition-all duration-500 ease-apple reveal-up group shadow-sm hover:shadow-[0_10px_30px_rgba(0,0,0,0.02)] border border-transparent hover:border-white">
+                    <div class="absolute left-0 top-10 w-4 h-4 -translate-x-[8px] bg-background border-[3px] border-borderSub rounded-full group-hover:border-accent group-hover:scale-125 group-hover:bg-accent group-hover:shadow-[0_0_20px_rgba(184,144,77,0.5)] transition-all duration-500 ease-apple"></div>
                     <div class="flex flex-wrap items-center gap-5 mb-5">
                         <p class="font-cinzel text-textSub/70 text-sm font-semibold tracking-widest group-hover:text-accent transition-colors">2025.08</p>
-                        <span class="text-[9px] text-textMain border border-borderSub px-3 py-1.5 tracking-superwide bg-white/50 rounded-sm">M&A ADVISORY</span>
+                        <span class="text-[9px] text-textMain border border-borderSub px-3 py-1.5 tracking-superwide bg-white/70 rounded-sm">M&A ADVISORY</span>
                     </div>
                     <h4 class="font-serif text-xl md:text-2xl mb-4 tracking-wide text-textMain">国内未上場企業：事業再編に伴うストラクチャー構築支援</h4>
                     <p class="text-[14px] text-textSub font-normal leading-[2.4] text-justify max-w-2xl">
@@ -437,11 +452,11 @@
                     </p>
                 </div>
 
-                <div class="relative pl-12 md:pl-20 py-8 hover:bg-white/60 backdrop-blur-sm rounded-r-xl transition-all duration-500 ease-apple reveal-up group">
-                    <div class="absolute left-0 top-10 w-4 h-4 -translate-x-[8px] bg-background border-[3px] border-borderSub rounded-full group-hover:border-accent group-hover:scale-125 group-hover:bg-accent group-hover:shadow-[0_0_20px_rgba(197,168,101,0.5)] transition-all duration-500 ease-apple"></div>
+                <div class="relative pl-12 md:pl-20 py-8 hover:bg-white/70 backdrop-blur-md rounded-r-xl transition-all duration-500 ease-apple reveal-up group shadow-sm hover:shadow-[0_10px_30px_rgba(0,0,0,0.02)] border border-transparent hover:border-white">
+                    <div class="absolute left-0 top-10 w-4 h-4 -translate-x-[8px] bg-background border-[3px] border-borderSub rounded-full group-hover:border-accent group-hover:scale-125 group-hover:bg-accent group-hover:shadow-[0_0_20px_rgba(184,144,77,0.5)] transition-all duration-500 ease-apple"></div>
                     <div class="flex flex-wrap items-center gap-5 mb-5">
                         <p class="font-cinzel text-textSub/70 text-sm font-semibold tracking-widest group-hover:text-accent transition-colors">2025.06</p>
-                        <span class="text-[9px] text-textMain border border-borderSub px-3 py-1.5 tracking-superwide bg-white/50 rounded-sm">M&A ADVISORY</span>
+                        <span class="text-[9px] text-textMain border border-borderSub px-3 py-1.5 tracking-superwide bg-white/70 rounded-sm">M&A ADVISORY</span>
                     </div>
                     <h4 class="font-serif text-xl md:text-2xl mb-4 tracking-wide text-textMain">東証スタンダード上場企業：海外パートナーへの優先株式出資支援</h4>
                     <p class="text-[14px] text-textSub font-normal leading-[2.4] text-justify max-w-2xl">
@@ -449,11 +464,11 @@
                     </p>
                 </div>
 
-                <div class="relative pl-12 md:pl-20 py-8 hover:bg-white/60 backdrop-blur-sm rounded-r-xl transition-all duration-500 ease-apple reveal-up group">
-                    <div class="absolute left-0 top-10 w-4 h-4 -translate-x-[8px] bg-background border-[3px] border-borderSub rounded-full group-hover:border-accent group-hover:scale-125 group-hover:bg-accent group-hover:shadow-[0_0_20px_rgba(197,168,101,0.5)] transition-all duration-500 ease-apple"></div>
+                <div class="relative pl-12 md:pl-20 py-8 hover:bg-white/70 backdrop-blur-md rounded-r-xl transition-all duration-500 ease-apple reveal-up group shadow-sm hover:shadow-[0_10px_30px_rgba(0,0,0,0.02)] border border-transparent hover:border-white">
+                    <div class="absolute left-0 top-10 w-4 h-4 -translate-x-[8px] bg-background border-[3px] border-borderSub rounded-full group-hover:border-accent group-hover:scale-125 group-hover:bg-accent group-hover:shadow-[0_0_20px_rgba(184,144,77,0.5)] transition-all duration-500 ease-apple"></div>
                     <div class="flex flex-wrap items-center gap-5 mb-5">
                         <p class="font-cinzel text-textSub/70 text-sm font-semibold tracking-widest group-hover:text-accent transition-colors">2025.03</p>
-                        <span class="text-[9px] text-textMain border border-borderSub px-3 py-1.5 tracking-superwide bg-white/50 rounded-sm">M&A ADVISORY</span>
+                        <span class="text-[9px] text-textMain border border-borderSub px-3 py-1.5 tracking-superwide bg-white/70 rounded-sm">M&A ADVISORY</span>
                     </div>
                     <h4 class="font-serif text-xl md:text-2xl mb-4 tracking-wide text-textMain">東証グロース上場企業：未上場企業に対する株式譲受支援</h4>
                     <p class="text-[14px] text-textSub font-normal leading-[2.4] text-justify max-w-2xl">
@@ -465,10 +480,10 @@
     </section>
 
     <section id="contact" class="py-32 md:py-48 relative z-10">
-        <div class="absolute inset-0 bg-white/50 backdrop-blur-xl border-y border-white/80 -z-10 shadow-[0_0_50px_rgba(0,0,0,0.01)]"></div>
+        <div class="absolute inset-0 bg-white/60 backdrop-blur-2xl border-y border-white -z-10 shadow-[0_0_60px_rgba(0,0,0,0.02)]"></div>
         <div class="max-w-3xl mx-auto px-6 relative">
             <div class="reveal-up text-center">
-                <div class="w-20 h-20 mx-auto bg-accent/5 rounded-full flex items-center justify-center mb-8 border border-accent/20">
+                <div class="w-20 h-20 mx-auto bg-accent/5 rounded-full flex items-center justify-center mb-8 border border-accent/20 shadow-[0_0_20px_rgba(184,144,77,0.05)]">
                     <span class="material-symbols-outlined text-accent text-4xl">mail</span>
                 </div>
                 <h2 class="font-cinzel text-accent text-[10px] tracking-superwide mb-6 font-medium">CONTACT</h2>
@@ -478,39 +493,39 @@
                     以下のフォームよりお気軽にご連絡ください。
                 </p>
                 
-                <form name="contact" method="POST" action="/success" data-netlify="true" class="text-left space-y-8 max-w-2xl mx-auto bg-white/40 p-8 md:p-12 rounded-2xl border border-white shadow-sm">
+                <form name="contact" method="POST" action="/success" data-netlify="true" class="text-left space-y-8 max-w-2xl mx-auto bg-white/70 p-8 md:p-12 rounded-2xl border border-white shadow-[0_15px_40px_rgba(0,0,0,0.03)] backdrop-blur-md">
                     <input type="hidden" name="form-name" value="contact">
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div class="relative">
-                            <input type="text" id="last_name" name="last_name" required placeholder=" " class="peer w-full bg-white/60 border-b-2 border-borderSub focus:border-accent px-4 py-3 outline-none transition-all duration-300 text-textMain placeholder-transparent rounded-t-sm">
-                            <label for="last_name" class="absolute left-4 -top-2.5 text-xs text-textSub/70 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-accent font-medium">姓 <span class="text-accent">*</span></label>
+                            <input type="text" id="last_name" name="last_name" required placeholder=" " class="peer w-full bg-white/80 border-b-2 border-borderSub focus:border-accent px-4 py-3 outline-none transition-all duration-300 text-textMain placeholder-transparent rounded-t-sm shadow-inner">
+                            <label for="last_name" class="absolute left-4 -top-2.5 text-xs text-textSub/80 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-accent font-medium">姓 <span class="text-accent">*</span></label>
                         </div>
                         <div class="relative">
-                            <input type="text" id="first_name" name="first_name" required placeholder=" " class="peer w-full bg-white/60 border-b-2 border-borderSub focus:border-accent px-4 py-3 outline-none transition-all duration-300 text-textMain placeholder-transparent rounded-t-sm">
-                            <label for="first_name" class="absolute left-4 -top-2.5 text-xs text-textSub/70 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-accent font-medium">名 <span class="text-accent">*</span></label>
+                            <input type="text" id="first_name" name="first_name" required placeholder=" " class="peer w-full bg-white/80 border-b-2 border-borderSub focus:border-accent px-4 py-3 outline-none transition-all duration-300 text-textMain placeholder-transparent rounded-t-sm shadow-inner">
+                            <label for="first_name" class="absolute left-4 -top-2.5 text-xs text-textSub/80 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-accent font-medium">名 <span class="text-accent">*</span></label>
                         </div>
                     </div>
                 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div class="relative">
-                            <input type="text" id="company" name="company" required placeholder=" " class="peer w-full bg-white/60 border-b-2 border-borderSub focus:border-accent px-4 py-3 outline-none transition-all duration-300 text-textMain placeholder-transparent rounded-t-sm">
-                            <label for="company" class="absolute left-4 -top-2.5 text-xs text-textSub/70 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-accent font-medium">貴社名 <span class="text-accent">*</span></label>
+                            <input type="text" id="company" name="company" required placeholder=" " class="peer w-full bg-white/80 border-b-2 border-borderSub focus:border-accent px-4 py-3 outline-none transition-all duration-300 text-textMain placeholder-transparent rounded-t-sm shadow-inner">
+                            <label for="company" class="absolute left-4 -top-2.5 text-xs text-textSub/80 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-accent font-medium">貴社名 <span class="text-accent">*</span></label>
                         </div>
                         <div class="relative">
-                            <input type="text" id="position" name="position" required placeholder=" " class="peer w-full bg-white/60 border-b-2 border-borderSub focus:border-accent px-4 py-3 outline-none transition-all duration-300 text-textMain placeholder-transparent rounded-t-sm">
-                            <label for="position" class="absolute left-4 -top-2.5 text-xs text-textSub/70 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-accent font-medium">役職名 <span class="text-accent">*</span></label>
+                            <input type="text" id="position" name="position" required placeholder=" " class="peer w-full bg-white/80 border-b-2 border-borderSub focus:border-accent px-4 py-3 outline-none transition-all duration-300 text-textMain placeholder-transparent rounded-t-sm shadow-inner">
+                            <label for="position" class="absolute left-4 -top-2.5 text-xs text-textSub/80 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-accent font-medium">役職名 <span class="text-accent">*</span></label>
                         </div>
                     </div>
                 
                     <div class="relative">
-                        <input type="email" id="email" name="email" required placeholder=" " class="peer w-full bg-white/60 border-b-2 border-borderSub focus:border-accent px-4 py-3 outline-none transition-all duration-300 text-textMain placeholder-transparent rounded-t-sm">
-                        <label for="email" class="absolute left-4 -top-2.5 text-xs text-textSub/70 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-accent font-medium">メールアドレス <span class="text-accent">*</span></label>
+                        <input type="email" id="email" name="email" required placeholder=" " class="peer w-full bg-white/80 border-b-2 border-borderSub focus:border-accent px-4 py-3 outline-none transition-all duration-300 text-textMain placeholder-transparent rounded-t-sm shadow-inner">
+                        <label for="email" class="absolute left-4 -top-2.5 text-xs text-textSub/80 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-accent font-medium">メールアドレス <span class="text-accent">*</span></label>
                     </div>
                 
                     <div class="relative">
-                        <textarea id="message" name="message" rows="5" required placeholder=" " class="peer w-full bg-white/60 border-b-2 border-borderSub focus:border-accent px-4 py-4 outline-none transition-all duration-300 resize-none text-textMain placeholder-transparent rounded-t-sm"></textarea>
-                        <label for="message" class="absolute left-4 -top-2.5 text-xs text-textSub/70 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-4 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-accent font-medium">お問い合わせ内容 <span class="text-accent">*</span></label>
+                        <textarea id="message" name="message" rows="5" required placeholder=" " class="peer w-full bg-white/80 border-b-2 border-borderSub focus:border-accent px-4 py-4 outline-none transition-all duration-300 resize-none text-textMain placeholder-transparent rounded-t-sm shadow-inner"></textarea>
+                        <label for="message" class="absolute left-4 -top-2.5 text-xs text-textSub/80 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-4 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-accent font-medium">お問い合わせ内容 <span class="text-accent">*</span></label>
                     </div>
                     
                     <div class="text-center pt-6">
@@ -528,7 +543,7 @@
         </div>
     </section>
 
-    <footer class="pt-24 md:pt-32 pb-12 relative z-10 bg-white border-t border-borderSub">
+    <footer class="pt-24 md:pt-32 pb-12 relative z-10 bg-white/90 backdrop-blur-xl border-t border-borderSub">
         <div class="max-w-7xl mx-auto px-6 md:px-16">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 mb-24">
                 <div class="reveal-up">
@@ -544,15 +559,15 @@
                     <div class="border-t border-borderSub pt-6 space-y-6">
                         <dl class="flex border-b border-textMain/5 pb-4 text-[14px]">
                             <dt class="w-36 text-textSub font-normal shrink-0 tracking-wide">商号</dt>
-                            <dd class="text-textMain font-normal tracking-wide">オルディザイン株式会社</dd>
+                            <dd class="text-textMain font-medium tracking-wide">オルディザイン株式会社</dd>
                         </dl>
                         <dl class="flex border-b border-textMain/5 pb-4 text-[14px]">
                             <dt class="w-36 text-textSub font-normal shrink-0 tracking-wide">設立</dt>
-                            <dd class="text-textMain font-normal tracking-wide">2024年1月</dd>
+                            <dd class="text-textMain font-medium tracking-wide">2024年1月</dd>
                         </dl>
                         <dl class="flex border-b border-textMain/5 pb-4 text-[14px]">
                             <dt class="w-36 text-textSub font-normal shrink-0 tracking-wide">代表取締役</dt>
-                            <dd class="text-textMain font-normal tracking-wide">佐藤 隆太朗</dd>
+                            <dd class="text-textMain font-medium tracking-wide">佐藤 隆太朗</dd>
                         </dl>
                     </div>
                 </div>
@@ -560,7 +575,7 @@
 
             <div class="pt-8 border-t border-borderSub flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-textSub/70 tracking-widest font-cinzel">
                 <p>&copy; 2024 ALDEXYN CORPORATION. ALL RIGHTS RESERVED.</p>
-                <a href="#" class="hover:text-accent transition-colors flex items-center gap-2 group">
+                <a href="#" class="hover:text-accent transition-colors flex items-center gap-2 group font-medium">
                     BACK TO TOP
                     <span class="material-symbols-outlined text-[14px] group-hover:-translate-y-1 transition-transform">arrow_upward</span>
                 </a>
@@ -569,15 +584,15 @@
     </footer>
 
     <script>
-        /* * 1. Golden Dust Particle Effect 
-         * ネットワークの線から、高級感のある「舞い上がる金粉」へ変更
+        /* * 1. Cinematic Bokeh Particle Effect 
+         * 遠近感（Z軸）を利用したボケ味のあるリッチな浮遊光エフェクトに変更
          */
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
         let w, h;
         
-        let mouse = { x: null, y: null, radius: 200 };
+        let mouse = { x: null, y: null, radius: 250 };
         window.addEventListener('mousemove', (e) => {
             mouse.x = e.x;
             mouse.y = e.y;
@@ -598,34 +613,47 @@
             constructor() {
                 this.x = Math.random() * w;
                 this.y = Math.random() * h;
-                this.vx = (Math.random() - 0.5) * 0.3;
-                this.vy = Math.random() * -0.5 - 0.1; // 上に向かってゆっくり漂う
-                this.baseRadius = Math.random() * 1.5 + 0.5;
+                // Z軸（奥行き）をシミュレート（1が奥、3が手前）
+                this.z = Math.random() * 2 + 1; 
+                this.vx = (Math.random() - 0.5) * 0.2 * this.z;
+                this.vy = (Math.random() * -0.3 - 0.1) * this.z;
+                
+                // 奥のものは小さく、手前のものは大きく
+                this.baseRadius = (Math.random() * 2 + 1) * this.z;
                 this.radius = this.baseRadius;
-                this.opacity = Math.random() * 0.5 + 0.1;
+                
+                // 奥のものは不透明度が低く、手前は高い
+                this.baseOpacity = (Math.random() * 0.3 + 0.1) / (4 - this.z);
+                this.opacity = this.baseOpacity;
+                
+                // 被写界深度（ボケ）のシミュレート: 手前の大きな光ほど大きくぼかす
+                this.blur = this.z > 2 ? (this.z * 4) : 0;
             }
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(197, 168, 101, ${this.opacity})`; // ゴールド
-                ctx.fill();
                 
-                // 光彩（グロウ）エフェクト
-                ctx.shadowBlur = 10;
-                ctx.shadowColor = "rgba(197, 168, 101, 0.8)";
+                // ボケ効果（重いためブラウザ次第でカクつく場合は外しても良いが、高級感に寄与する）
+                if (this.blur > 0) {
+                    ctx.shadowBlur = this.blur;
+                    ctx.shadowColor = `rgba(184, 144, 77, ${this.opacity * 2})`;
+                } else {
+                    ctx.shadowBlur = 0;
+                }
+                
+                ctx.fillStyle = `rgba(184, 144, 77, ${this.opacity})`;
+                ctx.fill();
             }
             update() {
                 this.x += this.vx;
                 this.y += this.vy;
 
-                // 画面外に出たら下から再配置
                 if(this.x < 0 || this.x > w) this.vx = -this.vx;
-                if(this.y < 0) {
-                    this.y = h;
+                if(this.y < -50) {
+                    this.y = h + 50;
                     this.x = Math.random() * w;
                 }
 
-                // マウスインタラクション（優しく避ける）
                 if(mouse.x != null) {
                     let dx = mouse.x - this.x;
                     let dy = mouse.y - this.y;
@@ -634,11 +662,12 @@
                         const forceDirectionX = dx / distance;
                         const forceDirectionY = dy / distance;
                         const force = (mouse.radius - distance) / mouse.radius;
-                        this.x -= forceDirectionX * force * 1.5;
-                        this.y -= forceDirectionY * force * 1.5;
-                        this.opacity = Math.min(this.opacity + 0.02, 0.8); // マウス付近で少し光る
+                        // 手前のパーティクルほどマウスの影響を強く受ける（パララックス）
+                        this.x -= forceDirectionX * force * 2 * this.z;
+                        this.y -= forceDirectionY * force * 2 * this.z;
+                        this.opacity = Math.min(this.opacity + 0.03, 0.6);
                     } else {
-                        this.opacity = Math.max(this.opacity - 0.01, 0.2);
+                        this.opacity = Math.max(this.opacity - 0.01, this.baseOpacity);
                     }
                 }
                 this.draw();
@@ -647,7 +676,7 @@
 
         function init() {
             particles = [];
-            let numberOfParticles = (w * h) / 10000; // 密度調整
+            let numberOfParticles = (w * h) / 8000; // 密度を少し減らし、一つ一つの質感を際立たせる
             for(let i = 0; i < numberOfParticles; i++) {
                 particles.push(new Particle());
             }
@@ -690,7 +719,7 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
-                    observer.unobserve(entry.target); // 一度発火したら監視解除
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
@@ -698,20 +727,20 @@
         document.querySelectorAll('.reveal-up, .reveal-scale').forEach(el => observer.observe(el));
 
         /*
-         * 4. Glass Navbar Scroll Effect
+         * 4. Glass Navbar Scroll Effect (Updated with richer glassmorphism)
          */
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             if (window.scrollY > 50) {
                 nav.classList.add('py-4');
                 nav.classList.remove('py-6');
-                nav.style.background = 'rgba(253, 252, 251, 0.85)';
-                nav.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.05)';
+                nav.style.background = 'rgba(255, 255, 255, 0.9)';
+                nav.style.boxShadow = '0 10px 40px rgba(0, 0, 0, 0.04)';
             } else {
                 nav.classList.add('py-6');
                 nav.classList.remove('py-4');
-                nav.style.background = 'rgba(253, 252, 251, 0.65)';
-                nav.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.01)';
+                nav.style.background = 'rgba(250, 250, 250, 0.7)';
+                nav.style.boxShadow = '0 10px 40px rgba(0, 0, 0, 0.02)';
             }
         });
     </script>
