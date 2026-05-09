@@ -480,20 +480,34 @@
                 
                 <form name="contact" method="POST" action="/success" data-netlify="true" class="text-left space-y-8 max-w-2xl mx-auto bg-white/40 p-8 md:p-12 rounded-2xl border border-white shadow-sm">
                     <input type="hidden" name="form-name" value="contact">
+                    
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div class="relative">
-                            <input type="text" id="name" name="name" required placeholder=" " class="peer w-full bg-white/60 border-b-2 border-borderSub focus:border-accent px-4 py-3 outline-none transition-all duration-300 text-textMain placeholder-transparent rounded-t-sm">
-                            <label for="name" class="absolute left-4 -top-2.5 text-xs text-textSub/70 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-accent font-medium">お名前 <span class="text-accent">*</span></label>
+                            <input type="text" id="last_name" name="last_name" required placeholder=" " class="peer w-full bg-white/60 border-b-2 border-borderSub focus:border-accent px-4 py-3 outline-none transition-all duration-300 text-textMain placeholder-transparent rounded-t-sm">
+                            <label for="last_name" class="absolute left-4 -top-2.5 text-xs text-textSub/70 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-accent font-medium">姓 <span class="text-accent">*</span></label>
                         </div>
                         <div class="relative">
-                            <input type="text" id="company" name="company" placeholder=" " class="peer w-full bg-white/60 border-b-2 border-borderSub focus:border-accent px-4 py-3 outline-none transition-all duration-300 text-textMain placeholder-transparent rounded-t-sm">
-                            <label for="company" class="absolute left-4 -top-2.5 text-xs text-textSub/70 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-accent font-medium">貴社名</label>
+                            <input type="text" id="first_name" name="first_name" required placeholder=" " class="peer w-full bg-white/60 border-b-2 border-borderSub focus:border-accent px-4 py-3 outline-none transition-all duration-300 text-textMain placeholder-transparent rounded-t-sm">
+                            <label for="first_name" class="absolute left-4 -top-2.5 text-xs text-textSub/70 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-accent font-medium">名 <span class="text-accent">*</span></label>
                         </div>
                     </div>
+                
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="relative">
+                            <input type="text" id="company" name="company" required placeholder=" " class="peer w-full bg-white/60 border-b-2 border-borderSub focus:border-accent px-4 py-3 outline-none transition-all duration-300 text-textMain placeholder-transparent rounded-t-sm">
+                            <label for="company" class="absolute left-4 -top-2.5 text-xs text-textSub/70 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-accent font-medium">貴社名 <span class="text-accent">*</span></label>
+                        </div>
+                        <div class="relative">
+                            <input type="text" id="position" name="position" required placeholder=" " class="peer w-full bg-white/60 border-b-2 border-borderSub focus:border-accent px-4 py-3 outline-none transition-all duration-300 text-textMain placeholder-transparent rounded-t-sm">
+                            <label for="position" class="absolute left-4 -top-2.5 text-xs text-textSub/70 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-accent font-medium">役職名 <span class="text-accent">*</span></label>
+                        </div>
+                    </div>
+                
                     <div class="relative">
                         <input type="email" id="email" name="email" required placeholder=" " class="peer w-full bg-white/60 border-b-2 border-borderSub focus:border-accent px-4 py-3 outline-none transition-all duration-300 text-textMain placeholder-transparent rounded-t-sm">
                         <label for="email" class="absolute left-4 -top-2.5 text-xs text-textSub/70 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-accent font-medium">メールアドレス <span class="text-accent">*</span></label>
                     </div>
+                
                     <div class="relative">
                         <textarea id="message" name="message" rows="5" required placeholder=" " class="peer w-full bg-white/60 border-b-2 border-borderSub focus:border-accent px-4 py-4 outline-none transition-all duration-300 resize-none text-textMain placeholder-transparent rounded-t-sm"></textarea>
                         <label for="message" class="absolute left-4 -top-2.5 text-xs text-textSub/70 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-4 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-accent font-medium">お問い合わせ内容 <span class="text-accent">*</span></label>
