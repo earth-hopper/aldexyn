@@ -1,0 +1,3082 @@
+[
+  {
+    "event": "Ski Men",
+    "athlete": "Arno Vuarnier",
+    "nation": "SWZ",
+    "event__1": "hakuba-q4",
+    "place": 1,
+    "point": 2500
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Yuki Shibata",
+    "nation": "JPN",
+    "event__1": "hakuba-q4",
+    "place": 2,
+    "point": 2200
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Julian Unterbrunner",
+    "nation": "AUT",
+    "event__1": "hakuba-q4",
+    "place": 3,
+    "point": 1950
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Ryo Osozawa",
+    "nation": "JPN",
+    "event__1": "hakuba-q4",
+    "place": 4,
+    "point": 1750
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Maxime Pezet",
+    "nation": "FRA",
+    "event__1": "hakuba-q4",
+    "place": 5,
+    "point": 1550
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Tomoya Tezuka",
+    "nation": "JPN",
+    "event__1": "hakuba-q4",
+    "place": 6,
+    "point": 1400
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Kei Ohta",
+    "nation": "JPN",
+    "event__1": "hakuba-q4",
+    "place": 7,
+    "point": 1300
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Finn Jacobsen",
+    "nation": "AUS",
+    "event__1": "hakuba-q4",
+    "place": 8,
+    "point": 1200
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Jason Havlicek",
+    "nation": "USA",
+    "event__1": "hakuba-q4",
+    "place": 9,
+    "point": 1100
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Dmitrii Udodov",
+    "nation": "RUS",
+    "event__1": "hakuba-q4",
+    "place": 10,
+    "point": 1010
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Hayato Horie",
+    "nation": "JPN",
+    "event__1": "hakuba-q4",
+    "place": 11,
+    "point": 930
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Takashi Koyama",
+    "nation": "JPN",
+    "event__1": "hakuba-q4",
+    "place": 12,
+    "point": 860
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Rentaro Kunimoto",
+    "nation": "JPN",
+    "event__1": "hakuba-q4",
+    "place": 13,
+    "point": 790
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Nikita Mastryukov",
+    "nation": "RUS",
+    "event__1": "hakuba-q4",
+    "place": 14,
+    "point": 730
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Finn Bowes",
+    "nation": "AUS",
+    "event__1": "hakuba-q4",
+    "place": 15,
+    "point": 680
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Rennosuke Takeuchi",
+    "nation": "JPN",
+    "event__1": "hakuba-q4",
+    "place": 16,
+    "point": 630
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Shang Shang Chen",
+    "nation": "CHN",
+    "event__1": "hakuba-q4",
+    "place": 17,
+    "point": 590
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Thomas Benson",
+    "nation": "NZL",
+    "event__1": "hakuba-q4",
+    "place": 18,
+    "point": 550
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "William Cattaneo",
+    "nation": "SWZ",
+    "event__1": "hakuba-q4",
+    "place": 19,
+    "point": 510
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Jorge Rosano",
+    "nation": "ESP",
+    "event__1": "hakuba-q4",
+    "place": 20,
+    "point": 475
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Will Martin",
+    "nation": "AUS",
+    "event__1": "hakuba-q4",
+    "place": 21,
+    "point": 445
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Shoko Suzuki",
+    "nation": "JPN",
+    "event__1": "hakuba-q4",
+    "place": 1,
+    "point": 2500
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Mika Imai",
+    "nation": "JPN",
+    "event__1": "hakuba-q4",
+    "place": 2,
+    "point": 2100
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Sachi Hirakawa",
+    "nation": "JPN",
+    "event__1": "hakuba-q4",
+    "place": 3,
+    "point": 1800
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Georgia Chambers",
+    "nation": "NZL",
+    "event__1": "hakuba-q4",
+    "place": 4,
+    "point": 1550
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Yuko Katono",
+    "nation": "JPN",
+    "event__1": "hakuba-q4",
+    "place": 5,
+    "point": 1340
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Kaede Yashiro",
+    "nation": "JPN",
+    "event__1": "hakuba-q4",
+    "place": 6,
+    "point": 1160
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Rachel Little",
+    "nation": "FRA",
+    "event__1": "hakuba-q4",
+    "place": 7,
+    "point": 1010
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Ziqi Kang",
+    "nation": "CHN",
+    "event__1": "hakuba-q4",
+    "place": 8,
+    "point": 900
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Ayana Onozuka",
+    "nation": "JPN",
+    "event__1": "hakuba-q4",
+    "place": 9,
+    "point": 810
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Taketo Kinoshita",
+    "nation": "JPN",
+    "event__1": "hakuba-q4",
+    "place": 1,
+    "point": 2500
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Igor Ilinykh",
+    "nation": "RUS",
+    "event__1": "hakuba-q4",
+    "place": 2,
+    "point": 2100
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Brian Bozack",
+    "nation": "USA",
+    "event__1": "hakuba-q4",
+    "place": 3,
+    "point": 1800
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Brian Stenerson",
+    "nation": "USA",
+    "event__1": "hakuba-q4",
+    "place": 4,
+    "point": 1550
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Asahi Yoshino",
+    "nation": "JPN",
+    "event__1": "hakuba-q4",
+    "place": 5,
+    "point": 1340
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Hyuga Honjyo",
+    "nation": "JPN",
+    "event__1": "hakuba-q4",
+    "place": 6,
+    "point": 1160
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Mathieu Martineau",
+    "nation": "CAN",
+    "event__1": "hakuba-q4",
+    "place": 7,
+    "point": 1010
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Yuta Yokoe",
+    "nation": "JPN",
+    "event__1": "hakuba-q4",
+    "place": 8,
+    "point": 900
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Jiahao Zhang",
+    "nation": "USA",
+    "event__1": "hakuba-q4",
+    "place": 9,
+    "point": 810
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Shuzaburo Otsubo",
+    "nation": "JPN",
+    "event__1": "hakuba-q4",
+    "place": 10,
+    "point": 730
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Timo Fitzpatrick",
+    "nation": "NZL",
+    "event__1": "hakuba-q4",
+    "place": 11,
+    "point": 660
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Da Ermin",
+    "nation": "CHN",
+    "event__1": "hakuba-q4",
+    "place": 12,
+    "point": 600
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Temma Tamai",
+    "nation": "JPN",
+    "event__1": "hakuba-q4",
+    "place": 13,
+    "point": 550
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Yuto Yashiro",
+    "nation": "JPN",
+    "event__1": "hakuba-q4",
+    "place": 14,
+    "point": 505
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Haruki Takeuchi",
+    "nation": "JPN",
+    "event__1": "hakuba-q4",
+    "place": 15,
+    "point": 465
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Jonatan Laland",
+    "nation": "NOR",
+    "event__1": "hakuba-q4",
+    "place": 16,
+    "point": 430
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Kuya Kubota",
+    "nation": "JPN",
+    "event__1": "hakuba-q4",
+    "place": 17,
+    "point": 400
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Sayaka Kato",
+    "nation": "JPN",
+    "event__1": "hakuba-q4",
+    "place": 1,
+    "point": 2500
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Mutsumi Ido",
+    "nation": "CAN",
+    "event__1": "hakuba-q4",
+    "place": 2,
+    "point": 2100
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Audrey Hebert",
+    "nation": "CAN",
+    "event__1": "hakuba-q4",
+    "place": 3,
+    "point": 1800
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Tatiana Shevchenko",
+    "nation": "RUS",
+    "event__1": "hakuba-q4",
+    "place": 4,
+    "point": 1550
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Lisa Peck",
+    "nation": "AUT",
+    "event__1": "hakuba-q4",
+    "place": 5,
+    "point": 1340
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Tatiana Golovanova",
+    "nation": "RUS",
+    "event__1": "hakuba-q4",
+    "place": 6,
+    "point": 1160
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Xianqi He",
+    "nation": "CHN",
+    "event__1": "hakuba-q4",
+    "place": 7,
+    "point": 1010
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Kiana Putman",
+    "nation": "USA",
+    "event__1": "hakuba-q4",
+    "place": 8,
+    "point": 900
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Marie Ramparany",
+    "nation": "FRA",
+    "event__1": "hakuba-q4",
+    "place": 9,
+    "point": 810
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Chen Tzuhui",
+    "nation": "TWN",
+    "event__1": "hakuba-q4",
+    "place": 10,
+    "point": 730
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Sayuki Aida",
+    "nation": "JPN",
+    "event__1": "hakuba-q4",
+    "place": 11,
+    "point": 660
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Sadhi Sonja Vornberger",
+    "nation": "AUT",
+    "event__1": "hakuba-q4",
+    "place": "",
+    "point": 0
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Koga Hoshino",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 1,
+    "point": 1600
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Rentaro Kunimoto",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 2,
+    "point": 1350
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Finn Jacobsen",
+    "nation": "AUS",
+    "event__1": "arai-q3",
+    "place": 3,
+    "point": 1200
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Takumi Okamura",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 4,
+    "point": 1050
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Kakeru Maekawa",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 5,
+    "point": 930
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Jake Yarnold",
+    "nation": "CAN",
+    "event__1": "arai-q3",
+    "place": 6,
+    "point": 820
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Finn Bowes",
+    "nation": "AUS",
+    "event__1": "arai-q3",
+    "place": 7,
+    "point": 730
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Yuki Shibata",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 8,
+    "point": 650
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Ippo Wada",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 9,
+    "point": 595
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Will Martin",
+    "nation": "AUS",
+    "event__1": "arai-q3",
+    "place": 10,
+    "point": 550
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Ryo Osozawa",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 11,
+    "point": 510
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Kotaro Yamamoto",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 12,
+    "point": 475
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Yuta Nakazato",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 13,
+    "point": 450
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Takuya Nakahama",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 14,
+    "point": 430
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Tomoya Tezuka",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 15,
+    "point": 410
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Blake Cormack",
+    "nation": "CAN",
+    "event__1": "arai-q3",
+    "place": 16,
+    "point": 390
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Jean Baptiste Lavantes",
+    "nation": "FRA",
+    "event__1": "arai-q3",
+    "place": 17,
+    "point": 370
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Taj Lambert",
+    "nation": "AUS",
+    "event__1": "arai-q3",
+    "place": 18,
+    "point": 355
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Ondrej Novak",
+    "nation": "CZE",
+    "event__1": "arai-q3",
+    "place": 19,
+    "point": 340
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Angus Ritchie",
+    "nation": "AUS",
+    "event__1": "arai-q3",
+    "place": 20,
+    "point": 330
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Ryoma Igeta",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 21,
+    "point": 320
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Thomas Espitau",
+    "nation": "FRA",
+    "event__1": "arai-q3",
+    "place": 22,
+    "point": 310
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Hayato Horie",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 23,
+    "point": 300
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Kei Ohta",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 24,
+    "point": 292
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Rennosuke Takeuchi",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 25,
+    "point": 284
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Kaiwa Namiki",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 26,
+    "point": 277
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Mark Yokokawa",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 27,
+    "point": 270
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Yosuke Fujii",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 28,
+    "point": 264
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Daichi Furuya",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 29,
+    "point": 258
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Takuto Ogawa",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 30,
+    "point": 253
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Joshua Towlerton",
+    "nation": "GBR",
+    "event__1": "arai-q3",
+    "place": 31,
+    "point": 248
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Atsuya Wada",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 32,
+    "point": 244
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Sachi Hirakawa",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 1,
+    "point": 1600
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Yuko Katono",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 2,
+    "point": 1300
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Mika Imai",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 3,
+    "point": 1100
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Eva Cassart",
+    "nation": "SWZ",
+    "event__1": "arai-q3",
+    "place": 4,
+    "point": 940
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Shoko Suzuki",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 5,
+    "point": 805
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Chisato Sasada",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 6,
+    "point": 690
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Monika Novakova",
+    "nation": "AUT",
+    "event__1": "arai-q3",
+    "place": 7,
+    "point": 595
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Georgia Chambers",
+    "nation": "NZL",
+    "event__1": "arai-q3",
+    "place": 8,
+    "point": 520
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Mizuki Yamaguchi",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 9,
+    "point": 460
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Mayu Himoto",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 10,
+    "point": 410
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Ella Forster-Williams",
+    "nation": "AUS",
+    "event__1": "arai-q3",
+    "place": 11,
+    "point": 370
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Noëmi Louise van Blankenstein",
+    "nation": "NLD",
+    "event__1": "arai-q3",
+    "place": 12,
+    "point": 335
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Kahori Aida",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 13,
+    "point": 305
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Chloe Chilcott",
+    "nation": "AUS",
+    "event__1": "arai-q3",
+    "place": 14,
+    "point": 280
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Takeuchi Yukine",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 15,
+    "point": 258
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Haruki Takeuchi",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 1,
+    "point": 1600
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Taketo Kinoshita",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 2,
+    "point": 1300
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Asato Yoshida",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 3,
+    "point": 1100
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Hyuga Honjyo",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 4,
+    "point": 940
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Temma Tamai",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 5,
+    "point": 805
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Asahi Yoshino",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 6,
+    "point": 690
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Kotaro Takeda",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 7,
+    "point": 595
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Toi Hatta",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 8,
+    "point": 520
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "shusuke uchikata",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 9,
+    "point": 460
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Greg Leahy",
+    "nation": "AUS",
+    "event__1": "arai-q3",
+    "place": 10,
+    "point": 410
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Takuro Tanaka",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 11,
+    "point": 370
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Niek Jansen van Rosendaal",
+    "nation": "NLD",
+    "event__1": "arai-q3",
+    "place": 12,
+    "point": 335
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Vasilii Vasilev",
+    "nation": "RUS",
+    "event__1": "arai-q3",
+    "place": 13,
+    "point": 305
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Yuta Yokoe",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 14,
+    "point": 280
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Kaito Jinguji",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 15,
+    "point": 258
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Min Kyu An",
+    "nation": "KOR",
+    "event__1": "arai-q3",
+    "place": 16,
+    "point": 238
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Timo Fitzpatrick",
+    "nation": "NZL",
+    "event__1": "arai-q3",
+    "place": 17,
+    "point": 220
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Louis Evens",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 18,
+    "point": 205
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Jarrod Cameron",
+    "nation": "AUS",
+    "event__1": "arai-q3",
+    "place": 19,
+    "point": 192
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Masaru Shibata",
+    "nation": "CAN",
+    "event__1": "arai-q3",
+    "place": 20,
+    "point": 180
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Ryohei Yamaguchi",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 21,
+    "point": 170
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Yoshiaki Takamura",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 22,
+    "point": 161
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Pierre Chauty",
+    "nation": "FRA",
+    "event__1": "arai-q3",
+    "place": 23,
+    "point": 153
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Masaaki Horisawa",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 24,
+    "point": 146
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Takashi Yao",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 25,
+    "point": 140
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Junnosuke Yamaji",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 26,
+    "point": 135
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Riku Shioya",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 27,
+    "point": 131
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Juejian Zhao",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 28,
+    "point": 127
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Boyan Li",
+    "nation": "CHN",
+    "event__1": "arai-q3",
+    "place": 29,
+    "point": 123
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Yasutoshi Suzuki",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 30,
+    "point": 120
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Leo Zhu",
+    "nation": "CHN",
+    "event__1": "arai-q3",
+    "place": 31,
+    "point": 117
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Koji Ueno",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 32,
+    "point": 114
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Sayuki Aida",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 1,
+    "point": 1600
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Koharu Hatta",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 2,
+    "point": 1300
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Hana Kinoshita",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 3,
+    "point": 1100
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Haruno Take",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 4,
+    "point": 940
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Fuki Baker",
+    "nation": "NZL",
+    "event__1": "arai-q3",
+    "place": 5,
+    "point": 805
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Hitomi Ito",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 6,
+    "point": 690
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Sayaka Kato",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 7,
+    "point": 595
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Lucie Georges",
+    "nation": "FRA",
+    "event__1": "arai-q3",
+    "place": 8,
+    "point": 520
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Tara Purvis",
+    "nation": "NZL",
+    "event__1": "arai-q3",
+    "place": 9,
+    "point": 460
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Sabrina Spano",
+    "nation": "AUS",
+    "event__1": "arai-q3",
+    "place": 10,
+    "point": 410
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Rina Kawanami",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 11,
+    "point": 370
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Elizaveta Kostrulina",
+    "nation": "RUS",
+    "event__1": "arai-q3",
+    "place": 12,
+    "point": 335
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Marie Ramparany",
+    "nation": "FRA",
+    "event__1": "arai-q3",
+    "place": 13,
+    "point": 305
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Kizuna Takahashi",
+    "nation": "JPN",
+    "event__1": "arai-q3",
+    "place": 14,
+    "point": 280
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Wanling Tan Kayla",
+    "nation": "CHN",
+    "event__1": "arai-q3",
+    "place": 15,
+    "point": 258
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Thomas Benson",
+    "nation": "NZL",
+    "event__1": "nakazato-q2",
+    "place": 1,
+    "point": 1000
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Rentaro Kunimoto",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 2,
+    "point": 850
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Will Martin",
+    "nation": "AUS",
+    "event__1": "nakazato-q2",
+    "place": 3,
+    "point": 750
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Kei Ohta",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 4,
+    "point": 660
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Takumi Okamura",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 5,
+    "point": 590
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Ryo Osozawa",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 6,
+    "point": 530
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Ippo Wada",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 7,
+    "point": 475
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Finn Jacobsen",
+    "nation": "AUS",
+    "event__1": "nakazato-q2",
+    "place": 8,
+    "point": 425
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Takuma Fujita",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 9,
+    "point": 390
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Atsuya Wada",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 10,
+    "point": 360
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Rennosuke Takeuchi",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 11,
+    "point": 335
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Yuta Nakazato",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 12,
+    "point": 310
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Takuya Nakahama",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 13,
+    "point": 290
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Tomoya Tezuka",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 14,
+    "point": 275
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Shogo Morifuji",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 15,
+    "point": 260
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Ryoma Igeta",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 16,
+    "point": 250
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Alex Chant-Stevens",
+    "nation": "GBR",
+    "event__1": "nakazato-q2",
+    "place": 17,
+    "point": 240
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Ryoya Takashima",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 18,
+    "point": 230
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Eddie Jacobsen",
+    "nation": "AUS",
+    "event__1": "nakazato-q2",
+    "place": 19,
+    "point": 222
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Louis Anderson",
+    "nation": "AUS",
+    "event__1": "nakazato-q2",
+    "place": 20,
+    "point": 214
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Kaiwa Namiki",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 21,
+    "point": 206
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Shuya Kaneko",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 22,
+    "point": 199
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Mark Yokokawa",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 23,
+    "point": 192
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Takuto Ogawa",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 24,
+    "point": 186
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Campbell Wear",
+    "nation": "NZL",
+    "event__1": "nakazato-q2",
+    "place": 25,
+    "point": 180
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Kai Hanada",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 26,
+    "point": 175
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Dou Jiarui",
+    "nation": "CHN",
+    "event__1": "nakazato-q2",
+    "place": 27,
+    "point": 170
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Chloe Chilcott",
+    "nation": "AUS",
+    "event__1": "nakazato-q2",
+    "place": 1,
+    "point": 1000
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Shoko Suzuki",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 2,
+    "point": 820
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Camryn Steele",
+    "nation": "CAN",
+    "event__1": "nakazato-q2",
+    "place": 3,
+    "point": 680
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Kahori Aida",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 4,
+    "point": 580
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Paige Attard",
+    "nation": "AUS",
+    "event__1": "nakazato-q2",
+    "place": 5,
+    "point": 495
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Mayu Himoto",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 6,
+    "point": 425
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Kaede Hayashi",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 7,
+    "point": 365
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Mika Imai",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 8,
+    "point": 320
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Eva Cassart",
+    "nation": "SWZ",
+    "event__1": "nakazato-q2",
+    "place": 9,
+    "point": 283
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Kaito Jinguji",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 1,
+    "point": 1000
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Brian Bozack",
+    "nation": "USA",
+    "event__1": "nakazato-q2",
+    "place": 2,
+    "point": 820
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Yoshikazu Arai",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 3,
+    "point": 680
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Zuo Wang",
+    "nation": "CHN",
+    "event__1": "nakazato-q2",
+    "place": 4,
+    "point": 580
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Junnosuke Yamaji",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 5,
+    "point": 495
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Takuro Tanaka",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 6,
+    "point": 425
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Niek Jansen van Rosendaal",
+    "nation": "NLD",
+    "event__1": "nakazato-q2",
+    "place": 7,
+    "point": 365
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Greg Leahy",
+    "nation": "AUS",
+    "event__1": "nakazato-q2",
+    "place": 8,
+    "point": 320
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Jayden",
+    "nation": "CAN",
+    "event__1": "nakazato-q2",
+    "place": 9,
+    "point": 283
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "YENTING LIN",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 10,
+    "point": 255
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Riku Shioya",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 11,
+    "point": 238
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Takahiro Nishii",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 12,
+    "point": 220
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Tommy Lee",
+    "nation": "NZL",
+    "event__1": "nakazato-q2",
+    "place": 13,
+    "point": 205
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Leo Zhu",
+    "nation": "CHN",
+    "event__1": "nakazato-q2",
+    "place": 14,
+    "point": 192
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Masaaki Horisawa",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 15,
+    "point": 180
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Chan Lun",
+    "nation": "CHN",
+    "event__1": "nakazato-q2",
+    "place": 16,
+    "point": 170
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Toi Hatta",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 17,
+    "point": 161
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Takashi Yao",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 18,
+    "point": 153
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Pierre Chauty",
+    "nation": "FRA",
+    "event__1": "nakazato-q2",
+    "place": 19,
+    "point": 146
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Kun Zhang",
+    "nation": "CHN",
+    "event__1": "nakazato-q2",
+    "place": 20,
+    "point": 140
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Yang Liu",
+    "nation": "CHN",
+    "event__1": "nakazato-q2",
+    "place": 21,
+    "point": 135
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Yuki Arakawa",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 22,
+    "point": 131
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "李成亮",
+    "nation": "CHN",
+    "event__1": "nakazato-q2",
+    "place": 23,
+    "point": 127
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Max Cherkasov",
+    "nation": "KGZ",
+    "event__1": "nakazato-q2",
+    "place": 24,
+    "point": 123
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Nathaniel Santos",
+    "nation": "AUS",
+    "event__1": "nakazato-q2",
+    "place": 25,
+    "point": 120
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Shengda Miao",
+    "nation": "CHN",
+    "event__1": "nakazato-q2",
+    "place": 26,
+    "point": 117
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Jekabs Mucenieks",
+    "nation": "LVA",
+    "event__1": "nakazato-q2",
+    "place": 27,
+    "point": 114
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Pohan Chiang",
+    "nation": "TWN",
+    "event__1": "nakazato-q2",
+    "place": 28,
+    "point": 111
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Songyu Xing",
+    "nation": "USA",
+    "event__1": "nakazato-q2",
+    "place": 29,
+    "point": 108
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Ryohei Yamaguchi",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 30,
+    "point": 106
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Howie Zhang",
+    "nation": "AUS",
+    "event__1": "nakazato-q2",
+    "place": 31,
+    "point": 104
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Thomas Morley",
+    "nation": "GBR",
+    "event__1": "nakazato-q2",
+    "place": 32,
+    "point": 102
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Jarrod Cameron",
+    "nation": "AUS",
+    "event__1": "nakazato-q2",
+    "place": 33,
+    "point": 100
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Rina Kawanami",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 1,
+    "point": 1000
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Sayuki Aida",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 2,
+    "point": 820
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Kiana Putman",
+    "nation": "USA",
+    "event__1": "nakazato-q2",
+    "place": 3,
+    "point": 680
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Haruno Take",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 4,
+    "point": 580
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Sabrina Spano",
+    "nation": "AUS",
+    "event__1": "nakazato-q2",
+    "place": 5,
+    "point": 495
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Koharu Hatta",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 6,
+    "point": 425
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Hitomi Ito",
+    "nation": "JPN",
+    "event__1": "nakazato-q2",
+    "place": 7,
+    "point": 365
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Yanrong Yu",
+    "nation": "CAN",
+    "event__1": "nakazato-q2",
+    "place": 8,
+    "point": 320
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Tara Purvis",
+    "nation": "NZL",
+    "event__1": "nakazato-q2",
+    "place": 9,
+    "point": 283
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Anruo He",
+    "nation": "SGP",
+    "event__1": "nakazato-q2",
+    "place": 10,
+    "point": 255
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Andrea Augier",
+    "nation": "GBR",
+    "event__1": "nakazato-q2",
+    "place": 11,
+    "point": 238
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Xianqi He",
+    "nation": "CHN",
+    "event__1": "nakazato-q2",
+    "place": 12,
+    "point": 220
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Rentaro Kunimoto",
+    "nation": "JPN",
+    "event__1": "nakazato-q1",
+    "place": 1,
+    "point": 600
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Yuta Nakazato",
+    "nation": "JPN",
+    "event__1": "nakazato-q1",
+    "place": 2,
+    "point": 450
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Takuma Fujita",
+    "nation": "JPN",
+    "event__1": "nakazato-q1",
+    "place": 3,
+    "point": 350
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Kai Hanada",
+    "nation": "JPN",
+    "event__1": "nakazato-q1",
+    "place": 4,
+    "point": 290
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Takuya Nakahama",
+    "nation": "JPN",
+    "event__1": "nakazato-q1",
+    "place": 5,
+    "point": 250
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Takumi Okamura",
+    "nation": "JPN",
+    "event__1": "nakazato-q1",
+    "place": 6,
+    "point": 220
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Rennosuke Takeuchi",
+    "nation": "JPN",
+    "event__1": "nakazato-q1",
+    "place": 7,
+    "point": 200
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Thomas Espitau",
+    "nation": "FRA",
+    "event__1": "nakazato-q1",
+    "place": 8,
+    "point": 185
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Tomoya Tezuka",
+    "nation": "JPN",
+    "event__1": "nakazato-q1",
+    "place": 9,
+    "point": 175
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Kei Ohta",
+    "nation": "JPN",
+    "event__1": "nakazato-q1",
+    "place": 10,
+    "point": 167
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Piotr Pajda",
+    "nation": "GBR",
+    "event__1": "nakazato-q1",
+    "place": 11,
+    "point": 160
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Hao Zhang",
+    "nation": "CHN",
+    "event__1": "nakazato-q1",
+    "place": 12,
+    "point": 153
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Shuya Kaneko",
+    "nation": "JPN",
+    "event__1": "nakazato-q1",
+    "place": 13,
+    "point": 147
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "RINTO TAJIMA",
+    "nation": "JPN",
+    "event__1": "nakazato-q1",
+    "place": 14,
+    "point": 141
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Ascanio Galbiati",
+    "nation": "ITA",
+    "event__1": "nakazato-q1",
+    "place": 15,
+    "point": 136
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Jakub Warmuz",
+    "nation": "CHE",
+    "event__1": "nakazato-q1",
+    "place": 16,
+    "point": 131
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Ryoma Igeta",
+    "nation": "JPN",
+    "event__1": "nakazato-q1",
+    "place": 17,
+    "point": 127
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Ryoya Takashima",
+    "nation": "JPN",
+    "event__1": "nakazato-q1",
+    "place": 18,
+    "point": 123
+  },
+  {
+    "event": "Ski Men",
+    "athlete": "Paweł Pajda",
+    "nation": "POL",
+    "event__1": "nakazato-q1",
+    "place": 19,
+    "point": 120
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Kaede Hayashi",
+    "nation": "JPN",
+    "event__1": "nakazato-q1",
+    "place": 1,
+    "point": 600
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Mizuki Yamaguchi",
+    "nation": "JPN",
+    "event__1": "nakazato-q1",
+    "place": 2,
+    "point": 450
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Kahori Aida",
+    "nation": "JPN",
+    "event__1": "nakazato-q1",
+    "place": 3,
+    "point": 350
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Mayu Himoto",
+    "nation": "JPN",
+    "event__1": "nakazato-q1",
+    "place": 4,
+    "point": 290
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Morgan Kilmain",
+    "nation": "USA",
+    "event__1": "nakazato-q1",
+    "place": 5,
+    "point": 250
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Chloe Chilcott",
+    "nation": "AUS",
+    "event__1": "nakazato-q1",
+    "place": 6,
+    "point": 220
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Lu Cao",
+    "nation": "CHN",
+    "event__1": "nakazato-q1",
+    "place": 7,
+    "point": 200
+  },
+  {
+    "event": "Ski Women",
+    "athlete": "Muqi Zhang",
+    "nation": "USA",
+    "event__1": "nakazato-q1",
+    "place": 8,
+    "point": 185
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Kaito Ichinose",
+    "nation": "JPN",
+    "event__1": "nakazato-q1",
+    "place": 1,
+    "point": 600
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Junnosuke Yamaji",
+    "nation": "JPN",
+    "event__1": "nakazato-q1",
+    "place": 2,
+    "point": 450
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Toi Hatta",
+    "nation": "JPN",
+    "event__1": "nakazato-q1",
+    "place": 3,
+    "point": 350
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Yudai Yokoyama",
+    "nation": "JPN",
+    "event__1": "nakazato-q1",
+    "place": 4,
+    "point": 290
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Pierre Chauty",
+    "nation": "FRA",
+    "event__1": "nakazato-q1",
+    "place": 5,
+    "point": 250
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "RIKUTO WATANABE",
+    "nation": "JPN",
+    "event__1": "nakazato-q1",
+    "place": 6,
+    "point": 220
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Chan Lun",
+    "nation": "CHN",
+    "event__1": "nakazato-q1",
+    "place": 7,
+    "point": 200
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Howie Zhang",
+    "nation": "AUS",
+    "event__1": "nakazato-q1",
+    "place": 8,
+    "point": 185
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Shengda Miao",
+    "nation": "CHN",
+    "event__1": "nakazato-q1",
+    "place": 9,
+    "point": 170
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Adrien Descours",
+    "nation": "JPN",
+    "event__1": "nakazato-q1",
+    "place": 10,
+    "point": 160
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Wong Ming Sum",
+    "nation": "HKG",
+    "event__1": "nakazato-q1",
+    "place": 11,
+    "point": 150
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Takuro Tanaka",
+    "nation": "JPN",
+    "event__1": "nakazato-q1",
+    "place": 12,
+    "point": 140
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Songyu Xing",
+    "nation": "USA",
+    "event__1": "nakazato-q1",
+    "place": 13,
+    "point": 130
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Greg Leahy",
+    "nation": "AUS",
+    "event__1": "nakazato-q1",
+    "place": 14,
+    "point": 120
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Masaaki Horisawa",
+    "nation": "JPN",
+    "event__1": "nakazato-q1",
+    "place": 15,
+    "point": 115
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Pohan Chiang",
+    "nation": "TWN",
+    "event__1": "nakazato-q1",
+    "place": 16,
+    "point": 110
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Wai Cheong Chan",
+    "nation": "AUS",
+    "event__1": "nakazato-q1",
+    "place": 17,
+    "point": 105
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Chung Man Hei",
+    "nation": "CHN",
+    "event__1": "nakazato-q1",
+    "place": 18,
+    "point": 100
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Nathaniel Santos",
+    "nation": "AUS",
+    "event__1": "nakazato-q1",
+    "place": 19,
+    "point": 95
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Yang Fan",
+    "nation": "CHN",
+    "event__1": "nakazato-q1",
+    "place": 20,
+    "point": 90
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Takashi Yao",
+    "nation": "JPN",
+    "event__1": "nakazato-q1",
+    "place": 21,
+    "point": 85
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Jack O’Gara",
+    "nation": "USA",
+    "event__1": "nakazato-q1",
+    "place": "",
+    "point": 0
+  },
+  {
+    "event": "Snowboard Men",
+    "athlete": "Yongfei xu",
+    "nation": "CHN",
+    "event__1": "nakazato-q1",
+    "place": "",
+    "point": 0
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Yui Kotani",
+    "nation": "JPN",
+    "event__1": "nakazato-q1",
+    "place": 1,
+    "point": 600
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Koharu Hatta",
+    "nation": "JPN",
+    "event__1": "nakazato-q1",
+    "place": 2,
+    "point": 450
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Tara Purvis",
+    "nation": "NZL",
+    "event__1": "nakazato-q1",
+    "place": 3,
+    "point": 350
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Anruo He",
+    "nation": "SGP",
+    "event__1": "nakazato-q1",
+    "place": 4,
+    "point": 290
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Sayuki Aida",
+    "nation": "JPN",
+    "event__1": "nakazato-q1",
+    "place": 5,
+    "point": 250
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Summer Lam",
+    "nation": "HKG",
+    "event__1": "nakazato-q1",
+    "place": 6,
+    "point": 220
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Yanrong Yu",
+    "nation": "CAN",
+    "event__1": "nakazato-q1",
+    "place": 7,
+    "point": 200
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Xianqi He",
+    "nation": "CHN",
+    "event__1": "nakazato-q1",
+    "place": 8,
+    "point": 185
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Sabrina Spano",
+    "nation": "AUS",
+    "event__1": "nakazato-q1",
+    "place": 9,
+    "point": 170
+  },
+  {
+    "event": "Snowboard Women",
+    "athlete": "Brenda Fung",
+    "nation": "JPN",
+    "event__1": "nakazato-q1",
+    "place": 10,
+    "point": 160
+  },
+  {
+    "event": "Ski Men U-18",
+    "athlete": "Jiro Sugiyama",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 1,
+    "point": 800
+  },
+  {
+    "event": "Ski Men U-18",
+    "athlete": "Kouga Takeda",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 2,
+    "point": 640
+  },
+  {
+    "event": "Ski Men U-18",
+    "athlete": "Hiroto Otomo",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 3,
+    "point": 500
+  },
+  {
+    "event": "Ski Men U-18",
+    "athlete": "Yuto Yamakawa",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 4,
+    "point": 410
+  },
+  {
+    "event": "Ski Men U-18",
+    "athlete": "Ryoma Tada",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 5,
+    "point": 360
+  },
+  {
+    "event": "Ski Men U-18",
+    "athlete": "Junichiro Munekawa",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 6,
+    "point": 315
+  },
+  {
+    "event": "Ski Women U-18",
+    "athlete": "Caroline Brokaw",
+    "nation": "AUS",
+    "event__1": "arai-j3",
+    "place": 1,
+    "point": 800
+  },
+  {
+    "event": "Snowboard Men U-18",
+    "athlete": "Ichinoshin Maruyama",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 1,
+    "point": 800
+  },
+  {
+    "event": "Snowboard Men U-18",
+    "athlete": "Hayato Mikami",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 2,
+    "point": 640
+  },
+  {
+    "event": "Snowboard Men U-18",
+    "athlete": "Seitaro Idachi",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 3,
+    "point": 500
+  },
+  {
+    "event": "Snowboard Men U-18",
+    "athlete": "Aoi Tezuka",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 4,
+    "point": 410
+  },
+  {
+    "event": "Snowboard Men U-18",
+    "athlete": "Sei Murai",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 5,
+    "point": 360
+  },
+  {
+    "event": "Snowboard Men U-18",
+    "athlete": "Yamato Sato",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 6,
+    "point": 315
+  },
+  {
+    "event": "Snowboard Men U-18",
+    "athlete": "Link Yanagihara",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 7,
+    "point": 275
+  },
+  {
+    "event": "Snowboard Men U-18",
+    "athlete": "Shuyu Feng",
+    "nation": "CHN",
+    "event__1": "arai-j3",
+    "place": 8,
+    "point": 245
+  },
+  {
+    "event": "Snowboard Men U-18",
+    "athlete": "Akito Mikami",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 9,
+    "point": 225
+  },
+  {
+    "event": "Snowboard Women U-18",
+    "athlete": "Juna Yamada",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 1,
+    "point": 800
+  },
+  {
+    "event": "Snowboard Women U-18",
+    "athlete": "Kiaya Aida",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 2,
+    "point": 650
+  },
+  {
+    "event": "Snowboard Women U-18",
+    "athlete": "Chihiro Ito",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 3,
+    "point": 500
+  },
+  {
+    "event": "Snowboard Women U-18",
+    "athlete": "Shuyu He",
+    "nation": "CHN",
+    "event__1": "arai-j3",
+    "place": 4,
+    "point": 400
+  },
+  {
+    "event": "Ski Men U-16",
+    "athlete": "Shun Washio",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 1,
+    "point": 800
+  },
+  {
+    "event": "Ski Men U-16",
+    "athlete": "Taisei Sakai",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 2,
+    "point": 640
+  },
+  {
+    "event": "Ski Men U-16",
+    "athlete": "Kai Sheppard",
+    "nation": "AUS",
+    "event__1": "arai-j3",
+    "place": 3,
+    "point": 500
+  },
+  {
+    "event": "Ski Men U-16",
+    "athlete": "Raito Tanaka",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 4,
+    "point": 410
+  },
+  {
+    "event": "Ski Men U-16",
+    "athlete": "Anderson Lee",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 5,
+    "point": 360
+  },
+  {
+    "event": "Ski Men U-14",
+    "athlete": "Kaishiro Tsuchida",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 1,
+    "point": 260
+  },
+  {
+    "event": "Ski Men U-14",
+    "athlete": "Ageha Shimizu",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 2,
+    "point": 190
+  },
+  {
+    "event": "Ski Men U-14",
+    "athlete": "Lachlan Simmons",
+    "nation": "CAN",
+    "event__1": "arai-j3",
+    "place": 3,
+    "point": 145
+  },
+  {
+    "event": "Ski Men U-14",
+    "athlete": "Jin Mashimo",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 4,
+    "point": 120
+  },
+  {
+    "event": "Ski Men U-14",
+    "athlete": "Liam Simmons",
+    "nation": "CAN",
+    "event__1": "arai-j3",
+    "place": 5,
+    "point": 105
+  },
+  {
+    "event": "Ski Men U-14",
+    "athlete": "Adam Shi",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 6,
+    "point": 95
+  },
+  {
+    "event": "Ski Men U-14",
+    "athlete": "Yuki Nakamura",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 7,
+    "point": 90
+  },
+  {
+    "event": "Ski Men U-14",
+    "athlete": "Xuchen Liu",
+    "nation": "CHN",
+    "event__1": "arai-j3",
+    "place": 8,
+    "point": 88
+  },
+  {
+    "event": "Ski Women U-14",
+    "athlete": "Nao Makita",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 1,
+    "point": 260
+  },
+  {
+    "event": "Ski Women U-14",
+    "athlete": "Madeleine Miller",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 2,
+    "point": 190
+  },
+  {
+    "event": "Ski Women U-14",
+    "athlete": "Saya Fujii",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 3,
+    "point": 145
+  },
+  {
+    "event": "Snowboard Men U-14",
+    "athlete": "Yukito FUJIEDA",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 1,
+    "point": 260
+  },
+  {
+    "event": "Snowboard Men U-14",
+    "athlete": "Johji Goto",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 2,
+    "point": 190
+  },
+  {
+    "event": "Snowboard Men U-14",
+    "athlete": "SHINICHIRO ONO",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 3,
+    "point": 145
+  },
+  {
+    "event": "Snowboard Men U-14",
+    "athlete": "Hinata Atsuumi",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 4,
+    "point": 120
+  },
+  {
+    "event": "Snowboard Men U-14",
+    "athlete": "Yura Onozuka",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 5,
+    "point": 105
+  },
+  {
+    "event": "Snowboard Men U-14",
+    "athlete": "Haruto Rokkaku",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 6,
+    "point": 95
+  },
+  {
+    "event": "Snowboard Men U-14",
+    "athlete": "Kengo Goto",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 7,
+    "point": 85
+  },
+  {
+    "event": "Snowboard Men U-14",
+    "athlete": "Kanato Takeuchi",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 8,
+    "point": 75
+  },
+  {
+    "event": "Snowboard Men U-14",
+    "athlete": "Kaito Rokkaku",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 9,
+    "point": 70
+  },
+  {
+    "event": "Snowboard Men U-14",
+    "athlete": "Ousuke Miyashita",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 10,
+    "point": 65
+  },
+  {
+    "event": "Snowboard Men U-14",
+    "athlete": "Jordy John Butson",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 11,
+    "point": 62
+  },
+  {
+    "event": "Snowboard Men U-14",
+    "athlete": "Yuusuke Suzuki",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 12,
+    "point": 59
+  },
+  {
+    "event": "Snowboard Men U-14",
+    "athlete": "Aoi Otsu",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 13,
+    "point": 56
+  },
+  {
+    "event": "Snowboard Men U-14",
+    "athlete": "Haruto Kume",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 14,
+    "point": 53
+  },
+  {
+    "event": "Snowboard Men U-14",
+    "athlete": "Genki Sato",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 15,
+    "point": 50
+  },
+  {
+    "event": "Snowboard Men U-14",
+    "athlete": "Litomaru Yabe",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 16,
+    "point": 47
+  },
+  {
+    "event": "Snowboard Men U-14",
+    "athlete": "Ryoma Niibe",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 17,
+    "point": 44
+  },
+  {
+    "event": "Snowboard Men U-14",
+    "athlete": "Shoho Ito",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 18,
+    "point": 42
+  },
+  {
+    "event": "Snowboard Men U-14",
+    "athlete": "Masaki Takanashi",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 19,
+    "point": 40
+  },
+  {
+    "event": "Snowboard Women U-14",
+    "athlete": "yukino torimoto",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 1,
+    "point": 260
+  },
+  {
+    "event": "Snowboard Women U-14",
+    "athlete": "yua urushiyama",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 2,
+    "point": 190
+  },
+  {
+    "event": "Snowboard Women U-14",
+    "athlete": "Mia Hirano",
+    "nation": "JPN",
+    "event__1": "arai-j3",
+    "place": 3,
+    "point": 145
+  },
+  {
+    "event": "Snowboard Women U-14",
+    "athlete": "Xinyu Zhang",
+    "nation": "CHN",
+    "event__1": "arai-j3",
+    "place": 4,
+    "point": 120
+  },
+  {
+    "event": "Ski Men U-18",
+    "athlete": "Kouga Takeda",
+    "nation": "JPN",
+    "event__1": "nakazato-j1",
+    "place": 1,
+    "point": 260
+  },
+  {
+    "event": "Ski Men U-18",
+    "athlete": "Ryoma Tada",
+    "nation": "JPN",
+    "event__1": "nakazato-j1",
+    "place": 2,
+    "point": 190
+  },
+  {
+    "event": "Ski Men U-18",
+    "athlete": "Akinori Tezuka",
+    "nation": "JPN",
+    "event__1": "nakazato-j1",
+    "place": 3,
+    "point": 145
+  },
+  {
+    "event": "Ski Women U-18",
+    "athlete": "Gabriella G Ansell",
+    "nation": "AUS",
+    "event__1": "nakazato-j1",
+    "place": 1,
+    "point": 260
+  },
+  {
+    "event": "Snowboard Men U-18",
+    "athlete": "Oscar Kobayashi",
+    "nation": "JPN",
+    "event__1": "nakazato-j1",
+    "place": 1,
+    "point": 260
+  },
+  {
+    "event": "Snowboard Men U-18",
+    "athlete": "Yamato Sato",
+    "nation": "JPN",
+    "event__1": "nakazato-j1",
+    "place": 2,
+    "point": 190
+  },
+  {
+    "event": "Snowboard Men U-18",
+    "athlete": "Link Yanagihara",
+    "nation": "JPN",
+    "event__1": "nakazato-j1",
+    "place": 3,
+    "point": 145
+  },
+  {
+    "event": "Snowboard Men U-18",
+    "athlete": "Ichinoshin Maruyama",
+    "nation": "JPN",
+    "event__1": "nakazato-j1",
+    "place": 4,
+    "point": 120
+  },
+  {
+    "event": "Snowboard Women U-18",
+    "athlete": "Kiaya Aida",
+    "nation": "JPN",
+    "event__1": "nakazato-j1",
+    "place": 1,
+    "point": 260
+  },
+  {
+    "event": "Snowboard Women U-18",
+    "athlete": "Rio Hanzawa",
+    "nation": "JPN",
+    "event__1": "nakazato-j1",
+    "place": 2,
+    "point": 190
+  },
+  {
+    "event": "Snowboard Women U-18",
+    "athlete": "Chihiro Ito",
+    "nation": "JPN",
+    "event__1": "nakazato-j1",
+    "place": 3,
+    "point": 145
+  },
+  {
+    "event": "Ski Men U-16",
+    "athlete": "Shun Washio",
+    "nation": "JPN",
+    "event__1": "nakazato-j1",
+    "place": 1,
+    "point": 260
+  },
+  {
+    "event": "Ski Men U-16",
+    "athlete": "Hiroto Otomo",
+    "nation": "JPN",
+    "event__1": "nakazato-j1",
+    "place": 2,
+    "point": 190
+  },
+  {
+    "event": "Ski Men U-14",
+    "athlete": "Yuki Nakamura",
+    "nation": "JPN",
+    "event__1": "nakazato-j1",
+    "place": 1,
+    "point": 260
+  },
+  {
+    "event": "Ski Men U-14",
+    "athlete": "Xuehao Liu",
+    "nation": "CHN",
+    "event__1": "nakazato-j1",
+    "place": 2,
+    "point": 190
+  },
+  {
+    "event": "Ski Men U-14",
+    "athlete": "Lachie Stevens",
+    "nation": "NZL",
+    "event__1": "nakazato-j1",
+    "place": 3,
+    "point": 145
+  },
+  {
+    "event": "Ski Men U-14",
+    "athlete": "Liam Peng",
+    "nation": "CHN",
+    "event__1": "nakazato-j1",
+    "place": 4,
+    "point": 120
+  },
+  {
+    "event": "Ski Men U-14",
+    "athlete": "Yanci Lu",
+    "nation": "CHN",
+    "event__1": "nakazato-j1",
+    "place": 5,
+    "point": 105
+  },
+  {
+    "event": "Ski Women U-14",
+    "athlete": "Sixian Yu",
+    "nation": "CHN",
+    "event__1": "nakazato-j1",
+    "place": 1,
+    "point": 260
+  },
+  {
+    "event": "Ski Women U-14",
+    "athlete": "Bella Li",
+    "nation": "CHN",
+    "event__1": "nakazato-j1",
+    "place": 2,
+    "point": 190
+  },
+  {
+    "event": "Ski Women U-14",
+    "athlete": "Molly Hu",
+    "nation": "CHN",
+    "event__1": "nakazato-j1",
+    "place": 3,
+    "point": 145
+  },
+  {
+    "event": "Ski Women U-14",
+    "athlete": "Lexin Xiang",
+    "nation": "CHN",
+    "event__1": "nakazato-j1",
+    "place": 4,
+    "point": 120
+  },
+  {
+    "event": "Snowboard Men U-14",
+    "athlete": "Genki Sato",
+    "nation": "JPN",
+    "event__1": "nakazato-j1",
+    "place": 1,
+    "point": 260
+  },
+  {
+    "event": "Snowboard Men U-14",
+    "athlete": "Johji Goto",
+    "nation": "JPN",
+    "event__1": "nakazato-j1",
+    "place": 2,
+    "point": 190
+  },
+  {
+    "event": "Snowboard Men U-14",
+    "athlete": "Aoi Otsu",
+    "nation": "JPN",
+    "event__1": "nakazato-j1",
+    "place": 3,
+    "point": 145
+  },
+  {
+    "event": "Snowboard Men U-14",
+    "athlete": "Kengo Goto",
+    "nation": "JPN",
+    "event__1": "nakazato-j1",
+    "place": 4,
+    "point": 120
+  },
+  {
+    "event": "Snowboard Men U-14",
+    "athlete": "Hinata Atsuumi",
+    "nation": "JPN",
+    "event__1": "nakazato-j1",
+    "place": 5,
+    "point": 105
+  },
+  {
+    "event": "Snowboard Women U-14",
+    "athlete": "Cao Rui",
+    "nation": "CHN",
+    "event__1": "nakazato-j1",
+    "place": 1,
+    "point": 260
+  },
+  {
+    "event": "Snowboard Women U-14",
+    "athlete": "yukino torimoto",
+    "nation": "JPN",
+    "event__1": "nakazato-j1",
+    "place": 2,
+    "point": 190
+  },
+  {
+    "event": "Snowboard Women U-14",
+    "athlete": "Arianna Kobayashi",
+    "nation": "JPN",
+    "event__1": "nakazato-j1",
+    "place": 3,
+    "point": 145
+  },
+  {
+    "event": "Snowboard Women U-14",
+    "athlete": "Xinyu Zhang",
+    "nation": "CHN",
+    "event__1": "nakazato-j1",
+    "place": 4,
+    "point": 120
+  },
+  {
+    "event": "Snowboard Women U-14",
+    "athlete": "yua urushiyama",
+    "nation": "JPN",
+    "event__1": "nakazato-j1",
+    "place": 5,
+    "point": 105
+  }
+]
