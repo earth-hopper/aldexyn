@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>わくわくルーレット（確率調整版）</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            /* 背景を楽しい水玉模様風に */
+            background-color: #fde047; /* Tailwind yellow-300 */
+            background-image: radial-gradient(#facc15 2px, transparent 2px);
+            background-size: 30px 30px;
+        }
+        /* ポップな影（右下にずらしたくっきりした影） */
+        .pop-shadow {
+            box-shadow: 6px 6px 0px #1f2937;
+        }
+        /* ボタンを押したときのへこむ動き */
+        .pop-active:active {
+            box-shadow: 2px 2px 0px #1f2937;
+            transform: translate(4px, 4px);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen m-0 p-4">
+
+    <div class="bg-white border-4 border-gray-800 rounded-3xl p-6 md:p-10 w-full max-w-sm pop-shadow flex flex-col items-center text-center">
+        
+        <h1 class="text-2xl md:text-3xl font-black text-gray-800 mb-6 flex items-center justify-center gap-2">
+            <span>🎉</span> アースホッパー<br>ルーレット
+        </h1>
+        
+        <div class="bg-blue-50 border-4 border-gray-800 rounded-2xl w-full h-40 flex justify-center items-center mb-8 pop-shadow relative overflow-hidden">
+            <div class="absolute top-2 left-2 text-yellow-400 text-xl">✨</div>
+            <div class="absolute bottom-2 right-2 text-yellow-400 text-xl">✨</div>
+            
+            <span id="numberDisplay" class="text-7xl md:text-8xl font-black text-pink-500 tabular-nums">
+                0
+            </span>
+        </div>
+
+        <button id="toggleBtn" class="w-full py-4 px-6 text-2xl font-black rounded-full border-4 border-gray-800 pop-shadow pop-active transition-all bg-green-400 text-gray-800">
+            スタート
+        </button>
+    </div>
+
+    <script>
+        // DOM要素の取得
+        const display = document.getElementById('numberDisplay');
+        const btn = document.getElementById('toggleBtn');
+        
+        // 状態管理用の変数
+        let isRunning = false;
+        let intervalId = null;
+
+        // 指定範囲のランダムな整数を生成する基本関数
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        // 確率を偏らせてランダムな数字を生成する関数
+        function getBiasedRandomNumber() {
+            // 0以上1未満のランダムな小数を取得
+            const rand = Math.random();
+            
+            if (rand < 0.8) {
+                // 80%の確率で 0 〜 300 の数値を返す
+                return getRandomInt(0, 300);
+            } else {
+                // 残りの20%の確率で 301 〜 500 の数値を返す
+                return getRandomInt(301, 500);
+            }
+        }
+
+        // 画面の数字を更新する関数
+        function updateNumber() {
+            const num = getBiasedRandomNumber();
+            display.textContent = num;
+            
+            // 回転中は数字の色をカラフルに変える
+            const colors = ['text-pink-500', 'text-blue-500', 'text-orange-500', 'text-purple-500'];
+            display.className = `text-7xl md:text-8xl font-black tabular-nums ${colors[num % colors.length]}`;
+        }
+
+        // ルーレットを開始する処理
+        function start() {
+            isRunning = true;
+            btn.textContent = 'ストップ！';
+            
+            // ストップボタン時のスタイリング
+            btn.className = "w-full py-4 px-6 text-2xl font-black rounded-full border-4 border-gray-800 pop-shadow pop-active transition-all bg-pink-400 text-gray-800";
+            
+            // 40ミリ秒ごとに数字を更新
+            intervalId = setInterval(updateNumber, 40);
+        }
+
+        // ルーレットを停止する処理
+        function stop() {
+            isRunning = false;
+            clearInterval(intervalId);
+            btn.textContent = 'スタート';
+            
+            // スタートボタン時のスタイリング
+            btn.className = "w-full py-4 px-6 text-2xl font-black rounded-full border-4 border-gray-800 pop-shadow pop-active transition-all bg-green-400 text-gray-800";
+            
+            // ストップ時は数字の色を赤で固定し、少し拡大して強調する
+            display.className = "text-7xl md:text-8xl font-black text-red-500 tabular-nums scale-110 transition-transform duration-300";
+        }
+
+        // ボタンのクリックイベント
+        btn.addEventListener('click', () => {
+            if (isRunning) {
+                stop();
+            } else {
+                start();
+            }
+        });
+
+        // 初期表示
+        display.textContent = '0';
+    </script>
+</body>
+</html>
