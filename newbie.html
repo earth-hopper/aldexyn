@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>EARTH HOPPER NEWBIE 2025-2026</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800;900&family=Noto+Sans+JP:wght@700;900&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background-color: #050505;
+      color: #ffffff;
+      margin: 0;
+      overflow: hidden;
+    }
+    
+    .font-eng {
+      font-family: 'Inter', sans-serif;
+    }
+
+    .snap-container {
+      height: 100dvh;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+    }
+    
+    .snap-section {
+      height: 100dvh;
+      width: 100%;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @keyframes gradient-bg {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .bg-gradient-animated {
+      background-size: 200% 200%;
+      animation: gradient-bg 5s ease infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .animate-float {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes slide-loop {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(5px); }
+      100% { transform: translateY(0); }
+    }
+    .loop-arrow {
+      animation: slide-loop 2s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="fixed top-0 left-0 h-1 bg-white z-50 transition-all duration-300" id="progress-bar" style="width: 20%;"></div>
+
+  <div class="snap-container" id="scroll-container">
+    
+    <!-- 1. HOOK: 手間への共感とスマートさの提示 -->
+    <div class="snap-section bg-gradient-to-br from-gray-900 via-indigo-950 to-black px-6 text-center">
+      <div class="animate-on-scroll flex flex-col items-center">
+        <p class="font-eng text-xl font-bold tracking-widest text-cyan-400 mb-4 border-b border-cyan-400/50 pb-1">WELCOME</p>
+        <h1 class="text-3xl font-black leading-tight mb-8">
+          早割の準備も、<br>チケットの行列も。<br>もう終わりにしませんか？
+        </h1>
+        <div class="bg-black/60 backdrop-blur-md border border-white/10 p-6 rounded-2xl w-full max-w-sm mb-12 shadow-2xl relative overflow-hidden">
+          <div class="absolute -top-10 -right-10 text-[100px] opacity-10">📱</div>
+          <p class="font-eng text-2xl font-black text-[#D4FF00] mb-2 leading-none">THE SMARTEST WAY</p>
+          <p class="text-sm font-bold leading-relaxed text-gray-200">
+            行きたい時に、LINEひとつでスマートに。<br>
+            それでいて、しっかりおトク。<br>
+            「アースホッパー」という<br>
+            自由な雪山のパスポートをご紹介します。
+          </p>
+        </div>
+        <div class="animate-float text-white opacity-60">
+          <p class="text-[10px] mb-2 tracking-widest font-eng">SWIPE TO UNLOCK</p>
+          <svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. CORE CONCEPT: 3ステップの還元ループ -->
+    <div class="snap-section bg-[#111] px-6">
+      <div class="animate-on-scroll w-full max-w-sm mx-auto">
+        <p class="font-eng text-center text-cyan-400 font-bold tracking-widest text-sm mb-2">HOW IT WORKS</p>
+        <h2 class="text-3xl font-black text-center mb-8">スマートでおトクな<br>「還元ループ」</h2>
+        
+        <div class="space-y-3 relative">
+          <div class="absolute left-7 top-6 bottom-10 w-0.5 bg-gray-700 z-0"></div>
+
+          <!-- Step 1: BUY -->
+          <div class="bg-white/10 backdrop-blur-md rounded-xl p-4 flex gap-4 relative z-10 border border-white/5">
+            <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center font-eng font-black text-xl flex-shrink-0 shadow-lg">1</div>
+            <div>
+              <p class="font-eng text-lg font-black text-blue-400 leading-none mb-1">BUY</p>
+              <p class="text-xs font-bold text-gray-200">窓口に並ばず、行きたいスキー場のリフト券をスマホでサクッと購入。</p>
+            </div>
+          </div>
+
+          <!-- Step 2: EARN (強調) -->
+          <div class="bg-gradient-to-r from-yellow-500/20 to-orange-500/20 backdrop-blur-md rounded-xl p-4 flex gap-4 relative z-10 border border-yellow-500/30 transform scale-105 shadow-xl my-4">
+            <div class="w-10 h-10 rounded-full bg-yellow-500 text-black flex items-center justify-center font-eng font-black text-xl flex-shrink-0">2</div>
+            <div>
+              <p class="font-eng text-lg font-black text-yellow-400 leading-none mb-1">EARN</p>
+              <p class="text-xs font-bold text-white leading-tight">
+                決済額の<span class="text-yellow-300 text-base font-black mx-1">最大25%</span>が<br>
+                マイルとして即時還元！（1マイル=1円）
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 3: REPEAT -->
+          <div class="bg-white/10 backdrop-blur-md rounded-xl p-4 flex gap-4 relative z-10 border border-white/5">
+            <div class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center font-eng font-black text-xl flex-shrink-0 shadow-lg">3</div>
+            <div>
+              <p class="font-eng text-lg font-black text-green-400 leading-none mb-1">REPEAT</p>
+              <p class="text-xs font-bold text-gray-200">マイルを充当すれば、次からのリフト券が常に「あなただけの割引価格」に！</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. SIMULATION: 具体的な数字で自分ごと化 -->
+    <div class="snap-section bg-[#D4FF00] px-6 text-black">
+      <div class="animate-on-scroll flex flex-col items-center w-full max-w-sm mx-auto">
+        <h2 class="font-eng text-4xl font-black mb-1 text-center">SIMULATION</h2>
+        <p class="text-sm font-bold text-gray-800 text-center mb-8">このループ、想像以上です。</p>
+
+        <!-- レシート風シミュレーション -->
+        <div class="bg-white w-full rounded-xl shadow-2xl p-6 relative overflow-hidden">
+          <div class="border-b-2 border-dashed border-gray-300 pb-4 mb-4">
+            <p class="text-[10px] font-bold text-gray-500 mb-1">例えば、¥6,000のリフト券を買うと...</p>
+            <div class="flex justify-between items-end mb-2">
+              <span class="font-bold">チケット代</span>
+              <span class="font-eng font-black text-xl">¥6,000</span>
+            </div>
+            <div class="flex justify-between items-end text-red-500">
+              <span class="font-bold text-sm bg-red-100 px-2 py-0.5 rounded">マイル還元 (最大25%)</span>
+              <span class="font-eng font-black text-lg">+ 1,500 <span class="text-xs">MILES</span></span>
+            </div>
+          </div>
+          
+          <div class="flex justify-between items-center bg-blue-50 p-3 rounded-lg border border-blue-100">
+            <span class="font-black text-sm text-blue-800">次回の¥6,000チケットは<br>マイルを使って実質</span>
+            <span class="font-eng font-black text-3xl text-blue-600">¥4,500</span>
+          </div>
+        </div>
+        
+        <div class="bg-black text-white p-4 rounded-xl mt-6 w-full shadow-lg transform rotate-1">
+          <p class="text-xs font-bold text-center leading-relaxed">
+            💡 次の¥4,500のお支払いにも、<br>
+            さらにマイルが還元されます。<br>
+            <span class="text-[#D4FF00]">滑るたびにずっとおトクが続く仕組みです！</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. DESTINATIONS: 縛られない遊び場の提示 -->
+    <div class="snap-section bg-[#0F172A] px-6 text-white text-center">
+      <div class="animate-on-scroll w-full max-w-md mx-auto">
+        <h2 class="font-eng text-4xl font-black mb-2 text-cyan-400 leading-none">YOUR<br>PLAYGROUND</h2>
+        <p class="font-bold text-gray-300 mb-6 text-sm">
+          貯めたマイルは<span class="text-white text-lg font-black mx-1">日本中約50ヶ所</span>で<br>自由に使える。もう場所に縛られない。
+        </p>
+
+        <!-- タグクラウド -->
+        <div class="flex flex-wrap justify-center gap-3 pb-8">
+          <span class="px-5 py-3 bg-white/10 text-white rounded-full border border-white/20 font-bold text-sm shadow-lg backdrop-blur-sm">ホワイトワールド尾瀬岩鞍</span>
+          <span class="px-4 py-2 bg-cyan-900/50 text-cyan-200 rounded-full border border-cyan-500/30 font-bold text-xs shadow-lg backdrop-blur-sm">川場スキー場</span>
+          <span class="px-6 py-3 bg-blue-900/40 text-blue-100 rounded-full border border-blue-400/30 font-black text-base shadow-lg backdrop-blur-sm transform -rotate-2">神立スノーリゾート</span>
+          <span class="px-4 py-2 bg-white/5 text-gray-300 rounded-full border border-white/10 font-bold text-sm shadow-lg backdrop-blur-sm">夏油高原スキー場</span>
+          <span class="px-5 py-2 bg-indigo-900/50 text-indigo-200 rounded-full border border-indigo-400/30 font-bold text-sm shadow-lg backdrop-blur-sm transform rotate-1">舞子スノーリゾート</span>
+          <span class="px-4 py-2 bg-purple-900/40 text-purple-200 rounded-full border border-purple-500/30 font-bold text-xs shadow-lg backdrop-blur-sm">アライマウンテンリゾート</span>
+          <span class="px-5 py-3 bg-white/10 text-white rounded-full border border-white/30 font-bold text-sm shadow-lg backdrop-blur-sm">八幡平リゾート</span>
+          <span class="px-4 py-2 bg-cyan-900/30 text-cyan-100 rounded-full border border-cyan-500/20 font-bold text-xs shadow-lg backdrop-blur-sm transform -rotate-1">オグナほたかスキー場</span>
+          <span class="px-6 py-2 bg-white/5 text-gray-200 rounded-full border border-white/20 font-bold text-base shadow-lg backdrop-blur-sm">たんばらスキーパーク</span>
+          <span class="px-5 py-3 bg-blue-800/40 text-blue-100 rounded-full border border-blue-300/30 font-bold text-sm shadow-lg backdrop-blur-sm transform rotate-2">戸隠スキー場</span>
+        </div>
+        
+        <p class="text-xs text-gray-400 font-bold">今週末、あなたはどこへ行く？</p>
+      </div>
+    </div>
+
+    <!-- 5. CTA: 究極の低ハードル化 -->
+    <div class="snap-section bg-gradient-animated bg-gradient-to-br from-red-600 via-pink-600 to-orange-500 px-6 text-white text-center">
+      <div class="animate-on-scroll flex flex-col items-center w-full max-w-sm mx-auto">
+        
+        <p class="font-eng text-sm font-bold mb-3 tracking-widest bg-white/20 px-4 py-1 rounded-full backdrop-blur-sm">
+          NO RISK, JUST RIDE.
+        </p>
+        <h2 class="text-4xl font-black leading-tight mb-4 drop-shadow-lg">
+          たった1回で、<br>元が取れる。
+        </h2>
+        <p class="text-sm font-bold mb-6 text-pink-100 drop-shadow-md">
+          「まだ仕組みがよく分からない…」<br>
+          大丈夫です。今なら<span class="text-yellow-300">1回滑るだけで年会費の元が取れる</span>超・限定価格！とりあえず始めて損はありません。
+        </p>
+        
+        <div class="bg-black/40 backdrop-blur-md border border-white/20 shadow-xl rounded-2xl p-5 mb-8 w-full text-left">
+          <ul class="text-[13px] font-bold space-y-4 text-white">
+            <li class="flex items-start gap-3 bg-gradient-to-r from-yellow-500/90 to-orange-500/90 p-4 -mx-2 rounded-xl border border-yellow-400/50 shadow-inner">
+              <span class="text-white text-2xl leading-none mt-1">🎟</span>
+              <span>
+                <span class="text-yellow-100 text-[11px] block mb-1">【超早割】10/31まで限定！</span>
+                通常年会費 ¥2,980 が<br>
+                今だけ <span class="text-3xl font-black text-white inline-block mt-1">¥980</span> で入会可能！
+              </span>
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="text-blue-300 text-lg leading-none">🏂</span>
+              <span>会員期間：2026/10/1 〜 2027/9/30</span>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- 更新ボタン (CTA) -->
+        <a href="https://www.hopper.earth/" class="relative w-full block group overflow-hidden rounded-full bg-white text-black font-black text-lg py-4 shadow-2xl transition-all active:scale-95">
+          <div class="absolute inset-0 w-full h-full bg-gradient-to-r from-yellow-400 to-orange-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <span class="relative z-10 flex items-center justify-center gap-2 group-hover:text-white transition-colors">
+            ¥980でスマートに雪山へ
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('opacity-100', 'translate-y-0', 'scale-100');
+            entry.target.classList.remove('opacity-0', 'translate-y-12', 'scale-95');
+          }
+        });
+      }, { threshold: 0.3 });
+
+      document.querySelectorAll('.animate-on-scroll').forEach(el => {
+        el.classList.add('transition-all', 'duration-700', 'ease-out', 'opacity-0', 'translate-y-12', 'scale-95');
+        observer.observe(el);
+      });
+
+      const container = document.getElementById('scroll-container');
+      const progressBar = document.getElementById('progress-bar');
+      
+      container.addEventListener('scroll', () => {
+        const scrollTop = container.scrollTop;
+        const scrollHeight = container.scrollHeight - container.clientHeight;
+        const scrolled = (scrollTop / scrollHeight) * 100;
+        progressBar.style.width = Math.max(20, scrolled) + '%';
+      });
+    });
+  </script>
+</body>
+</html>
