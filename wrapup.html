@@ -5,10 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>EARTH HOPPER WRAPPED 2025-2026</title>
   
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Google Fonts: インパクトのある太字フォントを採用 -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800;900&family=Noto+Sans+JP:wght@700;900&display=swap" rel="stylesheet">
   
   <style>
@@ -24,7 +21,6 @@
       font-family: 'Inter', sans-serif;
     }
 
-    /* フルスクリーンのスナップスクロール設定 */
     .snap-container {
       height: 100dvh;
       overflow-y: scroll;
@@ -44,7 +40,6 @@
       overflow: hidden;
     }
 
-    /* カスタムアニメーション群 */
     @keyframes gradient-bg {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
@@ -74,95 +69,137 @@
 </head>
 <body>
 
-  <!-- プログレスインジケーター -->
-  <div class="fixed top-0 left-0 h-1 bg-white z-50 transition-all duration-300" id="progress-bar" style="width: 20%;"></div>
+  <!-- プログレスインジケーター（6セクションあるため初期値を約16%に設定） -->
+  <div class="fixed top-0 left-0 h-1 bg-white z-50 transition-all duration-300" id="progress-bar" style="width: 16.6%;"></div>
 
   <div class="snap-container" id="scroll-container">
     
-    <!-- 1. INTRO SCREEN -->
-    <div class="snap-section bg-gradient-to-br from-purple-900 via-indigo-900 to-black px-6 text-center">
+    <!-- 1. INTRO SCREEN (default.htmlのテイストに寄せる) -->
+    <div class="snap-section bg-gradient-to-br from-blue-900 via-indigo-950 to-black px-6 text-center">
       <div class="animate-on-scroll flex flex-col items-center">
-        <p class="font-eng text-xl font-bold tracking-widest text-purple-300 mb-2">2025-2026</p>
-        <h1 class="font-eng text-6xl font-black leading-none tracking-tighter mb-8">
+        <p class="font-eng text-xl font-bold tracking-widest text-cyan-400 mb-2 border-b border-cyan-400/50 pb-1">2025-2026</p>
+        <h1 class="font-eng text-6xl font-black leading-none tracking-tighter mb-8 drop-shadow-lg">
           YOUR<br>SEASON<br>WRAPPED
         </h1>
-        <p class="text-lg font-bold opacity-80 mb-12">
-          アースホッパーと駆け抜けた<br>あなたの1年を振り返ろう。
-        </p>
+        <div class="bg-black/40 backdrop-blur-md border border-white/10 p-6 rounded-2xl w-full max-w-sm mb-12 shadow-2xl relative overflow-hidden">
+          <div class="absolute -top-10 -right-10 text-[100px] opacity-10">🏂</div>
+          <p class="text-sm font-bold leading-relaxed text-gray-200">
+            アースホッパーと駆け抜けた<br>
+            あなたの1年を振り返ろう。<br>
+            スマートな雪山の日常が、ここにある。
+          </p>
+        </div>
         <div class="animate-float text-white opacity-60">
-          <p class="text-xs mb-2 tracking-widest">SWIPE UP</p>
+          <p class="text-[10px] mb-2 tracking-widest font-eng">SWIPE TO EXPLORE</p>
           <svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
         </div>
       </div>
     </div>
 
-    <!-- 2. MILES EARNED -->
+    <!-- 2. FOMO: みんな、賢く遊んでました (ユーザー教育/焦燥感) -->
     <div class="snap-section bg-[#D4FF00] text-black px-6 text-center">
-      <div class="animate-on-scroll flex flex-col items-center w-full">
-        <div class="inline-block border-2 border-black rounded-full px-4 py-1 text-sm font-bold mb-6">
+      <div class="animate-on-scroll flex flex-col items-center w-full max-w-sm mx-auto">
+        <p class="font-eng text-sm font-bold tracking-widest mb-2 border-b-2 border-black pb-1">SMART HOPPING</p>
+        <h2 class="text-3xl font-black leading-tight mb-6">
+          みんな、賢く<br>遊んでいます。
+        </h2>
+        
+        <p class="font-bold text-sm mb-6 leading-relaxed">
+          昨シーズン、アクティブなホッパーたちは<br>
+          マイルシステムを使い倒し、平均<span class="text-2xl font-black mx-1 font-eng">4〜5</span>回利用で<br>
+          約<span class="text-2xl font-black mx-1 font-eng text-red-600">¥5,000</span>もお得に遊んでいたんです！
+        </p>
+
+        <div class="space-y-3 w-full mb-8 text-left">
+          <div class="bg-white rounded-xl p-4 shadow-md flex items-center gap-3">
+            <div class="text-3xl">🎫</div>
+            <p class="text-sm font-bold leading-tight">早割券みたいに<br><span class="text-blue-600">「事前の計画に縛られない」</span></p>
+          </div>
+          <div class="bg-white rounded-xl p-4 shadow-md flex items-center gap-3">
+            <div class="text-3xl">🏔</div>
+            <p class="text-sm font-bold leading-tight">シーズン券みたいに<br><span class="text-green-600">「スキー場に縛られない」</span></p>
+          </div>
+          <div class="bg-black text-[#D4FF00] rounded-xl p-4 shadow-xl flex items-center gap-3 transform rotate-1">
+            <div class="text-3xl">📱</div>
+            <p class="text-sm font-bold leading-tight">それでいて、<br><span class="text-lg">圧倒的におトクに滑れる！</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. MILES EARNED -->
+    <div class="snap-section bg-[#111] px-6 text-center text-white">
+      <div class="animate-on-scroll flex flex-col items-center w-full max-w-sm mx-auto">
+        <div class="inline-block border-2 border-cyan-500 text-cyan-400 rounded-full px-4 py-1 text-sm font-bold mb-6">
           2026年7月時点
         </div>
         <h2 class="text-3xl font-black leading-tight mb-2">
           あなたが獲得した<br>総マイル数は...
         </h2>
         
-        <div class="font-eng text-[100px] leading-none font-black tracking-tighter my-4 drop-shadow-md" id="display-miles">
+        <div class="font-eng text-[100px] leading-none font-black tracking-tighter text-cyan-300 my-4 drop-shadow-[0_0_15px_rgba(34,211,238,0.5)]" id="display-miles">
           0
         </div>
-        <p class="font-eng text-4xl font-black mb-8 tracking-wide">MILES</p>
+        <p class="font-eng text-4xl font-black mb-8 tracking-wide text-gray-300">MILES</p>
         
-        <div class="bg-black text-[#D4FF00] p-5 rounded-2xl transform -rotate-3 shadow-xl w-full max-w-sm">
+        <div class="bg-gradient-to-r from-cyan-900/40 to-blue-900/40 border border-cyan-500/30 p-5 rounded-2xl shadow-xl w-full">
           <!-- JSでここにメッセージが挿入されます -->
-          <p class="text-base font-bold leading-relaxed" id="miles-message">
+          <p class="text-base font-bold leading-relaxed text-cyan-100" id="miles-message">
             読込中...
           </p>
         </div>
       </div>
     </div>
 
-    <!-- 3. ACHIEVED MISSIONS -->
-    <div class="snap-section bg-gradient-to-br from-[#111] to-[#222] px-6">
-      <div class="animate-on-scroll w-full max-w-sm mx-auto">
+    <!-- 4. MISSIONS EXPLAINED (ミッションの仕組み解説へ変更) -->
+    <div class="snap-section bg-gradient-to-b from-gray-100 to-gray-300 px-6 text-black">
+      <div class="animate-on-scroll flex flex-col items-center w-full max-w-sm mx-auto">
         <h2 class="font-eng text-4xl font-black text-center mb-1">MISSIONS</h2>
-        <p class="text-center font-bold text-gray-400 mb-8 text-sm">見事クリアした称号たち</p>
+        <p class="text-center font-bold text-gray-600 mb-8 text-sm">遊ぶほど、マイルが加速する。</p>
         
-        <div class="space-y-4 max-h-[60vh] overflow-y-auto pb-4 pr-1">
-          <!-- Mission Card 1 -->
-          <div class="bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/10 relative overflow-hidden shadow-lg">
-            <div class="absolute -right-4 -top-4 text-7xl opacity-20">👑</div>
-            <p class="text-yellow-400 font-bold text-sm mb-1">プロホッパー</p>
-            <p class="font-eng text-3xl font-black text-white mb-2">1,500 <span class="text-sm">MILES</span></p>
-            <p class="text-xs text-gray-300 font-bold leading-relaxed">あなたの情熱にリスペクト！</p>
+        <p class="text-sm font-bold mb-6 leading-relaxed text-center">
+          アースホッパーは、ただ滑るだけじゃない。<br>
+          様々な条件をクリアするごとに<br>
+          <span class="text-blue-600 font-black">ボーナスマイル（称号）</span>をGETできます！
+        </p>
+
+        <div class="space-y-3 w-full max-h-[50vh] overflow-y-auto pb-4 pr-1">
+          <div class="bg-white rounded-2xl p-4 shadow-md border border-gray-200">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-2xl">👑</span>
+              <p class="font-bold text-sm text-gray-800">プロホッパー <span class="font-eng text-blue-600">最大1,500 MILES</span></p>
+            </div>
+            <p class="text-xs text-gray-600 font-bold">シーズン中に3回以上利用。雪山に通い詰める情熱にリスペクト！</p>
           </div>
           
-          <!-- Mission Card 2 -->
-          <div class="bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/10 relative overflow-hidden shadow-lg">
-            <div class="absolute -right-4 -top-4 text-7xl opacity-20">👑</div>
-            <p class="text-blue-400 font-bold text-sm mb-1">エリアホッパー</p>
-            <p class="font-eng text-3xl font-black text-white mb-2">500 <span class="text-sm">MILES</span></p>
-            <p class="text-xs text-gray-300 font-bold leading-relaxed">日本中を駆け回りましたね！</p>
+          <div class="bg-white rounded-2xl p-4 shadow-md border border-gray-200">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-2xl">🗾</span>
+              <p class="font-bold text-sm text-gray-800">エリアホッパー <span class="font-eng text-blue-600">最大1,500 MILES</span></p>
+            </div>
+            <p class="text-xs text-gray-600 font-bold">3つ以上の異なるエリア（北海道、信越、関東など）を制覇！</p>
           </div>
 
-          <!-- Mission Card 3 -->
-          <div class="bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/10 relative overflow-hidden shadow-lg">
-            <div class="absolute -right-4 -top-4 text-7xl opacity-20">👑</div>
-            <p class="text-green-400 font-bold text-sm mb-1">ノマドホッパー</p>
-            <p class="font-eng text-3xl font-black text-white mb-2">1,000 <span class="text-sm">MILES</span></p>
-            <p class="text-xs text-gray-300 font-bold leading-relaxed">空いている平日で優雅に遊ぶ賢者！</p>
+          <div class="bg-white rounded-2xl p-4 shadow-md border border-gray-200">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-2xl">☕️</span>
+              <p class="font-bold text-sm text-gray-800">ノマドホッパー <span class="font-eng text-blue-600">最大1,500 MILES</span></p>
+            </div>
+            <p class="text-xs text-gray-600 font-bold">平日利用3回達成。空いている平日で優雅に遊ぶ賢者の証。</p>
           </div>
 
-          <!-- Mission Card 4 -->
-          <div class="bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/10 relative overflow-hidden shadow-lg">
-            <div class="absolute -right-4 -top-4 text-7xl opacity-20">👑</div>
-            <p class="text-purple-400 font-bold text-sm mb-1">カテゴリホッパー</p>
-            <p class="font-eng text-3xl font-black text-white mb-2">800 <span class="text-sm">MILES</span></p>
-            <p class="text-xs text-gray-300 font-bold leading-relaxed">雪山だけじゃない本格アウトドア派！</p>
+          <div class="bg-white rounded-2xl p-4 shadow-md border border-gray-200">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-2xl">⛺️</span>
+              <p class="font-bold text-sm text-gray-800">カテゴリホッパー <span class="font-eng text-blue-600">最大1,500 MILES</span></p>
+            </div>
+            <p class="text-xs text-gray-600 font-bold">夏のアクティビティ（SURF・MTB等）も堪能する本格アウトドア派！</p>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- 4. VISITED SKI RESORTS -->
+    <!-- 5. VISITED SKI RESORTS -->
     <div class="snap-section bg-[#0F172A] px-8 text-white">
       <div class="animate-on-scroll w-full max-w-sm mx-auto">
         <h2 class="font-eng text-4xl font-black mb-2 text-cyan-400">YOUR<br>JOURNEY</h2>
@@ -187,7 +224,7 @@
       </div>
     </div>
 
-    <!-- 5. CALL TO ACTION (ワクワク＆お得感) -->
+    <!-- 6. CALL TO ACTION -->
     <div class="snap-section bg-gradient-animated bg-gradient-to-br from-orange-500 via-pink-600 to-purple-600 px-6 text-white text-center">
       <div class="animate-on-scroll flex flex-col items-center w-full max-w-sm mx-auto">
         
@@ -242,7 +279,7 @@
 
   <script>
     // ＝＝＝ エンジニア設定用変数 ＝＝＝
-    const userTotalMiles = 5200; 
+    const userTotalMiles = 1200; // 例：少ないマイル数の場合
     // ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 
     document.addEventListener("DOMContentLoaded", () => {
@@ -253,7 +290,7 @@
       
       const messageEl = document.getElementById('miles-message');
       if (userTotalMiles < 4800) {
-        messageEl.innerText = "ユーザー平均の「4,800マイル（¥4,800のおトク！）」を目指して、来シーズンはさらにいろんな施設を巡ってみませんか？🔥";
+        messageEl.innerText = "ユーザー平均の「4,800マイル（¥4,800のおトク！）」を目指して、来シーズンはミッションクリアも狙いながらさらにいろんな施設を巡ってみませんか？🔥";
       } else {
         messageEl.innerText = "ユーザー平均「4,800マイル（¥4,800のおトク！）」を超えておトクに楽しんでいただきました！来シーズンもアースホッパーで滑ろう🔥";
       }
@@ -281,7 +318,7 @@
         const scrollTop = container.scrollTop;
         const scrollHeight = container.scrollHeight - container.clientHeight;
         const scrolled = (scrollTop / scrollHeight) * 100;
-        progressBar.style.width = Math.max(20, scrolled) + '%';
+        progressBar.style.width = Math.max(16.6, scrolled) + '%';
       });
     });
   </script>
