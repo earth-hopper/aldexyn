@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>EARTH HOPPER - Registration Complete</title>
+  <title>EARTH HOPPER - 手続き完了</title>
   
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
@@ -14,11 +14,13 @@
         extend: {
           colors: {
             brand: '#0093d4',
+            brandDark: '#006bb3',
             dark: '#1a1a1a',
+            accent: '#f43f5e',
           },
           fontFamily: {
-            sans: ['Noto Sans JP', 'sans-serif'],
-            eng: ['Inter', 'sans-serif'],
+            sans: ['"Noto Sans JP"', 'sans-serif'],
+            eng: ['"Inter"', 'sans-serif'],
           },
           animation: {
             'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
@@ -32,7 +34,7 @@
             },
             bounceSoft: {
               '0%, 100%': { transform: 'translateY(0)' },
-              '50%': { transform: 'translateY(-5px)' },
+              '50%': { transform: 'translateY(-4px)' },
             },
             shine: {
               '0%': { left: '-100%' },
@@ -55,7 +57,9 @@
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-    /* SVGチェックマークのアニメーション */
+    /* =========================
+       Checkmark Animation
+    ========================== */
     .checkmark {
       width: 80px;
       height: 80px;
@@ -93,7 +97,7 @@
       100% { box-shadow: inset 0px 0px 0px 50px rgba(255,255,255,0.2); }
     }
 
-    /* 紙吹雪用のCanvas */
+    /* Confetti Canvas */
     #confetti-canvas {
       position: absolute;
       top: 0;
@@ -104,7 +108,7 @@
       z-index: 50;
     }
 
-    /* アニメーション遅延用ユーティリティ */
+    /* Animation Delays */
     .delay-100 { animation-delay: 100ms; }
     .delay-300 { animation-delay: 300ms; }
     .delay-500 { animation-delay: 500ms; }
@@ -113,95 +117,107 @@
 </head>
 <body class="flex justify-center">
 
-  <div class="w-full max-w-md min-h-screen relative overflow-hidden bg-white shadow-2xl flex flex-col">
+  <div class="w-full max-w-md min-h-screen relative overflow-hidden bg-[#f4f7f9] shadow-2xl flex flex-col">
     
     <canvas id="confetti-canvas"></canvas>
 
-    <!-- 上部：お祝いのヒーローエリア（美しい雪山の空をイメージしたグラデーション） -->
-    <div class="relative pt-16 pb-12 px-6 flex-1 flex flex-col justify-center items-center bg-gradient-to-br from-[#0093d4] via-sky-400 to-[#00b4d8] text-white overflow-hidden rounded-b-[40px] shadow-[0_10px_30px_rgba(0,147,212,0.2)]">
+    <!-- =========================
+         1. HERO (SUCCESS STATUS)
+    ========================== -->
+    <div class="relative pt-16 pb-14 px-6 flex flex-col justify-center items-center bg-gradient-to-br from-brand via-sky-400 to-[#00b4d8] text-white overflow-hidden rounded-b-[40px] shadow-[0_12px_30px_rgba(0,147,212,0.15)] z-10">
       
-      <!-- 背景の光のオーブ -->
-      <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-20 rounded-full blur-3xl transform translate-x-1/3 -translate-y-1/3"></div>
-      <div class="absolute bottom-0 left-0 w-48 h-48 bg-sky-200 opacity-20 rounded-full blur-2xl transform -translate-x-1/2 translate-y-1/2"></div>
+      <!-- BG Orbs -->
+      <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-20 rounded-full blur-3xl transform translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
+      <div class="absolute bottom-0 left-0 w-48 h-48 bg-sky-200 opacity-20 rounded-full blur-2xl transform -translate-x-1/2 translate-y-1/2 pointer-events-none"></div>
       
-      <!-- アニメーションチェックマーク -->
+      <!-- Animated Checkmark -->
       <div class="relative z-10 mb-6">
-        <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+        <svg class="checkmark shadow-sm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
           <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
           <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
         </svg>
       </div>
 
+      <!-- Success Message (汎用化) -->
       <div class="text-center relative z-10 opacity-0 animate-fade-in-up delay-300">
         <p class="font-eng text-sm font-bold tracking-widest text-sky-100 mb-2">REGISTRATION COMPLETE</p>
-        <h1 class="text-2xl font-black leading-tight drop-shadow-md mb-2">
-          26-27シーズンの<br>会員登録が完了しました！
+        <h1 class="text-[24px] font-black leading-tight drop-shadow-md mb-3">
+          会員登録が<br>完了しました！
         </h1>
-        <p class="text-[13px] font-bold text-sky-50 mt-4 bg-white/20 px-4 py-2 rounded-full inline-block backdrop-blur-sm border border-white/30 shadow-sm">
-          さあ、新しい冬の始まりです 🏂❄️
-        </p>
+        <div class="inline-flex items-center gap-1.5 bg-white/20 px-4 py-2 rounded-full backdrop-blur-sm border border-white/30 shadow-sm">
+          <svg class="w-4 h-4 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+          <span class="text-[13px] font-bold text-white">26-27シーズンの準備が整いました ⛄️</span>
+        </div>
       </div>
     </div>
 
-    <!-- 下部：コミュニティ情報とアクション -->
-    <div class="px-6 pt-10 pb-12 flex-1 flex flex-col relative bg-[#f4f7f9]">
+    <!-- =========================
+         2. DETAILS & ACTION
+    ========================== -->
+    <div class="px-6 pt-10 pb-12 flex-1 flex flex-col relative">
       
-      <!-- コミュニティ人数のダイナミック表示 -->
+      <!-- Community Stat -->
       <div class="text-center mb-8 opacity-0 animate-fade-in-up delay-500">
-        <h2 class="text-sm font-bold text-gray-500 mb-2">EARTH HOPPER コミュニティへようこそ</h2>
-        <div class="flex justify-center items-end gap-1 mb-2">
-          <span class="text-lg font-bold text-gray-600 mb-1">現在</span>
-          <!-- ここの数字がJSでカウントアップされます -->
-          <span id="member-counter" class="font-eng text-5xl font-black text-brand tracking-tighter">0</span>
-          <span class="text-lg font-bold text-gray-600 mb-1">人</span>
+        <h2 class="text-xs font-bold text-gray-500 mb-2">現在のコミュニティメンバー</h2>
+        <div class="flex justify-center items-baseline gap-1 mb-1">
+          <span id="member-counter" class="font-eng text-[44px] font-black text-brand tracking-tighter leading-none">0</span>
+          <span class="text-sm font-bold text-gray-500">人</span>
         </div>
-        <p class="text-[13px] font-bold text-gray-600">
-          の仲間たちが、次の雪山を待ちわびています。
+        <p class="text-[12px] font-bold text-gray-400">
+          の仲間が、次のシーズンを待っています。
         </p>
       </div>
 
-      <!-- 会員期間のカード -->
-      <div class="bg-white rounded-2xl p-5 shadow-[0_4px_20px_rgb(0,0,0,0.04)] border border-gray-100 mb-10 opacity-0 animate-fade-in-up delay-700 relative overflow-hidden">
+      <!-- Ticket/Status Card (汎用化) -->
+      <div class="bg-white rounded-2xl p-5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 mb-10 opacity-0 animate-fade-in-up delay-700 relative overflow-hidden">
         <div class="absolute left-0 top-0 w-1.5 h-full bg-brand"></div>
-        <p class="text-xs font-bold text-gray-400 mb-2">あなたの会員期間</p>
-        <p class="text-base font-bold text-dark flex items-center gap-2">
+        <div class="flex items-center justify-between mb-3 border-b border-gray-50 pb-3">
+          <p class="text-xs font-bold text-gray-400">会員ステータス</p>
+          <span class="bg-blue-50 text-brand text-[10px] font-bold px-2 py-1 rounded">手続き完了</span>
+        </div>
+        
+        <p class="text-xs font-bold text-gray-400 mb-1">会員期間</p>
+        <p class="text-[15px] font-bold text-dark flex items-center gap-2">
           <svg class="w-5 h-5 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
           <span id="dynamic-date">本日</span> <span class="text-gray-400 font-normal mx-1">〜</span> 2027年9月30日
         </p>
       </div>
 
-      <!-- アクションボタン -->
+      <!-- CTA Button (汎用化) -->
       <div class="mt-auto opacity-0 animate-fade-in-up" style="animation-delay: 900ms;">
-        <a href="#" class="relative block w-full bg-dark text-white font-black text-xl py-5 rounded-2xl shadow-[0_8px_20px_rgba(0,0,0,0.15)] hover:bg-black hover:shadow-xl transition-all active:scale-[0.98] overflow-hidden group flex items-center justify-center gap-2">
-          <!-- ボタンの煌めきエフェクト -->
+        <a href="#" class="relative block w-full bg-dark text-white font-black text-[17px] py-4.5 rounded-2xl shadow-[0_8px_20px_rgba(0,0,0,0.15)] hover:bg-black hover:shadow-xl transition-all active:scale-[0.98] overflow-hidden group flex items-center justify-center gap-2 h-14">
+          <!-- Button Shine Effect -->
           <div class="absolute top-0 -left-[100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 animate-shine"></div>
           
-          マイページへ
-          <svg class="w-6 h-6 text-brand animate-bounce-soft" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          マイページへ進む
+          <svg class="w-5 h-5 text-brand animate-bounce-soft" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
         </a>
       </div>
       
     </div>
   </div>
 
+  <!-- =========================
+       SCRIPTS
+  ========================== -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      // 1. 本日の日付を動的に取得・フォーマットして挿入
+      // 1. Dynamic Date formatting
       const today = new Date();
       const year = today.getFullYear();
       const month = today.getMonth() + 1;
       const day = today.getDate();
       document.getElementById('dynamic-date').textContent = `${year}年${month}月${day}日`;
 
-      // 2. メンバー数のカウントアップアニメーション (0 -> 9,876)
+      // 2. Member Counter Animation (0 -> 9,876)
       const targetNumber = 9876;
       const counterElement = document.getElementById('member-counter');
-      const duration = 2000; // 2秒かけてカウント
+      const duration = 2000;
       const frameRate = 30;
       const totalFrames = Math.round((duration / 1000) * frameRate);
       let frame = 0;
 
-      // easeOutQuart のイージング関数
+      // easeOutQuart
       const easeOut = (t) => 1 - Math.pow(1 - t, 4);
 
       setTimeout(() => {
@@ -210,7 +226,6 @@
           const progress = easeOut(frame / totalFrames);
           const currentNumber = Math.round(targetNumber * progress);
           
-          // カンマ区切りで表示
           counterElement.textContent = currentNumber.toLocaleString();
 
           if (frame >= totalFrames) {
@@ -218,25 +233,25 @@
             counterElement.textContent = targetNumber.toLocaleString();
           }
         }, 1000 / frameRate);
-      }, 500); // UIが表示されるタイミングに合わせて少し遅延させる
+      }, 500);
 
-      // 3. 紙吹雪 (Confetti) アニメーションの実装
+      // 3. Confetti Animation
       const canvas = document.getElementById('confetti-canvas');
       const ctx = canvas.getContext('2d');
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
 
       const particles = [];
-      const colors = ['#ffffff', '#0093d4', '#00b4d8', '#f43f5e', '#fde047'];
+      const colors = ['#ffffff', '#0093d4', '#4dd0e1', '#f43f5e', '#e0f2fe'];
 
-      // パーティクル生成
-      for (let i = 0; i < 100; i++) {
+      // Generate particles
+      for (let i = 0; i < 90; i++) {
         particles.push({
           x: canvas.width / 2,
-          y: canvas.height * 0.4, // チェックマークのあたりから発生
-          r: Math.random() * 6 + 2,
-          dx: Math.random() * 10 - 5,
-          dy: Math.random() * -10 - 5,
+          y: canvas.height * 0.35,
+          r: Math.random() * 5 + 2,
+          dx: Math.random() * 12 - 6,
+          dy: Math.random() * -12 - 4,
           color: colors[Math.floor(Math.random() * colors.length)],
           tilt: Math.floor(Math.random() * 10) - 10,
           tiltAngleIncrement: (Math.random() * 0.07) + 0.05,
@@ -249,11 +264,11 @@
         
         let activeParticles = 0;
         
-        particles.forEach((p, index) => {
+        particles.forEach((p) => {
           p.tiltAngle += p.tiltAngleIncrement;
           p.y += (Math.cos(p.tiltAngle) + 1 + p.r / 2) / 2;
           p.x += Math.sin(p.tiltAngle) * 2;
-          p.dy += 0.2; // 重力
+          p.dy += 0.25; // Gravity
           p.x += p.dx;
           p.y += p.dy;
 
@@ -271,13 +286,21 @@
 
         if (activeParticles > 0) {
           requestAnimationFrame(drawConfetti);
+        } else {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
         }
       }
 
-      // 少し遅延させて紙吹雪を舞わせる（チェックマークのアニメーション完了後）
+      // Start confetti after checkmark animates
       setTimeout(() => {
         drawConfetti();
       }, 900);
+      
+      // Handle window resize for canvas
+      window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
     });
   </script>
 </body>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>EARTH HOPPER - Welcome Back</title>
+  <title>EARTH HOPPER - おかえりなさい！</title>
   
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
@@ -14,21 +14,27 @@
         extend: {
           colors: {
             brand: '#0093d4',
+            brandDark: '#006bb3',
             dark: '#1a1a1a',
             accent: '#f43f5e',
           },
           fontFamily: {
-            sans: ['Noto Sans JP', 'sans-serif'],
-            eng: ['Inter', 'sans-serif'],
+            sans: ['"Noto Sans JP"', 'sans-serif'],
+            eng: ['"Inter"', 'sans-serif'],
           },
           animation: {
             'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
             'float': 'float 4s ease-in-out infinite',
+            'bounce-x': 'bounceX 1.5s infinite',
           },
           keyframes: {
             float: {
               '0%, 100%': { transform: 'translateY(0)' },
-              '50%': { transform: 'translateY(-8px)' },
+              '50%': { transform: 'translateY(-6px)' },
+            },
+            bounceX: {
+              '0%, 100%': { transform: 'translateX(0)' },
+              '50%': { transform: 'translateX(4px)' },
             }
           }
         }
@@ -48,123 +54,146 @@
 
     .fade-up {
       opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(20px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .fade-up.visible {
       opacity: 1;
       transform: translateY(0);
     }
+
+    .receipt-edge {
+      background: linear-gradient(-45deg, transparent 12px, #ffffff 0), linear-gradient(45deg, transparent 12px, #ffffff 0);
+      background-repeat: repeat-x;
+      background-position: left bottom;
+      background-size: 16px 16px;
+      padding-bottom: 24px;
+    }
   </style>
 </head>
 <body class="flex justify-center">
 
-  <div class="w-full max-w-md bg-white min-h-screen relative overflow-x-hidden shadow-2xl">
+  <div class="w-full max-w-md bg-white min-h-screen relative overflow-x-hidden shadow-2xl pb-10">
     
-    <!-- HEADER -->
-    <header class="px-6 pt-10 pb-4 border-b border-gray-100/50">
+    <!-- =========================
+         HEADER
+    ========================== -->
+    <header class="px-6 pt-10 pb-4 border-b border-gray-100 sticky top-0 bg-white/80 backdrop-blur-md z-50">
       <div class="flex justify-center items-center h-8">
-        <img src="path/to/your-logo.png" alt="EARTH HOPPER" class="h-6 w-auto object-contain fallback-text" onerror="this.outerHTML='<h1 class=\'font-eng font-black text-xl tracking-wider text-dark\'>EARTH HOPPER</h1>'">
+        <h1 class="font-eng font-black text-xl tracking-wider text-dark">
+          EARTH HOPPER
+        </h1>
       </div>
     </header>
 
-    <!-- 1. HERO -->
-    <section class="px-5 pt-8 pb-10 text-center fade-up">
-      <p class="font-eng text-sm font-bold text-brand mb-1">It's been a while!</p>
-      <h2 class="text-3xl font-black text-dark leading-tight mb-8 tracking-tight">
-        マイルでおトクに<br>ホッピングしない？
+    <!-- =========================
+         1. HERO SECTION
+    ========================== -->
+    <section class="px-5 pt-10 pb-12 text-center fade-up">
+      <p class="font-eng text-sm font-bold text-brand mb-2">Welcome Back!</p>
+      <h2 class="text-[28px] font-black text-dark leading-tight mb-8 tracking-tight">
+        マイルでおトクに<br>ホッピングしませんか？
       </h2>
       
-      <div class="bg-gradient-to-b from-blue-50 to-white rounded-3xl p-8 border border-blue-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden">
-        <div class="absolute -top-12 -right-12 w-40 h-40 bg-brand opacity-10 rounded-full blur-3xl"></div>
-        <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-sky-300 opacity-20 rounded-full blur-2xl"></div>
+      <div class="bg-gradient-to-br from-blue-50 to-white rounded-3xl p-8 border border-blue-100 shadow-[0_12px_40px_rgba(0,147,212,0.08)] relative overflow-hidden">
+        <div class="absolute -top-12 -right-12 w-40 h-40 bg-brand opacity-[0.08] rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-sky-400 opacity-[0.12] rounded-full blur-2xl pointer-events-none"></div>
         
         <div class="relative z-10">
-          <p class="text-sm font-bold text-gray-500 mb-2">あなたの保有マイル</p>
-          <div class="flex items-baseline justify-center gap-2 mb-5">
-            <span class="font-eng text-[56px] leading-none font-black text-dark tracking-tighter">4,500</span>
+          <p class="text-sm font-bold text-gray-500 mb-2">現在保有しているマイル</p>
+          <div class="flex items-baseline justify-center gap-2 mb-6">
+            <span class="font-eng text-[64px] leading-none font-black text-dark tracking-tighter">4,500</span>
             <span class="font-eng text-lg font-bold text-gray-400">MILES</span>
           </div>
           
-          <div class="inline-flex items-center gap-2 bg-rose-50 px-4 py-2 rounded-full border border-rose-200 animate-pulse-slow shadow-sm">
+          <div class="inline-flex items-center gap-2 bg-rose-50 px-5 py-2.5 rounded-full border border-rose-100 animate-pulse-slow shadow-sm">
             <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-            <span class="text-sm font-bold text-accent">有効期限 2027年1月31日</span>
+            <span class="text-sm font-bold text-accent tracking-wide">有効期限を <span class="text-base font-black">2027年1月</span> まで延長済✨</span>
           </div>
         </div>
       </div>
       
-      <p class="text-[15px] font-bold text-gray-600 mt-8 leading-relaxed px-2">
-        新しいアースホッパーで楽しんでもらうため<br>
-        特別にマイルの有効期限を延長しました✨<br>
-        また一緒に、ホッピングしませんか？🌏
+      <p class="text-[15px] font-bold text-gray-600 mt-8 leading-relaxed">
+        新しくなったアースホッパーを体験してほしくて<br>
+        特別にマイルの有効期限を延長しました。<br>
       </p>
     </section>
 
-    <!-- 2. VALUE -->
+    <!-- =========================
+         2. VALUE SECTION
+    ========================== -->
     <section class="px-5 py-12 bg-gradient-to-br from-[#0093d4] to-[#006bb3] text-white fade-up relative overflow-hidden">
-      <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl transform translate-x-1/3 -translate-y-1/3"></div>
+      <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-10 rounded-full blur-3xl transform translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
       
       <div class="text-center mb-8 relative z-10">
         <p class="font-eng text-xs font-bold text-sky-200 tracking-widest mb-1">MAGIC OF MILES</p>
-        <h2 class="text-3xl font-black leading-tight drop-shadow-sm">
-          マイルを使って、<br>次の遊びをおトクに。
+        <h2 class="text-[26px] font-black leading-tight drop-shadow-sm">
+          マイルを使えば、<br>次のリフト券がこんなにお得。
         </h2>
       </div>
 
-      <div class="bg-white rounded-2xl p-6 shadow-xl relative z-10 animate-float text-dark">
-        <p class="text-sm font-bold text-gray-500 mb-4 text-center">例えば、¥6,000のリフト券が</p>
+      <div class="bg-white rounded-t-2xl receipt-edge p-6 shadow-2xl relative z-10 animate-float text-dark mx-2">
+        <div class="flex justify-center mb-4">
+          <span class="bg-gray-100 text-gray-500 text-xs font-bold px-3 py-1 rounded-full">お見積り例</span>
+        </div>
         
         <div class="space-y-4">
-          <div class="flex justify-between items-end border-b border-gray-100 pb-3">
-            <span class="text-sm font-bold text-gray-500">リフト券価格</span>
+          <div class="flex justify-between items-end border-b border-dashed border-gray-200 pb-3">
+            <span class="text-sm font-bold text-gray-500">リフト券（例）</span>
             <span class="font-eng text-xl font-bold text-gray-400">¥6,000</span>
           </div>
-          <div class="flex justify-between items-center border-b border-gray-100 pb-3">
-            <span class="text-sm font-bold text-brand bg-brand/10 px-2.5 py-1 rounded-md">保有マイルを使う</span>
-            <span class="font-eng font-bold text-xl text-brand">- 4,500 <span class="text-xs">MILES</span></span>
+          <div class="flex justify-between items-center border-b border-dashed border-gray-200 pb-3">
+            <span class="text-sm font-bold text-brand bg-brand/10 px-2.5 py-1 rounded-md">保有マイルを充当</span>
+            <span class="font-eng font-bold text-xl text-brand">- 4,500 <span class="text-[10px]">MILES</span></span>
           </div>
-          <div class="flex justify-between items-end pt-2 bg-gray-50 -mx-6 -mb-6 p-6 rounded-b-2xl">
-            <span class="text-base font-black text-dark">あなたのお支払い額</span>
-            <span class="font-eng font-black text-4xl text-brand tracking-tighter">¥1,500</span>
+          <div class="flex justify-between items-end pt-2">
+            <span class="text-sm font-black text-dark">実質のお支払い額</span>
+            <div class="text-right">
+              <span class="text-xs font-bold text-gray-500 mr-1">税込</span>
+              <span class="font-eng font-black text-[40px] leading-none text-accent tracking-tighter">¥1,500</span>
+            </div>
           </div>
         </div>
       </div>
       
       <div class="mt-8 text-center relative z-10">
-        <p class="text-[13px] font-bold text-sky-100 leading-relaxed bg-black/20 inline-block px-4 py-2 rounded-xl backdrop-blur-sm">
-          💡 さらに、この <span class="text-white font-black">¥1,500</span> のお支払いにも<br>
-          <span class="text-white font-black">マイルが新しく還元</span>されます！
+        <p class="text-[14px] font-bold text-sky-50 leading-relaxed bg-black/25 inline-block px-5 py-3 rounded-xl backdrop-blur-sm shadow-inner">
+          💡 さらに、手出しの <span class="text-white font-black text-lg">¥1,500</span> にも<br>
+          <span class="text-yellow-300 font-black">新しくマイルが還元</span> されます！
         </p>
       </div>
     </section>
 
-    <!-- 3. COMMUNITY -->
-    <section class="px-5 py-12 fade-up bg-white">
+    <!-- =========================
+         3. COMMUNITY SECTION
+    ========================== -->
+    <section class="px-5 py-12 bg-white fade-up border-b border-gray-100">
       <div class="text-center mb-8">
         <p class="font-eng text-xs font-bold text-gray-400 tracking-widest mb-1">HOPPER'S DATA</p>
-        <h2 class="text-2xl font-black leading-tight text-dark">
+        <h2 class="text-[26px] font-black leading-tight text-dark">
           みんな、賢く遊んでいました。
         </h2>
       </div>
       
       <div class="grid grid-cols-2 gap-4">
-        <div class="bg-gray-50 rounded-2xl p-5 text-center border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+        <div class="bg-white rounded-2xl p-5 text-center border border-gray-100 shadow-[0_8px_20px_rgb(0,0,0,0.04)]">
           <p class="text-xs font-bold text-gray-500 mb-2">昨シーズンの平均利用</p>
           <div class="flex items-baseline justify-center gap-1">
-            <span class="font-eng text-4xl font-black text-dark">4.5</span>
+            <span class="font-eng text-[40px] leading-none font-black text-dark tracking-tighter">4.5</span>
             <span class="text-sm font-bold text-gray-600">回</span>
           </div>
         </div>
-        <div class="bg-gray-50 rounded-2xl p-5 text-center border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+        <div class="bg-white rounded-2xl p-5 text-center border border-gray-100 shadow-[0_8px_20px_rgb(0,0,0,0.04)] relative overflow-hidden">
+          <div class="absolute -right-4 -bottom-4 w-16 h-16 bg-brand opacity-10 rounded-full blur-xl pointer-events-none"></div>
           <p class="text-xs font-bold text-gray-500 mb-2">平均のお得額</p>
-          <div class="flex items-baseline justify-center gap-1">
-            <span class="font-eng text-3xl font-black text-brand tracking-tighter">¥7,000</span>
+          <div class="flex items-baseline justify-center gap-1 relative z-10">
+            <span class="font-eng text-[32px] leading-none font-black text-brand tracking-tighter">¥7,000</span>
             <span class="font-eng text-xl font-bold text-brand">+</span>
           </div>
         </div>
       </div>
       
-      <div class="mt-8 bg-blue-50/50 rounded-2xl p-5 border border-blue-100 text-center">
+      <div class="mt-8 bg-gradient-to-br from-blue-50/80 to-white rounded-2xl p-6 border border-blue-100 text-center shadow-sm">
         <p class="text-[14px] font-bold text-gray-700 leading-relaxed">
           早割券のように「行くか分からない不安」もなく、<br>
           シーズン券のように「同じ場所に通う縛り」もない。<br>
@@ -173,97 +202,134 @@
       </div>
     </section>
 
-    <!-- 4. PLAYGROUND -->
-    <section class="py-12 bg-gray-50 border-y border-gray-100 fade-up">
+    <!-- =========================
+         4. PLAYGROUND SECTION
+    ========================== -->
+    <section class="py-12 bg-gray-50 fade-up border-b border-gray-100">
       <div class="px-5 text-center mb-8">
         <p class="font-eng text-xs font-bold text-brand tracking-widest mb-1">YOUR PLAYGROUND</p>
-        <h2 class="text-2xl font-black text-dark mb-2">日本中があなたのホームに。</h2>
-        <p class="text-[13px] font-bold text-gray-500">来シーズンも約50ヶ所のスキー場を予定。</p>
+        <h2 class="text-2xl font-black text-dark mb-3">日本中があなたのホームに。</h2>
+        <p class="text-[14px] font-bold text-gray-600">
+          今シーズンも全国<span class="text-brand font-black text-lg mx-1 border-b-4 border-brand/30">約50ヶ所</span>のスキー場が対象。
+        </p>
       </div>
       
-      <!-- 折り返しのタグ群 -->
+      <!-- Wrapped Tags -->
       <div class="px-4">
         <div class="flex flex-wrap justify-center gap-2.5">
-          <span class="px-4 py-2.5 bg-white text-dark rounded-xl border border-gray-200 font-bold text-sm shadow-sm">ホワイトワールド尾瀬岩鞍</span>
-          <span class="px-4 py-2.5 bg-white text-dark rounded-xl border border-gray-200 font-bold text-sm shadow-sm">川場スキー場</span>
-          <span class="px-4 py-2.5 bg-white text-dark rounded-xl border border-gray-200 font-bold text-sm shadow-sm">神立スノーリゾート</span>
-          <span class="px-4 py-2.5 bg-white text-dark rounded-xl border border-gray-200 font-bold text-sm shadow-sm">夏油高原スキー場</span>
-          <span class="px-4 py-2.5 bg-white text-dark rounded-xl border border-gray-200 font-bold text-sm shadow-sm">舞子スノーリゾート</span>
-          <span class="px-4 py-2.5 bg-white text-dark rounded-xl border border-gray-200 font-bold text-sm shadow-sm">アライマウンテンリゾート</span>
-          <span class="px-4 py-2.5 bg-white text-dark rounded-xl border border-gray-200 font-bold text-sm shadow-sm">八幡平リゾート</span>
-          <span class="px-4 py-2.5 bg-white text-dark rounded-xl border border-gray-200 font-bold text-sm shadow-sm">オグナほたかスキー場</span>
-          <span class="px-4 py-2.5 bg-white text-dark rounded-xl border border-gray-200 font-bold text-sm shadow-sm">たんばらスキーパーク</span>
-          <span class="px-4 py-2.5 bg-white text-dark rounded-xl border border-gray-200 font-bold text-sm shadow-sm">戸隠スキー場</span>
+          <span class="bg-white border border-gray-200 px-4 py-2.5 rounded-xl font-bold text-[13px] text-dark shadow-sm">ホワイトワールド尾瀬岩鞍</span>
+          <span class="bg-white border border-gray-200 px-4 py-2.5 rounded-xl font-bold text-[13px] text-dark shadow-sm">川場スキー場</span>
+          <span class="bg-white border border-gray-200 px-4 py-2.5 rounded-xl font-bold text-[13px] text-dark shadow-sm">神立スノーリゾート</span>
+          <span class="bg-white border border-gray-200 px-4 py-2.5 rounded-xl font-bold text-[13px] text-dark shadow-sm">夏油高原スキー場</span>
+          <span class="bg-white border border-gray-200 px-4 py-2.5 rounded-xl font-bold text-[13px] text-dark shadow-sm">舞子スノーリゾート</span>
+          <span class="bg-white border border-gray-200 px-4 py-2.5 rounded-xl font-bold text-[13px] text-dark shadow-sm">アライマウンテンリゾート</span>
+          <span class="bg-white border border-gray-200 px-4 py-2.5 rounded-xl font-bold text-[13px] text-dark shadow-sm">八幡平リゾート</span>
+          <span class="bg-white border border-gray-200 px-4 py-2.5 rounded-xl font-bold text-[13px] text-dark shadow-sm">オグナほたかスキー場</span>
+          <span class="bg-white border border-gray-200 px-4 py-2.5 rounded-xl font-bold text-[13px] text-dark shadow-sm">たんばらスキーパーク</span>
+          <span class="bg-white border border-gray-200 px-4 py-2.5 rounded-xl font-bold text-[13px] text-dark shadow-sm">戸隠スキー場</span>
         </div>
         
-        <!-- 注記 -->
         <p class="text-xs font-bold text-gray-400 text-center mt-6">
-          ※提携施設は変更の可能性があります
+          ※提携施設はシーズン前に順次アップデートされます
         </p>
       </div>
     </section>
 
-    <!-- 5. CTA -->
-    <section class="px-5 pt-12 pb-24 text-center fade-up bg-white">
-      <h2 class="text-2xl font-black leading-tight text-dark mb-4">
-        まずは、マイルを<br>キープしておきませんか？
+    <!-- =========================
+         5. CTA SECTION
+    ========================== -->
+    <section class="px-5 pt-12 text-center fade-up bg-white">
+      <h2 class="text-[22px] font-black leading-tight text-dark mb-6">
+        まずは無料で、<br>会員を更新しませんか？
       </h2>
 
-      <div class="bg-white rounded-3xl p-6 shadow-[0_10px_40px_rgb(0,0,0,0.08)] border border-gray-100 mb-8 text-left relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-2 h-full bg-brand"></div>
-        
-        <div class="flex items-center gap-4 mb-5 border-b border-gray-100 pb-5">
-          <div class="w-12 h-12 rounded-full bg-brand/10 flex items-center justify-center text-brand shrink-0">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"></path></svg>
+      <div class="bg-blue-50/50 rounded-2xl p-6 border border-blue-100 mb-8 text-left relative">
+        <div class="flex items-center gap-4 mb-4 border-b border-blue-100/50 pb-4">
+          <div class="w-12 h-12 rounded-full bg-brand text-white flex items-center justify-center shrink-0 shadow-md">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"></path></svg>
           </div>
           <div>
-            <p class="text-xs font-bold text-brand mb-1">おかえりキャンペーン</p>
-            <p class="text-[15px] font-bold text-dark">通常年会費 ¥2,980 が <span class="text-2xl font-black text-brand ml-1">¥0</span></p>
+            <p class="text-xs font-bold text-brand mb-0.5">おかえりキャンペーン</p>
+            <p class="text-[15px] font-bold text-dark">通常年会費 ¥2,980 → <span class="text-2xl font-black text-accent ml-1">¥0</span></p>
           </div>
         </div>
-        <ul class="text-[14px] font-bold text-gray-700 space-y-3">
-          <li class="flex items-center gap-3">
-            <div class="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center shrink-0">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-            </div>
-            今だけ無料で保有マイルを持ち越し！
+        <ul class="text-[14px] font-bold text-gray-700 space-y-2.5">
+          <li class="flex items-center gap-2.5">
+            <svg class="w-5 h-5 text-brand shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+            今だけ、保有マイルをそのまま持ち越し
           </li>
-          <li class="flex items-center gap-3">
-            <div class="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center shrink-0">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-            </div>
-            LINEひとつで購入から発券まで完結
+          <li class="flex items-center gap-2.5">
+            <svg class="w-5 h-5 text-brand shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+            LINE連携で、購入から発券まで完結
           </li>
         </ul>
       </div>
 
-      <a href="#" class="w-full bg-dark text-white font-black text-xl py-5 rounded-2xl shadow-[0_8px_20px_rgba(0,0,0,0.15)] hover:bg-black hover:shadow-xl transition-all active:scale-[0.98] flex items-center justify-center gap-3">
-        無料でマイルを持ち越し！
-        <svg class="w-6 h-6 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-      </a>
-      <p class="text-xs font-bold text-gray-400 mt-5">
-        ※会員期間：登録日〜2027年9月30日
-      </p>
+      <div class="bg-white pt-2 pb-6">
+        <label class="flex items-center justify-center gap-3 mb-6 cursor-pointer group" for="terms-check">
+          <div class="relative flex items-center justify-center w-6 h-6 shrink-0">
+            <input type="checkbox" id="terms-check" class="peer appearance-none w-6 h-6 border-2 border-gray-300 rounded bg-white checked:bg-brand checked:border-brand transition-all duration-200 cursor-pointer">
+            <svg class="absolute w-4 h-4 text-white opacity-0 peer-checked:opacity-100 transition-opacity duration-200 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+            </svg>
+          </div>
+          <span class="text-[14px] font-bold text-gray-600 select-none">
+            <a href="#" class="text-brand underline underline-offset-4 decoration-2 hover:text-brandDark transition-colors" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();">利用規約</a>に同意する
+          </span>
+        </label>
+
+        <button id="cta-btn" class="w-full font-black text-[18px] py-4 rounded-2xl flex items-center justify-center gap-2 transition-all duration-300 pointer-events-none bg-gray-200 text-gray-400">
+          無料で会員を更新する
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </button>
+        
+        <p class="text-[11px] font-bold text-gray-400 mt-4">
+          ※無料会員期間：登録日〜2027年9月30日
+        </p>
+      </div>
     </section>
 
   </div>
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
+      // 1. Intersection Observer for Scroll Animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -20px 0px"
+      };
+
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
           }
         });
-      }, {
-        threshold: 0.1,
-        rootMargin: "0px 0px -20px 0px"
-      });
+      }, observerOptions);
 
       document.querySelectorAll('.fade-up').forEach(el => {
         observer.observe(el);
       });
+
+      // 2. Checkbox & CTA Button Logic
+      const termsCheck = document.getElementById('terms-check');
+      const ctaBtn = document.getElementById('cta-btn');
+
+      const updateButtonState = () => {
+        if (termsCheck.checked) {
+          ctaBtn.classList.remove('pointer-events-none', 'bg-gray-200', 'text-gray-400');
+          ctaBtn.classList.add('bg-brand', 'text-white', 'shadow-[0_8px_20px_rgba(0,147,212,0.3)]', 'hover:bg-brandDark', 'hover:shadow-xl', 'active:scale-[0.98]');
+          ctaBtn.querySelector('svg').classList.add('animate-bounce-x');
+        } else {
+          ctaBtn.classList.add('pointer-events-none', 'bg-gray-200', 'text-gray-400');
+          ctaBtn.classList.remove('bg-brand', 'text-white', 'shadow-[0_8px_20px_rgba(0,147,212,0.3)]', 'hover:bg-brandDark', 'hover:shadow-xl', 'active:scale-[0.98]');
+          ctaBtn.querySelector('svg').classList.remove('animate-bounce-x');
+        }
+      };
+
+      termsCheck.addEventListener('change', updateButtonState);
+      updateButtonState();
     });
   </script>
 </body>
