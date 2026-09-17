@@ -90,8 +90,9 @@
     ========================== -->
     <header class="px-5 pt-8 pb-4 border-b border-gray-100 sticky top-0 bg-white/95 backdrop-blur-md z-50">
       <div class="flex justify-center items-center h-8">
-        <h1 class="font-eng font-black text-2xl tracking-wider text-dark">
-          EARTH HOPPER
+        <h1 class="flex items-center justify-center h-full">
+          <!-- 同階層の logo.png を読み込み。高さをh-6(24px)に指定してバランスを調整 -->
+          <img src="logo.png" alt="EARTH HOPPER" class="h-20 w-auto object-contain">
         </h1>
       </div>
     </header>
@@ -120,8 +121,8 @@
         </h2>
         
         <p class="text-base font-bold text-blue-50 leading-relaxed max-w-xs mx-auto drop-shadow-sm">
-          月額費・初期費用は一切なし！<br>
-          スマホひとつで、いつでもお得＆自由に<br>全国のスキー場をホッピング。
+          年会費・初期費用は一切なし！<br>
+          スマホひとつで、いつでもお得＆自由に<br>全国のフィールドをホッピング。
         </p>
       </div>
     </section>
@@ -129,12 +130,12 @@
     <!-- =========================
          2. PLAYGROUND SECTION
     ========================== -->
-    <section class="py-12 bg-gray-50 fade-up border-y border-gray-100 relative overflow-hidden">
+    <section class="py-12 bg-gray-50 fade-up border-b border-gray-100 relative overflow-hidden">
       <div class="absolute -right-10 top-0 text-[100px] opacity-5 pointer-events-none">🏔️</div>
       
       <div class="px-5 text-center mb-6 relative z-10">
         <p class="font-eng text-sm font-bold text-brand tracking-widest mb-1.5">YOUR PLAYGROUND</p>
-        <h2 class="text-2xl font-black text-dark mb-3">全国<span class="text-brand font-black text-3xl mx-1">約50</span>のゲレンデが対象！</h2>
+        <h2 class="text-2xl font-black text-dark mb-3">全国<span class="text-brand font-black text-3xl mx-1">約50</span>の施設が対象！</h2>
         <p class="text-sm font-bold text-gray-600 leading-relaxed">
           早割券やシーズン券のように特定の場所に縛られず、<br>その日の雪質や気分に合わせて自由に選べます。
         </p>
@@ -149,22 +150,96 @@
           <span class="bg-white border border-gray-200 px-4 py-2.5 rounded-xl font-bold text-sm text-dark shadow-sm">夏油高原スキー場</span>
           <span class="bg-white border border-gray-200 px-4 py-2.5 rounded-xl font-bold text-sm text-dark shadow-sm">舞子スノーリゾート</span>
           <span class="bg-white border border-gray-200 px-4 py-2.5 rounded-xl font-bold text-sm text-dark shadow-sm">アライマウンテンリゾート</span>
-          <span class="bg-white border border-gray-200 px-4 py-2.5 rounded-xl font-bold text-sm text-dark shadow-sm">八幡平リゾート</span>
-          <span class="bg-white border border-gray-200 px-4 py-2.5 rounded-xl font-bold text-sm text-dark shadow-sm">オグナほたかスキー場</span>
-          <span class="bg-white border border-gray-200 px-4 py-2.5 rounded-xl font-bold text-sm text-dark shadow-sm">たんばらスキーパーク</span>
-          <span class="bg-white border border-gray-200 px-4 py-2.5 rounded-xl font-bold text-sm text-dark shadow-sm">戸隠スキー場</span>
         </div>
         
-        <!-- 一例であることの注記 -->
         <p class="text-xs font-bold text-gray-500 text-center mt-5 mb-6">
           ※上記は提携施設（約50施設）の一例です。<br>提携スキー場は順次アップデートされます。
         </p>
 
-        <!-- すべての提携施設を見るボタン -->
-        <a href="#" class="w-full bg-white hover:bg-gray-50 text-brand font-black text-base py-4 rounded-2xl border-2 border-brand flex items-center justify-center gap-2 transition-all shadow-sm active:scale-[0.98]">
+        <a href="list.html" class="w-full bg-white hover:bg-gray-50 text-brand font-black text-base py-4 rounded-2xl border-2 border-brand flex items-center justify-center gap-2 transition-all shadow-sm active:scale-[0.98] group">
           すべての提携施設を見る
-          <svg class="w-5 h-5 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+          <svg class="w-5 h-5 text-brand transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
         </a>
+
+        <!-- ★ 改善反映：ホッピングのルール（ポジティブ明記）と通年利用の補足 -->
+        <div class="mt-8 bg-blue-50 border border-blue-100 rounded-2xl p-5 relative overflow-hidden">
+          <div class="absolute -right-4 -bottom-4 text-7xl opacity-10 pointer-events-none">🌍</div>
+          <h3 class="font-black text-brand text-lg mb-2 relative z-10">いろんな場所に出会うために</h3>
+          <p class="text-sm font-bold text-gray-700 leading-relaxed mb-4 relative z-10">
+            アースホッパーは、新しいお気に入りを見つける「ホッピング」を楽しむサービス。<br>
+            だからこそ、あえて<span class="text-brand font-black border-b-2 border-blue-200">ご利用は「1施設につき年2回まで」</span>の特別ルール！全国のフィールドを巡る旅に出かけましょう。
+          </p>
+          <div class="bg-white p-3.5 rounded-xl shadow-sm border border-gray-100 flex gap-3 relative z-10">
+            <div class="text-3xl shrink-0 mt-0.5">🏄‍♂️</div>
+            <div>
+              <p class="text-sm font-black text-dark mb-1">冬の雪山だけじゃない！</p>
+              <p class="text-xs font-bold text-gray-600 leading-relaxed">
+                サーフィン、SUP、MTBなど、季節を問わず1年中オールシーズンお使いいただけます。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!-- =========================
+         NEW: HOW TO USE (使い方フロー)
+    ========================== -->
+    <section class="py-12 bg-white fade-up border-b border-gray-100 relative">
+      <div class="px-5 text-center mb-8">
+        <span class="bg-slate-800 text-white font-eng text-xs font-black px-4 py-1.5 rounded-full mb-3 inline-block shadow-sm tracking-wider">HOW TO USE</span>
+        <h2 class="text-2xl font-black leading-snug text-dark mb-2">
+          スマホひとつで完結。<br>スマートな利用手順
+        </h2>
+        <p class="text-sm font-bold text-gray-500">
+          いつでもどこでも、たったの3ステップ。
+        </p>
+      </div>
+      
+      <div class="px-6 relative">
+        <!-- 縦のプログレスライン (Connecting line) -->
+        <div class="absolute left-[47px] top-4 bottom-12 w-0.5 bg-blue-100 z-0"></div>
+
+        <div class="space-y-6 relative z-10">
+          <!-- Step 1 -->
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-white border-2 border-brand text-brand rounded-full flex items-center justify-center font-eng font-black text-xl shrink-0 shadow-sm relative z-10">
+              1
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100 shadow-sm flex-1 mt-0.5">
+              <h3 class="font-black text-lg text-dark mb-1.5">スマホでチケット購入</h3>
+              <p class="text-sm font-bold text-gray-600 leading-relaxed">
+                行きたい施設を選んで、いつでもどこでもキャッシュレス決済。
+              </p>
+            </div>
+          </div>
+          
+          <!-- Step 2 -->
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-white border-2 border-brand text-brand rounded-full flex items-center justify-center font-eng font-black text-xl shrink-0 shadow-sm relative z-10">
+              2
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100 shadow-sm flex-1 mt-0.5">
+              <h3 class="font-black text-lg text-dark mb-1.5">現地でスマホを提示</h3>
+              <p class="text-sm font-bold text-gray-600 leading-relaxed">
+                現地の窓口や自動発券機で、購入したチケット画面（QRコード等）を見せるだけ。
+              </p>
+            </div>
+          </div>
+          
+          <!-- Step 3 -->
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-accent text-white border-2 border-accent rounded-full flex items-center justify-center font-eng font-black text-xl shrink-0 shadow-md relative z-10">
+              3
+            </div>
+            <div class="bg-rose-50/60 rounded-2xl p-5 border border-rose-100 shadow-sm flex-1 mt-0.5">
+              <h3 class="font-black text-lg text-dark mb-1.5">そのままフィールドへ！</h3>
+              <p class="text-sm font-bold text-gray-600 leading-relaxed">
+                チケットを受け取ったら、あとは全力で楽しむだけ！
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -193,13 +268,16 @@
           <!-- STEP 1 -->
           <div class="snap-center shrink-0 w-[85vw] max-w-[300px] bg-white rounded-2xl p-6 text-dark shadow-xl">
             <span class="text-xs font-black text-brand bg-blue-50 px-2.5 py-1 rounded-lg mb-3 inline-block">STEP 1</span>
-            <p class="font-black text-lg mb-4 text-dark">リフト券購入でマイルGET</p>
-            <div class="bg-gray-50 rounded-xl p-4 space-y-3 text-sm font-bold border border-gray-100">
+            <p class="font-black text-lg mb-4 text-dark">チケット購入でマイルGET</p>
+            <div class="bg-gray-50 rounded-xl p-4 space-y-2 text-sm font-bold border border-gray-100">
               <div class="flex justify-between items-center text-gray-600">
-                <span>リフト券価格(例)</span>
+                <span>チケット価格(例)</span>
                 <span class="font-eng text-base text-dark">¥6,000</span>
               </div>
-              <div class="flex justify-between items-center text-brand">
+              <!-- ★ 改善反映：価格の基準を明記 -->
+              <p class="text-[10px] font-bold text-gray-400 text-left mb-1 leading-tight pb-1">※価格は各施設の窓口定価に準拠（一部例外あり）</p>
+              
+              <div class="flex justify-between items-center text-brand pt-2 border-t border-gray-200">
                 <span>マイル還元 (20%)</span>
                 <span class="font-eng font-black text-lg">+ 1,200</span>
               </div>
@@ -210,10 +288,10 @@
           <!-- STEP 2 -->
           <div class="snap-center shrink-0 w-[85vw] max-w-[300px] bg-white rounded-2xl p-6 text-dark shadow-xl">
             <span class="text-xs font-black text-brand bg-blue-50 px-2.5 py-1 rounded-lg mb-3 inline-block">STEP 2</span>
-            <p class="font-black text-lg mb-4 text-dark">マイルを使っておトクに滑る</p>
+            <p class="font-black text-lg mb-4 text-dark">マイルを使っておトクに遊ぶ</p>
             <div class="bg-gray-50 rounded-xl p-4 space-y-3 text-sm font-bold border border-gray-100">
               <div class="flex justify-between items-center text-gray-600">
-                <span>次回リフト券(例)</span>
+                <span>次回チケット(例)</span>
                 <span class="font-eng text-base text-dark">¥6,000</span>
               </div>
               <div class="flex justify-between items-center text-brand">
@@ -264,89 +342,86 @@
       <div class="px-5 text-center mb-8">
         <span class="bg-brand text-white font-eng text-xs font-black px-4 py-1.5 rounded-full mb-3 inline-block shadow-sm">BENEFIT 02</span>
         <h2 class="text-2xl font-black leading-snug text-dark mb-2">
-          ゲーム感覚で雪山を巡る<br>「ミッション」
+          ゲーム感覚で全国を巡る<br>「ミッション」
         </h2>
         <p class="text-sm font-bold text-gray-600">
           様々な条件のクリアで、ボーナスマイルを獲得！
         </p>
       </div>
       
-      <!-- ミッション横スクロールカード -->
       <div class="w-full overflow-x-auto no-scrollbar snap-x pb-6 pt-2">
         <div class="flex w-max gap-4 px-5 pr-10">
           
           <!-- Mission 1 -->
-          <div class="snap-center shrink-0 w-[260px] bg-gray-50 rounded-2xl p-5 border border-gray-200 shadow-sm flex flex-col justify-between">
+          <div class="snap-center shrink-0 w-[270px] bg-gradient-to-br from-blue-50 to-white rounded-3xl p-6 border border-blue-100 shadow-md relative overflow-hidden flex flex-col justify-between">
+            <div class="absolute -right-4 -bottom-4 text-7xl opacity-10 pointer-events-none">👑</div>
             <div>
-              <div class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center mb-3 shadow-inner">
-                <span class="text-2xl">👑</span>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-black text-blue-600 bg-blue-100/80 px-3 py-1 rounded-full">MISSION 01</span>
+                <span class="text-3xl">👑</span>
               </div>
-              <p class="font-black text-lg text-dark leading-tight mb-2">プロホッパー</p>
-              <p class="text-sm font-bold text-gray-600 leading-relaxed">アースホッパーの利用回数に応じて</p>
+              <h3 class="font-black text-xl text-dark leading-tight mb-2">プロホッパー</h3>
+              <p class="text-sm font-bold text-gray-600 leading-relaxed">アースホッパーの利用回数を重ねてマイルを獲得！</p>
             </div>
-            <div class="flex items-baseline justify-end gap-1 text-brand mt-5 border-t border-gray-200 pt-3">
-              <span class="text-xs font-bold text-gray-500 mr-1">最大</span>
-              <span class="font-eng font-black text-3xl">+1,800</span>
-              <span class="font-eng font-bold text-xs">MILES</span>
+            <div class="mt-6 pt-4 border-t border-blue-100/80 flex items-baseline justify-between">
+              <span class="text-xs font-bold text-gray-500">ボーナス</span>
+              <div class="flex items-baseline gap-0.5 text-brand">
+                <span class="text-xs font-bold mr-0.5">最大</span>
+                <span class="font-eng font-black text-3xl">1,800</span>
+                <span class="font-eng font-bold text-xs">M</span>
+              </div>
             </div>
           </div>
 
           <!-- Mission 2 -->
-          <div class="snap-center shrink-0 w-[260px] bg-gray-50 rounded-2xl p-5 border border-gray-200 shadow-sm flex flex-col justify-between">
+          <div class="snap-center shrink-0 w-[270px] bg-gradient-to-br from-indigo-50 to-white rounded-3xl p-6 border border-indigo-100 shadow-md relative overflow-hidden flex flex-col justify-between">
+            <div class="absolute -right-4 -bottom-4 text-7xl opacity-10 pointer-events-none">🗺️</div>
             <div>
-              <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-3 shadow-inner">
-                <span class="text-2xl">🏂</span>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-black text-indigo-600 bg-indigo-100/80 px-3 py-1 rounded-full">MISSION 02</span>
+                <span class="text-3xl">🗺️</span>
               </div>
-              <p class="font-black text-lg text-dark leading-tight mb-2">ノマドホッパー</p>
-              <p class="text-sm font-bold text-gray-600 leading-relaxed">平日の利用回数に応じて</p>
+              <h3 class="font-black text-xl text-dark leading-tight mb-2">エリアホッパー</h3>
+              <p class="text-sm font-bold text-gray-600 leading-relaxed">北海道〜西日本まで全5エリアを 制覇する旅へ！</p>
             </div>
-            <div class="flex items-baseline justify-end gap-1 text-brand mt-5 border-t border-gray-200 pt-3">
-              <span class="text-xs font-bold text-gray-500 mr-1">最大</span>
-              <span class="font-eng font-black text-3xl">+1,500</span>
-              <span class="font-eng font-bold text-xs">MILES</span>
+            <div class="mt-6 pt-4 border-t border-indigo-100/80 flex items-baseline justify-between">
+              <span class="text-xs font-bold text-gray-500">ボーナス</span>
+              <div class="flex items-baseline gap-0.5 text-indigo-600">
+                <span class="text-xs font-bold mr-0.5">最大</span>
+                <span class="font-eng font-black text-3xl">1,500</span>
+                <span class="font-eng font-bold text-xs">M</span>
+              </div>
             </div>
           </div>
 
           <!-- Mission 3 -->
-          <div class="snap-center shrink-0 w-[260px] bg-gray-50 rounded-2xl p-5 border border-gray-200 shadow-sm flex flex-col justify-between">
+          <div class="snap-center shrink-0 w-[270px] bg-gradient-to-br from-teal-50 to-white rounded-3xl p-6 border border-teal-100 shadow-md relative overflow-hidden flex flex-col justify-between">
+            <div class="absolute -right-4 -bottom-4 text-7xl opacity-10 pointer-events-none">⛺️</div>
             <div>
-              <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-3 shadow-inner">
-                <span class="text-2xl">🗺️</span>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-black text-teal-600 bg-teal-100/80 px-3 py-1 rounded-full">MISSION 03</span>
+                <span class="text-3xl">⛺️</span>
               </div>
-              <p class="font-black text-lg text-dark leading-tight mb-2">エリアホッパー</p>
-              <p class="text-sm font-bold text-gray-600 leading-relaxed">各エリア（北海道・東北など）の利用回数に応じて</p>
+              <h3 class="font-black text-xl text-dark leading-tight mb-2">カテゴリホッパー</h3>
+              <p class="text-sm font-bold text-gray-600 leading-relaxed">季節やフィールドを問わず様々なアクティビティに挑戦！</p>
             </div>
-            <div class="flex items-baseline justify-end gap-1 text-brand mt-5 border-t border-gray-200 pt-3">
-              <span class="text-xs font-bold text-gray-500 mr-1">最大</span>
-              <span class="font-eng font-black text-3xl">+1,500</span>
-              <span class="font-eng font-bold text-xs">MILES</span>
-            </div>
-          </div>
-
-          <!-- Mission 4 -->
-          <div class="snap-center shrink-0 w-[260px] bg-gray-50 rounded-2xl p-5 border border-gray-200 shadow-sm flex flex-col justify-between">
-            <div>
-              <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mb-3 shadow-inner">
-                <span class="text-2xl">⛺️</span>
+            <div class="mt-6 pt-4 border-t border-teal-100/80 flex items-baseline justify-between">
+              <span class="text-xs font-bold text-gray-500">ボーナス</span>
+              <div class="flex items-baseline gap-0.5 text-teal-600">
+                <span class="text-xs font-bold mr-0.5">最大</span>
+                <span class="font-eng font-black text-3xl">1,500</span>
+                <span class="font-eng font-bold text-xs">M</span>
               </div>
-              <p class="font-black text-lg text-dark leading-tight mb-2">カテゴリホッパー</p>
-              <p class="text-sm font-bold text-gray-600 leading-relaxed">スキー場以外のアクティビティ利用回数に応じて</p>
-            </div>
-            <div class="flex items-baseline justify-end gap-1 text-brand mt-5 border-t border-gray-200 pt-3">
-              <span class="text-xs font-bold text-gray-500 mr-1">最大</span>
-              <span class="font-eng font-black text-3xl">+1,500</span>
-              <span class="font-eng font-bold text-xs">MILES</span>
             </div>
           </div>
 
         </div>
       </div>
 
-      <!-- ミッションの詳細を見るボタン -->
       <div class="px-5 mt-2">
-        <a href="#" class="w-full bg-gray-50 hover:bg-gray-100 text-dark font-black text-base py-4 rounded-2xl border border-gray-300 flex items-center justify-center gap-2 transition-all shadow-sm active:scale-[0.98]">
+        <a href="mission.html" class="w-full bg-gray-50 hover:bg-gray-100 text-dark font-black text-base py-4 rounded-2xl border border-gray-300 flex items-center justify-center gap-2 transition-all shadow-sm active:scale-[0.98] group">
           ミッションの詳細を見る
-          <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
+          <svg class="w-5 h-5 text-gray-600 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
         </a>
       </div>
     </section>
@@ -380,7 +455,7 @@
             </div>
             <div class="flex items-center gap-3">
               <span class="text-2xl">⛓️</span>
-              <p class="text-sm font-bold text-gray-600">シーズン券で１つのスキー場に縛られる</p>
+              <p class="text-sm font-bold text-gray-600">シーズン券で１つの施設に縛られる</p>
             </div>
           </div>
         </div>
@@ -415,17 +490,16 @@
     </section>
 
     <!-- =========================
-         6. THE HOOK & CTA (マイページへ移動)
+         6. THE HOOK & CTA (★ボタンはマイページのまま維持)
     ========================== -->
     <section class="px-5 pt-10 text-center fade-up bg-white pb-8">
       
       <h2 class="text-2xl font-black leading-snug text-dark mb-4">
-        今シーズンはアースホッパーと<br>最高の雪山体験へ！
+        今シーズンはアースホッパーで<br>最高のアウトドア体験へ！
       </h2>
 
-      <!-- メインCTAアクション -->
       <div class="bg-white">
-        <a href="#" class="w-full bg-brand hover:bg-brandDark text-white font-black text-lg py-5 rounded-2xl flex items-center justify-center gap-2 transition-all shadow-[0_10px_25px_rgba(0,147,212,0.4)] active:scale-[0.98]">
+        <a href="mypage.html" class="w-full bg-brand hover:bg-brandDark text-white font-black text-lg py-5 rounded-2xl flex items-center justify-center gap-2 transition-all shadow-[0_10px_25px_rgba(0,147,212,0.4)] active:scale-[0.98]">
           <span>マイページへ移動</span>
           <svg class="w-6 h-6 animate-bounce-x" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -442,7 +516,6 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      // スクロールアニメーション用 Intersection Observer
       const observerOptions = {
         threshold: 0.1,
         rootMargin: "0px 0px -20px 0px"

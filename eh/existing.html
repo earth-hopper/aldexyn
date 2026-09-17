@@ -104,11 +104,13 @@
     ========================== -->
     <header class="px-5 pt-8 pb-4 border-b border-gray-100 sticky top-0 bg-white/95 backdrop-blur-md z-50">
       <div class="flex justify-center items-center h-8">
-        <h1 class="font-eng font-black text-2xl tracking-wider text-dark">
-          EARTH HOPPER
+        <h1 class="flex items-center justify-center h-full">
+          <!-- 同階層の logo.png を読み込み。高さをh-6(24px)に指定してバランスを調整 -->
+          <img src="logo.png" alt="EARTH HOPPER" class="h-20 w-auto object-contain">
         </h1>
       </div>
     </header>
+
 
     <!-- =========================
          1. HERO SECTION
@@ -207,7 +209,7 @@
       </h2>
       
       <p class="text-sm font-bold text-gray-700 leading-relaxed mb-6 text-left bg-gray-50 p-5 rounded-2xl border border-gray-200">
-        「毎年更新するのが手間」「もっと気軽に滑りたい」<br><br>
+        「今年は暖冬で何回滑れるか...」<br>「そんな中で年会費を払うのは...」<br><br>
         そんな皆様の声にお応えし、<strong class="text-dark border-b-2 border-brand/30">1年ごとの会員制度と年会費（2,980円）を完全に撤廃</strong>しました。これからは、いつでも好きな時に、ずっとアースホッパーをご利用いただけます。
       </p>
 
@@ -290,7 +292,7 @@
           </div>
           
           <div class="glass-panel inline-flex items-center justify-center px-5 py-3 rounded-full w-full">
-            <span class="text-xs font-bold whitespace-nowrap tracking-wide text-dark">有効期限：最終チャージ・利用日から1年間 ✨</span>
+            <span class="text-xs font-bold whitespace-nowrap tracking-wide text-dark">有効期限：最終利用日から1年間</span>
           </div>
         </div>
       </div>
@@ -308,10 +310,10 @@
         <div class="bg-yellow-50/70 p-5 rounded-2xl border border-yellow-200 text-left">
           <p class="text-sm font-bold text-gray-700 leading-relaxed">
             新しいアースホッパーを祝して、あなたが昨シーズン訪れたスキー場の感想を教えてください。<br>
-            投稿すると、次回のリフト券にすぐ使える<strong class="text-accent text-base mx-0.5">100マイル</strong>をプレゼント！
+            投稿すると、次回のリフト券購入に使える<strong class="text-accent text-base mx-0.5">100マイル</strong>をプレゼント！
           </p>
           <p class="text-xs font-bold text-gray-500 mt-2 border-t border-yellow-200/60 pt-2">
-            ※投稿内容を確認の上、12月1日に順次マイルを付与いたします。
+            ※投稿内容を確認の上、12月1日以降に順次マイルを付与いたします。
           </p>
         </div>
       </div>
@@ -330,12 +332,12 @@
           </span>
         </label>
 
-        <button id="cta-btn" class="w-full font-black text-lg py-5 rounded-2xl flex items-center justify-center gap-2 transition-all duration-300 pointer-events-none bg-gray-200 text-gray-400 group overflow-hidden relative">
-          <span class="relative z-10 flex items-center gap-2">
-            レビュー投稿へ進む
-            <svg class="w-6 h-6 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-          </span>
-        </button>
+        <a id="cta-btn" href="review.html" class="w-full font-black text-lg py-5 rounded-2xl flex items-center justify-center gap-2 transition-all duration-300 pointer-events-none bg-gray-200 text-gray-400 group overflow-hidden relative">
+            <span class="relative z-10 flex items-center gap-2">
+              レビュー投稿へ進む
+              <svg class="w-6 h-6 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </span>
+        </a>
         
         <p class="text-xs font-bold text-gray-400 mt-4">
           ※タップするとレビュー入力画面へ移動します
