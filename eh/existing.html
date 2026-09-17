@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>EARTH HOPPER - 新モデルのご案内</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#0093d4',
+            brandDark: '#006bb3',
+            dark: '#1a1a1a',
+            accent: '#f43f5e',
+          },
+          fontFamily: {
+            sans: ['"Noto Sans JP"', 'sans-serif'],
+            eng: ['"Inter"', 'sans-serif'],
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 4s ease-in-out infinite',
+            'bounce-x': 'bounceX 1.5s infinite',
+            'gradient-x': 'gradient-x 6s ease infinite',
+            'slide-up-fade': 'slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-6px)' },
+            },
+            bounceX: {
+              '0%, 100%': { transform: 'translateX(0)' },
+              '50%': { transform: 'translateX(4px)' },
+            },
+            'gradient-x': {
+              '0%, 100%': {
+                'background-size': '200% 200%',
+                'background-position': 'left center'
+              },
+              '50%': {
+                'background-size': '200% 200%',
+                'background-position': 'right center'
+              },
+            },
+            slideUpFade: {
+              '0%': { transform: 'translateY(20px)', opacity: '0' },
+              '100%': { transform: 'translateY(0)', opacity: '1' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #f4f7f9;
+      color: #222;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* スクロール連動フェードアップ */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .timeline-line {
+      background-image: linear-gradient(to bottom, #0093d4 50%, rgba(255, 255, 255, 0) 0%);
+      background-position: right;
+      background-size: 2px 14px;
+      background-repeat: repeat-y;
+    }
+
+    /* グラスモーフィズム */
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+  </style>
+</head>
+<body class="flex justify-center">
+
+  <div class="w-full max-w-md bg-white min-h-screen relative overflow-x-hidden shadow-2xl pb-10">
+    
+    <!-- =========================
+         HEADER
+    ========================== -->
+    <header class="px-5 pt-8 pb-4 border-b border-gray-100 sticky top-0 bg-white/95 backdrop-blur-md z-50">
+      <div class="flex justify-center items-center h-8">
+        <h1 class="font-eng font-black text-2xl tracking-wider text-dark">
+          EARTH HOPPER
+        </h1>
+      </div>
+    </header>
+
+    <!-- =========================
+         1. HERO SECTION
+    ========================== -->
+    <section class="relative px-6 pt-14 pb-12 text-center overflow-hidden bg-gradient-to-br from-[#00c6ff] via-[#0093d4] to-[#0072ff] animate-gradient-x text-white">
+      <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-10 rounded-full blur-3xl transform translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
+      <div class="absolute bottom-0 left-0 w-48 h-48 bg-white opacity-10 rounded-full blur-2xl transform -translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
+
+      <div class="relative z-10 animate-slide-up-fade" style="animation-delay: 0.1s;">
+        <p class="font-eng text-xs font-black text-brand mb-4 tracking-widest bg-white text-brand px-3.5 py-1.5 rounded-full inline-block shadow-sm">WELCOME BACK</p>
+        
+        <h2 class="text-[30px] font-black leading-snug mb-5 tracking-tight drop-shadow-md">
+          昨シーズンは <span class="text-yellow-300 text-[42px] mx-1">6</span>回 のご利用。<br>
+          ありがとうございました！
+        </h2>
+        
+        <p class="text-base font-bold text-blue-50 leading-relaxed max-w-xs mx-auto drop-shadow-sm">
+          ホッピングは楽しんでいただけましたか？<br>
+          今年もご利用いただいたあなたへ、<br>
+          <span class="text-yellow-300 font-black text-lg border-b border-yellow-300/60 pb-0.5">最高のニュース</span>があります。
+        </p>
+      </div>
+    </section>
+
+    <!-- =========================
+         2. MEMORY TIMELINE
+    ========================== -->
+    <section class="px-5 py-10 bg-gray-50 fade-up border-b border-gray-100">
+      <div class="text-center mb-8">
+        <p class="font-eng text-sm font-bold text-brand tracking-widest mb-1.5">YOUR JOURNEY</p>
+        <h2 class="text-2xl font-black leading-snug text-dark">
+          最高の雪を求めて、<br>ホッピングした軌跡。
+        </h2>
+      </div>
+
+      <!-- Timeline UI -->
+      <div class="relative pl-7 pr-2">
+        <div class="absolute left-[39px] top-5 bottom-8 w-[2px] timeline-line"></div>
+        
+        <div class="space-y-5">
+          <div class="relative flex items-center gap-4 group">
+            <div class="w-7 h-7 rounded-full bg-brand text-white flex items-center justify-center shrink-0 shadow-[0_0_0_4px_#f9fafb] z-10">
+              <span class="text-xs">❄️</span>
+            </div>
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-200 flex-1 flex justify-between items-center">
+              <div>
+                <p class="text-xs font-eng font-bold text-gray-500 mb-0.5">2023.12.28</p>
+                <p class="font-black text-base text-dark">夏油高原スキー場</p>
+              </div>
+              <span class="text-xs font-bold text-brand bg-blue-50 px-2.5 py-1 rounded-lg">1回目</span>
+            </div>
+          </div>
+          
+          <div class="relative flex items-center gap-4 group">
+            <div class="w-7 h-7 rounded-full bg-brand text-white flex items-center justify-center shrink-0 shadow-[0_0_0_4px_#f9fafb] z-10">
+              <span class="text-xs">❄️</span>
+            </div>
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-200 flex-1 flex justify-between items-center">
+              <div>
+                <p class="text-xs font-eng font-bold text-gray-500 mb-0.5">2024.01.14</p>
+                <p class="font-black text-base text-dark">神立スノーリゾート</p>
+              </div>
+              <span class="text-xs font-bold text-brand bg-blue-50 px-2.5 py-1 rounded-lg">2回目</span>
+            </div>
+          </div>
+
+          <div class="relative flex items-center gap-4 group">
+            <div class="w-7 h-7 rounded-full bg-brand text-white flex items-center justify-center shrink-0 shadow-[0_0_0_4px_#f9fafb] z-10">
+              <span class="text-xs">❄️</span>
+            </div>
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-200 flex-1 flex justify-between items-center">
+              <div>
+                <p class="text-xs font-eng font-bold text-gray-500 mb-0.5">2024.03.24</p>
+                <p class="font-black text-base text-dark">夏油高原スキー場</p>
+              </div>
+              <span class="text-xs font-bold text-brand bg-blue-50 px-2.5 py-1 rounded-lg">6回目</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         3. BIG NEWS: MODEL CHANGE
+    ========================== -->
+    <section class="px-5 py-12 bg-white fade-up text-center border-b border-gray-100 relative overflow-hidden">
+      <div class="inline-flex items-center justify-center bg-accent text-white font-eng text-xs font-black px-4 py-1.5 rounded-full tracking-widest mb-5 animate-pulse-slow shadow-sm">
+        BIG UPDATE 2026-2027
+      </div>
+      
+      <h2 class="text-2xl font-black text-dark leading-snug mb-5 tracking-tight">
+        更新手続きは、もう不要。<br>
+        <span class="text-brand relative inline-block mt-1">
+          「会員制度」を撤廃<svg class="absolute w-full h-3 -bottom-1 left-0 text-yellow-300 opacity-60" viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M0 15 Q 50 0 100 15" stroke="currentColor" stroke-width="6" fill="none"/></svg>
+        </span>します。
+      </h2>
+      
+      <p class="text-sm font-bold text-gray-700 leading-relaxed mb-6 text-left bg-gray-50 p-5 rounded-2xl border border-gray-200">
+        「毎年更新するのが手間」「もっと気軽に滑りたい」<br><br>
+        そんな皆様の声にお応えし、<strong class="text-dark border-b-2 border-brand/30">1年ごとの会員制度と年会費（2,980円）を完全に撤廃</strong>しました。これからは、いつでも好きな時に、ずっとアースホッパーをご利用いただけます。
+      </p>
+
+      <div class="grid grid-cols-2 gap-3.5">
+        <!-- BEFORE -->
+        <div class="bg-white p-4 rounded-2xl border border-gray-200 opacity-65 relative text-left">
+          <p class="text-xs font-black text-gray-500 mb-2 bg-gray-100 inline-block px-2 py-0.5 rounded">昨シーズンまで</p>
+          <p class="font-bold text-sm text-gray-600 line-through mb-1">年会費 ¥2,980</p>
+          <p class="font-bold text-sm text-gray-600 line-through mb-1">1年ごとに更新</p>
+          <p class="font-bold text-sm text-gray-600">マイル還元 25%</p>
+        </div>
+        <!-- AFTER -->
+        <div class="bg-gradient-to-br from-blue-50 to-white p-4 rounded-2xl border-2 border-brand relative shadow-md text-left z-10">
+          <div class="absolute -top-3 -right-2 text-2xl animate-float">✨</div>
+          <p class="text-xs font-black text-white mb-2 bg-brand inline-block px-2 py-0.5 rounded">今シーズンから！</p>
+          <p class="font-black text-lg text-accent mb-0.5 leading-tight">年会費 無料</p>
+          <p class="font-black text-xs text-brand mb-1 border-b border-blue-100 pb-1">ずっとそのまま使える</p>
+          <p class="font-bold text-sm text-dark">マイル還元 20%</p>
+        </div>
+      </div>
+      <p class="text-xs font-bold text-gray-500 mt-4 text-left leading-relaxed">
+        ※制度撤廃に伴い、1回目からすべての方が確実にお得になるようマイル還元率を20%へ調整いたしました。
+      </p>
+    </section>
+
+    <!-- =========================
+         4. BENEFITS
+    ========================== -->
+    <section class="px-5 py-12 bg-gray-50 fade-up border-b border-gray-100">
+      <div class="text-center mb-8">
+        <p class="font-eng text-sm font-bold text-brand tracking-widest mb-1">HOW IT WORKS</p>
+        <h2 class="text-2xl font-black leading-snug text-dark mb-2">
+          もう「元を取る」必要なし。<br>最強に身軽なホッピングを。
+        </h2>
+      </div>
+      
+      <div class="space-y-3.5">
+        <div class="bg-white p-5 rounded-2xl border border-gray-200 flex items-start gap-4">
+          <div class="w-11 h-11 rounded-full bg-blue-50 flex items-center justify-center shrink-0 mt-0.5 text-2xl">💰</div>
+          <div>
+            <p class="font-black text-base text-dark mb-1">遊ぶたびに20%還元</p>
+            <p class="text-sm font-bold text-gray-600 leading-relaxed">決済額の20%がマイルに。割引後の手出し分にもエンドレスで還元されます。</p>
+          </div>
+        </div>
+        
+        <div class="bg-white p-5 rounded-2xl border border-gray-200 flex items-start gap-4">
+          <div class="w-11 h-11 rounded-full bg-blue-50 flex items-center justify-center shrink-0 mt-0.5 text-2xl">🧭</div>
+          <div>
+            <p class="font-black text-base text-dark mb-1">行く場所の縛りなし</p>
+            <p class="text-sm font-bold text-gray-600 leading-relaxed">全国約50のスキー場。早割券やシーズン券のように特定の場所に縛られません。</p>
+          </div>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl border border-gray-200 flex items-start gap-4">
+          <div class="w-11 h-11 rounded-full bg-blue-50 flex items-center justify-center shrink-0 mt-0.5 text-2xl">📱</div>
+          <div>
+            <p class="font-black text-base text-dark mb-1">チケット売り場をスルー</p>
+            <p class="text-sm font-bold text-gray-600 leading-relaxed">LINEからスマホひとつで即発券。朝イチのパウダーを逃しません。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         5. MILE BALANCE
+    ========================== -->
+    <section class="px-5 py-10 bg-white fade-up border-b border-gray-100">
+      <div class="relative bg-gradient-to-br from-dark to-[#333] rounded-3xl p-7 text-center shadow-xl overflow-hidden text-white">
+        <div class="absolute -top-20 -right-20 w-56 h-56 bg-brand opacity-40 rounded-full blur-[50px] pointer-events-none"></div>
+        <div class="absolute -bottom-20 -left-20 w-56 h-56 bg-accent opacity-30 rounded-full blur-[50px] pointer-events-none"></div>
+        
+        <div class="relative z-10">
+          <p class="text-sm font-bold text-gray-300 mb-3 tracking-wide">
+            お持ちのマイルはそのまま引き継がれます
+          </p>
+          
+          <div class="flex items-baseline justify-center gap-2 mb-5">
+            <span class="font-eng text-[64px] leading-none font-black tracking-tighter text-white drop-shadow-lg">8,200</span>
+            <span class="font-eng text-lg font-bold text-gray-400">MILES</span>
+          </div>
+          
+          <div class="glass-panel inline-flex items-center justify-center px-5 py-3 rounded-full w-full">
+            <span class="text-xs font-bold whitespace-nowrap tracking-wide text-dark">有効期限：最終チャージ・利用日から1年間 ✨</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         6. THE HOOK & CTA
+    ========================== -->
+    <section class="px-5 pt-10 text-center fade-up bg-white pb-8">
+      <div class="text-center mb-7 relative">
+        <span class="bg-gradient-to-r from-yellow-400 to-amber-500 text-white shadow-sm font-black text-xs px-3.5 py-1.5 rounded-full mb-3 inline-block tracking-widest">期間限定ミッション</span>
+        <h2 class="text-2xl font-black leading-snug text-dark mb-3">
+          さっそくマイルをもらおう！<br>思い出レビューキャンペーン
+        </h2>
+        <div class="bg-yellow-50/70 p-5 rounded-2xl border border-yellow-200 text-left">
+          <p class="text-sm font-bold text-gray-700 leading-relaxed">
+            新しいアースホッパーを祝して、あなたが昨シーズン訪れたスキー場の感想を教えてください。<br>
+            投稿すると、次回のリフト券にすぐ使える<strong class="text-accent text-base mx-0.5">100マイル</strong>をプレゼント！
+          </p>
+          <p class="text-xs font-bold text-gray-500 mt-2 border-t border-yellow-200/60 pt-2">
+            ※投稿内容を確認の上、12月1日に順次マイルを付与いたします。
+          </p>
+        </div>
+      </div>
+      
+      <!-- アクションエリア -->
+      <div class="bg-white">
+        <label class="flex items-start justify-center gap-3 mb-6 cursor-pointer group p-2 rounded-xl hover:bg-gray-50 transition-colors" for="terms-check">
+          <div class="relative flex items-center justify-center w-7 h-7 shrink-0 mt-0.5">
+            <input type="checkbox" id="terms-check" class="peer appearance-none w-7 h-7 border-2 border-gray-300 rounded bg-white checked:bg-brand checked:border-brand transition-all duration-200 cursor-pointer shadow-sm">
+            <svg class="absolute w-5 h-5 text-white opacity-0 peer-checked:opacity-100 transition-opacity duration-200 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+            </svg>
+          </div>
+          <span class="text-sm font-bold text-gray-700 select-none text-left leading-relaxed">
+            <a href="#" class="text-brand underline underline-offset-4 decoration-2 hover:text-brandDark transition-colors" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();">改定利用規約</a> に同意する
+          </span>
+        </label>
+
+        <button id="cta-btn" class="w-full font-black text-lg py-5 rounded-2xl flex items-center justify-center gap-2 transition-all duration-300 pointer-events-none bg-gray-200 text-gray-400 group overflow-hidden relative">
+          <span class="relative z-10 flex items-center gap-2">
+            レビュー投稿へ進む
+            <svg class="w-6 h-6 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          </span>
+        </button>
+        
+        <p class="text-xs font-bold text-gray-400 mt-4">
+          ※タップするとレビュー入力画面へ移動します
+        </p>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // スクロールアニメーション
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -20px 0px"
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.fade-up').forEach(el => {
+        observer.observe(el);
+      });
+
+      // 利用規約チェックとCTAボタン
+      const termsCheck = document.getElementById('terms-check');
+      const ctaBtn = document.getElementById('cta-btn');
+
+      const updateButtonState = () => {
+        if (termsCheck.checked) {
+          ctaBtn.classList.remove('pointer-events-none', 'bg-gray-200', 'text-gray-400');
+          ctaBtn.classList.add('bg-brand', 'text-white', 'shadow-[0_10px_25px_rgba(0,147,212,0.4)]', 'hover:bg-brandDark', 'active:scale-[0.98]');
+          ctaBtn.querySelector('svg').classList.add('animate-bounce-x');
+        } else {
+          ctaBtn.classList.add('pointer-events-none', 'bg-gray-200', 'text-gray-400');
+          ctaBtn.classList.remove('bg-brand', 'text-white', 'shadow-[0_10px_25px_rgba(0,147,212,0.4)]', 'hover:bg-brandDark', 'active:scale-[0.98]');
+          ctaBtn.querySelector('svg').classList.remove('animate-bounce-x');
+        }
+      };
+
+      termsCheck.addEventListener('change', updateButtonState);
+      updateButtonState();
+    });
+  </script>
+</body>
+</html>
