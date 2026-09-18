@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>ミッションについて - EARTH HOPPER</title>
+  <title>ミッション | Earthhopper</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;600;700;900&display=swap" rel="stylesheet">
   <style>
@@ -16,182 +16,165 @@
 
   <div class="w-full max-w-md bg-white min-h-screen shadow-2xl relative overflow-x-hidden no-scrollbar">
 
-    <!-- ヘッダー -->
-    <div class="sticky top-0 bg-white/90 backdrop-blur-md z-50 border-b border-slate-100 px-4 py-4 flex items-center justify-between">
-      <a href="mypage.html" class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-50 text-slate-600 hover:bg-slate-100 transition">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-      </a>
-      <h1 class="text-base font-bold text-slate-800">ミッションについて</h1>
-      <div class="w-10"></div> <!-- バランス用ダミー -->
-    </div>
+    <div class="px-5 py-8 space-y-8">
 
-    <div class="px-5 py-6 space-y-8">
-
-      <!-- ヒーローセクション -->
       <section class="relative bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rounded-3xl p-6 text-white shadow-lg overflow-hidden">
         <div class="absolute -top-10 -right-10 w-32 h-32 bg-white opacity-10 rounded-full blur-2xl"></div>
         <div class="relative z-10">
-          <span class="inline-block bg-white/20 backdrop-blur-sm text-xs font-bold px-3 py-1 rounded-full mb-3 tracking-wider">
-            Club EARTH HOPPER 限定
+          <span class="inline-block bg-white/20 backdrop-blur-sm text-sm font-bold px-3 py-1.5 rounded-full mb-4 tracking-wider">
+            ミッション
           </span>
-          <h2 class="text-2xl font-black leading-tight mb-3">
+          <h2 class="text-[28px] font-black leading-tight mb-4">
             遊べば遊ぶほど<br>どんどんお得に！
           </h2>
-          <p class="text-sm text-indigo-50 leading-relaxed font-medium">
+          <p class="text-base text-indigo-50 leading-relaxed font-medium mb-5">
             通常の利用マイルに加えて、ミッションを達成するごとに<span class="text-yellow-300 font-bold">ボーナスマイル</span>を獲得。称号を集めるゲーム感覚で、全国のフィールドをホッピングしよう！
           </p>
+          <div class="bg-black/15 backdrop-blur-md rounded-xl p-3.5 border border-white/20">
+            <p class="text-sm text-white font-bold leading-relaxed">
+              ※ミッションの達成判定期間は<span class="text-yellow-300">直近1年間</span>となります。
+            </p>
+          </div>
         </div>
       </section>
 
-      <!-- ミッションリスト -->
       <section class="space-y-6">
 
-        <!-- ① プロホッパー (テーマカラー: Blue) -->
         <div class="bg-white border-2 border-blue-50 rounded-3xl p-1 shadow-sm">
           <div class="bg-blue-50/50 rounded-2xl p-5">
-            <div class="flex items-center gap-3 mb-2">
-              <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-3xl">👑</div>
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-3xl shrink-0">👑</div>
               <div>
-                <span class="text-blue-600 text-xs font-bold tracking-wider">MISSION 01</span>
-                <h3 class="text-lg font-black text-slate-800">プロホッパー</h3>
+                <span class="text-blue-600 text-sm font-bold tracking-wider mb-1 block">MISSION 01</span>
+                <h3 class="text-xl font-black text-slate-800">プロホッパー</h3>
               </div>
             </div>
-            <p class="text-sm text-slate-600 font-medium mb-5 leading-relaxed">
+            <p class="text-base text-slate-600 font-medium mb-5 leading-relaxed">
               アースホッパーを頻繁にご利用いただく方へ！ご利用回数に応じてボーナスマイルが付与されます。
             </p>
             
-            <div class="bg-white rounded-xl p-4 shadow-sm border border-blue-100/50 space-y-1 mb-4">
-              <div class="flex items-center justify-between py-2 border-b border-slate-50">
-                <div class="flex items-center gap-2"><span class="text-xl">🥉</span><span class="font-bold text-slate-700">3回目</span></div>
-                <div class="text-blue-600 font-bold bg-blue-50 px-3 py-1 rounded-full text-sm">+ 300 M</div>
+            <div class="bg-white rounded-xl p-4 shadow-sm border border-blue-100/50 space-y-2 mb-5">
+              <div class="flex items-center justify-between py-2.5 border-b border-slate-50">
+                <div class="flex items-center gap-2"><span class="text-2xl">🥉</span><span class="font-bold text-slate-700 text-base">3回目</span></div>
+                <div class="text-blue-600 font-bold bg-blue-50 px-3.5 py-1.5 rounded-full text-base">+ 300 M</div>
               </div>
-              <div class="flex items-center justify-between py-2 border-b border-slate-50">
-                <div class="flex items-center gap-2"><span class="text-xl">🥈</span><span class="font-bold text-slate-700">6回目</span></div>
-                <div class="text-blue-600 font-bold bg-blue-50 px-3 py-1 rounded-full text-sm">+ 500 M</div>
+              <div class="flex items-center justify-between py-2.5 border-b border-slate-50">
+                <div class="flex items-center gap-2"><span class="text-2xl">🥈</span><span class="font-bold text-slate-700 text-base">6回目</span></div>
+                <div class="text-blue-600 font-bold bg-blue-50 px-3.5 py-1.5 rounded-full text-base">+ 500 M</div>
               </div>
-              <div class="flex items-center justify-between py-2 border-b border-slate-50">
-                <div class="flex items-center gap-2"><span class="text-xl">🥇</span><span class="font-bold text-slate-700">12回目</span></div>
-                <div class="text-blue-600 font-bold bg-blue-50 px-3 py-1 rounded-full text-sm">+ 1,000 M</div>
+              <div class="flex items-center justify-between py-2.5">
+                <div class="flex items-center gap-2"><span class="text-2xl">🥇</span><span class="font-bold text-slate-700 text-base">12回目</span></div>
+                <div class="text-blue-600 font-bold bg-blue-50 px-3.5 py-1.5 rounded-full text-base">+ 1,000 M</div>
               </div>
             </div>
             
-            <div class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl p-3 text-white flex items-center justify-center gap-2 shadow-md">
+            <div class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl p-3.5 text-white flex items-center justify-center gap-2 shadow-md">
               <span class="text-xl">🏆</span>
-              <span class="font-bold text-sm">【プロホッパー】の称号を獲得！</span>
+              <span class="font-bold text-base">【プロホッパー】の称号を獲得！</span>
             </div>
           </div>
         </div>
 
-        <!-- ② エリアホッパー (テーマカラー: Indigo) -->
         <div class="bg-white border-2 border-indigo-50 rounded-3xl p-1 shadow-sm">
           <div class="bg-indigo-50/50 rounded-2xl p-5">
-            <div class="flex items-center gap-3 mb-2">
-              <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-3xl">🗺️</div>
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-3xl shrink-0">🗺️</div>
               <div>
-                <span class="text-indigo-600 text-xs font-bold tracking-wider">MISSION 02</span>
-                <h3 class="text-lg font-black text-slate-800">エリアホッパー</h3>
+                <span class="text-indigo-600 text-sm font-bold tracking-wider mb-1 block">MISSION 02</span>
+                <h3 class="text-xl font-black text-slate-800">エリアホッパー</h3>
               </div>
             </div>
-            <p class="text-sm text-slate-600 font-medium mb-3 leading-relaxed">
+            <p class="text-base text-slate-600 font-medium mb-3 leading-relaxed">
               日本各地の提携施設を巡る旅へ！新たな発見とお気に入り施設との出会いを楽しもう。
             </p>
-            <p class="text-xs text-indigo-500 font-bold mb-5 bg-indigo-100/50 inline-block px-2 py-1 rounded">
-              対象: 北海道・東北 / 関東 / 信越 / 西日本 (全5エリア)
+            <p class="text-sm text-indigo-700 font-bold mb-5 bg-indigo-100/60 inline-block px-3 py-1.5 rounded-lg leading-relaxed">
+              対象: 北海道 / 東北 / 関東 / 信越 / 西日本 (全5エリア)
             </p>
             
-            <div class="bg-white rounded-xl p-4 shadow-sm border border-indigo-100/50 space-y-1 mb-4">
-              <div class="flex items-center justify-between py-2 border-b border-slate-50">
-                <div class="flex items-center gap-2"><span class="text-xl">🥈</span><span class="font-bold text-slate-700">3エリア</span></div>
-                <div class="text-indigo-600 font-bold bg-indigo-50 px-3 py-1 rounded-full text-sm">+ 500 M</div>
+            <div class="bg-white rounded-xl p-4 shadow-sm border border-indigo-100/50 space-y-2 mb-5">
+              <div class="flex items-center justify-between py-2.5 border-b border-slate-50">
+                <div class="flex items-center gap-2"><span class="text-2xl">🥈</span><span class="font-bold text-slate-700 text-base">3エリア</span></div>
+                <div class="text-indigo-600 font-bold bg-indigo-50 px-3.5 py-1.5 rounded-full text-base">+ 500 M</div>
               </div>
-              <div class="flex items-center justify-between py-2">
-                <div class="flex items-center gap-2"><span class="text-xl">🥇</span><span class="font-bold text-slate-700">5エリア (制覇)</span></div>
-                <div class="text-indigo-600 font-bold bg-indigo-50 px-3 py-1 rounded-full text-sm">+ 1,000 M</div>
+              <div class="flex items-center justify-between py-2.5">
+                <div class="flex items-center gap-2"><span class="text-2xl">🥇</span><span class="font-bold text-slate-700 text-base">5エリア (制覇)</span></div>
+                <div class="text-indigo-600 font-bold bg-indigo-50 px-3.5 py-1.5 rounded-full text-base">+ 1,000 M</div>
               </div>
             </div>
             
-            <div class="bg-gradient-to-r from-indigo-500 to-indigo-600 rounded-xl p-3 text-white flex items-center justify-center gap-2 shadow-md">
+            <div class="bg-gradient-to-r from-indigo-500 to-indigo-600 rounded-xl p-3.5 text-white flex items-center justify-center gap-2 shadow-md">
               <span class="text-xl">🏆</span>
-              <span class="font-bold text-sm">【エリアホッパー】の称号を獲得！</span>
+              <span class="font-bold text-base">【エリアホッパー】の称号を獲得！</span>
             </div>
           </div>
         </div>
 
-        <!-- ③ カテゴリホッパー (テーマカラー: Teal) -->
         <div class="bg-white border-2 border-teal-50 rounded-3xl p-1 shadow-sm">
           <div class="bg-teal-50/50 rounded-2xl p-5">
-            <div class="flex items-center gap-3 mb-2">
-              <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-3xl">🏂</div>
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-3xl shrink-0">🏂</div>
               <div>
-                <span class="text-teal-600 text-xs font-bold tracking-wider">MISSION 03</span>
-                <h3 class="text-lg font-black text-slate-800">カテゴリホッパー</h3>
+                <span class="text-teal-600 text-sm font-bold tracking-wider mb-1 block">MISSION 03</span>
+                <h3 class="text-xl font-black text-slate-800">カテゴリホッパー</h3>
               </div>
             </div>
-            <p class="text-sm text-slate-600 font-medium mb-3 leading-relaxed">
+            <p class="text-base text-slate-600 font-medium mb-3 leading-relaxed">
               季節を問わず様々なアーススポーツに挑戦！アウトドアの楽しみ方と可能性を広げよう。
             </p>
-            <p class="text-xs text-teal-600 font-bold mb-5 bg-teal-100/50 inline-block px-2 py-1 rounded">
+            <p class="text-sm text-teal-700 font-bold mb-5 bg-teal-100/60 inline-block px-3 py-1.5 rounded-lg leading-relaxed">
               対象: SNOW / WAVE / BIKE / SUP / CLIMB
             </p>
             
-            <div class="bg-white rounded-xl p-4 shadow-sm border border-teal-100/50 space-y-1 mb-4">
-              <div class="flex items-center justify-between py-2 border-b border-slate-50">
-                <div class="flex items-center gap-2"><span class="text-xl">🥈</span><span class="font-bold text-slate-700">3カテゴリ</span></div>
-                <div class="text-teal-600 font-bold bg-teal-50 px-3 py-1 rounded-full text-sm">+ 500 M</div>
+            <div class="bg-white rounded-xl p-4 shadow-sm border border-teal-100/50 space-y-2 mb-5">
+              <div class="flex items-center justify-between py-2.5 border-b border-slate-50">
+                <div class="flex items-center gap-2"><span class="text-2xl">🥈</span><span class="font-bold text-slate-700 text-base">3カテゴリ</span></div>
+                <div class="text-teal-600 font-bold bg-teal-50 px-3.5 py-1.5 rounded-full text-base">+ 500 M</div>
               </div>
-              <div class="flex items-center justify-between py-2">
-                <div class="flex items-center gap-2"><span class="text-xl">🥇</span><span class="font-bold text-slate-700">5カテゴリ (制覇)</span></div>
-                <div class="text-teal-600 font-bold bg-teal-50 px-3 py-1 rounded-full text-sm">+ 1,000 M</div>
+              <div class="flex items-center justify-between py-2.5">
+                <div class="flex items-center gap-2"><span class="text-2xl">🥇</span><span class="font-bold text-slate-700 text-base">5カテゴリ (制覇)</span></div>
+                <div class="text-teal-600 font-bold bg-teal-50 px-3.5 py-1.5 rounded-full text-base">+ 1,000 M</div>
               </div>
             </div>
             
-            <div class="bg-gradient-to-r from-teal-500 to-teal-600 rounded-xl p-3 text-white flex items-center justify-center gap-2 shadow-md">
+            <div class="bg-gradient-to-r from-teal-500 to-teal-600 rounded-xl p-3.5 text-white flex items-center justify-center gap-2 shadow-md">
               <span class="text-xl">🏆</span>
-              <span class="font-bold text-sm">【カテゴリホッパー】の称号を獲得！</span>
+              <span class="font-bold text-base">【カテゴリホッパー】の称号を獲得！</span>
             </div>
           </div>
         </div>
 
-        <!-- ④ ノマドホッパー (テーマカラー: Orange) -->
         <div class="bg-white border-2 border-orange-50 rounded-3xl p-1 shadow-sm">
           <div class="bg-orange-50/50 rounded-2xl p-5">
-            <div class="flex items-center gap-3 mb-2">
-              <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-3xl">🏕️</div>
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-3xl shrink-0">🏕️</div>
               <div>
-                <span class="text-orange-500 text-xs font-bold tracking-wider">MISSION 04</span>
-                <h3 class="text-lg font-black text-slate-800">ノマドホッパー</h3>
+                <span class="text-orange-600 text-sm font-bold tracking-wider mb-1 block">MISSION 04</span>
+                <h3 class="text-xl font-black text-slate-800">ノマドホッパー</h3>
               </div>
             </div>
-            <p class="text-sm text-slate-600 font-medium mb-5 leading-relaxed">
+            <p class="text-base text-slate-600 font-medium mb-5 leading-relaxed">
               遊ぶなら断然空いている平日がオススメ！平日も自由にアクティビティを楽しむ方を応援。
             </p>
             
-            <div class="bg-white rounded-xl p-4 shadow-sm border border-orange-100/50 space-y-1 mb-4">
-              <div class="flex items-center justify-between py-2 border-b border-slate-50">
-                <div class="flex items-center gap-2"><span class="text-xl">🥈</span><span class="font-bold text-slate-700">平日 3回</span></div>
-                <div class="text-orange-500 font-bold bg-orange-50 px-3 py-1 rounded-full text-sm">+ 500 M</div>
+            <div class="bg-white rounded-xl p-4 shadow-sm border border-orange-100/50 space-y-2 mb-5">
+              <div class="flex items-center justify-between py-2.5 border-b border-slate-50">
+                <div class="flex items-center gap-2"><span class="text-2xl">🥈</span><span class="font-bold text-slate-700 text-base">平日 3回</span></div>
+                <div class="text-orange-600 font-bold bg-orange-50 px-3.5 py-1.5 rounded-full text-base">+ 500 M</div>
               </div>
-              <div class="flex items-center justify-between py-2">
-                <div class="flex items-center gap-2"><span class="text-xl">🥇</span><span class="font-bold text-slate-700">平日 5回</span></div>
-                <div class="text-orange-500 font-bold bg-orange-50 px-3 py-1 rounded-full text-sm">+ 1,000 M</div>
+              <div class="flex items-center justify-between py-2.5">
+                <div class="flex items-center gap-2"><span class="text-2xl">🥇</span><span class="font-bold text-slate-700 text-base">平日 5回</span></div>
+                <div class="text-orange-600 font-bold bg-orange-50 px-3.5 py-1.5 rounded-full text-base">+ 1,000 M</div>
               </div>
             </div>
             
-            <div class="bg-gradient-to-r from-orange-400 to-orange-500 rounded-xl p-3 text-white flex items-center justify-center gap-2 shadow-md">
+            <div class="bg-gradient-to-r from-orange-400 to-orange-500 rounded-xl p-3.5 text-white flex items-center justify-center gap-2 shadow-md">
               <span class="text-xl">🏆</span>
-              <span class="font-bold text-sm">【ノマドホッパー】の称号を獲得！</span>
+              <span class="font-bold text-base">【ノマドホッパー】の称号を獲得！</span>
             </div>
           </div>
         </div>
 
       </section>
-
-      <!-- ボトムアクション -->
-      <div class="pt-4 pb-8">
-        <a href="mypage.html" class="w-full bg-slate-800 text-white font-bold py-4 rounded-xl flex justify-center items-center shadow-lg hover:bg-slate-700 transition text-lg">
-          マイページに戻る
-        </a>
-      </div>
 
     </div>
   </div>
