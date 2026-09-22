@@ -302,16 +302,22 @@
           </span>
         </label>
 
-        <a id="cta-btn" href="review.html" class="w-full font-black text-lg py-5 rounded-2xl flex items-center justify-center gap-2 transition-all duration-300 pointer-events-none bg-gray-200 text-gray-400 group overflow-hidden relative">
-            <span class="relative z-10 flex items-center gap-2">
-              レビュー投稿へ進む
-              <svg class="w-6 h-6 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-            </span>
-        </a>
+        <!-- ボタンエリアをスタック構造に変更 -->
+        <div class="space-y-3">
+          <!-- プライマリCTA：レビュー投稿へ進む -->
+          <a id="cta-btn-review" href="review.html" class="w-full font-black text-lg py-5 rounded-2xl flex items-center justify-center gap-2 transition-all duration-300 pointer-events-none bg-gray-200 text-gray-400 group overflow-hidden relative">
+              <span class="relative z-10 flex items-center gap-2">
+                レビュー投稿へ進む
+                <svg class="w-6 h-6 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+              </span>
+          </a>
+          
+          <!-- セカンダリCTA：マイページへ進む（テキストリンク風） -->
+          <a id="cta-btn-mypage" href="mypage.html" class="w-full font-bold text-sm py-4 rounded-2xl flex items-center justify-center transition-all duration-300 pointer-events-none text-gray-300">
+            今はやめて、マイページへ進む
+          </a>
+        </div>
         
-        <p class="text-sm font-bold text-gray-400 mt-4">
-          ※タップするとレビュー入力画面へ移動します
-        </p>
       </div>
     </section>
 
@@ -338,17 +344,28 @@
       });
 
       const termsCheck = document.getElementById('terms-check');
-      const ctaBtn = document.getElementById('cta-btn');
+      const ctaBtnReview = document.getElementById('cta-btn-review');
+      const ctaBtnMypage = document.getElementById('cta-btn-mypage');
 
       const updateButtonState = () => {
         if (termsCheck.checked) {
-          ctaBtn.classList.remove('pointer-events-none', 'bg-gray-200', 'text-gray-400');
-          ctaBtn.classList.add('bg-brand', 'text-white', 'shadow-[0_10px_25px_rgba(0,147,212,0.4)]', 'hover:bg-brandDark', 'active:scale-[0.98]');
-          ctaBtn.querySelector('svg').classList.add('animate-bounce-x');
+          // レビュー投稿ボタンの有効化（プライマリデザイン）
+          ctaBtnReview.classList.remove('pointer-events-none', 'bg-gray-200', 'text-gray-400');
+          ctaBtnReview.classList.add('bg-brand', 'text-white', 'shadow-[0_10px_25px_rgba(0,147,212,0.4)]', 'hover:bg-brandDark', 'active:scale-[0.98]');
+          ctaBtnReview.querySelector('svg').classList.add('animate-bounce-x');
+          
+          // マイページボタンの有効化（セカンダリデザイン）
+          ctaBtnMypage.classList.remove('pointer-events-none', 'text-gray-300');
+          ctaBtnMypage.classList.add('bg-gray-100', 'text-gray-500', 'hover:text-brand', 'hover:bg-blue-50');
         } else {
-          ctaBtn.classList.add('pointer-events-none', 'bg-gray-200', 'text-gray-400');
-          ctaBtn.classList.remove('bg-brand', 'text-white', 'shadow-[0_10px_25px_rgba(0,147,212,0.4)]', 'hover:bg-brandDark', 'active:scale-[0.98]');
-          ctaBtn.querySelector('svg').classList.remove('animate-bounce-x');
+          // レビュー投稿ボタンの無効化
+          ctaBtnReview.classList.add('pointer-events-none', 'bg-gray-200', 'text-gray-400');
+          ctaBtnReview.classList.remove('bg-brand', 'text-white', 'shadow-[0_10px_25px_rgba(0,147,212,0.4)]', 'hover:bg-brandDark', 'active:scale-[0.98]');
+          ctaBtnReview.querySelector('svg').classList.remove('animate-bounce-x');
+
+          // マイページボタンの無効化
+          ctaBtnMypage.classList.add('pointer-events-none', 'text-gray-300');
+          ctaBtnMypage.classList.remove('bg-gray-100', 'text-gray-500', 'hover:text-brand', 'hover:bg-blue-50');
         }
       };
 
