@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>運営会社 | Earthhopper</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#0093d4',
+            brandDark: '#006bb3',
+            brandLight: '#e0f2fe',
+            dark: '#111827',
+            accent: '#f43f5e',
+            line: '#06C755',
+            lineHover: '#05b34c'
+          },
+          fontFamily: {
+            sans: ['"Noto Sans JP"', 'sans-serif'],
+            eng: ['"Inter"', 'sans-serif'],
+          },
+          boxShadow: {
+            'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+            'glow-brand': '0 0 20px rgba(0, 147, 212, 0.3)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #fafafa;
+      color: #333;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Scroll Reveal Animation */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Image Placeholder Pattern */
+    .bg-pattern {
+      background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+  </style>
+</head>
+<body class="w-full relative overflow-x-hidden font-sans text-gray-800">
+
+  <!-- Header (継承) -->
+  <header class="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-lg border-b border-gray-100 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-5 h-16 md:h-20 flex justify-between items-center">
+      <a href="/hp/" class="flex items-center gap-2 transition-opacity hover:opacity-80">
+        <img src="logo.png" alt="EARTH HOPPER" class="h-12 md:h-15 w-auto object-contain">
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 flex items-center justify-center overflow-hidden bg-gray-900">
+    <div class="absolute inset-0 w-full h-full z-0">
+      <div class="absolute inset-0 bg-gray-800 bg-pattern opacity-30"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-gray-900/40 via-gray-900/60 to-gray-900 z-10"></div>
+    </div>
+
+    <div class="max-w-5xl mx-auto px-5 relative z-20 w-full text-center fade-up">
+      <span class="inline-block font-eng text-xs md:text-sm font-black text-brand bg-white/10 backdrop-blur-md px-5 py-2 rounded-full mb-4 tracking-[0.2em] border border-white/20 text-white">
+        COMPANY
+      </span>
+      <h1 class="text-3xl md:text-5xl font-black text-white leading-tight tracking-tight drop-shadow-xl">
+        運営会社
+      </h1>
+    </div>
+  </section>
+
+  <!-- Mission Section -->
+  <section class="py-20 md:py-32 bg-white fade-up relative overflow-hidden">
+    <!-- 装飾的な背景グラデーション -->
+    <div class="absolute top-0 right-0 w-64 h-64 bg-brand opacity-5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+    
+    <div class="max-w-4xl mx-auto px-5 text-center relative z-10">
+      <p class="font-eng text-sm font-bold text-brand tracking-widest mb-6">MISSION</p>
+      <h2 class="text-2xl md:text-3xl lg:text-4xl font-black text-dark leading-[1.8] md:leading-[1.8]">
+        株式会社アースホッパーは、<br class="hidden md:block">日本の素晴らしい自然と、<br class="hidden md:block">それをフィールドとして遊ぶ楽しさを<br class="hidden md:block">伝えることを使命に事業展開しています。
+      </h2>
+      <div class="w-12 h-1 bg-gradient-to-r from-brand to-brandLight mx-auto mt-12 rounded-full"></div>
+    </div>
+  </section>
+
+  <!-- Business Section -->
+  <section class="py-20 md:py-32 bg-gray-50 fade-up">
+    <div class="max-w-7xl mx-auto px-5">
+      <div class="text-center mb-12 md:mb-20">
+        <span class="bg-dark text-white font-eng text-xs font-black px-4 py-1.5 rounded-full mb-4 inline-block tracking-widest shadow-md">BUSINESS</span>
+        <h2 class="text-3xl md:text-4xl font-black leading-tight text-dark">事業内容</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10">
+        <!-- Platform Business -->
+        <div class="bg-white rounded-3xl p-8 lg:p-10 shadow-sm border border-gray-100 flex flex-col transform transition hover:-translate-y-2 duration-300 hover:shadow-soft">
+          <div class="w-14 h-14 bg-blue-50 text-brand rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-sm">
+            📱
+          </div>
+          <h3 class="font-black text-xl mb-4 text-dark border-b border-gray-100 pb-4">プラットフォーム事業</h3>
+          <p class="text-gray-600 font-medium leading-relaxed mb-8 flex-grow">
+            国内最大級のスキー場リフト券プラットフォーム。購入から発券までLINEアプリで完結、遊べば遊ぶほどお得になるポイ活も。
+          </p>
+          <div class="mt-auto">
+            <a href="https://www.hopper.earth/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full bg-white border-2 border-brand text-brand hover:bg-brand hover:text-white font-bold text-sm py-3 px-6 rounded-full transition-all duration-300 group">
+              サイトを見る
+              <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Sports Business -->
+        <div class="bg-white rounded-3xl p-8 lg:p-10 shadow-sm border border-gray-100 flex flex-col transform transition hover:-translate-y-2 duration-300 hover:shadow-soft">
+          <div class="w-14 h-14 bg-gray-50 text-dark rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-sm">
+            🏂
+          </div>
+          <h3 class="font-black text-xl mb-4 text-dark border-b border-gray-100 pb-4">スポーツ事業</h3>
+          <p class="text-gray-600 font-medium leading-relaxed mb-8 flex-grow">
+            自然の雪山を滑るスタイルを競うフリーライドスキー・スノーボードのワールドカップ「Freeride World Tour」の日本シリーズ運営。
+          </p>
+          <div class="mt-auto">
+            <a href="https://freerideworldtour.jp/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full bg-white border-2 border-dark text-dark hover:bg-dark hover:text-white font-bold text-sm py-3 px-6 rounded-full transition-all duration-300 group">
+              サイトを見る
+              <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Marketing Business -->
+        <div class="bg-white rounded-3xl p-8 lg:p-10 shadow-sm border border-gray-100 flex flex-col transform transition hover:-translate-y-2 duration-300 hover:shadow-soft">
+          <div class="w-14 h-14 bg-rose-50 text-accent rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-sm">
+            📢
+          </div>
+          <h3 class="font-black text-xl mb-4 text-dark border-b border-gray-100 pb-4">マーケティング事業</h3>
+          <p class="text-gray-600 font-medium leading-relaxed mb-8 flex-grow">
+            スキー場の海外プロモーション支援事業や、スキー場を媒体とする広告代理店事業など。
+          </p>
+          <div class="mt-auto">
+            <a href="https://pioneerwork.notion.site/b229d7e197cb416e8b000aaaa0b4607e?v=11779971f03947ab8f47d8d5ccb532fb" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full bg-white border-2 border-accent text-accent hover:bg-accent hover:text-white font-bold text-sm py-3 px-6 rounded-full transition-all duration-300 group">
+              サイトを見る
+              <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Company Overview Section -->
+  <section class="py-20 md:py-32 bg-white fade-up">
+    <div class="max-w-4xl mx-auto px-5">
+      <div class="text-center mb-12 md:mb-16">
+        <span class="bg-gray-100 text-gray-600 font-eng text-xs font-black px-4 py-1.5 rounded-full mb-4 inline-block tracking-widest shadow-sm border border-gray-200">OVERVIEW</span>
+        <h2 class="text-3xl md:text-4xl font-black leading-tight text-dark">会社概要</h2>
+      </div>
+
+      <div class="bg-white rounded-3xl border border-gray-200 shadow-soft overflow-hidden p-6 md:p-10">
+        <dl class="divide-y divide-gray-100">
+          <div class="py-5 flex flex-col md:flex-row md:items-center gap-2 md:gap-8">
+            <dt class="w-full md:w-48 text-sm font-bold text-gray-500 tracking-wider">名称</dt>
+            <dd class="text-base font-bold text-dark flex-1">株式会社アースホッパー</dd>
+          </div>
+          <div class="py-5 flex flex-col md:flex-row md:items-center gap-2 md:gap-8">
+            <dt class="w-full md:w-48 text-sm font-bold text-gray-500 tracking-wider">代表</dt>
+            <dd class="text-base font-bold text-dark flex-1">代表取締役 井上慶</dd>
+          </div>
+          <div class="py-5 flex flex-col md:flex-row md:items-center gap-2 md:gap-8">
+            <dt class="w-full md:w-48 text-sm font-bold text-gray-500 tracking-wider">本店</dt>
+            <dd class="text-base font-bold text-dark flex-1">
+              〒111-0056<br class="md:hidden">
+              東京都台東区小島2-20-11
+            </dd>
+          </div>
+          <div class="py-5 flex flex-col md:flex-row md:items-center gap-2 md:gap-8">
+            <dt class="w-full md:w-48 text-sm font-bold text-gray-500 tracking-wider">連絡</dt>
+            <dd class="text-base font-bold text-dark flex-1">
+              <a href="mailto:info@hopper.earth" class="text-brand hover:text-brandDark transition-colors">info@hopper.earth</a>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- スクロールアニメーション用スクリプト (継承) -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.fade-up').forEach(el => {
+        observer.observe(el);
+      });
+
+      // Simple header hide/show on scroll
+      let lastScroll = 0;
+      const header = document.querySelector('header');
+      window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        if (currentScroll <= 0) {
+          header.classList.remove('-translate-y-full');
+          return;
+        }
+        if (currentScroll > lastScroll && !header.classList.contains('-translate-y-full')) {
+          header.classList.add('-translate-y-full');
+        } else if (currentScroll < lastScroll && header.classList.contains('-translate-y-full')) {
+          header.classList.remove('-translate-y-full');
+        }
+        lastScroll = currentScroll;
+      });
+    });
+  </script>
+</body>
+</html>
