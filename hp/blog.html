@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Earthhopper | ブログ</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#0093d4',
+            brandDark: '#006bb3',
+            brandLight: '#e0f2fe',
+            dark: '#111827',
+            accent: '#f43f5e',
+            line: '#06C755',
+            lineHover: '#05b34c'
+          },
+          fontFamily: {
+            sans: ['"Noto Sans JP"', 'sans-serif'],
+            eng: ['"Inter"', 'sans-serif'],
+          },
+          boxShadow: {
+            'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+            'glow-line': '0 10px 25px -5px rgba(6, 199, 85, 0.4)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #fafafa;
+      color: #333;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Scroll Reveal Animation */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Padding for floating footer */
+    .content-wrapper {
+      padding-bottom: 140px; 
+    }
+    @media (min-width: 768px) {
+      .content-wrapper {
+        padding-bottom: 120px;
+      }
+    }
+    
+    /* Text clamp for excerpts */
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* Placeholder pattern */
+    .bg-pattern {
+      background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+      background-size: 16px 16px;
+    }
+  </style>
+</head>
+<body class="w-full relative overflow-x-hidden content-wrapper font-sans text-gray-800">
+
+  <header class="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-lg border-b border-gray-100 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-5 h-16 md:h-20 flex justify-between items-center">
+      <a href="/hp/" class="flex items-center gap-2 transition-opacity hover:opacity-80">
+        <img src="logo.png" alt="EARTH HOPPER" class="h-8 md:h-10 w-auto object-contain">
+      </a>
+      <!-- 戻るボタンとして機能するホームボタン -->
+      <a href="/hp/" class="px-6 py-2 bg-gray-900 hover:bg-gray-800 text-white font-bold rounded-full text-sm transition-transform hover:scale-105 active:scale-95 shadow-sm flex items-center gap-2">
+        <svg class="w-4 h-4 hidden sm:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+        ホーム
+      </a>
+    </div>
+  </header>
+
+  <main class="pt-24 md:pt-32 pb-20 max-w-7xl mx-auto px-5 relative z-10">
+    
+    <div class="text-center mb-12 md:mb-16 fade-up">
+      <h1 class="text-4xl md:text-5xl font-black text-dark mb-4 tracking-tight drop-shadow-sm">
+        LATEST NEWS & BLOG
+      </h1>
+      <p class="text-base md:text-lg text-gray-500 font-bold max-w-2xl mx-auto">
+        アースホッパーの最新情報、提携施設のレポートやお得なキャンペーン情報をお届けします。
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+
+      <!-- Blog Card 1 (CAMPAIGN) -->
+      <article class="bg-white rounded-3xl shadow-soft border border-gray-100 overflow-hidden transform transition duration-300 hover:-translate-y-2 hover:shadow-xl flex flex-col group fade-up">
+        <a href="#" class="block aspect-video bg-gray-100 relative overflow-hidden">
+          <!-- 【画像挿入位置】ブログのサムネイル画像（例：雪山やアクティビティの風景、キャンペーンバナー） -->
+          <div class="absolute inset-0 bg-pattern opacity-60 transition-transform duration-700 group-hover:scale-105"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <svg class="w-10 h-10 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+          </div>
+        </a>
+        <div class="p-6 md:p-8 flex flex-col flex-grow">
+          <div class="flex justify-between items-center mb-4">
+            <span class="text-xs font-black text-accent bg-rose-50 border border-rose-100 px-3 py-1 rounded-full tracking-wider">CAMPAIGN</span>
+            <span class="text-sm font-eng font-bold text-gray-400">2026.09.25</span>
+          </div>
+          <a href="#" class="block group-hover:text-brand transition-colors">
+            <h3 class="text-xl font-black text-dark leading-snug mb-3">秋のホッピング応援！マイル還元率アップキャンペーン</h3>
+          </a>
+          <p class="text-sm text-gray-500 font-medium leading-relaxed line-clamp-2 mt-auto">
+            期間限定で全対象施設でのチケット購入時のマイル還元率が大幅アップ！この秋、新しいアクティビティに挑戦するチャンスです。
+          </p>
+        </div>
+      </article>
+
+      <!-- Blog Card 2 (REPORT) -->
+      <article class="bg-white rounded-3xl shadow-soft border border-gray-100 overflow-hidden transform transition duration-300 hover:-translate-y-2 hover:shadow-xl flex flex-col group fade-up" style="transition-delay: 100ms;">
+        <a href="#" class="block aspect-video bg-gray-100 relative overflow-hidden">
+          <!-- 【画像挿入位置】ブログのサムネイル画像（例：施設での体験レポート写真、笑顔のユーザー） -->
+          <div class="absolute inset-0 bg-pattern opacity-60 transition-transform duration-700 group-hover:scale-105"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+             <svg class="w-10 h-10 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+          </div>
+        </a>
+        <div class="p-6 md:p-8 flex flex-col flex-grow">
+          <div class="flex justify-between items-center mb-4">
+            <span class="text-xs font-black text-teal-600 bg-teal-50 border border-teal-100 px-3 py-1 rounded-full tracking-wider">REPORT</span>
+            <span class="text-sm font-eng font-bold text-gray-400">2026.09.18</span>
+          </div>
+          <a href="#" class="block group-hover:text-brand transition-colors">
+            <h3 class="text-xl font-black text-dark leading-snug mb-3">【体験レポ】週末は手ぶらで大自然へ！川場リゾート満喫ツアー</h3>
+          </a>
+          <p class="text-sm text-gray-500 font-medium leading-relaxed line-clamp-2 mt-auto">
+            アースホッパーを使って川場リゾートへ行ってきました。現地でのスマホ決済のスムーズさや、絶景ポイントを余すことなくお届けします。
+          </p>
+        </div>
+      </article>
+
+      <!-- Blog Card 3 (NEWS) -->
+      <article class="bg-white rounded-3xl shadow-soft border border-gray-100 overflow-hidden transform transition duration-300 hover:-translate-y-2 hover:shadow-xl flex flex-col group fade-up" style="transition-delay: 200ms;">
+        <a href="#" class="block aspect-video bg-gray-100 relative overflow-hidden">
+          <!-- 【画像挿入位置】ブログのサムネイル画像（例：新しく追加されたスキー場の美しい写真） -->
+          <div class="absolute inset-0 bg-pattern opacity-60 transition-transform duration-700 group-hover:scale-105"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+             <svg class="w-10 h-10 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+          </div>
+        </a>
+        <div class="p-6 md:p-8 flex flex-col flex-grow">
+          <div class="flex justify-between items-center mb-4">
+            <span class="text-xs font-black text-brand bg-blue-50 border border-blue-100 px-3 py-1 rounded-full tracking-wider">NEWS</span>
+            <span class="text-sm font-eng font-bold text-gray-400">2026.09.10</span>
+          </div>
+          <a href="#" class="block group-hover:text-brand transition-colors">
+            <h3 class="text-xl font-black text-dark leading-snug mb-3">新規提携施設追加のお知らせ！北海道エリアがさらに充実</h3>
+          </a>
+          <p class="text-sm text-gray-500 font-medium leading-relaxed line-clamp-2 mt-auto">
+            皆様のご要望にお応えし、北海道エリアの人気スキー場が新たにアースホッパーの対象施設として追加されました。
+          </p>
+        </div>
+      </article>
+      
+      <!-- Blog Card 4 (REPORT) -->
+      <article class="bg-white rounded-3xl shadow-soft border border-gray-100 overflow-hidden transform transition duration-300 hover:-translate-y-2 hover:shadow-xl flex flex-col group fade-up">
+        <a href="#" class="block aspect-video bg-gray-100 relative overflow-hidden">
+          <!-- 【画像挿入位置】ブログのサムネイル画像（例：MTBでトレイルを走る躍動感ある写真） -->
+          <div class="absolute inset-0 bg-pattern opacity-60 transition-transform duration-700 group-hover:scale-105"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+             <svg class="w-10 h-10 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+          </div>
+        </a>
+        <div class="p-6 md:p-8 flex flex-col flex-grow">
+          <div class="flex justify-between items-center mb-4">
+            <span class="text-xs font-black text-teal-600 bg-teal-50 border border-teal-100 px-3 py-1 rounded-full tracking-wider">REPORT</span>
+            <span class="text-sm font-eng font-bold text-gray-400">2026.09.01</span>
+          </div>
+          <a href="#" class="block group-hover:text-brand transition-colors">
+            <h3 class="text-xl font-black text-dark leading-snug mb-3">夏もアースホッパー！大自然を駆け抜けるMTBトレイル体験</h3>
+          </a>
+          <p class="text-sm text-gray-500 font-medium leading-relaxed line-clamp-2 mt-auto">
+            雪山だけじゃない！グリーンシーズンのマウンテンバイクコースで、スリルと爽快感を味わえる最高の1日を過ごしてきました。
+          </p>
+        </div>
+      </article>
+
+      <!-- Blog Card 5 (NEWS) -->
+      <article class="bg-white rounded-3xl shadow-soft border border-gray-100 overflow-hidden transform transition duration-300 hover:-translate-y-2 hover:shadow-xl flex flex-col group fade-up" style="transition-delay: 100ms;">
+        <a href="#" class="block aspect-video bg-gray-100 relative overflow-hidden">
+          <!-- 【画像挿入位置】ブログのサムネイル画像（例：アプリアップデートを知らせるグラフィック） -->
+          <div class="absolute inset-0 bg-pattern opacity-60 transition-transform duration-700 group-hover:scale-105"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+             <svg class="w-10 h-10 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+          </div>
+        </a>
+        <div class="p-6 md:p-8 flex flex-col flex-grow">
+          <div class="flex justify-between items-center mb-4">
+            <span class="text-xs font-black text-brand bg-blue-50 border border-blue-100 px-3 py-1 rounded-full tracking-wider">NEWS</span>
+            <span class="text-sm font-eng font-bold text-gray-400">2026.08.20</span>
+          </div>
+          <a href="#" class="block group-hover:text-brand transition-colors">
+            <h3 class="text-xl font-black text-dark leading-snug mb-3">【アップデート】ミッション機能がさらに楽しくなりました！</h3>
+          </a>
+          <p class="text-sm text-gray-500 font-medium leading-relaxed line-clamp-2 mt-auto">
+            ゲーム感覚でマイルが貯まる「ミッション」機能に新しいバッジと条件を追加。コンプリート目指して全国をホッピングしよう！
+          </p>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- 
+    LINE Conversion CTA
+    Mobile: Fixed bottom full width
+    Desktop: Floating pill shape at the bottom center
+  -->
+  <div class="fixed bottom-0 md:bottom-6 left-0 md:left-1/2 md:-translate-x-1/2 w-full md:w-[600px] z-[100] transition-transform duration-300">
+    <div class="bg-white/95 md:bg-white/90 backdrop-blur-xl md:rounded-[2rem] shadow-[0_-10px_20px_rgba(0,0,0,0.05)] md:shadow-2xl border-t md:border border-gray-200/50 p-4 md:p-3">
+      
+      <!-- Conversion Text Emphasizing No Registration -->
+      <div class="text-center mb-2 md:mb-2">
+        <p class="inline-block text-[11px] md:text-xs font-black text-gray-700 bg-gray-100/80 md:bg-gray-100 px-3 py-1 rounded-full border border-gray-200">
+          ＼ 会員登録などの面倒なステップは一切なし！ ／
+        </p>
+      </div>
+      
+      <!-- LINE Button -->
+      <a href="#" class="w-full bg-line hover:bg-lineHover text-white font-black text-lg md:text-xl py-4 md:py-3.5 rounded-xl md:rounded-full flex items-center justify-center gap-3 transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-glow-line group">
+        <!-- LINE Icon SVG -->
+        <svg class="w-7 h-7 md:w-8 md:h-8 text-white transform group-hover:-rotate-12 transition-transform" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 3.55 8.887 8.441 9.608.683.161.761.642.668 1.139l-.15 1.58c-.1.666.305.867.876.544 0 0 4.67-2.614 7.214-5.467C21.71 15.343 24 13.064 24 10.304zM8.337 13.567H6.182c-.366 0-.663-.297-.663-.663V7.275c0-.366.297-.663.663-.663.366 0 .663.297.663.663v5.628h2.155c.366 0 .663.297.663.663 0 .366-.297.663-.663.663zm3.766 0H10.78c-.366 0-.663-.297-.663-.663V7.275c0-.366.297-.663.663-.663h1.323c.366 0 .663.297.663.663 0 .366-.297.663-.663.663h-.66v1.932h.66c.366 0 .663.297.663.663 0 .366-.297.663-.663.663h-.66v1.996h.66c.366 0 .663.297.663.663 0 .366-.297.663-.663.663zm4.555 0h-1.354c-.347 0-.629-.271-.659-.613l-.004-.05V9.45l-1.921 4.025a.658.658 0 01-.582.378l-.027.001h-.002a.666.666 0 01-.583-.357.514.514 0 01-.013-.024l-.011-.023V7.275c0-.366.297-.663.663-.663.366 0 .663.297.663.663v3.453l1.92-4.024a.658.658 0 01.583-.377l.027-.001.002-.001a.666.666 0 01.583.356c.005.008.009.016.013.024.004.008.007.016.011.024v5.629c0 .366-.297.663-.663.663zm3.905-4.417c0 .366-.297.663-.663.663h-2.155v1.432h2.155c.366 0 .663.297.663.663 0 .366-.297.663-.663.663h-2.818c-.366 0-.663-.297-.663-.663V7.275c0-.366.297-.663.663-.663h2.818c.366 0 .663.297.663.663 0 .366-.297.663-.663.663h-2.155v1.399h2.155c.366 0 .663.297.663.663z"/>
+        </svg>
+        <span class="tracking-wide">LINE公式アカウントを追加</span>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Intersection Observer for scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.fade-up').forEach(el => {
+        observer.observe(el);
+      });
+    });
+  </script>
+</body>
+</html>
