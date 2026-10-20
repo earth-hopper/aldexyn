@@ -2,157 +2,233 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>わくわくルーレット（アイテム追加版）</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>FWT JAPAN SERIES - LOTTERY</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        black: '#111111',
+                        white: '#F9F9F9',
+                        sysgray: '#E5E5E5',
+                    }
+                }
+            }
+        }
+    </script>
     <style>
+        /* テクニカルなグリッド背景 */
         body {
-            font-family: 'M PLUS Rounded 1c', sans-serif;
-            background-color: #fde047;
-            background-image: radial-gradient(#facc15 2px, transparent 2px);
-            background-size: 30px 30px;
+            background-color: #F9F9F9;
+            background-image: 
+                linear-gradient(to right, #E5E5E5 1px, transparent 1px),
+                linear-gradient(to bottom, #E5E5E5 1px, transparent 1px);
+            background-size: 40px 40px;
+            overflow: hidden;
+            touch-action: manipulation; /* ダブルタップズーム等を防止 */
         }
-        .pop-shadow {
-            box-shadow: 6px 6px 0px #1f2937;
+
+        /* 鋭いアニメーション */
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.95) translateY(10px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
         }
-        .pop-active:active {
-            box-shadow: 2px 2px 0px #1f2937;
-            transform: translate(4px, 4px);
+        .anim-pop {
+            animation: popIn 0.3s cubic-bezier(0.0, 0.0, 0.2, 1) forwards;
         }
+
+        /* 四隅のL字マーカー */
+        .corner-tl { position: absolute; top: 0; left: 0; width: 16px; height: 16px; border-top: 2px solid #111; border-left: 2px solid #111; }
+        .corner-tr { position: absolute; top: 0; right: 0; width: 16px; height: 16px; border-top: 2px solid #111; border-right: 2px solid #111; }
+        .corner-bl { position: absolute; bottom: 0; left: 0; width: 16px; height: 16px; border-bottom: 2px solid #111; border-left: 2px solid #111; }
+        .corner-br { position: absolute; bottom: 0; right: 0; width: 16px; height: 16px; border-bottom: 2px solid #111; border-right: 2px solid #111; }
     </style>
 </head>
-<body class="flex items-center justify-center min-h-screen m-0 p-4">
+<body class="text-black h-screen w-screen flex flex-col items-center justify-center select-none">
 
-    <div class="bg-white border-4 border-gray-800 rounded-3xl p-6 md:p-10 w-full max-w-sm pop-shadow flex flex-col items-center text-center">
+    <!-- System Header -->
+    <div class="absolute top-6 left-6 font-mono text-xs tracking-widest flex flex-col gap-1 z-20">
+        <div class="font-bold">// FWT_JAPAN_SERIES</div>
+        <div class="text-gray-500">SYS.LOTTERY_MODULE_V2.0</div>
+        <div class="mt-4 border-l-2 border-black pl-2">TARGET: IPAD_PRO</div>
+    </div>
+
+    <!-- Status Tracker -->
+    <div class="absolute top-6 right-6 font-mono text-xs tracking-widest text-right flex flex-col gap-1 z-20">
+        <div id="status-text" class="font-bold bg-black text-white px-2 py-1 inline-block w-fit ml-auto">STATUS: STANDBY</div>
+        <div id="sys-time" class="text-gray-500 mt-1">00:00:00:000</div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="relative w-11/12 max-w-4xl bg-white border border-black shadow-[8px_8px_0px_0px_rgba(17,17,17,1)] flex items-center justify-center" style="height: 60vh;">
         
-        <h1 class="text-2xl md:text-3xl font-black text-gray-800 mb-6 flex items-center justify-center gap-2">
-            <span>🎉</span> アースホッパー<br>ルーレット
-        </h1>
-        
-        <div class="bg-blue-50 border-4 border-gray-800 rounded-2xl w-full h-40 flex justify-center items-center mb-8 pop-shadow relative overflow-hidden">
-            <div class="absolute top-2 left-2 text-yellow-400 text-xl">✨</div>
-            <div class="absolute bottom-2 right-2 text-yellow-400 text-xl">✨</div>
+        <!-- Corners -->
+        <div class="corner-tl -ml-[1px] -mt-[1px]"></div>
+        <div class="corner-tr -mr-[1px] -mt-[1px]"></div>
+        <div class="corner-bl -ml-[1px] -mb-[1px]"></div>
+        <div class="corner-br -mr-[1px] -mb-[1px]"></div>
+
+        <!-- 01: START SCREEN -->
+        <div id="screen-start" class="w-full h-full flex flex-col items-center justify-center p-8">
+            <div class="font-mono text-sm tracking-widest mb-8 text-gray-500">// 01_INITIALIZE_DRAW</div>
             
-            <span id="numberDisplay" class="text-7xl md:text-8xl font-black text-pink-500 tabular-nums">
-                0
-            </span>
-        </div>
-
-        <button id="toggleBtn" class="w-full py-4 px-6 text-2xl font-black rounded-full border-4 border-gray-800 pop-shadow pop-active transition-all bg-green-400 text-gray-800">
-            スタート
-        </button>
-        <div class="w-full bg-orange-50 border-4 border-gray-800 rounded-2xl p-4 my-6 pop-shadow">
-            <p class="text-sm md:text-base font-bold text-gray-700 mb-3">＼ 何が当たるかな？ ／</p>
-            <div class="flex flex-wrap justify-center gap-2 text-sm md:text-base font-black text-gray-800">
-                <span class="bg-white px-3 py-1.5 rounded-full border-2 border-gray-800">✈️ 最大500マイル</span>
-                <span class="bg-white px-3 py-1.5 rounded-full border-2 border-gray-800 flex items-center gap-1">
-                    💧 ボトル <span class="text-xs text-pink-500">レア!</span>
-                </span>
-                <span class="bg-white px-3 py-1.5 rounded-full border-2 border-gray-800 flex items-center gap-1">
-                    🏷️ ステッカー <span class="text-xs text-pink-500">レア!</span>
-                </span>
+            <button onclick="startLottery()" class="relative group bg-white border-2 border-black px-16 py-8 transition-colors duration-0 active:bg-black active:text-white rounded-none">
+                <div class="absolute top-0 left-0 w-2 h-2 bg-black transition-colors duration-0 group-active:bg-white"></div>
+                <div class="absolute bottom-0 right-0 w-2 h-2 bg-black transition-colors duration-0 group-active:bg-white"></div>
+                <span class="font-black text-4xl md:text-5xl tracking-widest">くじを引く</span>
+            </button>
+            
+            <div class="mt-8 flex gap-4 font-mono text-xs text-gray-400">
+                <span>[1] SHIRTS</span>
+                <span>[2] TUMBLER</span>
+                <span>[3] MILES</span>
             </div>
         </div>
+
+        <!-- 02: ANIMATION SCREEN -->
+        <div id="screen-anim" class="hidden w-full h-full flex flex-col items-center justify-center p-8 bg-black text-white">
+            <div class="font-mono text-sm tracking-widest mb-8 text-gray-400 border-b border-gray-700 pb-1 w-full text-center max-w-md">// 02_PROCESSING_DATA</div>
+            <div class="text-center w-full overflow-hidden">
+                <div id="scramble-display" class="font-mono font-bold text-3xl md:text-5xl tracking-widest break-all px-4">
+                    LOADING...
+                </div>
+                <div class="mt-8 h-1 w-full max-w-md mx-auto bg-gray-800 relative">
+                    <div class="absolute top-0 left-0 h-full bg-white animate-[pulse_0.1s_ease-in-out_infinite]" style="width: 100%;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 03: RESULT SCREEN -->
+        <div id="screen-result" class="hidden w-full h-full flex flex-col items-center justify-center p-8">
+            <div class="font-mono text-sm tracking-widest mb-4 text-gray-500 absolute top-8">// 03_COMPLETED</div>
+            
+            <div class="anim-pop text-center w-full">
+                <p id="result-rank" class="font-mono font-bold text-2xl md:text-4xl mb-4 border border-black inline-block px-4 py-1 tracking-widest"></p>
+                <h3 id="result-name" class="font-black text-4xl md:text-6xl mb-12 tracking-tight leading-tight"></h3>
+                
+                <button onclick="resetLottery()" class="bg-black text-white px-12 py-4 font-bold text-xl md:text-2xl tracking-widest transition-colors duration-0 active:bg-white active:text-black active:border-black border-2 border-black rounded-none">
+                    次へ
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bottom Markers -->
+    <div class="absolute bottom-6 left-6 font-mono text-[10px] text-gray-400">
+        x: 000.00 y: 000.00
+    </div>
+    <div class="absolute bottom-6 right-6 font-mono text-[10px] text-gray-400">
+        POWERED BY EARTHHOPPER
     </div>
 
     <script>
-        // DOM要素の取得
-        const display = document.getElementById('numberDisplay');
-        const btn = document.getElementById('toggleBtn');
-        
-        // 状態管理用の変数
-        let isRunning = false;
-        let intervalId = null;
+        // 景品定義と確率設定 (0.5%, 1.0%, 98.5%)
+        const prizes = [
+            { rank: '1等', name: 'FWT JAPAN シャツ', chance: 0.005 },
+            { rank: '2等', name: 'FWT JAPAN タンブラー', chance: 0.010 },
+            { rank: '3等', name: 'アースホッパー マイル300円分', chance: 0.985 }
+        ];
 
-        // 指定範囲のランダムな整数を生成する基本関数
-        function getRandomInt(min, max) {
-            return Math.floor(Math.random() * (max - min + 1)) + min;
+        let scrambleInterval;
+        const scrambleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*+<>?/';
+
+        // システム時計の更新
+        setInterval(() => {
+            const now = new Date();
+            const h = String(now.getHours()).padStart(2, '0');
+            const m = String(now.getMinutes()).padStart(2, '0');
+            const s = String(now.getSeconds()).padStart(2, '0');
+            const ms = String(now.getMilliseconds()).padStart(3, '0');
+            document.getElementById('sys-time').innerText = `${h}:${m}:${s}:${ms}`;
+        }, 47); // 60fpsに近い適当な間隔で更新
+
+        function setStatus(text, bgClass, textClass) {
+            const el = document.getElementById('status-text');
+            el.innerText = text;
+            el.className = `font-bold px-2 py-1 inline-block w-fit ml-auto ${bgClass} ${textClass}`;
         }
 
-        // 確率を偏らせてランダムな結果を生成する関数
-        function getRouletteResult() {
-            // 0以上1未満のランダムな小数を取得
-            const rand = Math.random();
+        function showScreen(screenId) {
+            document.getElementById('screen-start').classList.add('hidden');
+            document.getElementById('screen-anim').classList.add('hidden');
+            document.getElementById('screen-result').classList.add('hidden');
+            document.getElementById(screenId).classList.remove('hidden');
+        }
+
+        function startLottery() {
+            showScreen('screen-anim');
+            setStatus('STATUS: PROCESSING', 'bg-white border border-black', 'text-black');
             
-            if (rand < 0.02) {
-                // 2% (1/50) の確率でボトル
-                return 'ボトル';
-            } else if (rand < 0.04) {
-                // 2% (1/50) の確率でステッカー
-                return 'ステッカー';
-            } else if (rand < 0.8) {
-                // 76% の確率で 0 〜 300 の数値
-                return getRandomInt(0, 300);
+            const display = document.getElementById('scramble-display');
+            let ticks = 0;
+
+            // テクニカルな文字化けアニメーション
+            scrambleInterval = setInterval(() => {
+                // 4回に1回は景品名を一瞬表示させる、それ以外はランダム文字列
+                if (ticks % 4 === 0) {
+                    const randomPrize = prizes[Math.floor(Math.random() * prizes.length)];
+                    display.innerText = randomPrize.name;
+                } else {
+                    let randomStr = '';
+                    const len = Math.floor(Math.random() * 10) + 10; // 10〜20文字
+                    for(let i=0; i<len; i++) {
+                        randomStr += scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
+                    }
+                    display.innerText = randomStr;
+                }
+                ticks++;
+            }, 60); // 高速で切り替え
+
+            // 2.5秒後に結果判定へ
+            setTimeout(() => {
+                clearInterval(scrambleInterval);
+                determineResult();
+            }, 2500);
+        }
+
+        function determineResult() {
+            const rand = Math.random(); // 0.0(含む) 〜 1.0(含まない) の乱数
+            let finalResult;
+            
+            // 確率判定
+            if (rand < prizes[0].chance) {
+                finalResult = prizes[0]; // 0.000 ~ 0.005 (0.5%)
+            } else if (rand < prizes[0].chance + prizes[1].chance) {
+                finalResult = prizes[1]; // 0.005 ~ 0.015 (1.0%)
             } else {
-                // 残りの 20% の確率で 301 〜 500 の数値
-                return getRandomInt(301, 500);
-            }
-        }
-
-        // 画面の表示を更新する関数
-        function updateDisplay() {
-            const result = getRouletteResult();
-            display.textContent = result;
-            
-            // 回転中は色をカラフルに変える
-            const colors = ['text-pink-500', 'text-blue-500', 'text-orange-500', 'text-purple-500'];
-            let colorClass = colors[0];
-            
-            // 文字列（アイテム）の場合はフォントサイズを小さくし、色はランダム
-            let textSize = "text-7xl md:text-8xl";
-            if (typeof result === 'string') {
-                textSize = "text-5xl md:text-6xl";
-                colorClass = colors[Math.floor(Math.random() * colors.length)];
-            } else {
-                colorClass = colors[result % colors.length];
+                finalResult = prizes[2]; // 0.015 ~ 1.000 (98.5%)
             }
 
-            display.className = `${textSize} font-black tabular-nums ${colorClass}`;
+            displayResult(finalResult);
         }
 
-        // ルーレットを開始する処理
-        function start() {
-            isRunning = true;
-            btn.textContent = 'ストップ！';
+        function displayResult(result) {
+            showScreen('screen-result');
+            setStatus('STATUS: COMPLETED', 'bg-black', 'text-white');
             
-            // ストップボタン時のスタイリング
-            btn.className = "w-full py-4 px-6 text-2xl font-black rounded-full border-4 border-gray-800 pop-shadow pop-active transition-all bg-pink-400 text-gray-800";
+            // 結果のセット
+            document.getElementById('result-rank').innerText = `[ ${result.rank} ]`;
+            document.getElementById('result-name').innerText = result.name;
             
-            // 40ミリ秒ごとに表示を更新
-            intervalId = setInterval(updateDisplay, 100);
+            // アニメーションを再トリガーするためのハック
+            const resultScreen = document.getElementById('screen-result').querySelector('.anim-pop');
+            resultScreen.classList.remove('anim-pop');
+            void resultScreen.offsetWidth; // リフローを強制
+            resultScreen.classList.add('anim-pop');
         }
 
-        // ルーレットを停止する処理
-        function stop() {
-            isRunning = false;
-            clearInterval(intervalId);
-            btn.textContent = 'スタート';
-            
-            // スタートボタン時のスタイリング
-            btn.className = "w-full py-4 px-6 text-2xl font-black rounded-full border-4 border-gray-800 pop-shadow pop-active transition-all bg-green-400 text-gray-800";
-            
-            // ストップ時の表示サイズ調整（アイテム名か数字かで分岐）
-            let textSize = "text-7xl md:text-8xl";
-            if (isNaN(display.textContent)) {
-                textSize = "text-5xl md:text-6xl";
-            }
-            
-            // ストップ時は文字色を赤で固定し、少し拡大して強調する
-            display.className = `${textSize} font-black text-red-500 tabular-nums scale-110 transition-transform duration-300`;
+        function resetLottery() {
+            showScreen('screen-start');
+            setStatus('STATUS: STANDBY', 'bg-black', 'text-white');
         }
-
-        // ボタンのクリックイベント
-        btn.addEventListener('click', () => {
-            if (isRunning) {
-                stop();
-            } else {
-                start();
-            }
-        });
-
-        // 初期表示
-        display.textContent = '0';
     </script>
 </body>
 </html>
