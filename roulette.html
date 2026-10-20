@@ -3,231 +3,432 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>FWT JAPAN SERIES - LOTTERY</title>
+    <title>FWT JAPAN SERIES - 抽選アプリ</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['"Noto Sans JP"', 'sans-serif'],
-                        mono: ['"JetBrains Mono"', 'monospace'],
                     },
                     colors: {
-                        black: '#111111',
-                        white: '#F9F9F9',
-                        sysgray: '#E5E5E5',
+                        black: '#0a0a0a',
+                        white: '#f4f4f5',
+                        fwtorange: '#E85A1C',
+                        charcoal: '#1c1c1e',
                     }
                 }
             }
         }
     </script>
     <style>
-        /* テクニカルなグリッド背景 */
         body {
-            background-color: #F9F9F9;
-            background-image: 
-                linear-gradient(to right, #E5E5E5 1px, transparent 1px),
-                linear-gradient(to bottom, #E5E5E5 1px, transparent 1px);
-            background-size: 40px 40px;
+            background-color: #0a0a0a;
+            color: #f4f4f5;
             overflow: hidden;
-            touch-action: manipulation; /* ダブルタップズーム等を防止 */
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        /* 鋭いアニメーション */
-        @keyframes popIn {
-            0% { opacity: 0; transform: scale(0.95) translateY(10px); }
-            100% { opacity: 1; transform: scale(1) translateY(0); }
-        }
-        .anim-pop {
-            animation: popIn 0.3s cubic-bezier(0.0, 0.0, 0.2, 1) forwards;
+        /* 幾何学的な背景パターン */
+        .tech-grid {
+            background-image: 
+                linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 60px 60px;
         }
 
-        /* 四隅のL字マーカー */
-        .corner-tl { position: absolute; top: 0; left: 0; width: 16px; height: 16px; border-top: 2px solid #111; border-left: 2px solid #111; }
-        .corner-tr { position: absolute; top: 0; right: 0; width: 16px; height: 16px; border-top: 2px solid #111; border-right: 2px solid #111; }
-        .corner-bl { position: absolute; bottom: 0; left: 0; width: 16px; height: 16px; border-bottom: 2px solid #111; border-left: 2px solid #111; }
-        .corner-br { position: absolute; bottom: 0; right: 0; width: 16px; height: 16px; border-bottom: 2px solid #111; border-right: 2px solid #111; }
+        /* 脈打つエフェクト */
+        @keyframes intensePulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(232, 90, 28, 0.7); }
+            50% { transform: scale(1.02); box-shadow: 0 0 0 30px rgba(232, 90, 28, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(232, 90, 28, 0); }
+        }
+        .anim-pulse-btn {
+            animation: intensePulse 2s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        /* 激しい振動（抽選中） */
+        @keyframes hardShake {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            20% { transform: translate(-3px, 3px) rotate(-1deg); }
+            40% { transform: translate(3px, -2px) rotate(1deg); }
+            60% { transform: translate(-3px, -3px) rotate(-1deg); }
+            80% { transform: translate(3px, 3px) rotate(1deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+        .anim-shake {
+            animation: hardShake 0.15s infinite;
+        }
+
+        /* テキストのグリッチ/フラッシュ風 */
+        @keyframes flashText {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .anim-flash {
+            animation: flashText 0.1s infinite;
+        }
+
+        /* 結果表示のズームイン */
+        @keyframes slamIn {
+            0% { opacity: 0; transform: scale(1.5); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        .anim-slam {
+            animation: slamIn 0.3s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+        }
+
+        /* スラッシュ装飾 */
+        .slash-bg {
+            background: repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.03) 10px,
+                rgba(255,255,255,0.03) 20px
+            );
+        }
     </style>
 </head>
-<body class="text-black h-screen w-screen flex flex-col items-center justify-center select-none">
+<body class="w-screen h-screen flex flex-col items-center justify-center select-none tech-grid relative">
 
-    <!-- System Header -->
-    <div class="absolute top-6 left-6 font-mono text-xs tracking-widest flex flex-col gap-1 z-20">
-        <div class="font-bold">// FWT_JAPAN_SERIES</div>
-        <div class="text-gray-500">SYS.LOTTERY_MODULE_V2.0</div>
-        <div class="mt-4 border-l-2 border-black pl-2">TARGET: IPAD_PRO</div>
+    <!-- Canvas for Particles (最前面) -->
+    <canvas id="particle-canvas" class="absolute inset-0 z-50 pointer-events-none"></canvas>
+
+    <!-- UI Header -->
+    <div class="absolute top-6 left-6 z-40 flex flex-col gap-1">
+        <div class="font-black text-xl tracking-widest border-l-4 border-fwtorange pl-3 text-white">
+            FWT JAPAN SERIES
+        </div>
+        <div class="text-xs tracking-widest text-gray-500 pl-4">
+            公式抽選システム
+        </div>
+    </div>
+    
+    <div class="absolute top-6 right-6 z-40">
+        <div id="status-indicator" class="border border-gray-700 bg-black px-4 py-2 text-xs font-bold tracking-widest text-gray-400">
+            状態: 待機中
+        </div>
     </div>
 
-    <!-- Status Tracker -->
-    <div class="absolute top-6 right-6 font-mono text-xs tracking-widest text-right flex flex-col gap-1 z-20">
-        <div id="status-text" class="font-bold bg-black text-white px-2 py-1 inline-block w-fit ml-auto">STATUS: STANDBY</div>
-        <div id="sys-time" class="text-gray-500 mt-1">00:00:00:000</div>
-    </div>
-
-    <!-- Main Container -->
-    <div class="relative w-11/12 max-w-4xl bg-white border border-black shadow-[8px_8px_0px_0px_rgba(17,17,17,1)] flex items-center justify-center" style="height: 60vh;">
+    <!-- メインコンテナ -->
+    <div id="main-container" class="relative w-full h-full flex items-center justify-center transition-colors duration-300 z-10">
         
-        <!-- Corners -->
-        <div class="corner-tl -ml-[1px] -mt-[1px]"></div>
-        <div class="corner-tr -mr-[1px] -mt-[1px]"></div>
-        <div class="corner-bl -ml-[1px] -mb-[1px]"></div>
-        <div class="corner-br -mr-[1px] -mb-[1px]"></div>
-
-        <!-- 01: START SCREEN -->
-        <div id="screen-start" class="w-full h-full flex flex-col items-center justify-center p-8">
-            <div class="font-mono text-sm tracking-widest mb-8 text-gray-500">// 01_INITIALIZE_DRAW</div>
-            
-            <button onclick="startLottery()" class="relative group bg-white border-2 border-black px-16 py-8 transition-colors duration-0 active:bg-black active:text-white rounded-none">
-                <div class="absolute top-0 left-0 w-2 h-2 bg-black transition-colors duration-0 group-active:bg-white"></div>
-                <div class="absolute bottom-0 right-0 w-2 h-2 bg-black transition-colors duration-0 group-active:bg-white"></div>
-                <span class="font-black text-4xl md:text-5xl tracking-widest">くじを引く</span>
-            </button>
-            
-            <div class="mt-8 flex gap-4 font-mono text-xs text-gray-400">
-                <span>[1] SHIRTS</span>
-                <span>[2] TUMBLER</span>
-                <span>[3] MILES</span>
-            </div>
-        </div>
-
-        <!-- 02: ANIMATION SCREEN -->
-        <div id="screen-anim" class="hidden w-full h-full flex flex-col items-center justify-center p-8 bg-black text-white">
-            <div class="font-mono text-sm tracking-widest mb-8 text-gray-400 border-b border-gray-700 pb-1 w-full text-center max-w-md">// 02_PROCESSING_DATA</div>
-            <div class="text-center w-full overflow-hidden">
-                <div id="scramble-display" class="font-mono font-bold text-3xl md:text-5xl tracking-widest break-all px-4">
-                    LOADING...
-                </div>
-                <div class="mt-8 h-1 w-full max-w-md mx-auto bg-gray-800 relative">
-                    <div class="absolute top-0 left-0 h-full bg-white animate-[pulse_0.1s_ease-in-out_infinite]" style="width: 100%;"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 03: RESULT SCREEN -->
-        <div id="screen-result" class="hidden w-full h-full flex flex-col items-center justify-center p-8">
-            <div class="font-mono text-sm tracking-widest mb-4 text-gray-500 absolute top-8">// 03_COMPLETED</div>
-            
-            <div class="anim-pop text-center w-full">
-                <p id="result-rank" class="font-mono font-bold text-2xl md:text-4xl mb-4 border border-black inline-block px-4 py-1 tracking-widest"></p>
-                <h3 id="result-name" class="font-black text-4xl md:text-6xl mb-12 tracking-tight leading-tight"></h3>
+        <!-- 画面1: スタート -->
+        <div id="screen-start" class="absolute inset-0 flex flex-col items-center justify-center w-full h-full slash-bg">
+            <button onclick="startLottery()" class="group relative w-3/4 max-w-3xl h-1/2 flex flex-col items-center justify-center bg-white border-4 border-white text-black transition-all duration-100 active:scale-95 active:bg-gray-200 anim-pulse-btn rounded-none shadow-[0_0_50px_rgba(255,255,255,0.1)] hover:shadow-[0_0_50px_rgba(232,90,28,0.3)] cursor-pointer">
+                <div class="absolute top-4 left-4 w-4 h-4 border-t-4 border-l-4 border-black"></div>
+                <div class="absolute bottom-4 right-4 w-4 h-4 border-b-4 border-r-4 border-black"></div>
                 
-                <button onclick="resetLottery()" class="bg-black text-white px-12 py-4 font-bold text-xl md:text-2xl tracking-widest transition-colors duration-0 active:bg-white active:text-black active:border-black border-2 border-black rounded-none">
-                    次へ
+                <span class="font-black text-5xl md:text-7xl tracking-tighter mb-4 text-center leading-tight">
+                    画面をタッチして<br><span class="text-fwtorange">くじを引く</span>
+                </span>
+                <span class="font-bold text-sm md:text-base tracking-widest text-gray-500 mt-6 border-t border-gray-300 pt-4 px-12">
+                    タップまたはスワイプで開始
+                </span>
+            </button>
+        </div>
+
+        <!-- 画面2: 抽選中（スピン） -->
+        <div id="screen-spin" class="hidden absolute inset-0 flex flex-col items-center justify-center w-full h-full bg-black text-white">
+            <div class="anim-shake flex flex-col items-center w-full px-4">
+                <div class="font-bold text-fwtorange text-xl md:text-2xl tracking-widest mb-8 border-b-2 border-fwtorange pb-2">
+                    抽選中...
+                </div>
+                <div id="spin-text" class="font-black text-6xl md:text-8xl tracking-tighter text-center leading-none anim-flash break-keep w-full">
+                    FWT JAPANシャツ
+                </div>
+                <div class="mt-12 flex gap-2">
+                    <div class="w-16 h-2 bg-fwtorange"></div>
+                    <div class="w-4 h-2 bg-white"></div>
+                    <div class="w-2 h-2 bg-white"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 画面3: 結果 -->
+        <div id="screen-result" class="hidden absolute inset-0 flex flex-col items-center justify-center w-full h-full">
+            <div id="result-content" class="flex flex-col items-center justify-center z-20 text-center px-4">
+                
+                <!-- 等数ラベル -->
+                <div id="result-rank-container" class="mb-6 inline-block bg-black px-8 py-2 border-2 border-black">
+                    <span id="result-rank" class="font-black text-3xl md:text-5xl tracking-widest text-white"></span>
+                </div>
+                
+                <!-- 景品名 -->
+                <h2 id="result-name" class="font-black text-5xl md:text-8xl tracking-tighter leading-tight mb-16 drop-shadow-2xl"></h2>
+                
+                <!-- 次へボタン -->
+                <button onclick="resetLottery()" class="bg-black text-white px-12 py-5 font-bold text-xl tracking-widest border-2 border-transparent transition-all duration-0 active:bg-white active:text-black active:border-black rounded-none flex items-center gap-4">
+                    <span>次の抽選へ</span>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </button>
+                
             </div>
         </div>
 
     </div>
 
-    <!-- Bottom Markers -->
-    <div class="absolute bottom-6 left-6 font-mono text-[10px] text-gray-400">
-        x: 000.00 y: 000.00
-    </div>
-    <div class="absolute bottom-6 right-6 font-mono text-[10px] text-gray-400">
-        POWERED BY EARTHHOPPER
+    <!-- Footer -->
+    <div class="absolute bottom-6 left-6 right-6 flex justify-between items-end z-40 pointer-events-none">
+        <div class="w-24 h-4 bg-fwtorange"></div>
+        <div class="font-bold text-xs tracking-widest text-gray-500 border-r-4 border-gray-500 pr-3">
+            協賛: アースホッパー
+        </div>
     </div>
 
     <script>
-        // 景品定義と確率設定 (0.5%, 1.0%, 98.5%)
+        // --- 設定・確率データ ---
         const prizes = [
-            { rank: '1等', name: 'FWT JAPAN シャツ', chance: 0.005 },
-            { rank: '2等', name: 'FWT JAPAN タンブラー', chance: 0.010 },
-            { rank: '3等', name: 'アースホッパー マイル300円分', chance: 0.985 }
+            { 
+                rank: '1等', 
+                name: 'FWT JAPANシャツ', 
+                chance: 0.005, 
+                bgColor: 'bg-fwtorange', 
+                textColor: 'text-black',
+                rankBg: 'bg-black',
+                rankText: 'text-white',
+                particleColors: ['#ffffff', '#000000']
+            },
+            { 
+                rank: '2等', 
+                name: 'FWT JAPAN\nタンブラー', 
+                chance: 0.010, 
+                bgColor: 'bg-white', 
+                textColor: 'text-black',
+                rankBg: 'bg-black',
+                rankText: 'text-white',
+                particleColors: ['#E85A1C', '#000000', '#cccccc']
+            },
+            { 
+                rank: '3等', 
+                name: 'アースホッパー\nマイル 300円分', 
+                chance: 0.985, 
+                bgColor: 'bg-charcoal', 
+                textColor: 'text-white',
+                rankBg: 'bg-fwtorange',
+                rankText: 'text-white',
+                particleColors: ['#E85A1C', '#ffffff', '#555555']
+            }
         ];
 
-        let scrambleInterval;
-        const scrambleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*+<>?/';
+        // UI状態管理
+        const UI = {
+            container: document.getElementById('main-container'),
+            start: document.getElementById('screen-start'),
+            spin: document.getElementById('screen-spin'),
+            result: document.getElementById('screen-result'),
+            spinText: document.getElementById('spin-text'),
+            resultContent: document.getElementById('result-content'),
+            resultRank: document.getElementById('result-rank'),
+            resultRankContainer: document.getElementById('result-rank-container'),
+            resultName: document.getElementById('result-name'),
+            status: document.getElementById('status-indicator')
+        };
 
-        // システム時計の更新
-        setInterval(() => {
-            const now = new Date();
-            const h = String(now.getHours()).padStart(2, '0');
-            const m = String(now.getMinutes()).padStart(2, '0');
-            const s = String(now.getSeconds()).padStart(2, '0');
-            const ms = String(now.getMilliseconds()).padStart(3, '0');
-            document.getElementById('sys-time').innerText = `${h}:${m}:${s}:${ms}`;
-        }, 47); // 60fpsに近い適当な間隔で更新
+        let spinInterval;
+        let isDrawing = false;
 
-        function setStatus(text, bgClass, textClass) {
-            const el = document.getElementById('status-text');
-            el.innerText = text;
-            el.className = `font-bold px-2 py-1 inline-block w-fit ml-auto ${bgClass} ${textClass}`;
+        function updateStatus(text, isActive = false) {
+            UI.status.innerText = `状態: ${text}`;
+            if (isActive) {
+                UI.status.classList.add('bg-fwtorange', 'text-black', 'border-fwtorange');
+                UI.status.classList.remove('bg-black', 'text-gray-400', 'border-gray-700');
+            } else {
+                UI.status.classList.add('bg-black', 'text-gray-400', 'border-gray-700');
+                UI.status.classList.remove('bg-fwtorange', 'text-black', 'border-fwtorange');
+            }
         }
 
-        function showScreen(screenId) {
-            document.getElementById('screen-start').classList.add('hidden');
-            document.getElementById('screen-anim').classList.add('hidden');
-            document.getElementById('screen-result').classList.add('hidden');
-            document.getElementById(screenId).classList.remove('hidden');
-        }
-
+        // --- 抽選ロジック ---
         function startLottery() {
-            showScreen('screen-anim');
-            setStatus('STATUS: PROCESSING', 'bg-white border border-black', 'text-black');
-            
-            const display = document.getElementById('scramble-display');
-            let ticks = 0;
+            if (isDrawing) return;
+            isDrawing = true;
 
-            // テクニカルな文字化けアニメーション
-            scrambleInterval = setInterval(() => {
-                // 4回に1回は景品名を一瞬表示させる、それ以外はランダム文字列
-                if (ticks % 4 === 0) {
-                    const randomPrize = prizes[Math.floor(Math.random() * prizes.length)];
-                    display.innerText = randomPrize.name;
-                } else {
-                    let randomStr = '';
-                    const len = Math.floor(Math.random() * 10) + 10; // 10〜20文字
-                    for(let i=0; i<len; i++) {
-                        randomStr += scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
-                    }
-                    display.innerText = randomStr;
-                }
-                ticks++;
-            }, 60); // 高速で切り替え
+            // 画面切替
+            UI.start.classList.add('hidden');
+            UI.spin.classList.remove('hidden');
+            updateStatus('抽選処理中', true);
 
-            // 2.5秒後に結果判定へ
+            // 緊張感を煽るテキストフラッシュ
+            let tick = 0;
+            spinInterval = setInterval(() => {
+                // ダミーで景品名を高速切り替え
+                const randomPrize = prizes[Math.floor(Math.random() * prizes.length)];
+                // 改行を<br>に変換して表示
+                UI.spinText.innerHTML = randomPrize.name.replace(/\n/g, '<br>');
+                tick++;
+            }, 80);
+
+            // 2.5秒後に結果発表
             setTimeout(() => {
-                clearInterval(scrambleInterval);
+                clearInterval(spinInterval);
                 determineResult();
             }, 2500);
         }
 
         function determineResult() {
-            const rand = Math.random(); // 0.0(含む) 〜 1.0(含まない) の乱数
+            const rand = Math.random();
             let finalResult;
             
-            // 確率判定
             if (rand < prizes[0].chance) {
-                finalResult = prizes[0]; // 0.000 ~ 0.005 (0.5%)
+                finalResult = prizes[0]; // 0.5%
             } else if (rand < prizes[0].chance + prizes[1].chance) {
-                finalResult = prizes[1]; // 0.005 ~ 0.015 (1.0%)
+                finalResult = prizes[1]; // 1.0%
             } else {
-                finalResult = prizes[2]; // 0.015 ~ 1.000 (98.5%)
+                finalResult = prizes[2]; // 98.5%
             }
 
-            displayResult(finalResult);
+            showResult(finalResult);
         }
 
-        function displayResult(result) {
-            showScreen('screen-result');
-            setStatus('STATUS: COMPLETED', 'bg-black', 'text-white');
+        function showResult(result) {
+            UI.spin.classList.add('hidden');
+            UI.result.classList.remove('hidden');
+            updateStatus('結果表示', true);
+
+            // 背景色とテキスト色のリセット＆適用
+            UI.container.className = `relative w-full h-full flex items-center justify-center transition-colors duration-200 z-10 ${result.bgColor}`;
+            UI.resultName.className = `font-black text-5xl md:text-8xl tracking-tighter leading-tight mb-16 drop-shadow-2xl ${result.textColor}`;
             
-            // 結果のセット
-            document.getElementById('result-rank').innerText = `[ ${result.rank} ]`;
-            document.getElementById('result-name').innerText = result.name;
-            
-            // アニメーションを再トリガーするためのハック
-            const resultScreen = document.getElementById('screen-result').querySelector('.anim-pop');
-            resultScreen.classList.remove('anim-pop');
-            void resultScreen.offsetWidth; // リフローを強制
-            resultScreen.classList.add('anim-pop');
+            UI.resultRankContainer.className = `mb-6 inline-block px-8 py-2 border-4 ${result.rankBg === 'bg-black' ? 'border-black' : 'border-transparent'} ${result.rankBg}`;
+            UI.resultRank.className = `font-black text-3xl md:text-5xl tracking-widest ${result.rankText}`;
+
+            // テキスト挿入
+            UI.resultRank.innerText = result.rank;
+            UI.resultName.innerHTML = result.name.replace(/\n/g, '<br>');
+
+            // ドン！というアニメーション
+            UI.resultContent.classList.remove('anim-slam');
+            void UI.resultContent.offsetWidth; // リフロー強制
+            UI.resultContent.classList.add('anim-slam');
+
+            // パーティクル発射
+            fireParticles(result.particleColors);
         }
 
         function resetLottery() {
-            showScreen('screen-start');
-            setStatus('STATUS: STANDBY', 'bg-black', 'text-white');
+            isDrawing = false;
+            UI.result.classList.add('hidden');
+            UI.start.classList.remove('hidden');
+            
+            // 背景リセット
+            UI.container.className = 'relative w-full h-full flex items-center justify-center transition-colors duration-300 z-10';
+            updateStatus('待機中', false);
+
+            // パーティクルクリア
+            particles = [];
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+
+        // --- Canvas パーティクルシステム (幾何学・氷の破片風) ---
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let animationFrameId;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor(x, y, colors) {
+                this.x = x;
+                this.y = y;
+                // 爆発的な速度
+                const angle = Math.random() * Math.PI * 2;
+                const speed = Math.random() * 25 + 10;
+                this.vx = Math.cos(angle) * speed;
+                this.vy = Math.sin(angle) * speed;
+                
+                this.size = Math.random() * 30 + 10;
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                
+                this.rotation = Math.random() * 360;
+                this.spin = (Math.random() - 0.5) * 20; // 鋭い回転
+                
+                this.life = 1.0;
+                this.decay = Math.random() * 0.015 + 0.01; // 寿命
+                this.gravity = 0.8;
+                
+                // 形状 (三角形=3, ひし形=4)
+                this.sides = Math.random() > 0.5 ? 3 : 4;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.vy += this.gravity; // 重力
+                this.vx *= 0.96; // 空気抵抗
+                this.vy *= 0.96;
+                this.rotation += this.spin;
+                this.life -= this.decay;
+            }
+
+            draw(ctx) {
+                if (this.life <= 0) return;
+                
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation * Math.PI / 180);
+                
+                ctx.beginPath();
+                // 鋭角なポリゴンを描画
+                for (let i = 0; i < this.sides; i++) {
+                    const angle = (i / this.sides) * Math.PI * 2;
+                    // ひし形の場合は頂点の距離を交互に変えて鋭くする
+                    const radius = (this.sides === 4 && i % 2 !== 0) ? this.size * 0.3 : this.size;
+                    const px = Math.cos(angle) * radius;
+                    const py = Math.sin(angle) * radius;
+                    if (i === 0) ctx.moveTo(px, py);
+                    else ctx.lineTo(px, py);
+                }
+                ctx.closePath();
+                
+                ctx.globalAlpha = this.life;
+                ctx.fillStyle = this.color;
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        function fireParticles(colors) {
+            particles = [];
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            
+            // 80個の破片を生成
+            for (let i = 0; i < 80; i++) {
+                particles.push(new Particle(centerX, centerY, colors));
+            }
+            
+            if (!animationFrameId) {
+                animateParticles();
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            let activeParticles = false;
+            particles.forEach(p => {
+                p.update();
+                p.draw(ctx);
+                if (p.life > 0) activeParticles = true;
+            });
+
+            if (activeParticles) {
+                animationFrameId = requestAnimationFrame(animateParticles);
+            } else {
+                animationFrameId = null;
+            }
         }
     </script>
 </body>
