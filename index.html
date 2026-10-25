@@ -1,25 +1,23 @@
 <!DOCTYPE html>
 <html lang="ja" class="scroll-smooth">
 <head>
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-DRHNN9P6M9"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-DRHNN9P6M9');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>オルディザイン | M&Aブティック</title>
-    <meta name="description" content="ALDEXYN（オルディザイン）は、M&Aアドバイザリー、プライベートエクイティ、コーポレートファイナンスを通じて、お客様の長期的な複利成長を共創するグローバル金融ブティックです。">
+    <title>オルディザイン株式会社 | 独立系M&Aブティック・アドバイザリー</title>
+    <meta name="description" content="オルディザイン株式会社は、M&Aアドバイザリー、プライベートエクイティ、コーポレートファイナンスを通じて企業の持続的成長と最適な資本戦略を支援します。">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;600&family=Noto+Serif+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,200,0,0" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -27,25 +25,18 @@
             theme: {
                 extend: {
                     colors: {
-                        background: '#FAFAFA', // より透明感のあるクリーンなパールホワイト
-                        surface: 'rgba(255, 255, 255, 0.85)', 
-                        accent: '#B8904D', // 視認性と高級感を両立したリッチゴールド
-                        accentDark: '#8A6A32',
-                        textMain: '#232220', // 温かみのあるリッチなチャコールブラック
-                        textSub: '#68645D',
-                        borderSub: 'rgba(184, 144, 77, 0.2)', 
+                        background: '#FFFFFF',
+                        surface: '#F8FAFC',
+                        accent: '#bc002d',
+                        accentHover: '#990024',
+                        textMain: '#1E293B',
+                        textSub: '#475569',
+                        borderSub: '#E2E8F0',
                     },
                     fontFamily: {
                         sans: ['"Noto Sans JP"', 'sans-serif'],
                         serif: ['"Noto Serif JP"', 'serif'],
                         cinzel: ['"Cinzel"', 'serif'],
-                    },
-                    letterSpacing: {
-                        widest: '.25em',
-                        superwide: '.4em',
-                    },
-                    transitionTimingFunction: {
-                        'apple': 'cubic-bezier(0.22, 1, 0.36, 1)',
                     }
                 }
             }
@@ -54,676 +45,355 @@
 
     <style>
         body {
-            background-color: #FAFAFA;
-            color: #232220;
+            background-color: #FFFFFF;
+            color: #1E293B;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden;
-            /* より複雑で上品な多層グラデーションベース */
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(255, 255, 255, 1) 0px, transparent 60%),
-                radial-gradient(at 100% 0%, rgba(245, 240, 230, 0.8) 0px, transparent 60%),
-                radial-gradient(at 100% 100%, rgba(255, 255, 255, 1) 0px, transparent 60%),
-                radial-gradient(at 0% 100%, rgba(242, 238, 228, 0.8) 0px, transparent 60%);
         }
 
-        /* --- Background Effects (Depth & Light) --- */
-        #particle-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -20;
-            pointer-events: none;
-        }
-
-        /* Ambient Orbs: より立体的で複雑な光の交差を演出 */
-        .ambient-orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(140px);
-            z-index: -10;
-            pointer-events: none;
-            mix-blend-mode: multiply;
-        }
-        .orb-1 {
-            width: 80vw; height: 80vw;
-            max-width: 900px; max-height: 900px;
-            background: radial-gradient(circle, rgba(184, 144, 77, 0.15), transparent 70%);
-            top: -20%; left: -10%;
-            animation: orbFloat1 35s infinite alternate ease-in-out;
-        }
-        .orb-2 {
-            width: 70vw; height: 70vw;
-            max-width: 800px; max-height: 800px;
-            background: radial-gradient(circle, rgba(235, 225, 210, 0.6), transparent 70%);
-            bottom: -20%; right: -10%;
-            animation: orbFloat2 40s infinite alternate-reverse ease-in-out;
-            mix-blend-mode: normal;
-        }
-        .orb-3 {
-            width: 50vw; height: 50vw;
-            max-width: 600px; max-height: 600px;
-            background: radial-gradient(circle, rgba(197, 180, 150, 0.1), transparent 70%);
-            top: 40%; left: 40%;
-            animation: orbFloat3 30s infinite alternate ease-in-out;
-        }
-
-        @keyframes orbFloat1 {
-            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-            100% { transform: translate(8vw, 12vh) scale(1.1) rotate(10deg); }
-        }
-        @keyframes orbFloat2 {
-            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-            100% { transform: translate(-10vw, -10vh) scale(1.15) rotate(-15deg); }
-        }
-        @keyframes orbFloat3 {
-            0% { transform: translate(0, 0) scale(0.9); }
-            100% { transform: translate(-5vw, 15vh) scale(1.05); }
-        }
-
-        /* --- Smooth Reveal Animations --- */
-        .reveal-up {
+        /* --- Animations --- */
+        .reveal {
             opacity: 0;
-            transform: translateY(40px);
-            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+            transform: translateY(24px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .reveal-up.active {
+        .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
-        .reveal-scale {
-            opacity: 0;
-            transform: translateY(30px) scale(0.97);
-            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .reveal-scale.active {
-            opacity: 1;
-            transform: translateY(0) scale(1);
+
+        @keyframes heroFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        /* --- Next-Gen Glassmorphism & Spotlight Card --- */
-        .glass-nav {
-            background: rgba(250, 250, 250, 0.7);
-            backdrop-filter: blur(24px) saturate(180%);
-            -webkit-backdrop-filter: blur(24px) saturate(180%);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.9);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.02);
-        }
+        .hero-animate-1 { animation: heroFadeIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .hero-animate-2 { animation: heroFadeIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards; opacity: 0; }
 
-        .spotlight-card {
-            background: linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.7) 100%);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 1);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.03), inset 0 1px 0 rgba(255,255,255,1);
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.6s;
-        }
-        
-        /* Spotlight Hover Effect */
-        .spotlight-card::before {
-            content: '';
+        /* --- Hero Subtle Background Animation --- */
+        .hero-bg-container {
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(184, 144, 77, 0.08), transparent 40%);
-            opacity: 0;
-            transition: opacity 0.5s;
-            pointer-events: none;
-            z-index: 1;
+            top: 0; left: 0; width: 100%; height: 100%;
+            overflow: hidden;
+            z-index: -10;
+            background: linear-gradient(120deg, #ffffff 0%, #f4f6f8 50%, #ffffff 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 15s ease infinite;
         }
-        .spotlight-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255,255,255,1);
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-        .spotlight-card:hover::before {
-            opacity: 1;
+        .bg-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.12; /* 透明度を下げて清潔感を向上 */
+            animation: orbFloat 25s infinite ease-in-out alternate;
+        }
+        .orb-1 {
+            width: 60vw; height: 60vw; max-width: 800px; max-height: 800px;
+            background: #bc002d;
+            top: -20%; left: -10%;
+        }
+        .orb-2 {
+            width: 70vw; height: 70vw; max-width: 900px; max-height: 900px;
+            background: #64748b;
+            bottom: -30%; right: -10%;
+            animation-delay: -10s;
+        }
+        @keyframes orbFloat {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(3%, 5%) scale(1.05); }
         }
 
-        .content-layer {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Underline effect */
+        /* --- Nav Hover --- */
         .nav-link {
             position: relative;
-            padding-bottom: 4px;
+            padding-bottom: 2px;
         }
         .nav-link::after {
             content: '';
             position: absolute;
             width: 0;
-            height: 1px;
+            height: 2px;
             bottom: 0;
             left: 0;
-            background-color: #B8904D;
-            transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            background-color: #bc002d;
+            transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .nav-link:hover::after {
             width: 100%;
         }
-
-        /* Dynamic Scroll Line */
-        @keyframes pulse-line {
-            0% { transform: scaleY(0); transform-origin: top; opacity: 0;}
-            30% { transform: scaleY(1); transform-origin: top; opacity: 1;}
-            70% { transform: scaleY(1); transform-origin: bottom; opacity: 1;}
-            100% { transform: scaleY(0); transform-origin: bottom; opacity: 0;}
+        
+        /* --- Card Hover Refinement --- */
+        .service-card {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
         }
-        .scroll-line {
-            animation: pulse-line 2.5s infinite cubic-bezier(0.64, 0, 0.35, 1);
-        }
-
-        /* Beautiful Typography Gradients */
-        .text-gradient {
-            background: linear-gradient(135deg, #1A1918 0%, #4A4742 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .gold-gradient {
-            background: linear-gradient(135deg, #B8904D 0%, #8A6A32 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.05);
+            border-color: #cbd5e1;
         }
     </style>
 </head>
-<body class="selection:bg-accent selection:text-white">
+<body class="selection:bg-accent selection:text-white font-sans">
 
-    <canvas id="particle-canvas"></canvas>
-    <div class="ambient-orb orb-1"></div>
-    <div class="ambient-orb orb-2"></div>
-    <div class="ambient-orb orb-3"></div>
-
-    <nav id="navbar" class="fixed w-full z-50 glass-nav py-6 px-8 md:px-16 flex justify-between items-center transition-all duration-500 ease-apple">
-        <a href="#" class="flex items-center opacity-90 hover:opacity-100 transition-opacity">
-            <img src="image/logo.png" alt="ALDEXYN" class="h-9 w-auto">
+    <nav id="navbar" class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-borderSub py-4 px-6 md:px-16 flex justify-between items-center transition-all duration-300 shadow-sm">
+        <a href="#" class="flex items-center">
+            <img src="/image/logo.png" alt="ALDEXYN" class="h-8 md:h-9 w-auto">
         </a>
-        <div class="flex items-center gap-12">
-            <div class="hidden md:flex gap-10 text-[10px] tracking-superwide font-cinzel text-textSub font-medium">
-                <a href="#solution" class="nav-link hover:text-accent transition-colors duration-300">ソリューション</a>
-                <a href="#philosophy" class="nav-link hover:text-accent transition-colors duration-300">フィロソフィー</a>
-                <a href="#leadership" class="nav-link hover:text-accent transition-colors duration-300">マネジメント</a>
-                <a href="#record" class="nav-link hover:text-accent transition-colors duration-300">案件実績</a>
+        <div class="flex items-center gap-8">
+            <div class="hidden md:flex gap-8 text-sm font-medium text-textSub tracking-wide">
+                <a href="#service" class="nav-link hover:text-textMain transition-colors">サービス</a>
+                <a href="#member" class="nav-link hover:text-textMain transition-colors">メンバー</a>
+                <a href="#record" class="nav-link hover:text-textMain transition-colors">案件実績</a>
             </div>
-            <a href="#contact" class="hidden md:block font-cinzel text-[10px] tracking-superwide px-7 py-3.5 border border-accent/40 text-accent hover:bg-accent hover:text-white transition-all duration-500 ease-apple bg-white/70 backdrop-blur-md shadow-sm">CONTACT</a>
+            <a href="https://forms.gle/Zgw4ibSEbEkGcD1VA" target="_blank" rel="noopener noreferrer" class="text-sm font-medium px-6 py-2.5 bg-accent text-white hover:bg-accentHover transition-colors rounded shadow-sm tracking-wide">
+                お問い合わせ
+            </a>
         </div>
     </nav>
 
-    <section class="relative min-h-screen flex items-center justify-center pt-24 px-6 overflow-hidden">
-        <div class="max-w-5xl w-full text-center z-10 relative">
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-white/40 blur-[100px] rounded-full -z-10"></div>
-            
-            <div class="reveal-up">
-                <div class="inline-flex items-center gap-4 mb-12 opacity-90">
-                    <span class="w-16 h-[1px] bg-gradient-to-r from-transparent to-accent"></span>
-                    <p class="font-cinzel text-accent tracking-superwide text-[10px] md:text-xs font-medium">M&A & CAPITAL ADVISORY</p>
-                    <span class="w-16 h-[1px] bg-gradient-to-l from-transparent to-accent"></span>
-                </div>
-                <h1 class="font-serif text-4xl md:text-6xl lg:text-[6rem] leading-[1.15] mb-12 tracking-wide font-light">
-                    <span class="text-gradient drop-shadow-sm">お客様の描く未来へ、</span><br>
-                    <span class="gold-gradient font-normal italic relative inline-block mt-4 md:mt-6">
-                        確かな伴走を。
-                        <div class="absolute -bottom-5 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-accent to-transparent opacity-60"></div>
-                    </span>
-                </h1>
-                <p class="text-textSub font-normal text-[15px] md:text-[17px] max-w-2xl mx-auto leading-[2.4] tracking-wide mt-16">
-                    オルディザインは、お客様の永続的な発展を第一に考えます。<br>
-                    変化の激しい時代において、画一的な解ではなく、<br class="hidden md:block">
-                    あなたの状況に寄り添った「最適」を共にデザインします。
-                </p>
-            </div>
+    <section class="relative min-h-screen flex items-center justify-center pt-20 px-6">
+        <div class="hero-bg-container">
+            <div class="bg-orb orb-1"></div>
+            <div class="bg-orb orb-2"></div>
         </div>
         
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 z-10 opacity-70 hover:opacity-100 transition-opacity">
-            <span class="font-cinzel text-[9px] tracking-superwide text-accent font-medium">SCROLL</span>
-            <div class="w-[1px] h-16 bg-borderSub relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-full bg-accent scroll-line"></div>
+        <div class="max-w-4xl w-full text-center relative z-10">
+            <div class="hero-animate-1">
+                <p class="font-cinzel text-accent text-sm md:text-base font-semibold tracking-widest uppercase mb-6">
+                    Designing the Alternative
+                </p>
+                <h1 class="font-serif text-3xl md:text-5xl lg:text-6xl text-textMain tracking-wider leading-tight mb-8">
+                    オルタナティブをデザインする
+                </h1>
+                <div class="w-12 h-0.5 bg-accent mx-auto mb-10"></div>
+            </div>
+            <div class="hero-animate-2">
+                <p class="text-textSub font-serif text-base md:text-lg leading-[2.2] max-w-3xl mx-auto tracking-wide">
+                    既存の枠組みや画一的な手法にとらわれず、お客様固有の課題と潜在的価値を深く洞察。真に最適なコーポレートアクションの策定から実行まで、一貫して伴走いたします。
+                </p>
             </div>
         </div>
     </section>
 
-    <section id="solution" class="py-32 md:py-48 relative z-10">
+    <section id="service" class="py-24 md:py-32 bg-surface border-t border-borderSub">
         <div class="max-w-7xl mx-auto px-6 md:px-16">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 gap-10 reveal-up">
-                <div class="max-w-2xl">
-                    <h2 class="flex items-center gap-4 font-cinzel text-accent text-[10px] tracking-superwide mb-6 font-medium">
-                        <span class="w-12 h-[1px] bg-accent"></span>
-                        OUR SOLUTIONS
-                    </h2>
-                    <h3 class="font-serif text-4xl md:text-5xl leading-[1.3] tracking-wide text-gradient">
-                        専門知識を、<br>お客様の力に変える。
-                    </h3>
-                </div>
-                <p class="text-textSub text-[15px] font-normal max-w-md leading-loose border-l border-accent/30 pl-8 bg-white/40 backdrop-blur-sm p-4 rounded-r-lg shadow-[0_4px_20px_rgba(0,0,0,0.01)]">
-                    私たちは、お客様の「複雑な課題」を紐解き、実行可能な「成長のシナリオ」へと変換します。
-                </p>
+            <div class="text-center mb-16 md:mb-24 reveal">
+                <p class="font-cinzel text-accent text-xs font-semibold tracking-widest uppercase mb-3">Services</p>
+                <h2 class="font-serif text-2xl md:text-4xl text-textMain tracking-wide">サービス</h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="spotlight-card p-10 lg:p-14 reveal-scale rounded-xl group">
-                    <div class="content-layer">
-                        <span class="material-symbols-outlined text-accent text-5xl mb-8 font-light group-hover:scale-110 group-hover:text-accentDark transition-all duration-500 ease-apple">handshake</span>
-                        <h4 class="font-serif text-xl md:text-2xl mb-5 tracking-wide text-textMain">M&Aアドバイザリー</h4>
-                        <p class="text-[14px] text-textSub font-normal leading-[2.4] mb-10 text-justify">
-                            戦略立案からPMIまで。お客様の事業の転換点において、客観的なデータと深い洞察に基づき、最適なパートナーシップの構築を支援します。
-                        </p>
-                        <ul class="text-[13px] text-textMain/80 font-normal tracking-wide space-y-4 pt-6 border-t border-borderSub">
-                            <li class="flex items-center gap-4"><span class="w-1.5 h-1.5 bg-accent/60 transform rotate-45 group-hover:bg-accent transition-colors"></span>事業承継支援</li>
-                            <li class="flex items-center gap-4"><span class="w-1.5 h-1.5 bg-accent/60 transform rotate-45 group-hover:bg-accent transition-colors"></span>クロスボーダーM&A</li>
-                            <li class="flex items-center gap-4"><span class="w-1.5 h-1.5 bg-accent/60 transform rotate-45 group-hover:bg-accent transition-colors"></span>業界再編戦略の立案</li>
-                        </ul>
-                    </div>
+                <div class="service-card bg-white border border-borderSub p-10 rounded-sm reveal">
+                    <span class="material-symbols-outlined text-accent text-4xl mb-6">handshake</span>
+                    <h3 class="font-serif text-xl text-textMain mb-4 tracking-wide">M&Aアドバイザリー</h3>
+                    <p class="text-textSub text-sm leading-[1.9] mb-8">
+                        戦略立案からエグゼキューション、PMIに至るまで、企業の重要な転換点において客観的な分析と深い洞察に基づき、最適な資本提携・M&Aの実現を支援いたします。
+                    </p>
+                    <ul class="text-sm text-textSub space-y-3 pt-6 border-t border-borderSub">
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-accent rounded-full opacity-80"></span>事業承継の実行支援</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-accent rounded-full opacity-80"></span>クロスボーダーM&A</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-accent rounded-full opacity-80"></span>業界再編戦略の立案</li>
+                    </ul>
                 </div>
-                
-                <div class="spotlight-card p-10 lg:p-14 reveal-scale rounded-xl group" style="transition-delay: 0.1s;">
-                    <div class="content-layer">
-                        <span class="material-symbols-outlined text-accent text-5xl mb-8 font-light group-hover:scale-110 group-hover:text-accentDark transition-all duration-500 ease-apple">currency_exchange</span>
-                        <h4 class="font-serif text-xl md:text-2xl mb-5 tracking-wide text-textMain">プライベートエクイティ</h4>
-                        <p class="text-[14px] text-textSub font-normal leading-[2.4] mb-10 text-justify">
-                            資本の提供を通じて、共に汗をかくパートナーへ。お客様の事業が持つ真の可能性を信じ、中長期的な視点でハンズオンの成長支援を行います。
-                        </p>
-                        <ul class="text-[13px] text-textMain/80 font-normal tracking-wide space-y-4 pt-6 border-t border-borderSub">
-                            <li class="flex items-center gap-4"><span class="w-1.5 h-1.5 bg-accent/60 transform rotate-45 group-hover:bg-accent transition-colors"></span>事業成長資金の提供</li>
-                            <li class="flex items-center gap-4"><span class="w-1.5 h-1.5 bg-accent/60 transform rotate-45 group-hover:bg-accent transition-colors"></span>経営体制の強化支援</li>
-                            <li class="flex items-center gap-4"><span class="w-1.5 h-1.5 bg-accent/60 transform rotate-45 group-hover:bg-accent transition-colors"></span>グローバル展開サポート</li>
-                        </ul>
-                    </div>
+
+                <div class="service-card bg-white border border-borderSub p-10 rounded-sm reveal" style="transition-delay: 100ms;">
+                    <span class="material-symbols-outlined text-accent text-4xl mb-6">currency_exchange</span>
+                    <h3 class="font-serif text-xl text-textMain mb-4 tracking-wide">プライベートエクイティ</h3>
+                    <p class="text-textSub text-sm leading-[1.9] mb-8">
+                        自己資本の提供を通じて、事業成長を共創する真のパートナーへ。対象企業が秘める潜在価値を最大限に引き出し、中長期的な視座に基づくハンズオンの支援を実行いたします。
+                    </p>
+                    <ul class="text-sm text-textSub space-y-3 pt-6 border-t border-borderSub">
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-accent rounded-full opacity-80"></span>成長資金の拠出</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-accent rounded-full opacity-80"></span>経営体制・ガバナンスの強化</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-accent rounded-full opacity-80"></span>新規事業・グローバル展開推進</li>
+                    </ul>
                 </div>
-                
-                <div class="spotlight-card p-10 lg:p-14 reveal-scale rounded-xl group" style="transition-delay: 0.2s;">
-                    <div class="content-layer">
-                        <span class="material-symbols-outlined text-accent text-5xl mb-8 font-light group-hover:scale-110 group-hover:text-accentDark transition-all duration-500 ease-apple">account_balance</span>
-                        <h4 class="font-serif text-xl md:text-2xl mb-5 tracking-wide text-textMain">コーポレートファイナンス</h4>
-                        <p class="text-[14px] text-textSub font-normal leading-[2.4] mb-10 text-justify">
-                            資本政策は経営の根幹です。市場動向を踏まえた最適な資本構成の設計や、株主との対話戦略など、企業価値の向上を実務面から支えます。
-                        </p>
-                        <ul class="text-[13px] text-textMain/80 font-normal tracking-wide space-y-4 pt-6 border-t border-borderSub">
-                            <li class="flex items-center gap-4"><span class="w-1.5 h-1.5 bg-accent/60 transform rotate-45 group-hover:bg-accent transition-colors"></span>資本政策の策定</li>
-                            <li class="flex items-center gap-4"><span class="w-1.5 h-1.5 bg-accent/60 transform rotate-45 group-hover:bg-accent transition-colors"></span>アクティビスト対応支援</li>
-                            <li class="flex items-center gap-4"><span class="w-1.5 h-1.5 bg-accent/60 transform rotate-45 group-hover:bg-accent transition-colors"></span>ガバナンス体制の構築</li>
-                        </ul>
-                    </div>
+
+                <div class="service-card bg-white border border-borderSub p-10 rounded-sm reveal" style="transition-delay: 200ms;">
+                    <span class="material-symbols-outlined text-accent text-4xl mb-6">account_balance</span>
+                    <h3 class="font-serif text-xl text-textMain mb-4 tracking-wide">コーポレートファイナンス</h3>
+                    <p class="text-textSub text-sm leading-[1.9] mb-8">
+                        市場動向を踏まえた最適な資本構成の設計から、ステークホルダーとの対話戦略まで。企業価値の持続的な向上に向けた高度な財務戦略の実務を包括的に支援いたします。
+                    </p>
+                    <ul class="text-sm text-textSub space-y-3 pt-6 border-t border-borderSub">
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-accent rounded-full opacity-80"></span>資本政策・調達ストラクチャー策定</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-accent rounded-full opacity-80"></span>IR・ステークホルダー対話支援</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-accent rounded-full opacity-80"></span>財務健全化・資本効率向上支援</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="philosophy" class="py-32 md:py-48 relative z-10">
+    <section id="member" class="py-24 md:py-32 bg-background border-t border-borderSub">
         <div class="max-w-7xl mx-auto px-6 md:px-16">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-20 md:gap-12 lg:gap-24">
-                <div class="reveal-up relative group">
-                    <div class="absolute -top-16 -left-8 text-9xl font-cinzel text-accent/5 font-light -z-10 group-hover:scale-105 group-hover:-translate-y-2 group-hover:text-accent/10 transition-all duration-700 ease-apple">01</div>
-                    <div class="w-14 h-14 rounded-full border border-accent/30 bg-white/70 backdrop-blur-md shadow-sm flex items-center justify-center mb-10 group-hover:bg-accent group-hover:border-accent group-hover:shadow-[0_10px_30px_rgba(184,144,77,0.3)] transition-all duration-500 ease-apple">
-                        <span class="material-symbols-outlined text-accent group-hover:text-white text-2xl transition-colors">visibility</span>
-                    </div>
-                    <h3 class="font-cinzel text-accent text-[11px] tracking-widest mb-4 font-medium">CLIENT CENTRIC</h3>
-                    <h4 class="font-serif text-2xl mb-6 text-textMain tracking-wide">顧客視点の徹底</h4>
-                    <p class="text-[14px] text-textSub leading-[2.4] font-normal text-justify">
-                        「成立させること」だけを目的とした助言は行いません。お客様が10年後、20年後に「あの選択をして良かった」と思える決断を、全力でサポートします。
+            <div class="text-center mb-16 md:mb-24 reveal">
+                <p class="font-cinzel text-accent text-xs font-semibold tracking-widest uppercase mb-3">Members</p>
+                <h2 class="font-serif text-2xl md:text-4xl text-textMain tracking-wide">メンバー</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+                <div class="bg-surface border border-borderSub p-10 rounded-sm reveal">
+                    <h3 class="font-serif text-2xl text-textMain mb-2 tracking-wide">佐藤 隆太朗</h3>
+                    <p class="font-cinzel text-accent text-xs font-semibold tracking-widest uppercase mb-6 pb-5 border-b border-borderSub">CEO</p>
+                    <p class="text-textSub text-sm leading-[1.9]">
+                        野村證券、メリルリンチ、CPP Investmentsにて国内外の大規模M&Aおよび投資案件に従事。グローバル市場での実践知をもとに、案件規模や形態にとらわれず、顧客にとって最善となる資本戦略の遂行を力強く牽引いたします。
                     </p>
                 </div>
-                <div class="reveal-up relative group" style="transition-delay: 0.1s;">
-                    <div class="absolute -top-16 -left-8 text-9xl font-cinzel text-accent/5 font-light -z-10 group-hover:scale-105 group-hover:-translate-y-2 group-hover:text-accent/10 transition-all duration-700 ease-apple">02</div>
-                    <div class="w-14 h-14 rounded-full border border-accent/30 bg-white/70 backdrop-blur-md shadow-sm flex items-center justify-center mb-10 group-hover:bg-accent group-hover:border-accent group-hover:shadow-[0_10px_30px_rgba(184,144,77,0.3)] transition-all duration-500 ease-apple">
-                        <span class="material-symbols-outlined text-accent group-hover:text-white text-2xl transition-colors">trending_up</span>
-                    </div>
-                    <h3 class="font-cinzel text-accent text-[11px] tracking-widest mb-4 font-medium">LONG-TERM VIEW</h3>
-                    <h4 class="font-serif text-2xl mb-6 text-textMain tracking-wide">複利の成果を追求</h4>
-                    <p class="text-[14px] text-textSub leading-[2.4] font-normal text-justify">
-                        目先の利益ではなく、中長期的な資本の増大と事業の成長を目指します。私たちは、短期的な「取引」ではなく、長期的な「信頼」の構築を優先します。
-                    </p>
-                </div>
-                <div class="reveal-up relative group" style="transition-delay: 0.2s;">
-                    <div class="absolute -top-16 -left-8 text-9xl font-cinzel text-accent/5 font-light -z-10 group-hover:scale-105 group-hover:-translate-y-2 group-hover:text-accent/10 transition-all duration-700 ease-apple">03</div>
-                    <div class="w-14 h-14 rounded-full border border-accent/30 bg-white/70 backdrop-blur-md shadow-sm flex items-center justify-center mb-10 group-hover:bg-accent group-hover:border-accent group-hover:shadow-[0_10px_30px_rgba(184,144,77,0.3)] transition-all duration-500 ease-apple">
-                        <span class="material-symbols-outlined text-accent group-hover:text-white text-2xl transition-colors">architecture</span>
-                    </div>
-                    <h3 class="font-cinzel text-accent text-[11px] tracking-widest mb-4 font-medium">ALTERNATIVE DESIGN</h3>
-                    <h4 class="font-serif text-2xl mb-6 text-textMain tracking-wide">柔軟な解決策</h4>
-                    <p class="text-[14px] text-textSub leading-[2.4] font-normal text-justify">
-                        社名の由来通り、既存の枠組みに縛られない「オルタナティブ」な選択肢を「デザイン」します。不確実な環境下で、お客様の潜在価値を最大化します。
+
+                <div class="bg-surface border border-borderSub p-10 rounded-sm reveal" style="transition-delay: 100ms;">
+                    <h3 class="font-serif text-2xl text-textMain mb-2 tracking-wide">善波 優太</h3>
+                    <p class="font-cinzel text-accent text-xs font-semibold tracking-widest uppercase mb-6 pb-5 border-b border-borderSub">PARTNER</p>
+                    <p class="text-textSub text-sm leading-[1.9]">
+                        野村證券投資銀行部門での財務助言業務および事業会社の経営執行に携わった経験を有し、理論と現場感覚の双方に根差した支援を実施。事業環境に即した実効性の高いソリューションの実現を伴走支援いたします。
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="leadership" class="py-32 md:py-48 relative z-10 overflow-hidden">
-        <div class="absolute inset-0 bg-[#F4F2EC] -z-20"></div>
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(184,144,77,0.06),_transparent_70%)] -z-10"></div>
-        <div class="absolute inset-0 bg-[linear-gradient(to_bottom,_transparent_0%,_#FAFAFA_100%)] -z-10"></div>
-        
-        <div class="max-w-7xl mx-auto px-6 md:px-16 relative">
-            <div class="mb-24 text-center reveal-up">
-                <h2 class="font-cinzel text-accent text-[10px] tracking-superwide mb-6 font-medium">LEADERSHIP</h2>
-                <h3 class="font-serif text-3xl md:text-5xl tracking-wide font-light text-gradient">お客様に寄り添う、専門家として。</h3>
-                <div class="w-16 h-[1px] bg-accent/50 mt-10 mx-auto"></div>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
-                <div class="reveal-up group relative bg-white/70 backdrop-blur-xl p-10 md:p-14 rounded-xl border border-white shadow-[0_15px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_25px_60px_rgba(184,144,77,0.08)] transition-all duration-700 ease-apple">
-                    <div class="absolute left-0 top-0 w-1.5 h-full bg-accent/20 group-hover:bg-accent transition-colors duration-700 ease-apple rounded-l-xl"></div>
-                    <div class="pl-4">
-                        <h4 class="font-serif text-3xl md:text-4xl mb-2 tracking-wide text-textMain">佐藤 隆太朗</h4>
-                        <p class="font-cinzel text-accent text-[10px] tracking-superwide mb-8 pb-8 border-b border-borderSub font-medium">CEO</p>
-                        <p class="text-[14px] text-textSub font-normal leading-[2.4] text-justify">
-                            野村證券、メリルリンチ、そして世界最大級の年金基金であるCPP Investmentsにて、数多くの大型案件に携わってきました。グローバルな投資の最前線で学んだのは「数字の背後にある情熱と責任」です。お預かりした案件の重みを誰よりも理解し、お客様の最善を追求します。
-                        </p>
-                    </div>
-                </div>
-                <div class="reveal-up group relative bg-white/70 backdrop-blur-xl p-10 md:p-14 rounded-xl border border-white shadow-[0_15px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_25px_60px_rgba(184,144,77,0.08)] transition-all duration-700 ease-apple" style="transition-delay: 0.1s;">
-                    <div class="absolute left-0 top-0 w-1.5 h-full bg-accent/20 group-hover:bg-accent transition-colors duration-700 ease-apple rounded-l-xl"></div>
-                    <div class="pl-4">
-                        <h4 class="font-serif text-3xl md:text-4xl mb-2 tracking-wide text-textMain">善波 優太</h4>
-                        <p class="font-cinzel text-accent text-[10px] tracking-superwide mb-8 pb-8 border-b border-borderSub font-medium">DIRECTOR</p>
-                        <p class="text-[14px] text-textSub font-normal leading-[2.4] text-justify">
-                            投資銀行での助言業務に加え、自ら事業会社を経営し、現場の苦労と喜びを経験してきました。単なる机上の理論ではない、事業家としての視点を持ったアドバイスを心がけています。お客様と同じ目線に立ち、現場に即した解決策を共に導き出します。
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="record" class="py-32 md:py-48 relative z-10">
+    <section id="record" class="py-24 md:py-32 bg-surface border-t border-borderSub">
         <div class="max-w-4xl mx-auto px-6 md:px-12">
-            <h2 class="font-cinzel text-accent text-[10px] tracking-superwide mb-28 text-center reveal-up flex flex-col items-center gap-6 font-medium">
-                SELECTED TRACK RECORD
-                <span class="w-[1px] h-16 bg-gradient-to-b from-accent to-transparent"></span>
-            </h2>
-            
-            <div class="space-y-4 border-l border-accent/20 ml-4 md:ml-8 relative">
-                
-                <div class="relative pl-12 md:pl-20 py-8 hover:bg-white/70 backdrop-blur-md rounded-r-xl transition-all duration-500 ease-apple reveal-up group shadow-sm hover:shadow-[0_10px_30px_rgba(0,0,0,0.02)] border border-transparent hover:border-white">
-                    <div class="absolute left-0 top-10 w-4 h-4 -translate-x-[8px] bg-background border-[3px] border-accent rounded-full group-hover:scale-125 group-hover:bg-accent group-hover:shadow-[0_0_20px_rgba(184,144,77,0.5)] transition-all duration-500 ease-apple"></div>
-                    <div class="flex flex-wrap items-center gap-5 mb-5">
-                        <p class="font-cinzel text-accent text-sm font-semibold tracking-widest">2025.12</p>
-                        <span class="text-[9px] text-textMain border border-accent/40 px-3 py-1.5 tracking-superwide bg-accent/10 font-medium rounded-sm">PRIVATE EQUITY</span>
+            <div class="text-center mb-16 md:mb-24 reveal">
+                <p class="font-cinzel text-accent text-xs font-semibold tracking-widest uppercase mb-3">Track Record</p>
+                <h2 class="font-serif text-2xl md:text-4xl text-textMain tracking-wide">案件実績</h2>
+            </div>
+
+            <div class="relative border-l border-borderSub ml-4 md:ml-6 space-y-12">
+
+                <div class="relative pl-8 md:pl-14 reveal">
+                    <div class="absolute -left-[6px] top-1.5 w-3 h-3 rounded-full bg-accent ring-4 ring-surface"></div>
+                    <div class="flex items-center gap-4 mb-3">
+                        <span class="font-cinzel text-sm font-bold text-accent tracking-wider">2026.10</span>
+                        <span class="text-[10px] font-semibold text-accent border border-accent/40 bg-accent/5 px-2.5 py-1 rounded tracking-wider uppercase">M&A Advisory</span>
                     </div>
-                    <h4 class="font-serif text-xl md:text-2xl mb-4 tracking-wide text-textMain">国内未上場企業：全株式譲受による資本参画と経営支援</h4>
-                    <p class="text-[14px] text-textSub font-normal leading-[2.4] text-justify max-w-2xl">
-                        当社自己資本を活用し、ウィンタースポーツ関連事業を展開する企業の全株式を譲受。代表の佐藤が自ら取締役に就任し、バリューアップ支援を現在進行形で実施しております。
+                    <h3 class="font-serif text-lg text-textMain mb-3 font-medium leading-relaxed">国内未上場企業：事業再編を目的とした吸収分割の実行支援</h3>
+                    <p class="text-sm text-textSub leading-[1.9]">
+                        「選択と集中」を見据えた組織再編プロセスを支援。広範なスポンサー候補の探索および多角的な条件交渉を通じて各社のオファーを比較検討し、対象事業や従業員への影響を最小限に留める最適なパートナー選定とスキーム構築を実現いたしました。
                     </p>
                 </div>
 
-                <div class="relative pl-12 md:pl-20 py-8 hover:bg-white/70 backdrop-blur-md rounded-r-xl transition-all duration-500 ease-apple reveal-up group shadow-sm hover:shadow-[0_10px_30px_rgba(0,0,0,0.02)] border border-transparent hover:border-white">
-                    <div class="absolute left-0 top-10 w-4 h-4 -translate-x-[8px] bg-background border-[3px] border-borderSub rounded-full group-hover:border-accent group-hover:scale-125 group-hover:bg-accent group-hover:shadow-[0_0_20px_rgba(184,144,77,0.5)] transition-all duration-500 ease-apple"></div>
-                    <div class="flex flex-wrap items-center gap-5 mb-5">
-                        <p class="font-cinzel text-textSub/70 text-sm font-semibold tracking-widest group-hover:text-accent transition-colors">2025.08</p>
-                        <span class="text-[9px] text-textMain border border-borderSub px-3 py-1.5 tracking-superwide bg-white/70 rounded-sm">M&A ADVISORY</span>
+                <div class="relative pl-8 md:pl-14 reveal">
+                    <div class="absolute -left-[6px] top-1.5 w-3 h-3 rounded-full bg-slate-300 ring-4 ring-surface"></div>
+                    <div class="flex items-center gap-4 mb-3">
+                        <span class="font-cinzel text-sm font-semibold text-textSub tracking-wider">2026.09</span>
+                        <span class="text-[10px] font-medium text-textSub border border-borderSub bg-white px-2.5 py-1 rounded tracking-wider uppercase">M&A Advisory</span>
                     </div>
-                    <h4 class="font-serif text-xl md:text-2xl mb-4 tracking-wide text-textMain">国内未上場企業：事業再編に伴うストラクチャー構築支援</h4>
-                    <p class="text-[14px] text-textSub font-normal leading-[2.4] text-justify max-w-2xl">
-                        「選択と集中」を見据えた組織再編をサポート。複雑な資産・負債の整理を通じ、新会社の強固な財務基盤となる持続可能なストラクチャーの執行を伴走いたしました。
+                    <h3 class="font-serif text-lg text-textMain mb-3 font-medium leading-relaxed">東証スタンダード上場企業：未上場企業に対する株式譲受支援</h3>
+                    <p class="text-sm text-textSub leading-[1.9]">
+                        競争入札（オークション）プロセスの設計・管理から、各種専門家を起用したデューデリジェンスの実行支援まで、大手グローバル投資銀行に準ずる高度かつ広範なスコープにて一連のM&Aプロセスを総合的に支援いたしました。
                     </p>
                 </div>
 
-                <div class="relative pl-12 md:pl-20 py-8 hover:bg-white/70 backdrop-blur-md rounded-r-xl transition-all duration-500 ease-apple reveal-up group shadow-sm hover:shadow-[0_10px_30px_rgba(0,0,0,0.02)] border border-transparent hover:border-white">
-                    <div class="absolute left-0 top-10 w-4 h-4 -translate-x-[8px] bg-background border-[3px] border-borderSub rounded-full group-hover:border-accent group-hover:scale-125 group-hover:bg-accent group-hover:shadow-[0_0_20px_rgba(184,144,77,0.5)] transition-all duration-500 ease-apple"></div>
-                    <div class="flex flex-wrap items-center gap-5 mb-5">
-                        <p class="font-cinzel text-textSub/70 text-sm font-semibold tracking-widest group-hover:text-accent transition-colors">2025.06</p>
-                        <span class="text-[9px] text-textMain border border-borderSub px-3 py-1.5 tracking-superwide bg-white/70 rounded-sm">M&A ADVISORY</span>
+                <div class="relative pl-8 md:pl-14 reveal">
+                    <div class="absolute -left-[6px] top-1.5 w-3 h-3 rounded-full bg-slate-300 ring-4 ring-surface"></div>
+                    <div class="flex items-center gap-4 mb-3">
+                        <span class="font-cinzel text-sm font-semibold text-textSub tracking-wider">2025.12</span>
+                        <span class="text-[10px] font-medium text-textSub border border-borderSub bg-white px-2.5 py-1 rounded tracking-wider uppercase">Private Equity</span>
                     </div>
-                    <h4 class="font-serif text-xl md:text-2xl mb-4 tracking-wide text-textMain">東証スタンダード上場企業：海外パートナーへの優先株式出資支援</h4>
-                    <p class="text-[14px] text-textSub font-normal leading-[2.4] text-justify max-w-2xl">
-                        グローバル展開を加速させるための出資を支援。現地弁護士と連携し、リスクを適切にコントロールするための取得請求権等の契約交渉を主導しました。
+                    <h3 class="font-serif text-lg text-textMain mb-3 font-medium leading-relaxed">国内未上場企業：全株式譲受による資本参画と経営支援</h3>
+                    <p class="text-sm text-textSub leading-[1.9]">
+                        当社自己資本を活用し、ウィンタースポーツ関連事業を展開する企業の全株式を譲受。代表の佐藤が自ら取締役に就任し、ハンズオンでのバリューアップ支援を現在進行形で実施しております。
                     </p>
                 </div>
 
-                <div class="relative pl-12 md:pl-20 py-8 hover:bg-white/70 backdrop-blur-md rounded-r-xl transition-all duration-500 ease-apple reveal-up group shadow-sm hover:shadow-[0_10px_30px_rgba(0,0,0,0.02)] border border-transparent hover:border-white">
-                    <div class="absolute left-0 top-10 w-4 h-4 -translate-x-[8px] bg-background border-[3px] border-borderSub rounded-full group-hover:border-accent group-hover:scale-125 group-hover:bg-accent group-hover:shadow-[0_0_20px_rgba(184,144,77,0.5)] transition-all duration-500 ease-apple"></div>
-                    <div class="flex flex-wrap items-center gap-5 mb-5">
-                        <p class="font-cinzel text-textSub/70 text-sm font-semibold tracking-widest group-hover:text-accent transition-colors">2025.03</p>
-                        <span class="text-[9px] text-textMain border border-borderSub px-3 py-1.5 tracking-superwide bg-white/70 rounded-sm">M&A ADVISORY</span>
+                <div class="relative pl-8 md:pl-14 reveal">
+                    <div class="absolute -left-[6px] top-1.5 w-3 h-3 rounded-full bg-slate-300 ring-4 ring-surface"></div>
+                    <div class="flex items-center gap-4 mb-3">
+                        <span class="font-cinzel text-sm font-semibold text-textSub tracking-wider">2025.08</span>
+                        <span class="text-[10px] font-medium text-textSub border border-borderSub bg-white px-2.5 py-1 rounded tracking-wider uppercase">M&A Advisory</span>
                     </div>
-                    <h4 class="font-serif text-xl md:text-2xl mb-4 tracking-wide text-textMain">東証グロース上場企業：未上場企業に対する株式譲受支援</h4>
-                    <p class="text-[14px] text-textSub font-normal leading-[2.4] text-justify max-w-2xl">
-                        既存投資家間の複雑な株主間契約を整理し、利害調整を主導。タイトなスケジュールの中、円滑なクロージングを実現するためのプロセスマネジメントを完遂しました。
+                    <h3 class="font-serif text-lg text-textMain mb-3 font-medium leading-relaxed">国内未上場企業：事業再編に伴うストラクチャー構築支援</h3>
+                    <p class="text-sm text-textSub leading-[1.9]">
+                        「選択と集中」を見据えたグループ内組織再編をサポート。複雑な資産・負債の整理を通じて、新会社の強固な財務基盤となる持続可能なストラクチャーの設計・実行を伴走いたしました。
                     </p>
                 </div>
+
+                <div class="relative pl-8 md:pl-14 reveal">
+                    <div class="absolute -left-[6px] top-1.5 w-3 h-3 rounded-full bg-slate-300 ring-4 ring-surface"></div>
+                    <div class="flex items-center gap-4 mb-3">
+                        <span class="font-cinzel text-sm font-semibold text-textSub tracking-wider">2025.06</span>
+                        <span class="text-[10px] font-medium text-textSub border border-borderSub bg-white px-2.5 py-1 rounded tracking-wider uppercase">M&A Advisory</span>
+                    </div>
+                    <h3 class="font-serif text-lg text-textMain mb-3 font-medium leading-relaxed">東証スタンダード上場企業：海外パートナーへの優先株式出資支援</h3>
+                    <p class="text-sm text-textSub leading-[1.9]">
+                        グローバル展開の加速を企図した海外企業へのマイノリティ出資を支援。現地の外部専門家と密に連携し、リスクを適切にコントロールするための株主間協定や取得請求権等の複雑な契約交渉を主導いたしました。
+                    </p>
+                </div>
+
+                <div class="relative pl-8 md:pl-14 reveal">
+                    <div class="absolute -left-[6px] top-1.5 w-3 h-3 rounded-full bg-slate-300 ring-4 ring-surface"></div>
+                    <div class="flex items-center gap-4 mb-3">
+                        <span class="font-cinzel text-sm font-semibold text-textSub tracking-wider">2025.03</span>
+                        <span class="text-[10px] font-medium text-textSub border border-borderSub bg-white px-2.5 py-1 rounded tracking-wider uppercase">M&A Advisory</span>
+                    </div>
+                    <h3 class="font-serif text-lg text-textMain mb-3 font-medium leading-relaxed">東証グロース上場企業：未上場企業に対する株式譲受支援</h3>
+                    <p class="text-sm text-textSub leading-[1.9]">
+                        既存投資家間に存在する複雑な株主間契約を整理し、利害関係者の合意形成を主導。タイトなスケジュール下においても、円滑なクロージングを実現するための緻密なプロセスマネジメントを完遂いたしました。
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-20 text-center reveal">
+                <a href="https://forms.gle/Zgw4ibSEbEkGcD1VA" target="_blank" rel="noopener noreferrer" class="inline-block px-10 py-4 bg-accent text-white font-medium text-sm rounded shadow hover:bg-accentHover hover:shadow-lg transition-all duration-300 tracking-wide">
+                    案件のご相談・お問い合わせはこちら
+                </a>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-32 md:py-48 relative z-10">
-        <div class="absolute inset-0 bg-white/60 backdrop-blur-2xl border-y border-white -z-10 shadow-[0_0_60px_rgba(0,0,0,0.02)]"></div>
-        <div class="max-w-3xl mx-auto px-6 relative">
-            <div class="reveal-up text-center">
-                <div class="w-20 h-20 mx-auto bg-accent/5 rounded-full flex items-center justify-center mb-8 border border-accent/20 shadow-[0_0_20px_rgba(184,144,77,0.05)]">
-                    <span class="material-symbols-outlined text-accent text-4xl">mail</span>
-                </div>
-                <h2 class="font-cinzel text-accent text-[10px] tracking-superwide mb-6 font-medium">CONTACT</h2>
-                <h3 class="font-serif text-3xl md:text-5xl mb-10 tracking-wide text-gradient">お問い合わせ</h3>
-                <p class="text-[15px] text-textSub font-normal mb-16 leading-[2.4]">
-                    事業成長、M&A、資本政策に関するご相談など、<br class="hidden md:block">
-                    以下のフォームよりお気軽にご連絡ください。
-                </p>
-                
-                <form name="contact" method="POST" action="/success" data-netlify="true" class="text-left space-y-8 max-w-2xl mx-auto bg-white/70 p-8 md:p-12 rounded-2xl border border-white shadow-[0_15px_40px_rgba(0,0,0,0.03)] backdrop-blur-md">
-                    <input type="hidden" name="form-name" value="contact">
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div class="relative">
-                            <input type="text" id="last_name" name="last_name" required placeholder=" " class="peer w-full bg-white/80 border-b-2 border-borderSub focus:border-accent px-4 py-3 outline-none transition-all duration-300 text-textMain placeholder-transparent rounded-t-sm shadow-inner">
-                            <label for="last_name" class="absolute left-4 -top-2.5 text-xs text-textSub/80 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-accent font-medium">姓 <span class="text-accent">*</span></label>
-                        </div>
-                        <div class="relative">
-                            <input type="text" id="first_name" name="first_name" required placeholder=" " class="peer w-full bg-white/80 border-b-2 border-borderSub focus:border-accent px-4 py-3 outline-none transition-all duration-300 text-textMain placeholder-transparent rounded-t-sm shadow-inner">
-                            <label for="first_name" class="absolute left-4 -top-2.5 text-xs text-textSub/80 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-accent font-medium">名 <span class="text-accent">*</span></label>
-                        </div>
-                    </div>
-                
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div class="relative">
-                            <input type="text" id="company" name="company" required placeholder=" " class="peer w-full bg-white/80 border-b-2 border-borderSub focus:border-accent px-4 py-3 outline-none transition-all duration-300 text-textMain placeholder-transparent rounded-t-sm shadow-inner">
-                            <label for="company" class="absolute left-4 -top-2.5 text-xs text-textSub/80 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-accent font-medium">貴社名 <span class="text-accent">*</span></label>
-                        </div>
-                        <div class="relative">
-                            <input type="text" id="position" name="position" required placeholder=" " class="peer w-full bg-white/80 border-b-2 border-borderSub focus:border-accent px-4 py-3 outline-none transition-all duration-300 text-textMain placeholder-transparent rounded-t-sm shadow-inner">
-                            <label for="position" class="absolute left-4 -top-2.5 text-xs text-textSub/80 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-accent font-medium">役職名 <span class="text-accent">*</span></label>
-                        </div>
-                    </div>
-                
-                    <div class="relative">
-                        <input type="email" id="email" name="email" required placeholder=" " class="peer w-full bg-white/80 border-b-2 border-borderSub focus:border-accent px-4 py-3 outline-none transition-all duration-300 text-textMain placeholder-transparent rounded-t-sm shadow-inner">
-                        <label for="email" class="absolute left-4 -top-2.5 text-xs text-textSub/80 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-accent font-medium">メールアドレス <span class="text-accent">*</span></label>
-                    </div>
-                
-                    <div class="relative">
-                        <textarea id="message" name="message" rows="5" required placeholder=" " class="peer w-full bg-white/80 border-b-2 border-borderSub focus:border-accent px-4 py-4 outline-none transition-all duration-300 resize-none text-textMain placeholder-transparent rounded-t-sm shadow-inner"></textarea>
-                        <label for="message" class="absolute left-4 -top-2.5 text-xs text-textSub/80 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-4 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-accent font-medium">お問い合わせ内容 <span class="text-accent">*</span></label>
-                    </div>
-                    
-                    <div class="text-center pt-6">
-                        <button type="submit" class="group relative flex items-center justify-center gap-6 focus:outline-none cursor-pointer bg-textMain text-white px-12 py-5 border border-textMain hover:bg-white hover:text-textMain shadow-lg hover:shadow-xl transition-all duration-500 ease-apple rounded-sm overflow-hidden w-full sm:w-auto mx-auto">
-                            <span class="font-cinzel text-sm sm:text-base tracking-widest font-medium z-10">
-                                SEND MESSAGE
-                            </span>
-                            <span class="material-symbols-outlined text-lg shrink-0 z-10 group-hover:translate-x-1 transition-transform">
-                                arrow_forward
-                            </span>
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <footer class="pt-24 md:pt-32 pb-12 relative z-10 bg-white/90 backdrop-blur-xl border-t border-borderSub">
+    <footer class="pt-20 pb-12 bg-white border-t border-borderSub text-textSub">
         <div class="max-w-7xl mx-auto px-6 md:px-16">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 mb-24">
-                <div class="reveal-up">
-                    <img src="image/logo.png" alt="ALDEXYN" class="h-10 w-auto mb-6">
-                    <p class="text-textSub text-[14px] leading-[2.4] font-normal max-w-md text-justify">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
+                <div>
+                    <img src="/image/logo.png" alt="ALDEXYN" class="h-8 md:h-9 w-auto mb-8">
+                    <p class="text-sm leading-[2] max-w-md tracking-wide">
                         お客様と共に歩み、中長期的な複利成長をデザインする。<br>
-                        私たちは、あなたの信頼に誠実に答えます。
+                        皆様からのご信頼に対し、誠実かつ確かなエグゼキューションでお応えいたします。
                     </p>
                 </div>
 
-                <div class="reveal-up" style="transition-delay: 0.1s;">
-                    <h5 class="font-cinzel text-accent text-[10px] tracking-superwide mb-8 uppercase text-left font-medium">Corporate Profile</h5>
-                    <div class="border-t border-borderSub pt-6 space-y-6">
-                        <dl class="flex border-b border-textMain/5 pb-4 text-[14px]">
-                            <dt class="w-36 text-textSub font-normal shrink-0 tracking-wide">商号</dt>
+                <div>
+                    <h4 class="font-cinzel text-accent text-xs font-semibold tracking-widest uppercase mb-8">Corporate Profile</h4>
+                    <div class="border-t border-borderSub text-sm divide-y divide-borderSub">
+                        <dl class="flex py-4">
+                            <dt class="w-32 text-textSub shrink-0 tracking-wide">商号</dt>
                             <dd class="text-textMain font-medium tracking-wide">オルディザイン株式会社</dd>
                         </dl>
-                        <dl class="flex border-b border-textMain/5 pb-4 text-[14px]">
-                            <dt class="w-36 text-textSub font-normal shrink-0 tracking-wide">設立</dt>
+                        <dl class="flex py-4">
+                            <dt class="w-32 text-textSub shrink-0 tracking-wide">設立</dt>
                             <dd class="text-textMain font-medium tracking-wide">2024年1月</dd>
                         </dl>
-                        <dl class="flex border-b border-textMain/5 pb-4 text-[14px]">
-                            <dt class="w-36 text-textSub font-normal shrink-0 tracking-wide">代表取締役</dt>
+                        <dl class="flex py-4">
+                            <dt class="w-32 text-textSub shrink-0 tracking-wide">代表取締役</dt>
                             <dd class="text-textMain font-medium tracking-wide">佐藤 隆太朗</dd>
                         </dl>
                     </div>
                 </div>
             </div>
 
-            <div class="pt-8 border-t border-borderSub flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-textSub/70 tracking-widest font-cinzel">
+            <div class="pt-8 border-t border-borderSub flex flex-col md:flex-row justify-between items-center gap-6 text-xs font-cinzel tracking-widest text-slate-400">
                 <p>&copy; 2024 ALDEXYN CORPORATION. ALL RIGHTS RESERVED.</p>
-                <a href="#" class="hover:text-accent transition-colors flex items-center gap-2 group font-medium">
+                <a href="#" class="hover:text-accent transition-colors flex items-center gap-1.5 font-sans font-medium">
                     BACK TO TOP
-                    <span class="material-symbols-outlined text-[14px] group-hover:-translate-y-1 transition-transform">arrow_upward</span>
+                    <span class="material-symbols-outlined text-[16px]">arrow_upward</span>
                 </a>
             </div>
         </div>
     </footer>
 
     <script>
-        /* * 1. Cinematic Bokeh Particle Effect 
-         * 遠近感（Z軸）を利用したボケ味のあるリッチな浮遊光エフェクトに変更
-         */
-        const canvas = document.getElementById('particle-canvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        let w, h;
-        
-        let mouse = { x: null, y: null, radius: 250 };
-        window.addEventListener('mousemove', (e) => {
-            mouse.x = e.x;
-            mouse.y = e.y;
-        });
-        window.addEventListener('mouseout', () => {
-            mouse.x = null;
-            mouse.y = null;
-        });
-
-        function resize() {
-            w = canvas.width = window.innerWidth;
-            h = canvas.height = window.innerHeight;
-            init();
-        }
-        window.addEventListener('resize', resize);
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * w;
-                this.y = Math.random() * h;
-                // Z軸（奥行き）をシミュレート（1が奥、3が手前）
-                this.z = Math.random() * 2 + 1; 
-                this.vx = (Math.random() - 0.5) * 0.2 * this.z;
-                this.vy = (Math.random() * -0.3 - 0.1) * this.z;
-                
-                // 奥のものは小さく、手前のものは大きく
-                this.baseRadius = (Math.random() * 2 + 1) * this.z;
-                this.radius = this.baseRadius;
-                
-                // 奥のものは不透明度が低く、手前は高い
-                this.baseOpacity = (Math.random() * 0.3 + 0.1) / (4 - this.z);
-                this.opacity = this.baseOpacity;
-                
-                // 被写界深度（ボケ）のシミュレート: 手前の大きな光ほど大きくぼかす
-                this.blur = this.z > 2 ? (this.z * 4) : 0;
-            }
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                
-                // ボケ効果（重いためブラウザ次第でカクつく場合は外しても良いが、高級感に寄与する）
-                if (this.blur > 0) {
-                    ctx.shadowBlur = this.blur;
-                    ctx.shadowColor = `rgba(184, 144, 77, ${this.opacity * 2})`;
-                } else {
-                    ctx.shadowBlur = 0;
-                }
-                
-                ctx.fillStyle = `rgba(184, 144, 77, ${this.opacity})`;
-                ctx.fill();
-            }
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-
-                if(this.x < 0 || this.x > w) this.vx = -this.vx;
-                if(this.y < -50) {
-                    this.y = h + 50;
-                    this.x = Math.random() * w;
-                }
-
-                if(mouse.x != null) {
-                    let dx = mouse.x - this.x;
-                    let dy = mouse.y - this.y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
-                    if(distance < mouse.radius) {
-                        const forceDirectionX = dx / distance;
-                        const forceDirectionY = dy / distance;
-                        const force = (mouse.radius - distance) / mouse.radius;
-                        // 手前のパーティクルほどマウスの影響を強く受ける（パララックス）
-                        this.x -= forceDirectionX * force * 2 * this.z;
-                        this.y -= forceDirectionY * force * 2 * this.z;
-                        this.opacity = Math.min(this.opacity + 0.03, 0.6);
-                    } else {
-                        this.opacity = Math.max(this.opacity - 0.01, this.baseOpacity);
-                    }
-                }
-                this.draw();
-            }
-        }
-
-        function init() {
-            particles = [];
-            let numberOfParticles = (w * h) / 8000; // 密度を少し減らし、一つ一つの質感を際立たせる
-            for(let i = 0; i < numberOfParticles; i++) {
-                particles.push(new Particle());
-            }
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, w, h);
-            for(let i = 0; i < particles.length; i++) {
-                particles[i].update();
-            }
-            requestAnimationFrame(animate);
-        }
-
-        resize();
-        animate();
-
-        /*
-         * 2. Spotlight Hover Effect for Cards
-         */
-        document.querySelectorAll('.spotlight-card').forEach(card => {
-            card.addEventListener('mousemove', e => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`);
-            });
-        });
-
-        /*
-         * 3. Intersection Observer for Reveal Animations
-         */
-        const observerOptions = {
-            root: null,
-            threshold: 0.15,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -731,27 +401,9 @@
                     observer.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
 
-        document.querySelectorAll('.reveal-up, .reveal-scale').forEach(el => observer.observe(el));
-
-        /*
-         * 4. Glass Navbar Scroll Effect (Updated with richer glassmorphism)
-         */
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                nav.classList.add('py-4');
-                nav.classList.remove('py-6');
-                nav.style.background = 'rgba(255, 255, 255, 0.9)';
-                nav.style.boxShadow = '0 10px 40px rgba(0, 0, 0, 0.04)';
-            } else {
-                nav.classList.add('py-6');
-                nav.classList.remove('py-4');
-                nav.style.background = 'rgba(250, 250, 250, 0.7)';
-                nav.style.boxShadow = '0 10px 40px rgba(0, 0, 0, 0.02)';
-            }
-        });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
