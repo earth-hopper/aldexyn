@@ -1,0 +1,974 @@
+{
+  "lastUpdated": "2026年11月08日 16:29",
+  "categories": {
+    "ski_men": {
+      "title": "Ski Men",
+      "count": 41,
+      "athletes": [
+        {
+          "japanRank": 1,
+          "worldRank": 62,
+          "name": "Tenra Katsuno",
+          "athleteId": "902746",
+          "points": 5125,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 2,
+          "worldRank": 121,
+          "name": "Rentaro Kunimoto",
+          "athleteId": "1511577",
+          "points": 3210,
+          "country": "Japan",
+          "image": "https://www.liveheats.com/images/b1a3eb1e-f9c0-48f9-a00f-a40b1ca7d669.webp"
+        },
+        {
+          "japanRank": 3,
+          "worldRank": 125,
+          "name": "Ryo Osozawa",
+          "athleteId": "905984",
+          "points": 3110,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 4,
+          "worldRank": 142,
+          "name": "Yuki Shibata",
+          "athleteId": "902750",
+          "points": 2850,
+          "country": "Japan",
+          "image": "https://res.cloudinary.com/liveheats-com/image/facebook/w_128,h_128/6774938885952900.webp"
+        },
+        {
+          "japanRank": 5,
+          "worldRank": 155,
+          "name": "Tomoya Tezuka",
+          "athleteId": "1322675",
+          "points": 2730,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 6,
+          "worldRank": 163,
+          "name": "Koga Hoshino",
+          "athleteId": "902763",
+          "points": 2635,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 7,
+          "worldRank": 200,
+          "name": "Kei Ohta",
+          "athleteId": "1091912",
+          "points": 2252,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 8,
+          "worldRank": 211,
+          "name": "Takashi Koyama",
+          "athleteId": "1162097",
+          "points": 2210,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 9,
+          "worldRank": 228,
+          "name": "Takumi Okamura",
+          "athleteId": "1090934",
+          "points": 2090,
+          "country": "Japan",
+          "image": "https://liveheats.com/images/16450b3d-ad08-4c4a-be22-f52ecfcd8acb.webp"
+        },
+        {
+          "japanRank": 10,
+          "worldRank": 341,
+          "name": "Ippo Wada",
+          "athleteId": "1752179",
+          "points": 1520,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 11,
+          "worldRank": 384,
+          "name": "Keisuke Tezuka",
+          "athleteId": "904799",
+          "points": 1357,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 12,
+          "worldRank": 412,
+          "name": "Rennosuke Takeuchi",
+          "athleteId": "906484",
+          "points": 1255,
+          "country": "Japan",
+          "image": "https://liveheats.com/images/d06b8aab-54a4-4441-84e9-a0bf0062288c.webp"
+        },
+        {
+          "japanRank": 13,
+          "worldRank": 420,
+          "name": "Junichiro Munekawa",
+          "athleteId": "1158636",
+          "points": 1240,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 14,
+          "worldRank": 423,
+          "name": "Hayato Horie",
+          "athleteId": "903055",
+          "points": 1230,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 15,
+          "worldRank": 434,
+          "name": "Yuta Nakazato",
+          "athleteId": "1189020",
+          "points": 1210,
+          "country": "Japan",
+          "image": "https://liveheats.com/images/04be5180-6a53-4c41-947b-81a856783de3.webp"
+        },
+        {
+          "japanRank": 16,
+          "worldRank": 511,
+          "name": "Ryoma Igeta",
+          "athleteId": "1169646",
+          "points": 1030,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 17,
+          "worldRank": 538,
+          "name": "Takuya Nakahama",
+          "athleteId": "1142108",
+          "points": 970,
+          "country": "Japan",
+          "image": "https://liveheats.com/images/536bae62-dca8-4ddc-960e-5efe294a9fd5.webp"
+        },
+        {
+          "japanRank": 18,
+          "worldRank": 556,
+          "name": "Kakeru Maekawa",
+          "athleteId": "904813",
+          "points": 930,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 19,
+          "worldRank": 572,
+          "name": "Kouga Takeda",
+          "athleteId": "1517714",
+          "points": 900,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 20,
+          "worldRank": 683,
+          "name": "Takuma Fujita",
+          "athleteId": "902764",
+          "points": 740,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 21,
+          "worldRank": 703,
+          "name": "Thomas Espitau",
+          "athleteId": "1877229",
+          "points": 717,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 22,
+          "worldRank": 768,
+          "name": "Kaiwa Namiki",
+          "athleteId": "904873",
+          "points": 639,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 23,
+          "worldRank": 784,
+          "name": "Atsuya Wada",
+          "athleteId": "1482998",
+          "points": 604,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 24,
+          "worldRank": 785,
+          "name": "Shinji Saiki",
+          "athleteId": "902756",
+          "points": 600,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 25,
+          "worldRank": 829,
+          "name": "Ryoma Tada",
+          "athleteId": "1120201",
+          "points": 550,
+          "country": "Japan",
+          "image": "https://liveheats.com/images/3013cd8e-d3d6-4e6e-8a2f-4ce0e1da6b1c.webp"
+        },
+        {
+          "japanRank": 26,
+          "worldRank": 911,
+          "name": "Kotaro Yamamoto",
+          "athleteId": "903054",
+          "points": 475,
+          "country": "Japan",
+          "image": "https://res.cloudinary.com/liveheats-com/image/facebook/w_128,h_128/6931995216893929.webp"
+        },
+        {
+          "japanRank": 27,
+          "worldRank": 932,
+          "name": "Kai Hanada",
+          "athleteId": "1904769",
+          "points": 465,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 28,
+          "worldRank": 934,
+          "name": "Mark Yokokawa",
+          "athleteId": "1523479",
+          "points": 462,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 29,
+          "worldRank": 943,
+          "name": "Takahiro Yamazaki",
+          "athleteId": "1917978",
+          "points": 450,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 30,
+          "worldRank": 957,
+          "name": "Takuto Ogawa",
+          "athleteId": "1088912",
+          "points": 439,
+          "country": "Japan",
+          "image": "https://liveheats.com/images/df7fbe4c-10e8-45af-ae1e-315231881c64.webp"
+        },
+        {
+          "japanRank": 31,
+          "worldRank": 993,
+          "name": "Yuto Yamakawa",
+          "athleteId": "1498682",
+          "points": 410,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 32,
+          "worldRank": 1066,
+          "name": "Ryoya Takashima",
+          "athleteId": "1434231",
+          "points": 353,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 33,
+          "worldRank": 1071,
+          "name": "Rei Kitano",
+          "athleteId": "1091012",
+          "points": 350,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 34,
+          "worldRank": 1078,
+          "name": "Shuya Kaneko",
+          "athleteId": "1876986",
+          "points": 346,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 35,
+          "worldRank": 1206,
+          "name": "Yosuke Fujii",
+          "athleteId": "608870",
+          "points": 264,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 36,
+          "worldRank": 1213,
+          "name": "Shogo Morifuji",
+          "athleteId": "1936504",
+          "points": 260,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 37,
+          "worldRank": 1227,
+          "name": "Daichi Furuya",
+          "athleteId": "608862",
+          "points": 258,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 38,
+          "worldRank": 1227,
+          "name": "Hayato Takeuchi",
+          "athleteId": "906495",
+          "points": 258,
+          "country": "Japan",
+          "image": "https://liveheats.com/images/3fbf7faf-5520-44db-a867-3806d7b2c52e.webp"
+        },
+        {
+          "japanRank": 39,
+          "worldRank": 1355,
+          "name": "Saito Masayuki",
+          "athleteId": "1483190",
+          "points": 193,
+          "country": "Japan",
+          "image": "https://liveheats.com/images/5ba526a4-0f79-42e8-8cbb-65a845f8b7c5.webp"
+        },
+        {
+          "japanRank": 40,
+          "worldRank": 1459,
+          "name": "Akinori Tezuka",
+          "athleteId": "1876407",
+          "points": 145,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 41,
+          "worldRank": 1461,
+          "name": "RINTO TAJIMA",
+          "athleteId": "1919721",
+          "points": 141,
+          "country": "Japan",
+          "image": null
+        }
+      ]
+    },
+    "ski_women": {
+      "title": "Ski Women",
+      "count": 12,
+      "athletes": [
+        {
+          "japanRank": 1,
+          "worldRank": 38,
+          "name": "Mika Imai",
+          "athleteId": "905990",
+          "points": 5000,
+          "country": "Japan",
+          "image": "https://liveheats.com/images/4d99c7ae-0f65-4c8e-ba06-afc04048167b.webp"
+        },
+        {
+          "japanRank": 2,
+          "worldRank": 54,
+          "name": "Kaede Yashiro",
+          "athleteId": "904800",
+          "points": 4300,
+          "country": "Japan",
+          "image": "https://liveheats.com/images/1df922dc-d09a-4423-b4cc-4939c1810198.webp"
+        },
+        {
+          "japanRank": 3,
+          "worldRank": 59,
+          "name": "Shoko Suzuki",
+          "athleteId": "902897",
+          "points": 4125,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 4,
+          "worldRank": 68,
+          "name": "Sachi Hirakawa",
+          "athleteId": "905993",
+          "points": 3400,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 5,
+          "worldRank": 94,
+          "name": "Yuko Katono",
+          "athleteId": "905395",
+          "points": 2640,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 6,
+          "worldRank": 178,
+          "name": "Chisato Sasada",
+          "athleteId": "902771",
+          "points": 1705,
+          "country": "Japan",
+          "image": "https://res.cloudinary.com/liveheats-com/image/facebook/w_128,h_128/6311212252248118.webp"
+        },
+        {
+          "japanRank": 7,
+          "worldRank": 201,
+          "name": "Kahori Aida",
+          "athleteId": "1091596",
+          "points": 1530,
+          "country": "Japan",
+          "image": "https://liveheats.com/images/01c33e87-ec5b-4a6e-9ad3-f0dfc39e5485.webp"
+        },
+        {
+          "japanRank": 8,
+          "worldRank": 242,
+          "name": "Mayu Himoto",
+          "athleteId": "1928135",
+          "points": 1125,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 9,
+          "worldRank": 281,
+          "name": "Kaede Hayashi",
+          "athleteId": "1956612",
+          "points": 965,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 10,
+          "worldRank": 290,
+          "name": "Mizuki Yamaguchi",
+          "athleteId": "1892396",
+          "points": 910,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 11,
+          "worldRank": 310,
+          "name": "Ayana Onozuka",
+          "athleteId": "903076",
+          "points": 810,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 12,
+          "worldRank": 342,
+          "name": "Takeuchi Yukine",
+          "athleteId": "905991",
+          "points": 708,
+          "country": "Japan",
+          "image": null
+        }
+      ]
+    },
+    "snowboard_men": {
+      "title": "Snowboard Men",
+      "count": 39,
+      "athletes": [
+        {
+          "japanRank": 1,
+          "worldRank": 39,
+          "name": "Taketo Kinoshita",
+          "athleteId": "1098942",
+          "points": 5350,
+          "country": "Japan",
+          "image": "https://liveheats.com/images/7e25cad5-99ea-457d-ae3a-b007677e4055.webp"
+        },
+        {
+          "japanRank": 2,
+          "worldRank": 45,
+          "name": "Haruki Takeuchi",
+          "athleteId": "903210",
+          "points": 4680,
+          "country": "Japan",
+          "image": "https://liveheats.com/images/b5e6b28b-43c1-4864-a1f1-86f64e91e543.webp"
+        },
+        {
+          "japanRank": 3,
+          "worldRank": 78,
+          "name": "Temma Tamai",
+          "athleteId": "1110438",
+          "points": 3305,
+          "country": "Japan",
+          "image": "https://liveheats.com/images/0832a4e5-319e-4246-b207-9d756111442b.webp"
+        },
+        {
+          "japanRank": 4,
+          "worldRank": 136,
+          "name": "Hyuga Honjyo",
+          "athleteId": "1147223",
+          "points": 2100,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 5,
+          "worldRank": 139,
+          "name": "Asahi Yoshino",
+          "athleteId": "1913858",
+          "points": 2030,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 6,
+          "worldRank": 180,
+          "name": "Toi Hatta",
+          "athleteId": "1143337",
+          "points": 1605,
+          "country": "Japan",
+          "image": "https://liveheats.com/images/6beebed1-4430-4576-aa34-b14ab87ea954.webp"
+        },
+        {
+          "japanRank": 7,
+          "worldRank": 221,
+          "name": "Kaito Jinguji",
+          "athleteId": "1170844",
+          "points": 1258,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 8,
+          "worldRank": 232,
+          "name": "Yuta Yokoe",
+          "athleteId": "1484661",
+          "points": 1180,
+          "country": "Japan",
+          "image": "https://liveheats.com/images/8a95e1ba-d3e2-4c6a-87f7-a1889213d7ae.webp"
+        },
+        {
+          "japanRank": 9,
+          "worldRank": 248,
+          "name": "Asato Yoshida",
+          "athleteId": "904835",
+          "points": 1100,
+          "country": "Japan",
+          "image": "https://liveheats.com/images/f8dc2ef1-4483-4531-866c-efa4fe554fbb.webp"
+        },
+        {
+          "japanRank": 10,
+          "worldRank": 253,
+          "name": "Yamato Sato",
+          "athleteId": "904866",
+          "points": 1090,
+          "country": "Japan",
+          "image": "https://liveheats.com/images/5c183e52-6b5a-4233-a1f2-aac7b250474f.webp"
+        },
+        {
+          "japanRank": 11,
+          "worldRank": 255,
+          "name": "Junnosuke Yamaji",
+          "athleteId": "1161413",
+          "points": 1080,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 12,
+          "worldRank": 259,
+          "name": "Takuro Tanaka",
+          "athleteId": "903089",
+          "points": 1015,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 13,
+          "worldRank": 283,
+          "name": "Ichinoshin Maruyama",
+          "athleteId": "1470458",
+          "points": 920,
+          "country": "Japan",
+          "image": "https://liveheats.com/images/fb6ebf67-254f-494a-a71b-10990cb25e2a.webp"
+        },
+        {
+          "japanRank": 14,
+          "worldRank": 298,
+          "name": "Kotaro Takeda",
+          "athleteId": "906486",
+          "points": 833,
+          "country": "Japan",
+          "image": "https://liveheats.com/images/54136fc9-6b33-4d3d-a8c9-27aa6e5ee4b1.webp"
+        },
+        {
+          "japanRank": 15,
+          "worldRank": 315,
+          "name": "Masaru Shibata",
+          "athleteId": "955056",
+          "points": 760,
+          "country": "Japan",
+          "image": "https://res.cloudinary.com/liveheats-com/image/facebook/w_128,h_128/25460050143609369.webp"
+        },
+        {
+          "japanRank": 16,
+          "worldRank": 318,
+          "name": "Keijiro Oka",
+          "athleteId": "904807",
+          "points": 750,
+          "country": "Japan",
+          "image": "https://liveheats.com/images/7dc973da-085c-403a-ae94-44c403bb04bb.webp"
+        },
+        {
+          "japanRank": 17,
+          "worldRank": 319,
+          "name": "Shuzaburo Otsubo",
+          "athleteId": "905994",
+          "points": 730,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 18,
+          "worldRank": 330,
+          "name": "Yoshikazu Arai",
+          "athleteId": "1098980",
+          "points": 680,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 19,
+          "worldRank": 347,
+          "name": "Hayato Mikami",
+          "athleteId": "1444368",
+          "points": 640,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 20,
+          "worldRank": 356,
+          "name": "Hiroshi Tamekuchi",
+          "athleteId": "905996",
+          "points": 600,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 21,
+          "worldRank": 356,
+          "name": "Kaito Ichinose",
+          "athleteId": "1877150",
+          "points": 600,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 22,
+          "worldRank": 377,
+          "name": "Takahiro Nishii",
+          "athleteId": "1091011",
+          "points": 570,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 23,
+          "worldRank": 377,
+          "name": "Yasutoshi Suzuki",
+          "athleteId": "1491009",
+          "points": 570,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 24,
+          "worldRank": 397,
+          "name": "Yuto Yashiro",
+          "athleteId": "904837",
+          "points": 505,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 25,
+          "worldRank": 411,
+          "name": "shusuke uchikata",
+          "athleteId": "1482899",
+          "points": 460,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 26,
+          "worldRank": 419,
+          "name": "Kakeru Higashino",
+          "athleteId": "1091426",
+          "points": 450,
+          "country": "Japan",
+          "image": "https://liveheats.com/images/5c0eb143-67fb-429b-b571-19e99773dcee.webp"
+        },
+        {
+          "japanRank": 27,
+          "worldRank": 425,
+          "name": "Masaaki Horisawa",
+          "athleteId": "904838",
+          "points": 441,
+          "country": "Japan",
+          "image": "https://liveheats.com/images/187e76a1-048d-490d-9271-e343988e126a.webp"
+        },
+        {
+          "japanRank": 28,
+          "worldRank": 440,
+          "name": "Aoi Tezuka",
+          "athleteId": "903230",
+          "points": 410,
+          "country": "Japan",
+          "image": "https://liveheats.com/images/d5424425-e7a7-4867-8ab8-9a2077ccc45e.webp"
+        },
+        {
+          "japanRank": 29,
+          "worldRank": 443,
+          "name": "Kuya Kubota",
+          "athleteId": "1123281",
+          "points": 400,
+          "country": "Japan",
+          "image": "https://liveheats.com/images/3bda8ff3-e2ef-43e7-9250-4f0721c9b15d.webp"
+        },
+        {
+          "japanRank": 30,
+          "worldRank": 444,
+          "name": "Takashi Yao",
+          "athleteId": "1160385",
+          "points": 378,
+          "country": "Japan",
+          "image": "https://liveheats.com/images/7098e3da-95f0-460a-b9ab-bc25097fbc84.webp"
+        },
+        {
+          "japanRank": 31,
+          "worldRank": 453,
+          "name": "Riku Shioya",
+          "athleteId": "1940180",
+          "points": 369,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 32,
+          "worldRank": 471,
+          "name": "Yoshiaki Takamura",
+          "athleteId": "1883478",
+          "points": 361,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 33,
+          "worldRank": 472,
+          "name": "Sei Murai",
+          "athleteId": "1478451",
+          "points": 360,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 34,
+          "worldRank": 514,
+          "name": "Kazuki Ito",
+          "athleteId": "1963283",
+          "points": 290,
+          "country": "Japan",
+          "image": "https://res.cloudinary.com/liveheats-com/image/facebook/w_128,h_128/3761491537319012.webp"
+        },
+        {
+          "japanRank": 35,
+          "worldRank": 514,
+          "name": "Yudai Yokoyama",
+          "athleteId": "1877454",
+          "points": 290,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 36,
+          "worldRank": 533,
+          "name": "Ryohei Yamaguchi",
+          "athleteId": "1932670",
+          "points": 276,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 37,
+          "worldRank": 570,
+          "name": "RIKUTO WATANABE",
+          "athleteId": "1876426",
+          "points": 220,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 38,
+          "worldRank": 651,
+          "name": "Yuki Arakawa",
+          "athleteId": "1946813",
+          "points": 131,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 39,
+          "worldRank": 664,
+          "name": "Koji Ueno",
+          "athleteId": "1150689",
+          "points": 114,
+          "country": "Japan",
+          "image": null
+        }
+      ]
+    },
+    "snowboard_women": {
+      "title": "Snowboard Women",
+      "count": 13,
+      "athletes": [
+        {
+          "japanRank": 1,
+          "worldRank": 25,
+          "name": "Sayaka Kato",
+          "athleteId": "902793",
+          "points": 6300,
+          "country": "Japan",
+          "image": "https://liveheats.com/images/0ece18bd-14ba-4bc1-a290-19cb470daa26.webp"
+        },
+        {
+          "japanRank": 2,
+          "worldRank": 44,
+          "name": "Hana Kinoshita",
+          "athleteId": "904817",
+          "points": 4200,
+          "country": "Japan",
+          "image": "https://liveheats.com/images/74400dae-88e7-4263-b242-81834a7585b1.webp"
+        },
+        {
+          "japanRank": 3,
+          "worldRank": 52,
+          "name": "Mutsumi Ido",
+          "athleteId": "729746",
+          "points": 3680,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 4,
+          "worldRank": 61,
+          "name": "Sayuki Aida",
+          "athleteId": "906488",
+          "points": 3430,
+          "country": "Japan",
+          "image": "https://liveheats.com/images/2310e0c9-13db-49c1-8f18-9f79df0071d2.webp"
+        },
+        {
+          "japanRank": 5,
+          "worldRank": 90,
+          "name": "Kizuna Takahashi",
+          "athleteId": "903239",
+          "points": 2580,
+          "country": "Japan",
+          "image": "https://liveheats.com/images/4cbcc5e1-d8f1-45ab-80f2-ad8331360725.webp"
+        },
+        {
+          "japanRank": 6,
+          "worldRank": 99,
+          "name": "Haruno Take",
+          "athleteId": "902914",
+          "points": 2325,
+          "country": "Japan",
+          "image": "https://liveheats.com/images/909bb27e-c221-4d6b-aeda-dfbf2769de8c.webp"
+        },
+        {
+          "japanRank": 7,
+          "worldRank": 105,
+          "name": "Koharu Hatta",
+          "athleteId": "904858",
+          "points": 2175,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 8,
+          "worldRank": 120,
+          "name": "Risa Nakashima",
+          "athleteId": "1091354",
+          "points": 1760,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 9,
+          "worldRank": 141,
+          "name": "Rina Kawanami",
+          "athleteId": "1156499",
+          "points": 1370,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 10,
+          "worldRank": 155,
+          "name": "Ayumi Kitahara",
+          "athleteId": "903094",
+          "points": 1100,
+          "country": "Japan",
+          "image": "https://liveheats.com/images/429494cf-b5e7-44f0-bbbc-c20f68193c58.webp"
+        },
+        {
+          "japanRank": 11,
+          "worldRank": 162,
+          "name": "Hitomi Ito",
+          "athleteId": "1138314",
+          "points": 1055,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 12,
+          "worldRank": 205,
+          "name": "Yui Kotani",
+          "athleteId": "1941962",
+          "points": 600,
+          "country": "Japan",
+          "image": null
+        },
+        {
+          "japanRank": 13,
+          "worldRank": 286,
+          "name": "Rio Hanzawa",
+          "athleteId": "1089606",
+          "points": 190,
+          "country": "Japan",
+          "image": "https://liveheats.com/images/57e0f654-b134-4675-a811-26153c90a7c2.webp"
+        }
+      ]
+    }
+  }
+}
