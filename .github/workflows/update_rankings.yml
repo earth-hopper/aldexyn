@@ -2,17 +2,24 @@ name: Rankings Update
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 1'
+
+# ジョブに必要な書き込み権限をコード上でも明示
+permissions:
+  contents: write
 
 jobs:
   update-rankings:
     runs-on: ubuntu-latest
 
     steps:
+      # Node.js 24 に対応したバージョンを指定
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.2.2
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v5.4.0
         with:
           python-version: '3.11'
 

@@ -17,7 +17,6 @@
     }
   </script>
   <style>
-    /* 数字の桁揃えを美しく見せるフォント設定 */
     .tabular-nums {
       font-variant-numeric: tabular-nums;
     }
@@ -47,7 +46,7 @@
   <!-- メインコンテンツ -->
   <main class="max-w-6xl mx-auto px-4 py-8 sm:px-6 flex-1 w-full">
     
-    <!-- 種目切り替えタブ（角丸なし） -->
+    <!-- 種目切り替えタブ -->
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-8" id="category-tabs">
       <button onclick="changeCategory('ski_men')" id="tab-ski_men" class="tab-btn px-4 py-3 text-xs sm:text-sm font-bold tracking-wider uppercase border border-black transition-colors text-center">
         Ski Men
@@ -63,22 +62,22 @@
       </button>
     </div>
 
-    <!-- ランキングテーブルエリア -->
+    <!-- ランキングテーブル -->
     <div class="border border-black bg-white">
       <div class="overflow-x-auto">
         <table class="w-full text-left border-collapse">
           <thead>
             <tr class="bg-black text-white text-xs font-mono tracking-wider uppercase border-b border-black">
-              <th scope="col" class="py-3.5 px-4 w-20 text-center">JP Rank</th>
-              <th scope="col" class="py-3.5 px-4 w-24 text-center">World Rank</th>
+              <th scope="col" class="py-3.5 px-4 w-16 text-center">JP</th>
+              <th scope="col" class="py-3.5 px-4 w-20 text-center">World</th>
               <th scope="col" class="py-3.5 px-4">Athlete</th>
-              <th scope="col" class="py-3.5 px-4 text-right w-32">Points</th>
+              <th scope="col" class="py-3.5 px-4 text-right w-28">Points</th>
+              <th scope="col" class="py-3.5 px-3 w-12 text-center">Detail</th>
             </tr>
           </thead>
           <tbody id="ranking-table-body" class="divide-y divide-neutral-200 text-sm">
-            <!-- JavaScriptで動的生成 -->
             <tr>
-              <td colspan="4" class="py-12 text-center text-neutral-500 font-mono text-xs">
+              <td colspan="5" class="py-12 text-center text-neutral-500 font-mono text-xs">
                 データを読み込み中...
               </td>
             </tr>
@@ -89,7 +88,7 @@
 
     <!-- 補足情報 -->
     <div class="mt-4 flex flex-col sm:flex-row justify-between text-xs text-neutral-500 font-mono gap-2">
-      <div>* Liveheats公式リザルトの国籍登録（JPN）に基づくランキングです。</div>
+      <div>* 選手行または右端の [+] をクリックすると大会別ポイント内訳を展開できます。</div>
       <div>Source: Freeride World Tour / Liveheats</div>
     </div>
 
@@ -102,53 +101,55 @@
     </div>
   </footer>
 
-  <!-- データ取得・描画スクリプト -->
   <script>
     let rankingsData = null;
     let currentCategory = 'ski_men';
 
-    // 初期化: rankings.json の読み込み
     document.addEventListener('DOMContentLoaded', () => {
       fetchRankings();
     });
 
     async function fetchRankings() {
       try {
-        // キャッシュを防ぐためタイムスタンプパラメータを付与
         const response = await fetch('rankings.json?t=' + new Date().getTime());
-        if (!response.ok) {
-          throw new Error('rankings.json の読み込みに失敗しました');
-        }
+        if (!response.ok) throw new Error('rankings.json の取得失敗');
         rankingsData = await response.json();
-
-        // 最終更新日時を反映
         document.getElementById('last-updated').textContent = rankingsData.lastUpdated || '不明';
-
-        // 初期表示
         renderRankings(currentCategory);
       } catch (error) {
         console.error(error);
         document.getElementById('ranking-table-body').innerHTML = `
           <tr>
-            <td colspan="4" class="py-12 text-center text-brand font-mono text-xs">
-              データの取得に失敗しました。rankings.json が存在するか確認してください。
+            <td colspan="5" class="py-12 text-center text-brand font-mono text-xs">
+              データの取得に失敗しました。
             </td>
           </tr>
         `;
       }
     }
 
-    // カテゴリー切り替え
     function changeCategory(categoryKey) {
       currentCategory = categoryKey;
       renderRankings(categoryKey);
     }
 
-    // テーブルの描画
+    function toggleDetail(index) {
+      const detailRow = document.getElementById(`detail-${index}`);
+      const icon = document.getElementById(`icon-${index}`);
+      if (!detailRow) return;
+
+      if (detailRow.classList.contains('hidden')) {
+        detailRow.classList.remove('hidden');
+        if (icon) icon.textContent = '−';
+      } else {
+        detailRow.classList.add('hidden');
+        if (icon) icon.textContent = '+';
+      }
+    }
+
     function renderRankings(categoryKey) {
       if (!rankingsData || !rankingsData.categories) return;
 
-      // タブのボタンスタイル更新
       const allTabs = document.querySelectorAll('.tab-btn');
       allTabs.forEach(tab => {
         tab.className = "tab-btn px-4 py-3 text-xs sm:text-sm font-bold tracking-wider uppercase border border-black transition-colors text-center bg-white text-black hover:bg-neutral-100";
@@ -156,7 +157,6 @@
 
       const activeTab = document.getElementById(`tab-${categoryKey}`);
       if (activeTab) {
-        // 選択中タブ: ブランドカラー背景・白文字
         activeTab.className = "tab-btn px-4 py-3 text-xs sm:text-sm font-bold tracking-wider uppercase border border-black transition-colors text-center bg-brand text-white";
       }
 
@@ -166,55 +166,85 @@
       if (!category || !category.athletes || category.athletes.length === 0) {
         tbody.innerHTML = `
           <tr>
-            <td colspan="4" class="py-12 text-center text-neutral-400 font-mono text-xs uppercase tracking-wider">
-              該当する日本人選手の登録データがありません
+            <td colspan="5" class="py-12 text-center text-neutral-400 font-mono text-xs uppercase tracking-wider">
+              登録データがありません
             </td>
           </tr>
         `;
         return;
       }
 
-      // テーブル行の組み立て
-      tbody.innerHTML = category.athletes.map(athlete => {
-        // 1位の選手は左枠線にアクセント
+      let html = '';
+      category.athletes.forEach((athlete, idx) => {
         const isTop = athlete.japanRank === 1;
-        const rowHighlight = isTop ? 'bg-neutral-50 font-medium' : 'hover:bg-neutral-50';
+        const rowBg = isTop ? 'bg-neutral-50' : 'hover:bg-neutral-50';
 
-        // 顔写真（角丸なしのスクエア）またはプレースホルダー
         const avatar = athlete.image
-          ? `<img src="${athlete.image}" alt="${athlete.name}" class="w-9 h-9 object-cover bg-neutral-200 border border-neutral-300 flex-shrink-0" onerror="this.style.display='none'">`
-          : `<div class="w-9 h-9 bg-neutral-200 border border-neutral-300 flex items-center justify-center text-neutral-500 text-xs font-mono flex-shrink-0">JP</div>`;
+          ? `<img src="${athlete.image}" alt="${athlete.name}" class="w-8 h-8 object-cover bg-neutral-200 border border-neutral-300 flex-shrink-0" onerror="this.style.display='none'">`
+          : `<div class="w-8 h-8 bg-neutral-200 border border-neutral-300 flex items-center justify-center text-neutral-500 text-xs font-mono flex-shrink-0">JP</div>`;
 
-        return `
-          <tr class="${rowHighlight} transition-colors">
-            <!-- 日本ランク -->
+        // 大会別ブレイクダウンのHTML生成
+        const breakdownItems = (athlete.breakdown && athlete.breakdown.length > 0)
+          ? athlete.breakdown.map(b => {
+              const countStyle = b.counted ? 'text-neutral-900 font-bold' : 'text-neutral-400 line-through';
+              return `
+                <div class="flex items-center justify-between py-1.5 px-3 border-b border-neutral-200 text-xs font-mono">
+                  <div class="truncate pr-4 flex-1 text-neutral-700">
+                    ${b.eventName}
+                  </div>
+                  <div class="w-16 text-center text-neutral-500 tabular-nums">
+                    ${b.place ? b.place + '位' : '-'}
+                  </div>
+                  <div class="w-24 text-right tabular-nums ${countStyle}">
+                    ${Number(b.points || 0).toLocaleString()} pts
+                  </div>
+                </div>
+              `;
+            }).join('')
+          : '<div class="py-2 px-3 text-neutral-400 text-xs font-mono">大会内訳データはありません</div>';
+
+        // 選手行
+        html += `
+          <tr onclick="toggleDetail(${idx})" class="${rowBg} transition-colors cursor-pointer select-none">
             <td class="py-3 px-4 text-center font-mono font-bold text-base tabular-nums ${isTop ? 'text-brand' : 'text-neutral-900'}">
               ${athlete.japanRank}
             </td>
-
-            <!-- 世界ランク -->
-            <td class="py-3 px-4 text-center font-mono text-neutral-600 text-sm tabular-nums">
+            <td class="py-3 px-4 text-center font-mono text-neutral-500 text-sm tabular-nums">
               ${athlete.worldRank ? athlete.worldRank : '-'}
             </td>
-
-            <!-- 選手名と写真 -->
             <td class="py-3 px-4">
               <div class="flex items-center gap-3">
                 ${avatar}
-                <div class="min-w-0">
-                  <div class="font-bold text-neutral-900 tracking-tight truncate">${athlete.name}</div>
-                  <div class="text-[10px] font-mono text-neutral-400 uppercase tracking-widest">${athlete.country || 'JPN'}</div>
-                </div>
+                <div class="font-bold text-neutral-900 tracking-tight truncate">${athlete.name}</div>
               </div>
             </td>
-
-            <!-- ポイント -->
             <td class="py-3 px-4 text-right font-mono font-bold text-neutral-900 tabular-nums">
               ${Number(athlete.points || 0).toLocaleString()} <span class="text-[10px] font-normal text-neutral-500">pts</span>
             </td>
+            <td class="py-3 px-3 text-center font-mono text-neutral-400 hover:text-black">
+              <span id="icon-${idx}" class="text-sm font-bold">+</span>
+            </td>
+          </tr>
+
+          <!-- アコーディオン内訳行（初期状態は非表示） -->
+          <tr id="detail-${idx}" class="hidden bg-neutral-100 border-b border-neutral-300">
+            <td colspan="5" class="p-3 sm:px-8">
+              <div class="bg-white border border-neutral-300">
+                <div class="bg-neutral-200 px-3 py-1 text-[11px] font-mono text-neutral-600 uppercase tracking-wider flex justify-between">
+                  <span>Event / Contest</span>
+                  <div class="flex gap-4">
+                    <span class="w-16 text-center">Result</span>
+                    <span class="w-24 text-right">Points</span>
+                  </div>
+                </div>
+                ${breakdownItems}
+              </div>
+            </td>
           </tr>
         `;
-      }).join('');
+      });
+
+      tbody.innerHTML = html;
     }
   </script>
 </body>
