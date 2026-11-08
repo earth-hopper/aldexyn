@@ -11,8 +11,8 @@ DIVISIONS = [
     {"key": "snowboard_women", "title": "Snowboard Women", "series": "17943", "division": "132194"},
 ]
 
-# breakdown (大会別の内訳データ) を取得するように拡張したクエリ
-GRAPHQL_QUERY = """
+# 最初に確実に成功していたベースのGraphQLクエリ
+BASE_QUERY = """
 query getSeriesRankings($id: ID!, $divisionId: ID!, $filter: String) {
   series(id: $id) {
     id
@@ -26,15 +26,6 @@ query getSeriesRankings($id: ID!, $divisionId: ID!, $filter: String) {
       displayProperty
       place
       points
-      breakdown {
-        event {
-          id
-          name
-        }
-        place
-        points
-        counted
-      }
       __typename
     }
     __typename
@@ -45,10 +36,10 @@ query getSeriesRankings($id: ID!, $divisionId: ID!, $filter: String) {
 def fetch_rankings(series_id, division_id):
     payload = {
         "operationName": "getSeriesRankings",
-        "query": GRAPHQL_QUERY,
+        "query": BASE_QUERY,
         "variables": {
-            "id": series_id,
-            "divisionId": division_id,
+            "id": str(series_id),
+            "divisionId": str(division_id),
             "filter": None
         }
     }
@@ -60,9 +51,19 @@ def fetch_rankings(series_id, division_id):
             "User-Agent": "Mozilla/5.0"
         }
     )
-    with urllib.request.urlopen(req) as resp:
-        data = json.loads(resp.read().decode("utf-8"))
-        return data.get("data", {}).get("series", {}).get("rankings", [])
+    try:
+        with urllib.request.urlopen(req) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+            if "errors" in data:
+                print(f"[API Warning] GraphQL Errors for series {series_id}, division {division_id}:", data["errors"])
+            
+            series_data = data.get("data", {}).get("series") or {}
+            rankings = series_data.get("rankings", [])
+            print(f"-> 取得成功: {len(rankings)}件のレコードを受信")
+            return rankings
+    except Exception as e:
+        print(f"[API Error] リクエスト失敗: {e}")
+        return []
 
 def is_japanese_athlete(display_prop):
     if not display_prop:
@@ -80,6 +81,7 @@ def main():
     }
 
     for d in DIVISIONS:
+        print(f"\n--- {d['title']} の取得開始 ---")
         raw_list = fetch_rankings(d["series"], d["division"])
         jp_athletes = []
         current_jp_rank = 1
@@ -90,18 +92,6 @@ def main():
             if is_japanese_athlete(display_prop):
                 athlete = item.get("athlete") or {}
                 
-                # 大会別リザルトの整形
-                raw_breakdown = item.get("breakdown") or []
-                breakdown_list = []
-                for b in raw_breakdown:
-                    event = b.get("event") or {}
-                    breakdown_list.append({
-                        "eventName": event.get("name") or "大会名未定",
-                        "place": b.get("place"),
-                        "points": b.get("points", 0),
-                        "counted": b.get("counted", True)  # 有効ポイントか切り捨てか
-                    })
-
                 jp_athletes.append({
                     "japanRank": current_jp_rank,
                     "worldRank": item.get("place"),
@@ -109,7 +99,7 @@ def main():
                     "athleteId": athlete.get("id"),
                     "points": item.get("points"),
                     "image": athlete.get("image"),
-                    "breakdown": breakdown_list  # 内訳配列
+                    "breakdown": []  # 内訳はスキーマ確定後に安全に追加
                 })
                 current_jp_rank += 1
 
@@ -118,12 +108,12 @@ def main():
             "count": len(jp_athletes),
             "athletes": jp_athletes
         }
-        print(f"[{d['title']}] 日本人選手: {len(jp_athletes)}名を抽出")
+        print(f"[{d['title']}] 完了: 日本人選手 {len(jp_athletes)}名を登録")
 
     with open("rankings.json", "w", encoding="utf-8") as f:
         json.dump(result_json, f, ensure_ascii=False, indent=2)
 
-    print("rankings.json の更新が完了しました。")
+    print("\n[完了] rankings.json を正常に生成しました。")
 
 if __name__ == "__main__":
     main()
