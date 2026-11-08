@@ -3,7 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JAPAN FREERIDE RANKINGS</title>
+  <title>JAPAN FREERIDE RANKINGS | Official National Standings</title>
+  
+  <!-- Fonts: Inter & Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -11,33 +18,67 @@
         extend: {
           colors: {
             brand: '#bc002d',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['"Space Mono"', 'monospace'],
           }
         }
       }
     }
   </script>
+
   <style>
+    /* 角丸を全コンポーネントで完全に無効化 */
+    * {
+      border-radius: 0px !important;
+    }
     .tabular-nums {
       font-variant-numeric: tabular-nums;
     }
+    /* モーダルのスクロールバー装飾 */
+    ::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #000;
+    }
   </style>
 </head>
-<body class="bg-white text-neutral-900 min-h-screen antialiased flex flex-col justify-between">
+<body class="bg-neutral-100 text-neutral-900 font-sans min-h-screen antialiased flex flex-col justify-between selection:bg-brand selection:text-white">
+
+  <!-- トップバー / プレビューアラート -->
+  <div class="bg-black text-white text-[11px] font-mono tracking-widest px-4 py-1.5 flex justify-between items-center border-b border-black">
+    <div class="flex items-center gap-2">
+      <span class="w-2 h-2 bg-brand inline-block animate-pulse"></span>
+      <span class="uppercase font-bold">Freeride World Tour Official Partner Circuit</span>
+    </div>
+    <div class="hidden sm:block text-neutral-400">
+      REGION 1 / JAPAN NATION QUOTA
+    </div>
+  </div>
 
   <!-- ヘッダー -->
   <header class="border-b-2 border-black bg-white">
-    <div class="max-w-6xl mx-auto px-4 py-6 sm:px-6">
-      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+    <div class="max-w-6xl mx-auto px-4 py-8 sm:px-6">
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
         <div>
-          <div class="inline-block bg-brand text-white text-xs font-bold tracking-widest px-2 py-0.5 uppercase mb-2">
-            Official Standings
+          <div class="inline-flex items-center gap-2 bg-brand text-white text-[11px] font-mono font-bold tracking-widest px-2.5 py-1 uppercase mb-3">
+            National Standings
           </div>
-          <h1 class="text-2xl sm:text-3xl font-black tracking-tight uppercase text-black">
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tighter uppercase text-black leading-none">
             Japan Freeride Rankings
           </h1>
         </div>
-        <div class="text-xs text-neutral-500 font-mono">
-          最終更新: <span id="last-updated" class="font-bold text-neutral-800">取得中...</span>
+        
+        <!-- 最終更新 & ステータス -->
+        <div class="flex flex-row lg:flex-col items-center lg:items-end justify-between border-t lg:border-t-0 border-neutral-200 pt-3 lg:pt-0 font-mono text-xs text-neutral-500">
+          <div class="text-neutral-400 uppercase tracking-wider text-[10px]">Last Synchronized</div>
+          <div id="last-updated" class="font-bold text-neutral-900 text-sm tabular-nums">Loading...</div>
         </div>
       </div>
     </div>
@@ -46,39 +87,59 @@
   <!-- メインコンテンツ -->
   <main class="max-w-6xl mx-auto px-4 py-8 sm:px-6 flex-1 w-full">
     
-    <!-- 種目切り替えタブ -->
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-8" id="category-tabs">
-      <button onclick="changeCategory('ski_men')" id="tab-ski_men" class="tab-btn px-4 py-3 text-xs sm:text-sm font-bold tracking-wider uppercase border border-black transition-colors text-center">
-        Ski Men
-      </button>
-      <button onclick="changeCategory('ski_women')" id="tab-ski_women" class="tab-btn px-4 py-3 text-xs sm:text-sm font-bold tracking-wider uppercase border border-black transition-colors text-center">
-        Ski Women
-      </button>
-      <button onclick="changeCategory('snowboard_men')" id="tab-snowboard_men" class="tab-btn px-4 py-3 text-xs sm:text-sm font-bold tracking-wider uppercase border border-black transition-colors text-center">
-        Snowboard Men
-      </button>
-      <button onclick="changeCategory('snowboard_women')" id="tab-snowboard_women" class="tab-btn px-4 py-3 text-xs sm:text-sm font-bold tracking-wider uppercase border border-black transition-colors text-center">
-        Snowboard Women
-      </button>
+    <!-- ナビゲーション ＆ 検索コントロール -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+      
+      <!-- カテゴリタブ -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5 flex-1 max-w-2xl" id="category-tabs">
+        <button onclick="changeCategory('ski_men')" id="tab-ski_men" class="tab-btn px-4 py-3 text-xs font-mono font-bold tracking-wider uppercase border border-black transition-all text-center">
+          Ski Men
+        </button>
+        <button onclick="changeCategory('ski_women')" id="tab-ski_women" class="tab-btn px-4 py-3 text-xs font-mono font-bold tracking-wider uppercase border border-black transition-all text-center">
+          Ski Women
+        </button>
+        <button onclick="changeCategory('snowboard_men')" id="tab-snowboard_men" class="tab-btn px-4 py-3 text-xs font-mono font-bold tracking-wider uppercase border border-black transition-all text-center">
+          SB Men
+        </button>
+        <button onclick="changeCategory('snowboard_women')" id="tab-snowboard_women" class="tab-btn px-4 py-3 text-xs font-mono font-bold tracking-wider uppercase border border-black transition-all text-center">
+          SB Women
+        </button>
+      </div>
+
+      <!-- リアルタイム検索フィルター -->
+      <div class="w-full md:w-64 relative">
+        <input 
+          type="text" 
+          id="athlete-search" 
+          placeholder="SEARCH ATHLETE..." 
+          oninput="handleSearch(this.value)"
+          class="w-full bg-white border border-black px-3 py-2.5 text-xs font-mono placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-black uppercase tracking-wider"
+        >
+        <div class="absolute right-3 top-2.5 text-neutral-400 font-mono text-xs pointer-events-none">
+          [ESC]
+        </div>
+      </div>
+
     </div>
 
-    <!-- ランキングテーブル -->
-    <div class="border border-black bg-white">
+    <!-- メインランキングテーブル -->
+    <div class="border-2 border-black bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
       <div class="overflow-x-auto">
         <table class="w-full text-left border-collapse">
           <thead>
             <tr class="bg-black text-white text-xs font-mono tracking-wider uppercase border-b border-black">
-              <th scope="col" class="py-3.5 px-4 w-16 text-center">JP</th>
-              <th scope="col" class="py-3.5 px-4 w-20 text-center">World</th>
-              <th scope="col" class="py-3.5 px-4">Athlete</th>
-              <th scope="col" class="py-3.5 px-4 text-right w-28">Points</th>
-              <th scope="col" class="py-3.5 px-3 w-12 text-center">Detail</th>
+              <th scope="col" class="py-3 px-3 sm:px-4 w-16 text-center">JP</th>
+              <th scope="col" class="py-3 px-3 sm:px-4 w-20 text-center">World</th>
+              <th scope="col" class="py-3 px-4 sm:px-6">Athlete</th>
+              <th scope="col" class="py-3 px-4 sm:px-6 text-right w-36">Points</th>
+              <th scope="col" class="py-3 px-3 w-16 text-center hidden sm:table-cell">Breakdown</th>
             </tr>
           </thead>
           <tbody id="ranking-table-body" class="divide-y divide-neutral-200 text-sm">
+            <!-- JavaScriptで動的生成 -->
             <tr>
-              <td colspan="5" class="py-12 text-center text-neutral-500 font-mono text-xs">
-                データを読み込み中...
+              <td colspan="5" class="py-16 text-center text-neutral-400 font-mono text-xs uppercase tracking-widest">
+                INITIALIZING LIVE RANKINGS...
               </td>
             </tr>
           </tbody>
@@ -86,165 +147,395 @@
       </div>
     </div>
 
-    <!-- 補足情報 -->
-    <div class="mt-4 flex flex-col sm:flex-row justify-between text-xs text-neutral-500 font-mono gap-2">
-      <div>* 選手行または右端の [+] をクリックすると大会別ポイント内訳を展開できます。</div>
-      <div>Source: Freeride World Tour / Liveheats</div>
+    <!-- テーブルフッター メタ情報 -->
+    <div class="mt-4 flex flex-col sm:flex-row justify-between items-start sm:items-center text-xs text-neutral-500 font-mono gap-2">
+      <div>* 選手行をクリックすると全大会のポイント内訳モーダルが表示されます。</div>
+      <div class="flex items-center gap-4">
+        <span>DATA FEED: LIVEHEATS API</span>
+        <span class="text-neutral-300">|</span>
+        <span id="registered-count" class="font-bold text-neutral-800">0 ATHLETES</span>
+      </div>
     </div>
 
   </main>
 
   <!-- フッター -->
-  <footer class="border-t border-neutral-200 py-6 mt-12 bg-neutral-50">
-    <div class="max-w-6xl mx-auto px-4 text-center text-xs text-neutral-500 font-mono">
-      &copy; JAPAN FREERIDE. ALL RIGHTS RESERVED.
+  <footer class="border-t border-neutral-300 bg-white py-8 mt-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-neutral-500">
+      <div class="flex items-center gap-3">
+        <span class="w-3 h-3 bg-brand inline-block"></span>
+        <span class="font-bold text-neutral-900 tracking-wider">JAPAN FREERIDE FEDERATION</span>
+      </div>
+      <div>&copy; 2026 JAPAN FREERIDE. ALL RIGHTS RESERVED.</div>
     </div>
   </footer>
 
+  <!-- ============================================================ -->
+  <!-- 選手詳細モーダル (ATHLETE BREAKDOWN MODAL) -->
+  <!-- ============================================================ -->
+  <div id="athlete-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 sm:p-6" role="dialog" aria-modal="true">
+    
+    <!-- 背景オーバーレイ -->
+    <div class="fixed inset-0 bg-black/80 transition-opacity" onclick="closeModal()"></div>
+
+    <!-- モーダル本体 -->
+    <div class="relative bg-white border-2 border-black w-full max-w-2xl max-h-[90vh] flex flex-col z-10 shadow-[10px_10px_0px_0px_rgba(0,0,0,1)]">
+      
+      <!-- モーダルヘッダー -->
+      <div class="bg-black text-white px-5 py-3.5 flex items-center justify-between border-b border-black select-none">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 bg-brand"></span>
+          <span class="font-mono text-xs font-bold uppercase tracking-widest text-neutral-300">Athlete Profile & Breakdown</span>
+        </div>
+        <button onclick="closeModal()" class="text-white hover:text-brand font-mono text-lg font-bold px-2 py-1 transition-colors leading-none">
+          ✕
+        </button>
+      </div>
+
+      <!-- モーダルコンテンツ（スクロール領域） -->
+      <div class="overflow-y-auto p-5 sm:p-8 space-y-6">
+        
+        <!-- 選手基本情報ヘッダー -->
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-black pb-6">
+          <div class="flex items-center gap-4">
+            <div id="modal-athlete-avatar" class="w-16 h-16 sm:w-20 sm:h-20 bg-neutral-200 border border-black flex-shrink-0 flex items-center justify-center font-mono font-bold text-xl text-neutral-500 overflow-hidden">
+              <!-- JSで画像またはイニシャル挿入 -->
+            </div>
+            <div>
+              <div id="modal-category-badge" class="inline-block bg-neutral-100 border border-neutral-300 px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-widest text-neutral-600 mb-1">
+                CATEGORY
+              </div>
+              <h2 id="modal-athlete-name" class="text-2xl sm:text-3xl font-black uppercase text-black tracking-tight leading-none">
+                ATHLETE NAME
+              </h2>
+              <div class="mt-1">
+                <a id="modal-liveheats-link" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-mono text-xs text-brand hover:underline font-bold">
+                  View on Liveheats ↗
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3連スタッツグリッド -->
+        <div class="grid grid-cols-3 gap-2 sm:gap-3 text-center font-mono">
+          <div class="border border-black p-3 bg-neutral-50">
+            <div class="text-[10px] uppercase tracking-wider text-neutral-500">Japan Rank</div>
+            <div id="modal-jp-rank" class="text-2xl sm:text-3xl font-black text-brand tabular-nums mt-1">-</div>
+          </div>
+          <div class="border border-black p-3 bg-neutral-50">
+            <div class="text-[10px] uppercase tracking-wider text-neutral-500">World Rank</div>
+            <div id="modal-world-rank" class="text-2xl sm:text-3xl font-black text-neutral-900 tabular-nums mt-1">-</div>
+          </div>
+          <div class="border border-black p-3 bg-neutral-50">
+            <div class="text-[10px] uppercase tracking-wider text-neutral-500">Total Points</div>
+            <div id="modal-total-points" class="text-2xl sm:text-3xl font-black text-neutral-900 tabular-nums mt-1">-</div>
+          </div>
+        </div>
+
+        <!-- 大会内訳セクション -->
+        <div>
+          <div class="flex items-center justify-between mb-3 border-b border-black pb-2">
+            <div class="font-mono text-xs font-bold uppercase tracking-wider text-black flex items-center gap-2">
+              <span>Event Breakdown</span>
+              <span id="modal-event-count" class="text-neutral-400 font-normal"></span>
+            </div>
+            <div class="text-[11px] font-mono text-neutral-500">
+              * BEST RESULTS COUNTED
+            </div>
+          </div>
+
+          <!-- 内訳リストテーブル -->
+          <div class="border border-black">
+            <table class="w-full text-left border-collapse font-mono text-xs">
+              <thead>
+                <tr class="bg-neutral-100 border-b border-black text-neutral-600">
+                  <th class="py-2.5 px-3 uppercase tracking-wider font-bold">Event</th>
+                  <th class="py-2.5 px-3 w-16 text-center uppercase tracking-wider font-bold">Place</th>
+                  <th class="py-2.5 px-3 w-28 text-right uppercase tracking-wider font-bold">Points</th>
+                  <th class="py-2.5 px-3 w-24 text-center uppercase tracking-wider font-bold">Status</th>
+                </tr>
+              </thead>
+              <tbody id="modal-breakdown-body" class="divide-y divide-neutral-200">
+                <!-- JSで動的生成 -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- モーダルフッター -->
+      <div class="bg-neutral-100 border-t border-black px-5 py-3 flex justify-between items-center font-mono text-xs text-neutral-500">
+        <div>PRESS <kbd class="border border-neutral-400 px-1 py-0.5 bg-white text-neutral-800">ESC</kbd> TO CLOSE</div>
+        <button onclick="closeModal()" class="bg-black text-white hover:bg-brand px-4 py-1.5 font-bold uppercase tracking-wider transition-colors">
+          CLOSE
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- JavaScript ロジック -->
+  <!-- ============================================================ -->
   <script>
-    let rankingsData = null;
-    let currentCategory = 'ski_men';
+    let rawData = null;
+    let currentCategoryKey = 'ski_men';
+    let searchQuery = '';
 
     document.addEventListener('DOMContentLoaded', () => {
-      fetchRankings();
+      loadData();
+      setupKeyboardEvents();
     });
 
-    async function fetchRankings() {
+    // キーボードショートカット (ESCでモーダル閉じ、検索クリア)
+    function setupKeyboardEvents() {
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          const modal = document.getElementById('athlete-modal');
+          if (!modal.classList.contains('hidden')) {
+            closeModal();
+          } else {
+            const searchInput = document.getElementById('athlete-search');
+            if (searchInput.value) {
+              searchInput.value = '';
+              handleSearch('');
+            }
+          }
+        }
+      });
+    }
+
+    // JSONデータの非同期取得
+    async function loadData() {
       try {
-        const response = await fetch('rankings.json?t=' + new Date().getTime());
-        if (!response.ok) throw new Error('rankings.json の取得失敗');
-        rankingsData = await response.json();
-        document.getElementById('last-updated').textContent = rankingsData.lastUpdated || '不明';
-        renderRankings(currentCategory);
-      } catch (error) {
-        console.error(error);
+        const res = await fetch('rankings.json?t=' + Date.now());
+        if (!res.ok) throw new Error('rankings.json の読み込み失敗');
+        rawData = await res.json();
+
+        // 最終更新日の更新
+        document.getElementById('last-updated').textContent = rawData.lastUpdated || 'SYNCED';
+
+        // 初期表示
+        render();
+      } catch (err) {
+        console.error(err);
         document.getElementById('ranking-table-body').innerHTML = `
           <tr>
-            <td colspan="5" class="py-12 text-center text-brand font-mono text-xs">
-              データの取得に失敗しました。
+            <td colspan="5" class="py-16 text-center text-brand font-mono text-xs uppercase tracking-widest font-bold">
+              FAILED TO FETCH RANKING DATA. CHECK rankings.json FILE.
             </td>
           </tr>
         `;
       }
     }
 
-    function changeCategory(categoryKey) {
-      currentCategory = categoryKey;
-      renderRankings(categoryKey);
+    // カテゴリ切り替え
+    function changeCategory(key) {
+      currentCategoryKey = key;
+      render();
     }
 
-    function toggleDetail(index) {
-      const detailRow = document.getElementById(`detail-${index}`);
-      const icon = document.getElementById(`icon-${index}`);
-      if (!detailRow) return;
-
-      if (detailRow.classList.contains('hidden')) {
-        detailRow.classList.remove('hidden');
-        if (icon) icon.textContent = '−';
-      } else {
-        detailRow.classList.add('hidden');
-        if (icon) icon.textContent = '+';
-      }
+    // 検索入力
+    function handleSearch(query) {
+      searchQuery = (query || '').trim().toLowerCase();
+      render();
     }
 
-    function renderRankings(categoryKey) {
-      if (!rankingsData || !rankingsData.categories) return;
+    // メイン描画処理
+    function render() {
+      if (!rawData || !rawData.categories) return;
 
-      const allTabs = document.querySelectorAll('.tab-btn');
-      allTabs.forEach(tab => {
-        tab.className = "tab-btn px-4 py-3 text-xs sm:text-sm font-bold tracking-wider uppercase border border-black transition-colors text-center bg-white text-black hover:bg-neutral-100";
+      // タブボタンスタイルの同期
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.className = "tab-btn px-4 py-3 text-xs font-mono font-bold tracking-wider uppercase border border-black transition-all text-center bg-white text-black hover:bg-neutral-200";
       });
-
-      const activeTab = document.getElementById(`tab-${categoryKey}`);
+      const activeTab = document.getElementById(`tab-${currentCategoryKey}`);
       if (activeTab) {
-        activeTab.className = "tab-btn px-4 py-3 text-xs sm:text-sm font-bold tracking-wider uppercase border border-black transition-colors text-center bg-brand text-white";
+        activeTab.className = "tab-btn px-4 py-3 text-xs font-mono font-bold tracking-wider uppercase border border-black transition-all text-center bg-brand text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]";
       }
 
-      const category = rankingsData.categories[categoryKey];
+      const category = rawData.categories[currentCategoryKey];
       const tbody = document.getElementById('ranking-table-body');
+      const countEl = document.getElementById('registered-count');
 
       if (!category || !category.athletes || category.athletes.length === 0) {
         tbody.innerHTML = `
           <tr>
-            <td colspan="5" class="py-12 text-center text-neutral-400 font-mono text-xs uppercase tracking-wider">
-              登録データがありません
+            <td colspan="5" class="py-16 text-center text-neutral-400 font-mono text-xs uppercase tracking-widest">
+              NO ATHLETES REGISTERED IN THIS DIVISION
+            </td>
+          </tr>
+        `;
+        countEl.textContent = '0 ATHLETES';
+        return;
+      }
+
+      // 検索フィルター適用
+      let filtered = category.athletes;
+      if (searchQuery) {
+        filtered = filtered.filter(a => (a.name || '').toLowerCase().includes(searchQuery));
+      }
+
+      countEl.textContent = `${filtered.length} / ${category.athletes.length} ATHLETES`;
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="5" class="py-16 text-center text-neutral-400 font-mono text-xs uppercase tracking-widest">
+              NO ATHLETES MATCHING "${searchQuery.toUpperCase()}"
             </td>
           </tr>
         `;
         return;
       }
 
-      let html = '';
-      category.athletes.forEach((athlete, idx) => {
+      // テーブル行生成
+      tbody.innerHTML = filtered.map((athlete, idx) => {
+        const isPodium = athlete.japanRank <= 3;
         const isTop = athlete.japanRank === 1;
-        const rowBg = isTop ? 'bg-neutral-50' : 'hover:bg-neutral-50';
 
+        // アバター
         const avatar = athlete.image
-          ? `<img src="${athlete.image}" alt="${athlete.name}" class="w-8 h-8 object-cover bg-neutral-200 border border-neutral-300 flex-shrink-0" onerror="this.style.display='none'">`
-          : `<div class="w-8 h-8 bg-neutral-200 border border-neutral-300 flex items-center justify-center text-neutral-500 text-xs font-mono flex-shrink-0">JP</div>`;
+          ? `<img src="${athlete.image}" alt="${athlete.name}" class="w-10 h-10 object-cover bg-neutral-200 border border-black flex-shrink-0" onerror="this.src='';this.alt='JP';">`
+          : `<div class="w-10 h-10 bg-neutral-100 border border-black flex items-center justify-center text-neutral-700 font-mono font-bold text-xs flex-shrink-0">JP</div>`;
 
-        // 大会別ブレイクダウンのHTML生成
-        const breakdownItems = (athlete.breakdown && athlete.breakdown.length > 0)
-          ? athlete.breakdown.map(b => {
-              const countStyle = b.counted ? 'text-neutral-900 font-bold' : 'text-neutral-400 line-through';
-              return `
-                <div class="flex items-center justify-between py-1.5 px-3 border-b border-neutral-200 text-xs font-mono">
-                  <div class="truncate pr-4 flex-1 text-neutral-700">
-                    ${b.eventName}
-                  </div>
-                  <div class="w-16 text-center text-neutral-500 tabular-nums">
-                    ${b.place ? b.place + '位' : '-'}
-                  </div>
-                  <div class="w-24 text-right tabular-nums ${countStyle}">
-                    ${Number(b.points || 0).toLocaleString()} pts
-                  </div>
-                </div>
-              `;
-            }).join('')
-          : '<div class="py-2 px-3 text-neutral-400 text-xs font-mono">大会内訳データはありません</div>';
+        // 順位デザイン
+        let rankBadgeClass = "text-neutral-900";
+        if (isTop) rankBadgeClass = "text-brand font-black text-xl";
+        else if (isPodium) rankBadgeClass = "text-black font-bold text-lg";
 
-        // 選手行
-        html += `
-          <tr onclick="toggleDetail(${idx})" class="${rowBg} transition-colors cursor-pointer select-none">
-            <td class="py-3 px-4 text-center font-mono font-bold text-base tabular-nums ${isTop ? 'text-brand' : 'text-neutral-900'}">
+        return `
+          <tr 
+            onclick="openModal('${athlete.athleteId}')" 
+            class="hover:bg-neutral-50 transition-colors cursor-pointer select-none group border-b border-neutral-200"
+          >
+            <!-- 日本ランク -->
+            <td class="py-3.5 px-3 sm:px-4 text-center font-mono font-bold ${rankBadgeClass} tabular-nums">
               ${athlete.japanRank}
             </td>
-            <td class="py-3 px-4 text-center font-mono text-neutral-500 text-sm tabular-nums">
-              ${athlete.worldRank ? athlete.worldRank : '-'}
-            </td>
-            <td class="py-3 px-4">
-              <div class="flex items-center gap-3">
-                ${avatar}
-                <div class="font-bold text-neutral-900 tracking-tight truncate">${athlete.name}</div>
-              </div>
-            </td>
-            <td class="py-3 px-4 text-right font-mono font-bold text-neutral-900 tabular-nums">
-              ${Number(athlete.points || 0).toLocaleString()} <span class="text-[10px] font-normal text-neutral-500">pts</span>
-            </td>
-            <td class="py-3 px-3 text-center font-mono text-neutral-400 hover:text-black">
-              <span id="icon-${idx}" class="text-sm font-bold">+</span>
-            </td>
-          </tr>
 
-          <!-- アコーディオン内訳行（初期状態は非表示） -->
-          <tr id="detail-${idx}" class="hidden bg-neutral-100 border-b border-neutral-300">
-            <td colspan="5" class="p-3 sm:px-8">
-              <div class="bg-white border border-neutral-300">
-                <div class="bg-neutral-200 px-3 py-1 text-[11px] font-mono text-neutral-600 uppercase tracking-wider flex justify-between">
-                  <span>Event / Contest</span>
-                  <div class="flex gap-4">
-                    <span class="w-16 text-center">Result</span>
-                    <span class="w-24 text-right">Points</span>
+            <!-- 世界ランク -->
+            <td class="py-3.5 px-3 sm:px-4 text-center font-mono text-neutral-500 text-xs sm:text-sm tabular-nums">
+              ${athlete.worldRank || '-'}
+            </td>
+
+            <!-- 選手名 -->
+            <td class="py-3.5 px-4 sm:px-6">
+              <div class="flex items-center gap-3.5">
+                ${avatar}
+                <div class="min-w-0">
+                  <div class="font-bold text-base text-neutral-900 tracking-tight truncate group-hover:text-brand transition-colors">
+                    ${athlete.name}
+                  </div>
+                  <div class="font-mono text-[10px] text-neutral-400 uppercase tracking-widest">
+                    ID: ${athlete.athleteId}
                   </div>
                 </div>
-                ${breakdownItems}
               </div>
+            </td>
+
+            <!-- ポイント -->
+            <td class="py-3.5 px-4 sm:px-6 text-right font-mono font-bold text-base sm:text-lg text-neutral-900 tabular-nums">
+              ${Number(athlete.points || 0).toLocaleString()}
+              <span class="text-[10px] font-normal text-neutral-400">PTS</span>
+            </td>
+
+            <!-- アクションボタン -->
+            <td class="py-3.5 px-3 text-center hidden sm:table-cell">
+              <span class="inline-block border border-black px-2 py-1 font-mono text-[10px] font-bold uppercase tracking-wider group-hover:bg-black group-hover:text-white transition-colors">
+                VIEW ↗
+              </span>
             </td>
           </tr>
         `;
-      });
+      }).join('');
+    }
 
-      tbody.innerHTML = html;
+    // ==========================================
+    // モーダル制御ロジック
+    // ==========================================
+    function openModal(athleteId) {
+      if (!rawData || !rawData.categories) return;
+
+      const category = rawData.categories[currentCategoryKey];
+      const athlete = category.athletes.find(a => String(a.athleteId) === String(athleteId));
+      if (!athlete) return;
+
+      // 基本情報セット
+      document.getElementById('modal-category-badge').textContent = category.title || currentCategoryKey.toUpperCase();
+      document.getElementById('modal-athlete-name').textContent = athlete.name;
+      document.getElementById('modal-jp-rank').textContent = athlete.japanRank;
+      document.getElementById('modal-world-rank').textContent = athlete.worldRank || '-';
+      document.getElementById('modal-total-points').textContent = Number(athlete.points || 0).toLocaleString();
+      
+      // Liveheats外部リンク
+      const liveheatsUrl = `https://liveheats.com/athlete/${athlete.athleteId}`;
+      document.getElementById('modal-liveheats-link').href = liveheatsUrl;
+
+      // アバター
+      const avatarContainer = document.getElementById('modal-athlete-avatar');
+      if (athlete.image) {
+        avatarContainer.innerHTML = `<img src="${athlete.image}" alt="${athlete.name}" class="w-full h-full object-cover">`;
+      } else {
+        avatarContainer.innerHTML = `<span>JP</span>`;
+      }
+
+      // 内訳テーブル生成
+      const breakdownBody = document.getElementById('modal-breakdown-body');
+      const breakdown = athlete.breakdown || [];
+      document.getElementById('modal-event-count').textContent = `(${breakdown.length} CONTESTS)`;
+
+      if (breakdown.length === 0) {
+        breakdownBody.innerHTML = `
+          <tr>
+            <td colspan="4" class="py-8 text-center text-neutral-400 font-mono text-xs uppercase">
+              NO DETAILED EVENT BREAKDOWN AVAILABLE
+            </td>
+          </tr>
+        `;
+      } else {
+        breakdownBody.innerHTML = breakdown.map(item => {
+          const isCounted = item.counted;
+          const statusBadge = isCounted
+            ? `<span class="bg-black text-white px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider">COUNTED</span>`
+            : `<span class="bg-neutral-200 text-neutral-500 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider">DROPPED</span>`;
+
+          const ptsClass = isCounted 
+            ? "font-bold text-neutral-900" 
+            : "text-neutral-400 line-through";
+
+          return `
+            <tr class="hover:bg-neutral-50 transition-colors">
+              <td class="py-2.5 px-3">
+                <div class="font-bold text-neutral-900 leading-tight">${item.eventName}</div>
+                ${item.date ? `<div class="text-[10px] text-neutral-400 mt-0.5">${item.date}</div>` : ''}
+              </td>
+              <td class="py-2.5 px-3 text-center tabular-nums font-bold text-neutral-700">
+                ${item.place ? item.place + '位' : '-'}
+              </td>
+              <td class="py-2.5 px-3 text-right tabular-nums ${ptsClass}">
+                ${Number(item.points || 0).toLocaleString()} <span class="text-[10px] text-neutral-400">pts</span>
+              </td>
+              <td class="py-2.5 px-3 text-center">
+                ${statusBadge}
+              </td>
+            </tr>
+          `;
+        }).join('');
+      }
+
+      // モーダル表示 & スクロールロック
+      const modal = document.getElementById('athlete-modal');
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('athlete-modal');
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
     }
   </script>
 </body>

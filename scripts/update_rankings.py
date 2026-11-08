@@ -1,4 +1,5 @@
 import json
+import random
 import time
 import urllib.request
 from datetime import datetime, timezone, timedelta
@@ -164,7 +165,7 @@ def main():
 
             # 大会別ポイント内訳の取得
             breakdown = fetch_athlete_breakdown(d["series"], d["division"], athlete_id)
-            time.sleep(0.1)  # サーバー保護のための短い待機
+            time.sleep(random.uniform(0.5, 1.2))
 
             jp_athletes.append({
                 "japanRank": current_jp_rank,
