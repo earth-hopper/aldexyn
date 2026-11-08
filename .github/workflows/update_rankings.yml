@@ -1,0 +1,27 @@
+name: Rankings Update
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update-rankings:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run ranking scraper
+        run: python scripts/update_rankings.py
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add rankings.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto update rankings.json [skip ci]" && git push)

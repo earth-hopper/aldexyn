@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JAPAN FREERIDE RANKINGS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#bc002d',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* 数字の桁揃えを美しく見せるフォント設定 */
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+</head>
+<body class="bg-white text-neutral-900 min-h-screen antialiased flex flex-col justify-between">
+
+  <!-- ヘッダー -->
+  <header class="border-b-2 border-black bg-white">
+    <div class="max-w-6xl mx-auto px-4 py-6 sm:px-6">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+        <div>
+          <div class="inline-block bg-brand text-white text-xs font-bold tracking-widest px-2 py-0.5 uppercase mb-2">
+            Official Standings
+          </div>
+          <h1 class="text-2xl sm:text-3xl font-black tracking-tight uppercase text-black">
+            Japan Freeride Rankings
+          </h1>
+        </div>
+        <div class="text-xs text-neutral-500 font-mono">
+          最終更新: <span id="last-updated" class="font-bold text-neutral-800">取得中...</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- メインコンテンツ -->
+  <main class="max-w-6xl mx-auto px-4 py-8 sm:px-6 flex-1 w-full">
+    
+    <!-- 種目切り替えタブ（角丸なし） -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-8" id="category-tabs">
+      <button onclick="changeCategory('ski_men')" id="tab-ski_men" class="tab-btn px-4 py-3 text-xs sm:text-sm font-bold tracking-wider uppercase border border-black transition-colors text-center">
+        Ski Men
+      </button>
+      <button onclick="changeCategory('ski_women')" id="tab-ski_women" class="tab-btn px-4 py-3 text-xs sm:text-sm font-bold tracking-wider uppercase border border-black transition-colors text-center">
+        Ski Women
+      </button>
+      <button onclick="changeCategory('snowboard_men')" id="tab-snowboard_men" class="tab-btn px-4 py-3 text-xs sm:text-sm font-bold tracking-wider uppercase border border-black transition-colors text-center">
+        Snowboard Men
+      </button>
+      <button onclick="changeCategory('snowboard_women')" id="tab-snowboard_women" class="tab-btn px-4 py-3 text-xs sm:text-sm font-bold tracking-wider uppercase border border-black transition-colors text-center">
+        Snowboard Women
+      </button>
+    </div>
+
+    <!-- ランキングテーブルエリア -->
+    <div class="border border-black bg-white">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="bg-black text-white text-xs font-mono tracking-wider uppercase border-b border-black">
+              <th scope="col" class="py-3.5 px-4 w-20 text-center">JP Rank</th>
+              <th scope="col" class="py-3.5 px-4 w-24 text-center">World Rank</th>
+              <th scope="col" class="py-3.5 px-4">Athlete</th>
+              <th scope="col" class="py-3.5 px-4 text-right w-32">Points</th>
+            </tr>
+          </thead>
+          <tbody id="ranking-table-body" class="divide-y divide-neutral-200 text-sm">
+            <!-- JavaScriptで動的生成 -->
+            <tr>
+              <td colspan="4" class="py-12 text-center text-neutral-500 font-mono text-xs">
+                データを読み込み中...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 補足情報 -->
+    <div class="mt-4 flex flex-col sm:flex-row justify-between text-xs text-neutral-500 font-mono gap-2">
+      <div>* Liveheats公式リザルトの国籍登録（JPN）に基づくランキングです。</div>
+      <div>Source: Freeride World Tour / Liveheats</div>
+    </div>
+
+  </main>
+
+  <!-- フッター -->
+  <footer class="border-t border-neutral-200 py-6 mt-12 bg-neutral-50">
+    <div class="max-w-6xl mx-auto px-4 text-center text-xs text-neutral-500 font-mono">
+      &copy; JAPAN FREERIDE. ALL RIGHTS RESERVED.
+    </div>
+  </footer>
+
+  <!-- データ取得・描画スクリプト -->
+  <script>
+    let rankingsData = null;
+    let currentCategory = 'ski_men';
+
+    // 初期化: rankings.json の読み込み
+    document.addEventListener('DOMContentLoaded', () => {
+      fetchRankings();
+    });
+
+    async function fetchRankings() {
+      try {
+        // キャッシュを防ぐためタイムスタンプパラメータを付与
+        const response = await fetch('rankings.json?t=' + new Date().getTime());
+        if (!response.ok) {
+          throw new Error('rankings.json の読み込みに失敗しました');
+        }
+        rankingsData = await response.json();
+
+        // 最終更新日時を反映
+        document.getElementById('last-updated').textContent = rankingsData.lastUpdated || '不明';
+
+        // 初期表示
+        renderRankings(currentCategory);
+      } catch (error) {
+        console.error(error);
+        document.getElementById('ranking-table-body').innerHTML = `
+          <tr>
+            <td colspan="4" class="py-12 text-center text-brand font-mono text-xs">
+              データの取得に失敗しました。rankings.json が存在するか確認してください。
+            </td>
+          </tr>
+        `;
+      }
+    }
+
+    // カテゴリー切り替え
+    function changeCategory(categoryKey) {
+      currentCategory = categoryKey;
+      renderRankings(categoryKey);
+    }
+
+    // テーブルの描画
+    function renderRankings(categoryKey) {
+      if (!rankingsData || !rankingsData.categories) return;
+
+      // タブのボタンスタイル更新
+      const allTabs = document.querySelectorAll('.tab-btn');
+      allTabs.forEach(tab => {
+        tab.className = "tab-btn px-4 py-3 text-xs sm:text-sm font-bold tracking-wider uppercase border border-black transition-colors text-center bg-white text-black hover:bg-neutral-100";
+      });
+
+      const activeTab = document.getElementById(`tab-${categoryKey}`);
+      if (activeTab) {
+        // 選択中タブ: ブランドカラー背景・白文字
+        activeTab.className = "tab-btn px-4 py-3 text-xs sm:text-sm font-bold tracking-wider uppercase border border-black transition-colors text-center bg-brand text-white";
+      }
+
+      const category = rankingsData.categories[categoryKey];
+      const tbody = document.getElementById('ranking-table-body');
+
+      if (!category || !category.athletes || category.athletes.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="4" class="py-12 text-center text-neutral-400 font-mono text-xs uppercase tracking-wider">
+              該当する日本人選手の登録データがありません
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      // テーブル行の組み立て
+      tbody.innerHTML = category.athletes.map(athlete => {
+        // 1位の選手は左枠線にアクセント
+        const isTop = athlete.japanRank === 1;
+        const rowHighlight = isTop ? 'bg-neutral-50 font-medium' : 'hover:bg-neutral-50';
+
+        // 顔写真（角丸なしのスクエア）またはプレースホルダー
+        const avatar = athlete.image
+          ? `<img src="${athlete.image}" alt="${athlete.name}" class="w-9 h-9 object-cover bg-neutral-200 border border-neutral-300 flex-shrink-0" onerror="this.style.display='none'">`
+          : `<div class="w-9 h-9 bg-neutral-200 border border-neutral-300 flex items-center justify-center text-neutral-500 text-xs font-mono flex-shrink-0">JP</div>`;
+
+        return `
+          <tr class="${rowHighlight} transition-colors">
+            <!-- 日本ランク -->
+            <td class="py-3 px-4 text-center font-mono font-bold text-base tabular-nums ${isTop ? 'text-brand' : 'text-neutral-900'}">
+              ${athlete.japanRank}
+            </td>
+
+            <!-- 世界ランク -->
+            <td class="py-3 px-4 text-center font-mono text-neutral-600 text-sm tabular-nums">
+              ${athlete.worldRank ? athlete.worldRank : '-'}
+            </td>
+
+            <!-- 選手名と写真 -->
+            <td class="py-3 px-4">
+              <div class="flex items-center gap-3">
+                ${avatar}
+                <div class="min-w-0">
+                  <div class="font-bold text-neutral-900 tracking-tight truncate">${athlete.name}</div>
+                  <div class="text-[10px] font-mono text-neutral-400 uppercase tracking-widest">${athlete.country || 'JPN'}</div>
+                </div>
+              </div>
+            </td>
+
+            <!-- ポイント -->
+            <td class="py-3 px-4 text-right font-mono font-bold text-neutral-900 tabular-nums">
+              ${Number(athlete.points || 0).toLocaleString()} <span class="text-[10px] font-normal text-neutral-500">pts</span>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+  </script>
+</body>
+</html>

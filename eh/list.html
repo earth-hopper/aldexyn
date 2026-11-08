@@ -7,13 +7,12 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* ベースフォントサイズを16px(1rem)に設定し、視認性を向上 */
     body { font-family: 'Inter', 'Noto Sans JP', sans-serif; -webkit-tap-highlight-color: transparent; font-size: 16px; }
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     
-    /* モーダルのフェードアニメーション */
-    .modal-enter { opacity: 0; transform: scale(0.95); transition: all 0.3s ease-out; }
+    /* モーダルのフェード・スケールアニメーション */
+    .modal-enter { opacity: 0; transform: scale(0.95); transition: opacity 0.25s ease-out, transform 0.25s ease-out; }
     .modal-enter-active { opacity: 1; transform: scale(1); }
   </style>
 </head>
@@ -23,7 +22,7 @@
 
     <div class="px-5 pt-6 pb-6">
 
-      <!-- 購入済みのチケット (タップしやすいようパディングを拡大) -->
+      <!-- 購入済みのチケット -->
       <a href="#" class="w-full bg-white border border-slate-200 rounded-xl py-4 px-5 shadow-sm hover:shadow active:scale-[0.98] transition-all duration-200 flex items-center justify-between mb-8 group min-h-[64px]">
         <div class="flex items-center gap-3.5">
           <div class="bg-blue-50 text-blue-600 p-2.5 rounded-lg group-hover:bg-blue-100 transition-colors">
@@ -37,9 +36,13 @@
       <section>
         <!-- 見出しとマップボタン -->
         <div class="flex items-center justify-between mb-6">
-          <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
-            提携施設
-          </h2>
+          <div class="flex items-center gap-2">
+            <h2 class="text-xl font-bold text-slate-900">提携施設</h2>
+            <!-- 注意事項モーダル再表示ボタン -->
+            <button id="openModalBtn" type="button" aria-label="注意事項を見る" class="p-1 text-slate-400 hover:text-slate-600 active:scale-95 transition-all">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </button>
+          </div>
           
           <a href="#" class="bg-slate-800 text-white rounded-full py-2 px-5 text-sm font-bold shadow-sm hover:bg-slate-700 active:scale-95 transition-all duration-200 flex items-center gap-1.5">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
@@ -47,7 +50,7 @@
           </a>
         </div>
 
-        <!-- フィルタータグ (文字サイズをtext-smに引き上げ、押しやすく) -->
+        <!-- フィルタータグ -->
         <div class="space-y-3.5 mb-6">
           <div class="flex items-center space-x-2.5 overflow-x-auto no-scrollbar pb-1">
             <button class="shrink-0 bg-blue-600 text-white px-5 py-2 rounded-full text-sm font-bold shadow-sm">SNOW</button>
@@ -75,10 +78,10 @@
   </div>
 
   <!-- 注意事項モーダル -->
-  <div id="noticeModal" class="fixed inset-0 z-50 flex items-center justify-center p-5 bg-slate-900/60 backdrop-blur-sm hidden">
+  <div id="noticeModal" class="fixed inset-0 z-50 flex items-center justify-center p-5 bg-slate-900/60 backdrop-blur-sm hidden" aria-hidden="true">
     <div class="bg-white rounded-2xl w-full max-w-sm p-6 sm:p-8 shadow-2xl modal-enter" id="modalContent">
       <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-        <svg class="w-7 h-7 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        <svg class="w-7 h-7 text-blue-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
         ご利用前の注意事項
       </h3>
       
@@ -106,12 +109,7 @@
         </li>
       </ul>
 
-      <label class="flex items-center gap-3 mb-6 cursor-pointer p-2 -ml-2 rounded-lg hover:bg-slate-50 transition-colors">
-        <input type="checkbox" id="dontShowAgain" class="w-5 h-5 text-blue-600 rounded border-slate-300 focus:ring-blue-500">
-        <span class="text-base text-slate-600 font-medium">今後は表示しない</span>
-      </label>
-
-      <button id="closeModalBtn" class="w-full bg-slate-800 text-white text-base font-bold rounded-xl py-4 active:scale-[0.98] transition-transform shadow-md hover:shadow-lg">
+      <button id="closeModalBtn" type="button" class="w-full bg-slate-800 text-white text-base font-bold rounded-xl py-4 active:scale-[0.98] transition-transform shadow-md hover:shadow-lg">
         確認して閉じる
       </button>
     </div>
@@ -121,30 +119,39 @@
     document.addEventListener('DOMContentLoaded', () => {
       const modal = document.getElementById('noticeModal');
       const modalContent = document.getElementById('modalContent');
+      const openBtn = document.getElementById('openModalBtn');
       const closeBtn = document.getElementById('closeModalBtn');
-      const checkbox = document.getElementById('dontShowAgain');
-      const STORAGE_KEY = 'earthhopper_hide_notice';
 
-      // localStorageをチェックして表示判定
-      if (localStorage.getItem(STORAGE_KEY) !== 'true') {
+      const openModal = () => {
         modal.classList.remove('hidden');
-        // 少し遅らせてアニメーションクラスを付与
+        modal.setAttribute('aria-hidden', 'false');
         requestAnimationFrame(() => {
           modalContent.classList.add('modal-enter-active');
         });
-      }
+      };
 
-      // 閉じるボタンの処理
-      closeBtn.addEventListener('click', () => {
-        if (checkbox.checked) {
-          localStorage.setItem(STORAGE_KEY, 'true');
-        }
-        
-        // 閉じるアニメーション
+      const closeModal = () => {
         modalContent.classList.remove('modal-enter-active');
         setTimeout(() => {
           modal.classList.add('hidden');
-        }, 300);
+          modal.setAttribute('aria-hidden', 'true');
+        }, 250);
+      };
+
+      // ページ読み込み時に自動表示
+      openModal();
+
+      // 「?」アイコンタップ時の再表示
+      openBtn.addEventListener('click', openModal);
+
+      // 閉じるボタン
+      closeBtn.addEventListener('click', closeModal);
+
+      // モーダル外側（背景オーバーレイ）タップでも閉じる
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
       });
     });
   </script>
