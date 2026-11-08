@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026年11月08日 16:47",
+  "lastUpdated": "2026年11月08日 16:51",
   "categories": {
     "ski_men": {
       "title": "Ski Men",
@@ -12,7 +12,43 @@
           "athleteId": "902746",
           "points": 5125,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Monterosa Freeride Paradise Challenger",
+              "place": 12,
+              "points": 1405,
+              "counted": true,
+              "date": "2026-03-26T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Open Faces Obertauern Challenger",
+              "place": 10,
+              "points": 1635,
+              "counted": true,
+              "date": "2026-03-21T07:00:00Z"
+            },
+            {
+              "eventName": "2026 X Over Ride Kitzsteinhorn Challenger",
+              "place": 7,
+              "points": 2085,
+              "counted": true,
+              "date": "2026-03-14T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Nendaz Freeride Challenger",
+              "place": 24,
+              "points": 535,
+              "counted": false,
+              "date": "2026-02-28T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Open Faces Silvretta Montafon Challenger",
+              "place": null,
+              "points": 0,
+              "counted": false,
+              "date": "2026-01-26T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 2,
@@ -21,7 +57,64 @@
           "athleteId": "1511577",
           "points": 3210,
           "image": "https://www.liveheats.com/images/b1a3eb1e-f9c0-48f9-a00f-a40b1ca7d669.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2027 Santa T, Moais, Freeride Chile Championship IFSA Qualifier 3* ",
+              "place": 23,
+              "points": 300,
+              "counted": false,
+              "date": "2026-09-16T14:00:00Z"
+            },
+            {
+              "eventName": "2027 Valle Arpa IFSA Qualifier 4*",
+              "place": 40,
+              "points": 242,
+              "counted": false,
+              "date": "2026-09-09T14:00:00Z"
+            },
+            {
+              "eventName": "2027 Las Leñas IFSA Qualifier 3* (FSA Qualifier Four Star)",
+              "place": 5,
+              "points": 930,
+              "counted": true,
+              "date": "2026-08-30T14:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Hakuba Qualifier 4*",
+              "place": 13,
+              "points": 790,
+              "counted": false,
+              "date": "2026-01-26T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 2,
+              "points": 1350,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Hemu Freeride Festival Qualifier 3*",
+              "place": 5,
+              "points": 930,
+              "counted": true,
+              "date": "2025-12-14T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 2,
+              "points": 850,
+              "counted": false,
+              "date": "2026-02-01T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 1*",
+              "place": 1,
+              "points": 600,
+              "counted": false,
+              "date": "2026-01-31T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 3,
@@ -30,7 +123,78 @@
           "athleteId": "905984",
           "points": 3110,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2027 The North Face Frontier Qualifier 4*",
+              "place": 19,
+              "points": 510,
+              "counted": false,
+              "date": "2026-08-29T06:00:00Z"
+            },
+            {
+              "eventName": "2027 Treble Cone Qualifier 2*",
+              "place": 19,
+              "points": 222,
+              "counted": false,
+              "date": "2026-08-18T06:00:00Z"
+            },
+            {
+              "eventName": "2027 The North Face Frontier Qualifier 2*",
+              "place": 28,
+              "points": 166,
+              "counted": false,
+              "date": "2026-08-28T06:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Hakuba Qualifier 4*",
+              "place": 4,
+              "points": 1750,
+              "counted": true,
+              "date": "2026-01-26T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Valfréjus Freeride Qualifier 4*",
+              "place": 33,
+              "points": 270,
+              "counted": false,
+              "date": "2026-03-18T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Bonneval sur Arc Freeride Qualifier 4*",
+              "place": 24,
+              "points": 360,
+              "counted": false,
+              "date": "2026-03-14T07:00:00Z"
+            },
+            {
+              "eventName": "2026 La Rosière Evolution 2 Freeride by Bonneval Waters Qualifier 4*",
+              "place": 16,
+              "points": 630,
+              "counted": true,
+              "date": "2026-03-11T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 11,
+              "points": 510,
+              "counted": false,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Hemu Freeride Festival Qualifier 3*",
+              "place": 7,
+              "points": 730,
+              "counted": true,
+              "date": "2025-12-14T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 6,
+              "points": 530,
+              "counted": false,
+              "date": "2026-02-01T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 4,
@@ -39,7 +203,22 @@
           "athleteId": "902750",
           "points": 2850,
           "image": "https://res.cloudinary.com/liveheats-com/image/facebook/w_128,h_128/6774938885952900.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Hakuba Qualifier 4*",
+              "place": 2,
+              "points": 2200,
+              "counted": true,
+              "date": "2026-01-26T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 8,
+              "points": 650,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 5,
@@ -48,7 +227,57 @@
           "athleteId": "1322675",
           "points": 2730,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2027 The North Face Frontier Qualifier 4*",
+              "place": 15,
+              "points": 680,
+              "counted": true,
+              "date": "2026-08-29T06:00:00Z"
+            },
+            {
+              "eventName": "2027 Treble Cone Qualifier 2*",
+              "place": 40,
+              "points": 121,
+              "counted": false,
+              "date": "2026-08-18T06:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Hakuba Qualifier 4*",
+              "place": 6,
+              "points": 1400,
+              "counted": true,
+              "date": "2026-01-26T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 15,
+              "points": 410,
+              "counted": false,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Hemu Freeride Festival Qualifier 3*",
+              "place": 8,
+              "points": 650,
+              "counted": true,
+              "date": "2025-12-14T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 14,
+              "points": 275,
+              "counted": false,
+              "date": "2026-02-01T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 1*",
+              "place": 9,
+              "points": 175,
+              "counted": false,
+              "date": "2026-01-31T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 6,
@@ -57,7 +286,50 @@
           "athleteId": "902763",
           "points": 2635,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2027 The North Face Frontier Qualifier 4*",
+              "place": 23,
+              "points": 385,
+              "counted": true,
+              "date": "2026-08-29T06:00:00Z"
+            },
+            {
+              "eventName": "2027 The North Face Frontier Qualifier 2*",
+              "place": 25,
+              "points": 180,
+              "counted": false,
+              "date": "2026-08-28T06:00:00Z"
+            },
+            {
+              "eventName": "2026 La Rosière Evolution 2 Freeride Qualifier 3*",
+              "place": 8,
+              "points": 650,
+              "counted": true,
+              "date": "2026-04-04T06:00:00Z"
+            },
+            {
+              "eventName": "2026 Valfréjus Freeride Qualifier 4*",
+              "place": 28,
+              "points": 310,
+              "counted": false,
+              "date": "2026-03-18T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 1,
+              "points": 1600,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Les Arcs Evolution 2 Freeride Qualifier 4*",
+              "place": null,
+              "points": 0,
+              "counted": false,
+              "date": "2026-01-21T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 7,
@@ -66,7 +338,36 @@
           "athleteId": "1091912",
           "points": 2252,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Hakuba Qualifier 4*",
+              "place": 7,
+              "points": 1300,
+              "counted": true,
+              "date": "2026-01-26T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 24,
+              "points": 292,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 4,
+              "points": 660,
+              "counted": true,
+              "date": "2026-02-01T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 1*",
+              "place": 10,
+              "points": 167,
+              "counted": false,
+              "date": "2026-01-31T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 8,
@@ -75,7 +376,22 @@
           "athleteId": "1162097",
           "points": 2210,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Hakuba Qualifier 4*",
+              "place": 12,
+              "points": 860,
+              "counted": true,
+              "date": "2026-01-26T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Hemu Freeride Festival Qualifier 3*",
+              "place": 2,
+              "points": 1350,
+              "counted": true,
+              "date": "2025-12-14T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 9,
@@ -84,7 +400,50 @@
           "athleteId": "1090934",
           "points": 2090,
           "image": "https://liveheats.com/images/16450b3d-ad08-4c4a-be22-f52ecfcd8acb.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2027 The North Face Frontier Qualifier 4*",
+              "place": 22,
+              "points": 415,
+              "counted": false,
+              "date": "2026-08-29T06:00:00Z"
+            },
+            {
+              "eventName": "2027 The North Face Frontier Qualifier 2*",
+              "place": 42,
+              "points": 117,
+              "counted": false,
+              "date": "2026-08-28T06:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 4,
+              "points": 1050,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Hemu Freeride Festival Qualifier 3*",
+              "place": 13,
+              "points": 450,
+              "counted": true,
+              "date": "2025-12-14T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 5,
+              "points": 590,
+              "counted": true,
+              "date": "2026-02-01T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 1*",
+              "place": 6,
+              "points": 220,
+              "counted": false,
+              "date": "2026-01-31T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 10,
@@ -93,7 +452,43 @@
           "athleteId": "1752179",
           "points": 1520,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2027 Santa T, Moais, Freeride Chile Championship IFSA Qualifier 3* ",
+              "place": 13,
+              "points": 450,
+              "counted": true,
+              "date": "2026-09-16T14:00:00Z"
+            },
+            {
+              "eventName": "2027 Valle Arpa IFSA Qualifier 4*",
+              "place": 31,
+              "points": 284,
+              "counted": false,
+              "date": "2026-09-09T14:00:00Z"
+            },
+            {
+              "eventName": "2027 Las Leñas IFSA Qualifier 3* (FSA Qualifier Four Star)",
+              "place": 29,
+              "points": 258,
+              "counted": false,
+              "date": "2026-08-30T14:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 9,
+              "points": 595,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 7,
+              "points": 475,
+              "counted": true,
+              "date": "2026-02-01T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 11,
@@ -102,7 +497,36 @@
           "athleteId": "904799",
           "points": 1357,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 La Rosière Evolution 2 Freeride Qualifier 3*",
+              "place": 24,
+              "points": 292,
+              "counted": true,
+              "date": "2026-04-04T06:00:00Z"
+            },
+            {
+              "eventName": "2026 La Rosière Evolution 2 Freeride by Bonneval Waters Qualifier 4*",
+              "place": 20,
+              "points": 475,
+              "counted": true,
+              "date": "2026-03-11T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Serre-Chevalier Freeride South Line Series Qualifier 4*",
+              "place": 17,
+              "points": 590,
+              "counted": true,
+              "date": "2026-01-30T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Les Arcs Evolution 2 Freeride Qualifier 4*",
+              "place": null,
+              "points": 0,
+              "counted": false,
+              "date": "2026-01-21T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 12,
@@ -111,7 +535,50 @@
           "athleteId": "906484",
           "points": 1255,
           "image": "https://liveheats.com/images/d06b8aab-54a4-4441-84e9-a0bf0062288c.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2027 Treble Cone Qualifier 2*",
+              "place": 30,
+              "points": 156,
+              "counted": false,
+              "date": "2026-08-18T06:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Hakuba Qualifier 4*",
+              "place": 16,
+              "points": 630,
+              "counted": true,
+              "date": "2026-01-26T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 25,
+              "points": 284,
+              "counted": false,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Japan Fukui Izumi Qualifier 1*",
+              "place": 4,
+              "points": 290,
+              "counted": true,
+              "date": "2026-02-11T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 11,
+              "points": 335,
+              "counted": true,
+              "date": "2026-02-01T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 1*",
+              "place": 7,
+              "points": 200,
+              "counted": false,
+              "date": "2026-01-31T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 13,
@@ -120,7 +587,36 @@
           "athleteId": "1158636",
           "points": 1240,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2027 Santa T, Moais, Freeride Chile Championship IFSA Qualifier 3* ",
+              "place": 40,
+              "points": 220,
+              "counted": false,
+              "date": "2026-09-16T14:00:00Z"
+            },
+            {
+              "eventName": "2027 Valle Arpa IFSA Qualifier 4*",
+              "place": 26,
+              "points": 330,
+              "counted": true,
+              "date": "2026-09-09T14:00:00Z"
+            },
+            {
+              "eventName": "2027 Las Leñas IFSA Qualifier 3* (FSA Qualifier Four Star)",
+              "place": 9,
+              "points": 595,
+              "counted": true,
+              "date": "2026-08-30T14:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Arai Junior 3*",
+              "place": 6,
+              "points": 315,
+              "counted": true,
+              "date": "2026-02-28T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 14,
@@ -129,7 +625,22 @@
           "athleteId": "903055",
           "points": 1230,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Hakuba Qualifier 4*",
+              "place": 11,
+              "points": 930,
+              "counted": true,
+              "date": "2026-01-26T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 23,
+              "points": 300,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 15,
@@ -138,7 +649,29 @@
           "athleteId": "1189020",
           "points": 1210,
           "image": "https://liveheats.com/images/04be5180-6a53-4c41-947b-81a856783de3.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 13,
+              "points": 450,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 12,
+              "points": 310,
+              "counted": true,
+              "date": "2026-02-01T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 1*",
+              "place": 2,
+              "points": 450,
+              "counted": true,
+              "date": "2026-01-31T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 16,
@@ -147,7 +680,50 @@
           "athleteId": "1169646",
           "points": 1030,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2027 Santa T, Moais, Freeride Chile Championship IFSA Qualifier 3* ",
+              "place": 16,
+              "points": 390,
+              "counted": true,
+              "date": "2026-09-16T14:00:00Z"
+            },
+            {
+              "eventName": "2027 Valle Arpa IFSA Qualifier 4*",
+              "place": 35,
+              "points": 259,
+              "counted": false,
+              "date": "2026-09-09T14:00:00Z"
+            },
+            {
+              "eventName": "2027 Las Leñas IFSA Qualifier 3* (FSA Qualifier Four Star)",
+              "place": 21,
+              "points": 320,
+              "counted": true,
+              "date": "2026-08-30T14:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 21,
+              "points": 320,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 16,
+              "points": 250,
+              "counted": false,
+              "date": "2026-02-01T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 1*",
+              "place": 17,
+              "points": 127,
+              "counted": false,
+              "date": "2026-01-31T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 17,
@@ -156,7 +732,29 @@
           "athleteId": "1142108",
           "points": 970,
           "image": "https://liveheats.com/images/536bae62-dca8-4ddc-960e-5efe294a9fd5.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 14,
+              "points": 430,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 13,
+              "points": 290,
+              "counted": true,
+              "date": "2026-02-01T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 1*",
+              "place": 5,
+              "points": 250,
+              "counted": true,
+              "date": "2026-01-31T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 18,
@@ -165,7 +763,15 @@
           "athleteId": "904813",
           "points": 930,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 5,
+              "points": 930,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 19,
@@ -174,7 +780,22 @@
           "athleteId": "1517714",
           "points": 900,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Junior 3*",
+              "place": 2,
+              "points": 640,
+              "counted": true,
+              "date": "2026-02-28T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Junior 1*",
+              "place": 1,
+              "points": 260,
+              "counted": true,
+              "date": "2026-01-31T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 20,
@@ -183,7 +804,22 @@
           "athleteId": "902764",
           "points": 740,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 9,
+              "points": 390,
+              "counted": true,
+              "date": "2026-02-01T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 1*",
+              "place": 3,
+              "points": 350,
+              "counted": true,
+              "date": "2026-01-31T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 21,
@@ -192,7 +828,43 @@
           "athleteId": "1877229",
           "points": 717,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Scandinavian Big Mountain Championships Qualifier 3*",
+              "place": 68,
+              "points": 164,
+              "counted": false,
+              "date": "2026-05-04T06:00:00Z"
+            },
+            {
+              "eventName": "2026 Avoriaz Evolution 2 Freeride Qualifier 2*",
+              "place": 19,
+              "points": 222,
+              "counted": true,
+              "date": "2026-03-28T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 22,
+              "points": 310,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Japan Fukui Izumi Qualifier 1*",
+              "place": null,
+              "points": 0,
+              "counted": false,
+              "date": "2026-02-11T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 1*",
+              "place": 8,
+              "points": 185,
+              "counted": true,
+              "date": "2026-01-31T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 22,
@@ -201,7 +873,36 @@
           "athleteId": "904873",
           "points": 639,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2027 Treble Cone Qualifier 2*",
+              "place": 38,
+              "points": 125,
+              "counted": false,
+              "date": "2026-08-18T06:00:00Z"
+            },
+            {
+              "eventName": "2027 The North Face Frontier Qualifier 2*",
+              "place": 30,
+              "points": 156,
+              "counted": true,
+              "date": "2026-08-28T06:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 26,
+              "points": 277,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 21,
+              "points": 206,
+              "counted": true,
+              "date": "2026-02-01T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 23,
@@ -210,7 +911,22 @@
           "athleteId": "1482998",
           "points": 604,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 32,
+              "points": 244,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 10,
+              "points": 360,
+              "counted": true,
+              "date": "2026-02-01T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 24,
@@ -219,7 +935,15 @@
           "athleteId": "902756",
           "points": 600,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Japan Fukui Izumi Qualifier 1*",
+              "place": 1,
+              "points": 600,
+              "counted": true,
+              "date": "2026-02-11T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 25,
@@ -228,7 +952,22 @@
           "athleteId": "1120201",
           "points": 550,
           "image": "https://liveheats.com/images/3013cd8e-d3d6-4e6e-8a2f-4ce0e1da6b1c.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Junior 3*",
+              "place": 5,
+              "points": 360,
+              "counted": true,
+              "date": "2026-02-28T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Junior 1*",
+              "place": 2,
+              "points": 190,
+              "counted": true,
+              "date": "2026-01-31T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 26,
@@ -237,7 +976,15 @@
           "athleteId": "903054",
           "points": 475,
           "image": "https://res.cloudinary.com/liveheats-com/image/facebook/w_128,h_128/6931995216893929.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 12,
+              "points": 475,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 27,
@@ -246,7 +993,22 @@
           "athleteId": "1904769",
           "points": 465,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 26,
+              "points": 175,
+              "counted": true,
+              "date": "2026-02-01T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 1*",
+              "place": 4,
+              "points": 290,
+              "counted": true,
+              "date": "2026-01-31T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 28,
@@ -255,7 +1017,22 @@
           "athleteId": "1523479",
           "points": 462,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 27,
+              "points": 270,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 23,
+              "points": 192,
+              "counted": true,
+              "date": "2026-02-01T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 29,
@@ -264,7 +1041,15 @@
           "athleteId": "1917978",
           "points": 450,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Japan Fukui Izumi Qualifier 1*",
+              "place": 2,
+              "points": 450,
+              "counted": true,
+              "date": "2026-02-11T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 30,
@@ -273,7 +1058,22 @@
           "athleteId": "1088912",
           "points": 439,
           "image": "https://liveheats.com/images/df7fbe4c-10e8-45af-ae1e-315231881c64.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 30,
+              "points": 253,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 24,
+              "points": 186,
+              "counted": true,
+              "date": "2026-02-01T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 31,
@@ -282,7 +1082,15 @@
           "athleteId": "1498682",
           "points": 410,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Junior 3*",
+              "place": 4,
+              "points": 410,
+              "counted": true,
+              "date": "2026-02-28T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 32,
@@ -291,7 +1099,22 @@
           "athleteId": "1434231",
           "points": 353,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 18,
+              "points": 230,
+              "counted": true,
+              "date": "2026-02-01T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 1*",
+              "place": 18,
+              "points": 123,
+              "counted": true,
+              "date": "2026-01-31T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 33,
@@ -300,7 +1123,15 @@
           "athleteId": "1091012",
           "points": 350,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Japan Fukui Izumi Qualifier 1*",
+              "place": 3,
+              "points": 350,
+              "counted": true,
+              "date": "2026-02-11T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 34,
@@ -309,7 +1140,22 @@
           "athleteId": "1876986",
           "points": 346,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 22,
+              "points": 199,
+              "counted": true,
+              "date": "2026-02-01T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 1*",
+              "place": 13,
+              "points": 147,
+              "counted": true,
+              "date": "2026-01-31T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 35,
@@ -318,7 +1164,15 @@
           "athleteId": "608870",
           "points": 264,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 28,
+              "points": 264,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 36,
@@ -327,7 +1181,15 @@
           "athleteId": "1936504",
           "points": 260,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 15,
+              "points": 260,
+              "counted": true,
+              "date": "2026-02-01T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 37,
@@ -336,7 +1198,15 @@
           "athleteId": "608862",
           "points": 258,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 29,
+              "points": 258,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 38,
@@ -345,7 +1215,15 @@
           "athleteId": "906495",
           "points": 258,
           "image": "https://liveheats.com/images/3fbf7faf-5520-44db-a867-3806d7b2c52e.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "YETI FIS Freeride Junior World Championships Kappl 2026",
+              "place": 17,
+              "points": 258,
+              "counted": true,
+              "date": "2026-01-17T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 39,
@@ -354,7 +1232,22 @@
           "athleteId": "1483190",
           "points": 193,
           "image": "https://liveheats.com/images/5ba526a4-0f79-42e8-8cbb-65a845f8b7c5.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2025 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 31,
+              "points": 94,
+              "counted": true,
+              "date": "2025-02-02T07:00:00Z"
+            },
+            {
+              "eventName": "2025 Toyo Tires Yuzawa Nakzato Qualifier 1*",
+              "place": 10,
+              "points": 99,
+              "counted": true,
+              "date": "2025-02-01T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 40,
@@ -363,7 +1256,15 @@
           "athleteId": "1876407",
           "points": 145,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Junior 1*",
+              "place": 3,
+              "points": 145,
+              "counted": true,
+              "date": "2026-01-31T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 41,
@@ -372,7 +1273,15 @@
           "athleteId": "1919721",
           "points": 141,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 1*",
+              "place": 14,
+              "points": 141,
+              "counted": true,
+              "date": "2026-01-31T07:00:00Z"
+            }
+          ]
         }
       ]
     },
@@ -387,7 +1296,50 @@
           "athleteId": "905990",
           "points": 5000,
           "image": "https://liveheats.com/images/4d99c7ae-0f65-4c8e-ba06-afc04048167b.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2027 The North Face Frontier Qualifier 4*",
+              "place": 3,
+              "points": 1800,
+              "counted": true,
+              "date": "2026-08-29T06:00:00Z"
+            },
+            {
+              "eventName": "2027 The North Face Frontier Qualifier 2*",
+              "place": 12,
+              "points": 220,
+              "counted": false,
+              "date": "2026-08-28T06:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Hakuba Qualifier 4*",
+              "place": 2,
+              "points": 2100,
+              "counted": true,
+              "date": "2026-01-26T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 3,
+              "points": 1100,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Hemu Freeride Festival Qualifier 3*",
+              "place": 5,
+              "points": 805,
+              "counted": false,
+              "date": "2025-12-14T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 8,
+              "points": 320,
+              "counted": false,
+              "date": "2026-02-01T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 2,
@@ -396,7 +1348,36 @@
           "athleteId": "904800",
           "points": 4300,
           "image": "https://liveheats.com/images/1df922dc-d09a-4423-b4cc-4939c1810198.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Hakuba Qualifier 4*",
+              "place": 6,
+              "points": 1160,
+              "counted": true,
+              "date": "2026-01-26T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Valfréjus Freeride Qualifier 4*",
+              "place": 3,
+              "points": 1800,
+              "counted": true,
+              "date": "2026-03-18T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Bonneval sur Arc Freeride Qualifier 4*",
+              "place": 6,
+              "points": 1160,
+              "counted": false,
+              "date": "2026-03-14T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Verbier Freeride Week Qualifier 4*",
+              "place": 5,
+              "points": 1340,
+              "counted": true,
+              "date": "2026-02-13T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 3,
@@ -405,7 +1386,29 @@
           "athleteId": "902897",
           "points": 4125,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Hakuba Qualifier 4*",
+              "place": 1,
+              "points": 2500,
+              "counted": true,
+              "date": "2026-01-26T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 5,
+              "points": 805,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 2,
+              "points": 820,
+              "counted": true,
+              "date": "2026-02-01T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 4,
@@ -414,7 +1417,22 @@
           "athleteId": "905993",
           "points": 3400,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Hakuba Qualifier 4*",
+              "place": 3,
+              "points": 1800,
+              "counted": true,
+              "date": "2026-01-26T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 1,
+              "points": 1600,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 5,
@@ -423,7 +1441,22 @@
           "athleteId": "905395",
           "points": 2640,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Hakuba Qualifier 4*",
+              "place": 5,
+              "points": 1340,
+              "counted": true,
+              "date": "2026-01-26T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 2,
+              "points": 1300,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 6,
@@ -432,7 +1465,29 @@
           "athleteId": "902771",
           "points": 1705,
           "image": "https://res.cloudinary.com/liveheats-com/image/facebook/w_128,h_128/6311212252248118.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 6,
+              "points": 690,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Verbier Freeride Week Qualifier 4*",
+              "place": 13,
+              "points": 550,
+              "counted": true,
+              "date": "2026-02-13T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Les Arcs Evolution 2 Freeride Qualifier 4*",
+              "place": 15,
+              "points": 465,
+              "counted": true,
+              "date": "2026-01-21T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 7,
@@ -441,7 +1496,36 @@
           "athleteId": "1091596",
           "points": 1530,
           "image": "https://liveheats.com/images/01c33e87-ec5b-4a6e-9ad3-f0dfc39e5485.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 13,
+              "points": 305,
+              "counted": false,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Japan Fukui Izumi Qualifier 1*",
+              "place": 1,
+              "points": 600,
+              "counted": true,
+              "date": "2026-02-11T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 4,
+              "points": 580,
+              "counted": true,
+              "date": "2026-02-01T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 1*",
+              "place": 3,
+              "points": 350,
+              "counted": true,
+              "date": "2026-01-31T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 8,
@@ -450,7 +1534,29 @@
           "athleteId": "1928135",
           "points": 1125,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 10,
+              "points": 410,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 6,
+              "points": 425,
+              "counted": true,
+              "date": "2026-02-01T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 1*",
+              "place": 4,
+              "points": 290,
+              "counted": true,
+              "date": "2026-01-31T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 9,
@@ -459,7 +1565,22 @@
           "athleteId": "1956612",
           "points": 965,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 7,
+              "points": 365,
+              "counted": true,
+              "date": "2026-02-01T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 1*",
+              "place": 1,
+              "points": 600,
+              "counted": true,
+              "date": "2026-01-31T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 10,
@@ -468,7 +1589,22 @@
           "athleteId": "1892396",
           "points": 910,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 9,
+              "points": 460,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 1*",
+              "place": 2,
+              "points": 450,
+              "counted": true,
+              "date": "2026-01-31T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 11,
@@ -477,7 +1613,15 @@
           "athleteId": "903076",
           "points": 810,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Hakuba Qualifier 4*",
+              "place": 9,
+              "points": 810,
+              "counted": true,
+              "date": "2026-01-26T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 12,
@@ -486,7 +1630,22 @@
           "athleteId": "905991",
           "points": 708,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 15,
+              "points": 258,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Japan Fukui Izumi Qualifier 1*",
+              "place": 2,
+              "points": 450,
+              "counted": true,
+              "date": "2026-02-11T07:00:00Z"
+            }
+          ]
         }
       ]
     },
@@ -501,7 +1660,50 @@
           "athleteId": "1098942",
           "points": 5350,
           "image": "https://liveheats.com/images/7e25cad5-99ea-457d-ae3a-b007677e4055.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2027 The North Face Frontier Qualifier 4*",
+              "place": 4,
+              "points": 1550,
+              "counted": true,
+              "date": "2026-08-29T06:00:00Z"
+            },
+            {
+              "eventName": "2027 The North Face Frontier Qualifier 2*",
+              "place": 7,
+              "points": 365,
+              "counted": false,
+              "date": "2026-08-28T06:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Hakuba Qualifier 4*",
+              "place": 1,
+              "points": 2500,
+              "counted": true,
+              "date": "2026-01-26T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 2,
+              "points": 1300,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Verbier Freeride Week Qualifier 4*",
+              "place": 14,
+              "points": 505,
+              "counted": false,
+              "date": "2026-02-13T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Verbier Freeride Week Qualifier 2*",
+              "place": 2,
+              "points": 820,
+              "counted": false,
+              "date": "2026-02-09T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 2,
@@ -510,7 +1712,36 @@
           "athleteId": "903210",
           "points": 4680,
           "image": "https://liveheats.com/images/b5e6b28b-43c1-4864-a1f1-86f64e91e543.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2027 The North Face Frontier Qualifier 4*",
+              "place": 1,
+              "points": 2500,
+              "counted": true,
+              "date": "2026-08-29T06:00:00Z"
+            },
+            {
+              "eventName": "2027 The North Face Frontier Qualifier 2*",
+              "place": 4,
+              "points": 580,
+              "counted": true,
+              "date": "2026-08-28T06:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Hakuba Qualifier 4*",
+              "place": 15,
+              "points": 465,
+              "counted": false,
+              "date": "2026-01-26T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 1,
+              "points": 1600,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 3,
@@ -519,7 +1750,43 @@
           "athleteId": "1110438",
           "points": 3305,
           "image": "https://liveheats.com/images/0832a4e5-319e-4246-b207-9d756111442b.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2027 The North Face Frontier Qualifier 4*",
+              "place": 8,
+              "points": 900,
+              "counted": true,
+              "date": "2026-08-29T06:00:00Z"
+            },
+            {
+              "eventName": "2027 The North Face Frontier Qualifier 2*",
+              "place": 3,
+              "points": 680,
+              "counted": false,
+              "date": "2026-08-28T06:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Hakuba Qualifier 4*",
+              "place": 13,
+              "points": 550,
+              "counted": false,
+              "date": "2026-01-26T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 5,
+              "points": 805,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Hemu Freeride Festival Qualifier 3*",
+              "place": 1,
+              "points": 1600,
+              "counted": true,
+              "date": "2025-12-14T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 4,
@@ -528,7 +1795,22 @@
           "athleteId": "1147223",
           "points": 2100,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Hakuba Qualifier 4*",
+              "place": 6,
+              "points": 1160,
+              "counted": true,
+              "date": "2026-01-26T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 4,
+              "points": 940,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 5,
@@ -537,7 +1819,22 @@
           "athleteId": "1913858",
           "points": 2030,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Hakuba Qualifier 4*",
+              "place": 5,
+              "points": 1340,
+              "counted": true,
+              "date": "2026-01-26T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 6,
+              "points": 690,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 6,
@@ -546,7 +1843,50 @@
           "athleteId": "1143337",
           "points": 1605,
           "image": "https://liveheats.com/images/6beebed1-4430-4576-aa34-b14ab87ea954.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2027 Valle Arpa IFSA Qualifier 4*",
+              "place": 14,
+              "points": 505,
+              "counted": true,
+              "date": "2026-09-09T14:00:00Z"
+            },
+            {
+              "eventName": "2027 Las Leñas IFSA Qualifier 2*",
+              "place": 4,
+              "points": 580,
+              "counted": true,
+              "date": "2026-08-27T11:00:00Z"
+            },
+            {
+              "eventName": "2027 Las Leñas IFSA Qualifier 3* (FSA Qualifier Four Star)",
+              "place": 14,
+              "points": 280,
+              "counted": false,
+              "date": "2026-08-30T14:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 8,
+              "points": 520,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 1*",
+              "place": 3,
+              "points": 350,
+              "counted": false,
+              "date": "2026-01-31T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 17,
+              "points": 161,
+              "counted": false,
+              "date": "2026-02-01T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 7,
@@ -555,7 +1895,22 @@
           "athleteId": "1170844",
           "points": 1258,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 15,
+              "points": 258,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 1,
+              "points": 1000,
+              "counted": true,
+              "date": "2026-02-01T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 8,
@@ -564,7 +1919,22 @@
           "athleteId": "1484661",
           "points": 1180,
           "image": "https://liveheats.com/images/8a95e1ba-d3e2-4c6a-87f7-a1889213d7ae.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Hakuba Qualifier 4*",
+              "place": 8,
+              "points": 900,
+              "counted": true,
+              "date": "2026-01-26T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 14,
+              "points": 280,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 9,
@@ -573,7 +1943,15 @@
           "athleteId": "904835",
           "points": 1100,
           "image": "https://liveheats.com/images/f8dc2ef1-4483-4531-866c-efa4fe554fbb.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 3,
+              "points": 1100,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 10,
@@ -582,7 +1960,36 @@
           "athleteId": "904866",
           "points": 1090,
           "image": "https://liveheats.com/images/5c183e52-6b5a-4233-a1f2-aac7b250474f.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2027 NZJFT Treble Cone Junior 3*",
+              "place": 7,
+              "points": 275,
+              "counted": true,
+              "date": "2026-08-21T06:00:00Z"
+            },
+            {
+              "eventName": "2026 Sauda Backcountry Challenge Junior 3*",
+              "place": 3,
+              "points": 500,
+              "counted": true,
+              "date": "2026-04-08T06:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Arai Junior 3*",
+              "place": 6,
+              "points": 315,
+              "counted": true,
+              "date": "2026-02-28T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Junior 1*",
+              "place": 2,
+              "points": 190,
+              "counted": false,
+              "date": "2026-01-31T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 11,
@@ -591,7 +1998,29 @@
           "athleteId": "1161413",
           "points": 1080,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 26,
+              "points": 135,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 1*",
+              "place": 2,
+              "points": 450,
+              "counted": true,
+              "date": "2026-01-31T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 5,
+              "points": 495,
+              "counted": true,
+              "date": "2026-02-01T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 12,
@@ -600,7 +2029,36 @@
           "athleteId": "903089",
           "points": 1015,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 11,
+              "points": 370,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Japan Fukui Izumi Qualifier 1*",
+              "place": 6,
+              "points": 220,
+              "counted": true,
+              "date": "2026-02-11T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 1*",
+              "place": 12,
+              "points": 140,
+              "counted": false,
+              "date": "2026-01-31T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 6,
+              "points": 425,
+              "counted": true,
+              "date": "2026-02-01T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 13,
@@ -609,7 +2067,22 @@
           "athleteId": "1470458",
           "points": 920,
           "image": "https://liveheats.com/images/fb6ebf67-254f-494a-a71b-10990cb25e2a.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Junior 3*",
+              "place": 1,
+              "points": 800,
+              "counted": true,
+              "date": "2026-02-28T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Junior 1*",
+              "place": 4,
+              "points": 120,
+              "counted": true,
+              "date": "2026-01-31T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 14,
@@ -618,7 +2091,22 @@
           "athleteId": "906486",
           "points": 833,
           "image": "https://liveheats.com/images/54136fc9-6b33-4d3d-a8c9-27aa6e5ee4b1.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2027 The North Face Frontier Qualifier 2*",
+              "place": 11,
+              "points": 238,
+              "counted": true,
+              "date": "2026-08-28T06:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 7,
+              "points": 595,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 15,
@@ -627,7 +2115,22 @@
           "athleteId": "955056",
           "points": 760,
           "image": "https://res.cloudinary.com/liveheats-com/image/facebook/w_128,h_128/25460050143609369.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Freeride Haute-Gaspesie IFSA Qualifier 2*",
+              "place": 4,
+              "points": 580,
+              "counted": true,
+              "date": "2026-03-28T12:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 20,
+              "points": 180,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 16,
@@ -636,7 +2139,15 @@
           "athleteId": "904807",
           "points": 750,
           "image": "https://liveheats.com/images/7dc973da-085c-403a-ae94-44c403bb04bb.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2025 Toyo Tires Hakuba Qualifier 4*",
+              "place": 8,
+              "points": 750,
+              "counted": true,
+              "date": "2025-01-27T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 17,
@@ -645,7 +2156,15 @@
           "athleteId": "905994",
           "points": 730,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Hakuba Qualifier 4*",
+              "place": 10,
+              "points": 730,
+              "counted": true,
+              "date": "2026-01-26T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 18,
@@ -654,7 +2173,15 @@
           "athleteId": "1098980",
           "points": 680,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 3,
+              "points": 680,
+              "counted": true,
+              "date": "2026-02-01T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 19,
@@ -663,7 +2190,15 @@
           "athleteId": "1444368",
           "points": 640,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Junior 3*",
+              "place": 2,
+              "points": 640,
+              "counted": true,
+              "date": "2026-02-28T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 20,
@@ -672,7 +2207,15 @@
           "athleteId": "905996",
           "points": 600,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Japan Fukui Izumi Qualifier 1*",
+              "place": 1,
+              "points": 600,
+              "counted": true,
+              "date": "2026-02-11T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 21,
@@ -681,7 +2224,15 @@
           "athleteId": "1877150",
           "points": 600,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 1*",
+              "place": 1,
+              "points": 600,
+              "counted": true,
+              "date": "2026-01-31T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 22,
@@ -690,7 +2241,22 @@
           "athleteId": "1091011",
           "points": 570,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Japan Fukui Izumi Qualifier 1*",
+              "place": 3,
+              "points": 350,
+              "counted": true,
+              "date": "2026-02-11T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 12,
+              "points": 220,
+              "counted": true,
+              "date": "2026-02-01T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 23,
@@ -699,7 +2265,22 @@
           "athleteId": "1491009",
           "points": 570,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 30,
+              "points": 120,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Japan Fukui Izumi Qualifier 1*",
+              "place": 2,
+              "points": 450,
+              "counted": true,
+              "date": "2026-02-11T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 24,
@@ -708,7 +2289,15 @@
           "athleteId": "904837",
           "points": 505,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Hakuba Qualifier 4*",
+              "place": 14,
+              "points": 505,
+              "counted": true,
+              "date": "2026-01-26T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 25,
@@ -717,7 +2306,15 @@
           "athleteId": "1482899",
           "points": 460,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 9,
+              "points": 460,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 26,
@@ -726,7 +2323,15 @@
           "athleteId": "1091426",
           "points": 450,
           "image": "https://liveheats.com/images/5c0eb143-67fb-429b-b571-19e99773dcee.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "YETI FIS Freeride Junior World Championships Kappl 2026",
+              "place": 8,
+              "points": 450,
+              "counted": true,
+              "date": "2026-01-17T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 27,
@@ -735,7 +2340,29 @@
           "athleteId": "904838",
           "points": 441,
           "image": "https://liveheats.com/images/187e76a1-048d-490d-9271-e343988e126a.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 24,
+              "points": 146,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 1*",
+              "place": 15,
+              "points": 115,
+              "counted": true,
+              "date": "2026-01-31T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 15,
+              "points": 180,
+              "counted": true,
+              "date": "2026-02-01T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 28,
@@ -744,7 +2371,15 @@
           "athleteId": "903230",
           "points": 410,
           "image": "https://liveheats.com/images/d5424425-e7a7-4867-8ab8-9a2077ccc45e.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Junior 3*",
+              "place": 4,
+              "points": 410,
+              "counted": true,
+              "date": "2026-02-28T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 29,
@@ -753,7 +2388,15 @@
           "athleteId": "1123281",
           "points": 400,
           "image": "https://liveheats.com/images/3bda8ff3-e2ef-43e7-9250-4f0721c9b15d.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Hakuba Qualifier 4*",
+              "place": 17,
+              "points": 400,
+              "counted": true,
+              "date": "2026-01-26T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 30,
@@ -762,7 +2405,29 @@
           "athleteId": "1160385",
           "points": 378,
           "image": "https://liveheats.com/images/7098e3da-95f0-460a-b9ab-bc25097fbc84.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 25,
+              "points": 140,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 1*",
+              "place": 21,
+              "points": 85,
+              "counted": true,
+              "date": "2026-01-31T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 18,
+              "points": 153,
+              "counted": true,
+              "date": "2026-02-01T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 31,
@@ -771,7 +2436,22 @@
           "athleteId": "1940180",
           "points": 369,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 27,
+              "points": 131,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 11,
+              "points": 238,
+              "counted": true,
+              "date": "2026-02-01T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 32,
@@ -780,7 +2460,22 @@
           "athleteId": "1883478",
           "points": 361,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 22,
+              "points": 161,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Japan Fukui Izumi Qualifier 1*",
+              "place": 7,
+              "points": 200,
+              "counted": true,
+              "date": "2026-02-11T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 33,
@@ -789,7 +2484,15 @@
           "athleteId": "1478451",
           "points": 360,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Junior 3*",
+              "place": 5,
+              "points": 360,
+              "counted": true,
+              "date": "2026-02-28T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 34,
@@ -798,7 +2501,15 @@
           "athleteId": "1963283",
           "points": 290,
           "image": "https://res.cloudinary.com/liveheats-com/image/facebook/w_128,h_128/3761491537319012.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Japan Fukui Izumi Qualifier 1*",
+              "place": 4,
+              "points": 290,
+              "counted": true,
+              "date": "2026-02-11T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 35,
@@ -807,7 +2518,15 @@
           "athleteId": "1877454",
           "points": 290,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 1*",
+              "place": 4,
+              "points": 290,
+              "counted": true,
+              "date": "2026-01-31T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 36,
@@ -816,7 +2535,22 @@
           "athleteId": "1932670",
           "points": 276,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 21,
+              "points": 170,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 30,
+              "points": 106,
+              "counted": true,
+              "date": "2026-02-01T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 37,
@@ -825,7 +2559,15 @@
           "athleteId": "1876426",
           "points": 220,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 1*",
+              "place": 6,
+              "points": 220,
+              "counted": true,
+              "date": "2026-01-31T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 38,
@@ -834,7 +2576,15 @@
           "athleteId": "1946813",
           "points": 131,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 22,
+              "points": 131,
+              "counted": true,
+              "date": "2026-02-01T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 39,
@@ -843,7 +2593,15 @@
           "athleteId": "1150689",
           "points": 114,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 32,
+              "points": 114,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            }
+          ]
         }
       ]
     },
@@ -858,7 +2616,36 @@
           "athleteId": "902793",
           "points": 6300,
           "image": "https://liveheats.com/images/0ece18bd-14ba-4bc1-a290-19cb470daa26.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Hakuba Qualifier 4*",
+              "place": 1,
+              "points": 2500,
+              "counted": true,
+              "date": "2026-01-26T07:00:00Z"
+            },
+            {
+              "eventName": "2026 La Rosière Evolution 2 Freeride Qualifier 3*",
+              "place": 2,
+              "points": 1300,
+              "counted": true,
+              "date": "2026-04-04T06:00:00Z"
+            },
+            {
+              "eventName": "2026 Valfréjus Freeride Qualifier 4*",
+              "place": 1,
+              "points": 2500,
+              "counted": true,
+              "date": "2026-03-18T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 7,
+              "points": 595,
+              "counted": false,
+              "date": "2026-02-27T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 2,
@@ -867,7 +2654,50 @@
           "athleteId": "904817",
           "points": 4200,
           "image": "https://liveheats.com/images/74400dae-88e7-4263-b242-81834a7585b1.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2027 The North Face Frontier Qualifier 4*",
+              "place": 4,
+              "points": 1550,
+              "counted": true,
+              "date": "2026-08-29T06:00:00Z"
+            },
+            {
+              "eventName": "2027 The North Face Frontier Qualifier 2*",
+              "place": 8,
+              "points": 320,
+              "counted": false,
+              "date": "2026-08-28T06:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 3,
+              "points": 1100,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Verbier Freeride Week Qualifier 4*",
+              "place": null,
+              "points": 0,
+              "counted": false,
+              "date": "2026-02-13T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Verbier Freeride Week Qualifier 2*",
+              "place": 3,
+              "points": 680,
+              "counted": false,
+              "date": "2026-02-09T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Les Arcs Evolution 2 Freeride Qualifier 4*",
+              "place": 4,
+              "points": 1550,
+              "counted": true,
+              "date": "2026-01-21T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 3,
@@ -876,7 +2706,36 @@
           "athleteId": "729746",
           "points": 3680,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2027 The North Face Frontier Qualifier 4*",
+              "place": 8,
+              "points": 900,
+              "counted": true,
+              "date": "2026-08-29T06:00:00Z"
+            },
+            {
+              "eventName": "2027 The North Face Frontier Qualifier 2*",
+              "place": 7,
+              "points": 365,
+              "counted": false,
+              "date": "2026-08-28T06:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Hakuba Qualifier 4*",
+              "place": 2,
+              "points": 2100,
+              "counted": true,
+              "date": "2026-01-26T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Whistler IFSA Qualifier 2*",
+              "place": 3,
+              "points": 680,
+              "counted": true,
+              "date": "2026-03-17T15:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 4,
@@ -885,7 +2744,50 @@
           "athleteId": "906488",
           "points": 3430,
           "image": "https://liveheats.com/images/2310e0c9-13db-49c1-8f18-9f79df0071d2.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2027 The North Face Frontier Qualifier 4*",
+              "place": 7,
+              "points": 1010,
+              "counted": true,
+              "date": "2026-08-29T06:00:00Z"
+            },
+            {
+              "eventName": "2027 The North Face Frontier Qualifier 2*",
+              "place": 3,
+              "points": 680,
+              "counted": false,
+              "date": "2026-08-28T06:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Hakuba Qualifier 4*",
+              "place": 11,
+              "points": 660,
+              "counted": false,
+              "date": "2026-01-26T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 1,
+              "points": 1600,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 2,
+              "points": 820,
+              "counted": true,
+              "date": "2026-02-01T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 1*",
+              "place": 5,
+              "points": 250,
+              "counted": false,
+              "date": "2026-01-31T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 5,
@@ -894,7 +2796,64 @@
           "athleteId": "903239",
           "points": 2580,
           "image": "https://liveheats.com/images/4cbcc5e1-d8f1-45ab-80f2-ad8331360725.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2027 The North Face Frontier Qualifier 4*",
+              "place": 10,
+              "points": 730,
+              "counted": true,
+              "date": "2026-08-29T06:00:00Z"
+            },
+            {
+              "eventName": "2027 The North Face Frontier Qualifier 2*",
+              "place": 9,
+              "points": 283,
+              "counted": false,
+              "date": "2026-08-28T06:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 14,
+              "points": 280,
+              "counted": false,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Verbier Freeride Week Qualifier 4*",
+              "place": 7,
+              "points": 1010,
+              "counted": true,
+              "date": "2026-02-13T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Verbier Freeride Week Qualifier 2*",
+              "place": null,
+              "points": 0,
+              "counted": false,
+              "date": "2026-02-09T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Serre-Chevalier Freeride South Line Series Qualifier 4*",
+              "place": null,
+              "points": 0,
+              "counted": false,
+              "date": "2026-01-30T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Chamonix Evolution 2 Freeride Qualifier 2*",
+              "place": 3,
+              "points": 680,
+              "counted": false,
+              "date": "2026-01-24T07:00:00Z"
+            },
+            {
+              "eventName": "YETI FIS Freeride Junior World Championships Kappl 2026",
+              "place": 3,
+              "points": 840,
+              "counted": true,
+              "date": "2026-01-17T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 6,
@@ -903,7 +2862,29 @@
           "athleteId": "902914",
           "points": 2325,
           "image": "https://liveheats.com/images/909bb27e-c221-4d6b-aeda-dfbf2769de8c.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Scandinavian Big Mountain Championships Qualifier 3*",
+              "place": 5,
+              "points": 805,
+              "counted": true,
+              "date": "2026-05-04T06:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 4,
+              "points": 940,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 4,
+              "points": 580,
+              "counted": true,
+              "date": "2026-02-01T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 7,
@@ -912,7 +2893,29 @@
           "athleteId": "904858",
           "points": 2175,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 2,
+              "points": 1300,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 6,
+              "points": 425,
+              "counted": true,
+              "date": "2026-02-01T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 1*",
+              "place": 2,
+              "points": 450,
+              "counted": true,
+              "date": "2026-01-31T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 8,
@@ -921,7 +2924,43 @@
           "athleteId": "1091354",
           "points": 1760,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2027 Treble Cone Qualifier 2*",
+              "place": 4,
+              "points": 580,
+              "counted": true,
+              "date": "2026-08-18T06:00:00Z"
+            },
+            {
+              "eventName": "2027 The North Face Frontier Qualifier 2*",
+              "place": 11,
+              "points": 238,
+              "counted": false,
+              "date": "2026-08-28T06:00:00Z"
+            },
+            {
+              "eventName": "2026 Taos IFSA Qualifier 4*",
+              "place": 11,
+              "points": 660,
+              "counted": true,
+              "date": "2026-03-03T15:00:00Z"
+            },
+            {
+              "eventName": "2026 Copper IFSA Qualifier 3*",
+              "place": 8,
+              "points": 520,
+              "counted": true,
+              "date": "2026-02-07T15:00:00Z"
+            },
+            {
+              "eventName": "2026 Palisades Tahoe IFSA Qualifier 3*",
+              "place": 8,
+              "points": 520,
+              "counted": false,
+              "date": "2026-02-04T16:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 9,
@@ -930,7 +2969,22 @@
           "athleteId": "1156499",
           "points": 1370,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 11,
+              "points": 370,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 1,
+              "points": 1000,
+              "counted": true,
+              "date": "2026-02-01T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 10,
@@ -939,7 +2993,15 @@
           "athleteId": "903094",
           "points": 1100,
           "image": "https://liveheats.com/images/429494cf-b5e7-44f0-bbbc-c20f68193c58.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Hemu Freeride Festival Qualifier 3*",
+              "place": 3,
+              "points": 1100,
+              "counted": true,
+              "date": "2025-12-14T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 11,
@@ -948,7 +3010,22 @@
           "athleteId": "1138314",
           "points": 1055,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Arai Qualifier 3*",
+              "place": 6,
+              "points": 690,
+              "counted": true,
+              "date": "2026-02-27T07:00:00Z"
+            },
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 2*",
+              "place": 7,
+              "points": 365,
+              "counted": true,
+              "date": "2026-02-01T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 12,
@@ -957,7 +3034,15 @@
           "athleteId": "1941962",
           "points": 600,
           "image": null,
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Qualifier 1*",
+              "place": 1,
+              "points": 600,
+              "counted": true,
+              "date": "2026-01-31T07:00:00Z"
+            }
+          ]
         },
         {
           "japanRank": 13,
@@ -966,7 +3051,15 @@
           "athleteId": "1089606",
           "points": 190,
           "image": "https://liveheats.com/images/57e0f654-b134-4675-a811-26153c90a7c2.webp",
-          "breakdown": []
+          "breakdown": [
+            {
+              "eventName": "2026 Toyo Tires Yuzawa Nakazato Junior 1*",
+              "place": 2,
+              "points": 190,
+              "counted": true,
+              "date": "2026-01-31T07:00:00Z"
+            }
+          ]
         }
       ]
     }
