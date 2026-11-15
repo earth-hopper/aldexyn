@@ -33,13 +33,18 @@
       height: 100%;
       width: 100%;
       overflow: hidden;
-      background-color: #ffffff;
+      background-color: #dfeffb;
       font-family: 'Noto Sans JP', sans-serif;
       overscroll-behavior-y: none;
     }
 
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* デスクトップ背景のウィンタースカイグラデーション（白い雪が映える明度設計） */
+    .winter-sky-bg {
+      background: linear-gradient(155deg, #d7ebfa 0%, #e7f3fc 45%, #cfe5f7 100%);
+    }
 
     /* 全画面ビネット（上部の写真は鮮やかに見せつつ、下部のテキスト可読性を確保） */
     .photo-vignette {
@@ -57,9 +62,9 @@
     .infeed-vignette {
       background: linear-gradient(
         180deg,
-        rgba(8, 18, 34, 0.74) 0%,
-        rgba(8, 18, 34, 0.62) 45%,
-        rgba(8, 18, 34, 0.94) 100%
+        rgba(8, 18, 34, 0.76) 0%,
+        rgba(8, 18, 34, 0.64) 45%,
+        rgba(8, 18, 34, 0.95) 100%
       );
     }
 
@@ -108,62 +113,87 @@
     .safe-bottom { padding-bottom: max(16px, env(safe-area-inset-bottom)); }
   </style>
 </head>
-<body class="text-slate-800 select-none bg-white">
+<body class="text-slate-800 select-none winter-sky-bg">
 
-  <!-- デスクトップ向け白背景＆左右サービス紹介レイアウト -->
-  <div class="fixed inset-0 w-full h-full flex items-center justify-center bg-white">
+  <!-- デスクトップ向け雪アニメーション＆左説明・右リール配置 -->
+  <div class="fixed inset-0 w-full h-full flex items-center justify-center winter-sky-bg overflow-hidden">
 
-    <div class="w-full max-w-[1220px] h-full lg:px-8 flex items-center justify-center lg:justify-between gap-10">
+    <!-- さりげなくもはっきり認識できる降雪Canvasレイヤー（デスクトップ表示用） -->
+    <canvas id="snow-canvas" class="hidden lg:block fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
 
-      <!-- 左カラム：サービス概要（デスクトップのみ表示・白背景向けデザイン） -->
-      <aside class="hidden lg:flex flex-col justify-center w-[320px] shrink-0 text-left space-y-6">
-        <div>
-          <span class="inline-flex items-center gap-1.5 bg-sky-50 border border-sky-200 text-brand font-eng text-[11px] font-bold tracking-widest px-3 py-1 rounded-full mb-4">
-            EARTH HOPPER REELS
-          </span>
-          <h1 class="text-3xl font-black leading-[1.35] tracking-tight text-slate-900">
-            日本中をあなたの、<br>
-            <span class="text-brand">ホームゲレンデに。</span>
-          </h1>
-          <p class="mt-3 text-sm text-slate-600 leading-relaxed font-medium">
-            年会費・初期費用は一切なし。全国約50のスキー場・アウトドア施設をスマホひとつで自由に巡れる「アースホッパー」のリアルな口コミフィードです。
-          </p>
+    <!-- 2カラムコンテナ：左にサービス紹介、右にリール本体 -->
+    <div class="relative z-10 w-full max-w-[1080px] h-full lg:px-10 flex items-center justify-center lg:justify-between gap-12">
+
+      <!-- 左カラム：ロゴ＆サービス紹介（デスクトップのみ表示） -->
+      <aside class="hidden lg:flex flex-col justify-center max-w-[490px] text-left">
+        <!-- ロゴ -->
+        <div class="mb-6">
+          <a href="https://www.hopper.earth/hp/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center hover:opacity-85 transition-opacity">
+            <img src="logo.png" alt="EARTH HOPPER" class="h-14 w-auto object-contain"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
+            <span style="display:none;" class="items-center gap-2 font-eng font-black text-2xl tracking-wider text-slate-900">
+              <span class="w-3.5 h-3.5 rounded-full bg-brand inline-block"></span>EARTH HOPPER
+            </span>
+          </a>
         </div>
 
-        <div class="space-y-3.5 pt-4 border-t border-slate-200">
-          <div class="flex items-start gap-3">
-            <span class="w-7 h-7 rounded-lg bg-sky-50 border border-sky-200 text-brand flex items-center justify-center text-xs font-black shrink-0 mt-0.5">01</span>
-            <div>
-              <p class="text-xs font-bold text-slate-900">事前購入の縛りゼロ</p>
-              <p class="text-[11px] text-slate-500 leading-relaxed mt-0.5">天気や雪質を見てから当日の行き先を自由にチョイス。</p>
-            </div>
+        <!-- メインコピー -->
+        <h1 class="text-[38px] xl:text-[42px] font-black leading-[1.28] tracking-tight text-slate-900 mb-4">
+          日本中をあなたの、<br>
+          <span class="text-brand">ホームゲレンデに。</span>
+        </h1>
+
+        <p class="text-[15px] text-slate-600 leading-[1.8] font-medium mb-7">
+          早割券の買いだめも、ひとつの山に縛られるシーズン券も不要。<br>
+          <strong class="text-slate-900 font-bold">当日の雪と天気を見てから全国約50スキー場のリフト券をスマホでそのまま買える</strong>サービスです。
+        </p>
+
+        <!-- 3つの直感メリットカード -->
+        <div class="grid grid-cols-3 gap-3 mb-7">
+          <div class="bg-white/90 backdrop-blur-md border border-white rounded-2xl p-4 shadow-[0_8px_24px_-8px_rgba(15,23,42,0.1)]">
+            <div class="text-xl mb-1.5">📱</div>
+            <p class="text-[11px] font-bold text-slate-400 mb-0.5">会員登録</p>
+            <p class="text-base font-black text-slate-900 leading-tight">不要</p>
+            <p class="text-[11px] text-slate-500 mt-1 leading-snug">LINEを開くだけですぐ使える</p>
           </div>
-          <div class="flex items-start gap-3">
-            <span class="w-7 h-7 rounded-lg bg-sky-50 border border-sky-200 text-brand flex items-center justify-center text-xs font-black shrink-0 mt-0.5">02</span>
-            <div>
-              <p class="text-xs font-bold text-slate-900">最大20%のマイル還元</p>
-              <p class="text-[11px] text-slate-500 leading-relaxed mt-0.5">遊ぶほどマイルが貯まり、次回以降のチケットがさらにお得に。</p>
-            </div>
+
+          <div class="bg-white/90 backdrop-blur-md border border-white rounded-2xl p-4 shadow-[0_8px_24px_-8px_rgba(15,23,42,0.1)]">
+            <div class="text-xl mb-1.5">🏔️</div>
+            <p class="text-[11px] font-bold text-slate-400 mb-0.5">対象ゲレンデ</p>
+            <p class="text-base font-black text-slate-900 leading-tight">約50</p>
+            <p class="text-[11px] text-slate-500 mt-1 leading-snug">いつもの窓口価格と同額で購入</p>
           </div>
-          <div class="flex items-start gap-3">
-            <span class="w-7 h-7 rounded-lg bg-sky-50 border border-sky-200 text-brand flex items-center justify-center text-xs font-black shrink-0 mt-0.5">03</span>
-            <div>
-              <p class="text-xs font-bold text-slate-900">スマホひとつでQR発券</p>
-              <p class="text-[11px] text-slate-500 leading-relaxed mt-0.5">LINEで購入し、現地の自動発券機でスムーズに発券。</p>
-            </div>
+
+          <div class="bg-white/90 backdrop-blur-md border border-white rounded-2xl p-4 shadow-[0_8px_24px_-8px_rgba(15,23,42,0.1)]">
+            <div class="text-xl mb-1.5">🎟️</div>
+            <p class="text-[11px] font-bold text-slate-400 mb-0.5">滑るほどお得</p>
+            <p class="text-base font-black text-brand leading-tight">最大20%還元</p>
+            <p class="text-[11px] text-slate-500 mt-1 leading-snug">2回目から自動で割引に使える</p>
           </div>
         </div>
 
-        <div class="pt-1">
-          <a href="https://www.hopper.earth/hp/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand hover:text-brandDark transition-colors">
-            <span>サービス詳細・提携スキー場一覧を見る</span>
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+        <!-- アクション導線：LINE＆サービス詳細トップページ -->
+        <div class="flex items-center gap-3">
+          <a href="https://lin.ee/zXFhtBh" target="_blank" rel="noopener noreferrer"
+             class="bg-line hover:bg-lineHover text-white font-black text-sm py-3.5 px-6 rounded-xl inline-flex items-center justify-center gap-2.5 shadow-[0_10px_24px_-6px_rgba(6,199,85,0.45)] transition-all hover:-translate-y-0.5 active:scale-95">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63h-1.401v.866h1.401c.349 0 .63.283.63.63 0 .346-.281.63-.63.63h-2.032a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63h2.032c.349 0 .63.282.63.63 0 .348-.281.63-.63.63h-1.401v.881h1.401zm-5.228 2.757h-.01a.631.631 0 0 1-.502-.25l-2.003-2.673v2.292c0 .348-.282.63-.63.63a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.63-.63.218 0 .412.112.524.283l1.986 2.646V7.086c0-.348.282-.63.63-.63a.632.632 0 0 1 .631.63v5.534a.631.631 0 0 1-.625.63zm-5.617 0a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63a.632.632 0 0 1 .63.63v5.534a.632.632 0 0 1-.63.63zm-2.479 0H4.01a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63a.632.632 0 0 1 .63.63v4.903h2.031c.349 0 .63.283.63.63 0 .346-.281.63-.63.63zM24 10.614c0-5.304-5.378-9.614-12-9.614S0 5.31 0 10.614c0 4.754 4.264 8.72 10.027 9.475.39.084.922.258 1.057.592.122.303.079.778.039 1.085l-.171 1.027c-.053.303-.242 1.186 1.039.647 1.281-.54 6.911-4.069 9.428-6.967C23.068 14.708 24 12.77 24 10.614z"/>
+            </svg>
+            <span>LINEでスキー場を見る（無料）</span>
+          </a>
+
+          <a href="https://www.hopper.earth/hp/" target="_blank" rel="noopener noreferrer"
+             class="bg-white/90 hover:bg-white text-slate-700 hover:text-brand border border-white font-bold text-xs py-3.5 px-4 rounded-xl inline-flex items-center gap-1.5 shadow-sm transition-all">
+            <span>詳しい仕組み・FAQ</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
           </a>
         </div>
       </aside>
 
-      <!-- 中央：メインアプリコンテナ（スマホ幅・TikTok風縦スワイプ） -->
-      <main id="app-shell" class="relative w-full h-full lg:w-[420px] lg:h-[92vh] lg:max-h-[860px] lg:rounded-[2.4rem] lg:overflow-hidden lg:border lg:border-slate-200 lg:shadow-[0_24px_64px_-12px_rgba(15,23,42,0.22)] bg-slate-950 text-white flex flex-col shrink-0">
+      <!-- 右カラム：メインアプリコンテナ（スマホ幅・TikTok風縦スワイプ） -->
+      <main id="app-shell" class="relative w-full h-full lg:w-[420px] lg:h-[92vh] lg:max-h-[860px] lg:rounded-[2.4rem] lg:overflow-hidden lg:border-[6px] lg:border-white lg:shadow-[0_28px_70px_-12px_rgba(15,23,42,0.28)] bg-slate-950 text-white flex flex-col shrink-0">
 
         <!-- トップオーバーレイ：ロゴ＆タグフィルター -->
         <header class="absolute top-0 left-0 right-0 z-30 safe-top px-4 pb-3 pointer-events-none">
@@ -209,32 +239,87 @@
         </div>
       </main>
 
-      <!-- 右カラム：LINE導線（デスクトップのみ表示・白背景向けデザイン） -->
-      <aside class="hidden lg:flex flex-col justify-center w-[300px] shrink-0 text-left space-y-5">
-        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 space-y-3.5 shadow-sm">
-          <span class="inline-block text-[11px] font-black text-brand bg-sky-100/80 px-2.5 py-0.5 rounded-full">
-            会員登録・年会費 0円
-          </span>
-          <p class="text-base font-black text-slate-900 leading-snug">
-            行きたいゲレンデが見つかったら、LINEですぐチケット購入
-          </p>
-          <p class="text-xs text-slate-600 leading-relaxed">
-            面倒な会員登録や事前予約は不要。LINE公式アカウントから全国約50の提携スキー場の料金チェック・チケット購入が完結します。
-          </p>
-          <a href="https://lin.ee/zXFhtBh" target="_blank" rel="noopener noreferrer"
-             class="w-full bg-line hover:bg-lineHover text-white font-black text-xs py-3.5 px-4 rounded-xl flex items-center justify-center gap-2 transition-transform active:scale-95 shadow-md">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-              <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63h-1.401v.866h1.401c.349 0 .63.283.63.63 0 .346-.281.63-.63.63h-2.032a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63h2.032c.349 0 .63.282.63.63 0 .348-.281.63-.63.63h-1.401v.881h1.401zm-5.228 2.757h-.01a.631.631 0 0 1-.502-.25l-2.003-2.673v2.292c0 .348-.282.63-.63.63a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.63-.63.218 0 .412.112.524.283l1.986 2.646V7.086c0-.348.282-.63.63-.63a.632.632 0 0 1 .631.63v5.534a.631.631 0 0 1-.625.63zm-5.617 0a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63a.632.632 0 0 1 .63.63v5.534a.632.632 0 0 1-.63.63zm-2.479 0H4.01a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63a.632.632 0 0 1 .63.63v4.903h2.031c.349 0 .63.283.63.63 0 .346-.281.63-.63.63zM24 10.614c0-5.304-5.378-9.614-12-9.614S0 5.31 0 10.614c0 4.754 4.264 8.72 10.027 9.475.39.084.922.258 1.057.592.122.303.079.778.039 1.085l-.171 1.027c-.053.303-.242 1.186 1.039.647 1.281-.54 6.911-4.069 9.428-6.967C23.068 14.708 24 12.77 24 10.614z"/>
-            </svg>
-            <span>LINE公式アカウントを開く</span>
-          </a>
-        </div>
-      </aside>
-
     </div>
   </div>
 
   <script>
+    // ------------------------------------------------------------------
+    // 0. デスクトップ背景の降雪アニメーション（2層レイヤーで視認性と奥行きを両立）
+    // ------------------------------------------------------------------
+    (function initSnowAnimation() {
+      const canvas = document.getElementById('snow-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduced) return;
+
+      let width = 0;
+      let height = 0;
+      let flakes = [];
+
+      function createFlake(randomY = false) {
+        // 30%を手前の大きめな雪、70%を奥の細やかな雪に設定
+        const isForeground = Math.random() < 0.3;
+        return {
+          x: Math.random() * (width || window.innerWidth),
+          y: randomY ? Math.random() * (height || window.innerHeight) : -15,
+          r: isForeground ? (Math.random() * 3.8 + 4.2) : (Math.random() * 2.2 + 2.0),
+          speedY: isForeground ? (Math.random() * 0.9 + 0.85) : (Math.random() * 0.5 + 0.4),
+          swayAmp: isForeground ? (Math.random() * 0.8 + 0.5) : (Math.random() * 0.4 + 0.2),
+          swaySpeed: Math.random() * 0.018 + 0.008,
+          phase: Math.random() * Math.PI * 2,
+          alpha: isForeground ? (Math.random() * 0.15 + 0.82) : (Math.random() * 0.2 + 0.65),
+          isForeground
+        };
+      }
+
+      function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+        const count = Math.min(120, Math.max(70, Math.floor(width / 13)));
+        flakes = Array.from({ length: count }, () => createFlake(true));
+      }
+
+      function render() {
+        if (window.innerWidth >= 1024) {
+          ctx.clearRect(0, 0, width, height);
+
+          for (const f of flakes) {
+            f.phase += f.swaySpeed;
+            f.y += f.speedY;
+            f.x += Math.sin(f.phase) * f.swayAmp;
+
+            if (f.y > height + 15) {
+              Object.assign(f, createFlake(false));
+            }
+            if (f.x > width + 15) f.x = -15;
+            if (f.x < -15) f.x = width + 15;
+
+            ctx.save();
+            // 淡い空色の上でも白い雪粒がくっきり浮かび上がるソフトグロウ
+            ctx.shadowColor = 'rgba(0, 147, 212, 0.22)';
+            ctx.shadowBlur = f.isForeground ? 8 : 4;
+
+            const grad = ctx.createRadialGradient(f.x, f.y, 0, f.x, f.y, f.r);
+            grad.addColorStop(0, `rgba(255, 255, 255, ${f.alpha})`);
+            grad.addColorStop(0.65, `rgba(255, 255, 255, ${f.alpha * 0.85})`);
+            grad.addColorStop(1, 'rgba(255, 255, 255, 0)');
+
+            ctx.fillStyle = grad;
+            ctx.beginPath();
+            ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
+          }
+        }
+        requestAnimationFrame(render);
+      }
+
+      window.addEventListener('resize', resize);
+      resize();
+      render();
+    })();
+
     // ------------------------------------------------------------------
     // 1. ゲレンデ背景写真プール（スキー場名から決定論的に割り当て）
     // ------------------------------------------------------------------
@@ -270,7 +355,7 @@
     const LINE_URL = 'https://lin.ee/zXFhtBh';
     const HP_URL = 'https://www.hopper.earth/hp/';
     const STORAGE_KEY = 'earthhopper_saved_reviews_v1';
-    const INFEED_INTERVAL = 5; // 口コミ5枚ごとにインフィード案内カードを挿入
+    const INFEED_INTERVAL = 5;
 
     let allReviews = [];
     let filteredReviews = [];
@@ -345,7 +430,6 @@
         rawData = FALLBACK_REVIEWS;
       }
 
-      // ノイズデータ除外＆決定論的一意ID付与（URLシェア時にどの環境でも同じIDになるよう内容ハッシュを使用）
       const cleaned = rawData
         .filter(item => item && item.resort && item.review && !String(item.review).includes('testですですです'))
         .map((item) => {
@@ -362,7 +446,6 @@
 
       let shuffled = shuffleArray(cleaned);
 
-      // URLパラメータ (?r=xxx または ?resort=xxx) がある場合、該当レビューを1枚目に配置
       const params = new URLSearchParams(window.location.search);
       const targetId = params.get('r');
       const targetResort = params.get('resort');
@@ -434,53 +517,52 @@
     }
 
     // ------------------------------------------------------------------
-    // 5. インフィード案内カード HTML生成（セールス感を排した編集風カード）
+    // 5. インフィード案内カード HTML生成（新規リード向け直感コピー・詳細はトップページへ誘導）
     // ------------------------------------------------------------------
     function buildInfeedCardHtml(lastResortName, photoUrl) {
       const safeResort = escapeHtml(lastResortName || '気になったゲレンデ');
       return `
         <section class="reel-slide infeed-slide relative w-full h-full snap-start snap-always overflow-hidden flex flex-col justify-between">
-          <!-- 直前のスキー場と世界観を合わせた背景写真 -->
           <img src="${photoUrl}" alt="" loading="lazy" class="bg-photo absolute inset-0 w-full h-full object-cover object-center scale-105 blur-[2px] pointer-events-none" />
           <div class="infeed-vignette absolute inset-0 pointer-events-none"></div>
 
-          <!-- 上部余白（ヘッダーと被らない高さ） -->
+          <!-- 上部ラベル -->
           <div class="relative z-20 pt-28 px-6">
             <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-[11px] font-bold tracking-wider text-sky-200">
-              <span class="w-1.5 h-1.5 rounded-full bg-sky-300"></span>
-              EARTH HOPPER TIPS
+              <span class="w-1.5 h-1.5 rounded-full bg-line"></span>
+              ABOUT EARTH HOPPER
             </span>
           </div>
 
           <!-- 中央メッセージ -->
           <div class="relative z-20 px-6 my-auto">
             <p class="text-xs font-bold text-sky-300 mb-2 tracking-wide">
-              「${safeResort}」も、次の週末の候補に。
+              「${safeResort}」も、当日の気分でそのまま行ける。
             </p>
-            <h2 class="text-2xl sm:text-[26px] font-black leading-[1.38] text-white text-shadow-strong tracking-tight mb-4">
-              明日の雪と天気を見てから、<br>
-              スマホひとつで<br>
-              そのままゲレンデへ。
+            <h2 class="text-2xl sm:text-[26px] font-black leading-[1.36] text-white text-shadow-strong tracking-tight mb-4">
+              早割の買いだめ不要。<br>
+              いつもの窓口価格で、<br>
+              2回目から最大20%お得に。
             </h2>
             <p class="text-[14px] leading-[1.75] text-white/85 font-medium mb-5">
-              早割券の買いだめも、ひとつの山に縛られる必要もありません。全国約50の提携スキー場をその日の気分で自由にホッピング。遊ぶたびに最大20%のマイルも貯まります。
+              アースホッパーは、全国約50スキー場のリフト券をLINEで当日買えるサービスです。事前予約も会員登録もいらず、滑るたびに次回使えるポイントが貯まります。
             </p>
 
-            <!-- 特徴バッジ（会員登録不要を明記） -->
+            <!-- 直感的な2ポイント -->
             <div class="flex flex-wrap gap-2">
               <span class="px-3 py-1 rounded-lg bg-white/10 border border-white/15 text-xs font-bold text-white">
                 ✓ 会員登録・年会費 0円
               </span>
               <span class="px-3 py-1 rounded-lg bg-white/10 border border-white/15 text-xs font-bold text-white">
-                ✓ 当日スマホでQR発券
+                ✓ 現地でQRをかざすだけ
               </span>
             </div>
           </div>
 
-          <!-- 下部アクションエリア -->
+          <!-- 下部アクションエリア（LINEカラーCTA＋詳しい仕組みはトップページへ） -->
           <div class="relative z-20 px-5 safe-bottom pt-4 space-y-2.5">
             <a href="${LINE_URL}" target="_blank" rel="noopener noreferrer"
-               class="w-full h-12 rounded-xl bg-line hover:bg-lineHover text-white font-black text-sm flex items-center justify-center gap-2 shadow-[0_8px_24px_rgba(6,199,85,0.35)] transition-transform active:scale-95">
+               class="w-full h-12 rounded-xl bg-line hover:bg-lineHover text-white font-black text-sm flex items-center justify-center gap-2 shadow-[0_8px_24px_rgba(6,199,85,0.38)] transition-transform active:scale-95">
               <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
                 <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63h-1.401v.866h1.401c.349 0 .63.283.63.63 0 .346-.281.63-.63.63h-2.032a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63h2.032c.349 0 .63.282.63.63 0 .348-.281.63-.63.63h-1.401v.881h1.401zm-5.228 2.757h-.01a.631.631 0 0 1-.502-.25l-2.003-2.673v2.292c0 .348-.282.63-.63.63a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.63-.63.218 0 .412.112.524.283l1.986 2.646V7.086c0-.348.282-.63.63-.63a.632.632 0 0 1 .631.63v5.534a.631.631 0 0 1-.625.63zm-5.617 0a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63a.632.632 0 0 1 .63.63v5.534a.632.632 0 0 1-.63.63zm-2.479 0H4.01a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63a.632.632 0 0 1 .63.63v4.903h2.031c.349 0 .63.283.63.63 0 .346-.281.63-.63.63zM24 10.614c0-5.304-5.378-9.614-12-9.614S0 5.31 0 10.614c0 4.754 4.264 8.72 10.027 9.475.39.084.922.258 1.057.592.122.303.079.778.039 1.085l-.171 1.027c-.053.303-.242 1.186 1.039.647 1.281-.54 6.911-4.069 9.428-6.967C23.068 14.708 24 12.77 24 10.614z"/>
               </svg>
@@ -491,7 +573,7 @@
               <span class="text-[11px] text-white/60 font-medium">※登録不要ですぐ確認できます</span>
               <a href="${HP_URL}" target="_blank" rel="noopener noreferrer"
                  class="inline-flex items-center gap-1 text-xs font-bold text-sky-300 hover:text-white transition-colors">
-                <span>サービス詳細ページ</span>
+                <span>詳しい仕組み・FAQを見る</span>
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
@@ -598,23 +680,28 @@
                 ` : ''}
               </div>
 
-              <!-- ボトムCTAドック：左から「リフト券をお得に買う（会員登録不要）」「保存」「共有」 -->
+              <!-- ボトムCTAドック：左から「リフト券をお得に買う（LINEカラー）」「保存」「共有」 -->
               <div class="flex items-stretch gap-2 pt-2.5 border-t border-white/15">
-                <!-- メインCTA -->
+                <!-- メインCTA（LINE公式カラー） -->
                 <a
                   href="${LINE_URL}"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="flex-1 min-w-0 h-12 px-3 rounded-xl bg-brand hover:bg-brandDark text-white shadow-[0_6px_20px_rgba(0,147,212,0.45)] flex flex-col items-center justify-center transition-all active:scale-95">
-                  <span class="text-[12px] font-black leading-tight tracking-tight truncate w-full text-center">リフト券をお得に買う</span>
-                  <span class="text-[9.5px] font-bold text-sky-100 leading-tight mt-0.5">会員登録不要</span>
+                  class="flex-1 min-w-0 h-12 px-3 rounded-xl bg-line hover:bg-lineHover text-white shadow-[0_6px_20px_rgba(6,199,85,0.42)] flex items-center justify-center gap-2 transition-all active:scale-95">
+                  <svg class="w-5 h-5 fill-current shrink-0" viewBox="0 0 24 24">
+                    <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63h-1.401v.866h1.401c.349 0 .63.283.63.63 0 .346-.281.63-.63.63h-2.032a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63h2.032c.349 0 .63.282.63.63 0 .348-.281.63-.63.63h-1.401v.881h1.401zm-5.228 2.757h-.01a.631.631 0 0 1-.502-.25l-2.003-2.673v2.292c0 .348-.282.63-.63.63a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.63-.63.218 0 .412.112.524.283l1.986 2.646V7.086c0-.348.282-.63.63-.63a.632.632 0 0 1 .631.63v5.534a.631.631 0 0 1-.625.63zm-5.617 0a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63a.632.632 0 0 1 .63.63v5.534a.632.632 0 0 1-.63.63zm-2.479 0H4.01a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63a.632.632 0 0 1 .63.63v4.903h2.031c.349 0 .63.283.63.63 0 .346-.281.63-.63.63zM24 10.614c0-5.304-5.378-9.614-12-9.614S0 5.31 0 10.614c0 4.754 4.264 8.72 10.027 9.475.39.084.922.258 1.057.592.122.303.079.778.039 1.085l-.171 1.027c-.053.303-.242 1.186 1.039.647 1.281-.54 6.911-4.069 9.428-6.967C23.068 14.708 24 12.77 24 10.614z"/>
+                  </svg>
+                  <div class="flex flex-col items-start min-w-0">
+                    <span class="text-[12px] font-black leading-tight tracking-tight truncate w-full">リフト券をお得に買う</span>
+                    <span class="text-[9.5px] font-bold text-emerald-100 leading-tight mt-0.5">会員登録不要・LINEで即購入</span>
+                  </div>
                 </a>
 
                 <!-- サブCTA：保存 -->
                 <button
                   data-action="save"
                   data-id="${escapeHtml(item.id)}"
-                  class="save-btn w-[66px] shrink-0 h-12 rounded-xl font-bold text-[11px] flex flex-col items-center justify-center gap-0.5 transition-all active:scale-95 border ${
+                  class="save-btn w-[62px] shrink-0 h-12 rounded-xl font-bold text-[11px] flex flex-col items-center justify-center gap-0.5 transition-all active:scale-95 border ${
                     isSaved
                       ? 'bg-rose-500 text-white border-rose-400 shadow-[0_4px_14px_rgba(244,63,94,0.45)]'
                       : 'bg-white/15 hover:bg-white/25 text-white border-white/20 backdrop-blur-md'
@@ -629,7 +716,7 @@
                 <button
                   data-action="share"
                   data-review-index="${idx}"
-                  class="w-[66px] shrink-0 h-12 rounded-xl bg-black/60 hover:bg-black/80 backdrop-blur-md border border-white/20 text-white font-bold text-[11px] flex flex-col items-center justify-center gap-0.5 transition-all active:scale-95">
+                  class="w-[62px] shrink-0 h-12 rounded-xl bg-black/60 hover:bg-black/80 backdrop-blur-md border border-white/20 text-white font-bold text-[11px] flex flex-col items-center justify-center gap-0.5 transition-all active:scale-95">
                   <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                   </svg>
@@ -675,7 +762,6 @@
       localStorage.setItem(STORAGE_KEY, JSON.stringify(Array.from(savedIds)));
       renderTagBar();
 
-      // 該当スライドの保存ボタン表示のみ即座に更新
       const slide = feedContainer.querySelector(`.review-slide[data-id="${CSS.escape(id)}"]`);
       if (slide) {
         const btn = slide.querySelector('.save-btn');
@@ -683,7 +769,7 @@
         const svg = btn.querySelector('svg');
         const nowSaved = savedIds.has(id);
 
-        btn.className = `save-btn w-[66px] shrink-0 h-12 rounded-xl font-bold text-[11px] flex flex-col items-center justify-center gap-0.5 transition-all active:scale-95 border ${
+        btn.className = `save-btn w-[62px] shrink-0 h-12 rounded-xl font-bold text-[11px] flex flex-col items-center justify-center gap-0.5 transition-all active:scale-95 border ${
           nowSaved
             ? 'bg-rose-500 text-white border-rose-400 shadow-[0_4px_14px_rgba(244,63,94,0.45)]'
             : 'bg-white/15 hover:bg-white/25 text-white border-white/20 backdrop-blur-md'
@@ -694,7 +780,6 @@
     }
 
     function buildShareUrl(item) {
-      // 現在のWebアプリのベースURLに、該当レビューIDとスキー場名パラメータを付与
       try {
         const url = new URL(window.location.href);
         url.search = '';
@@ -709,7 +794,6 @@
 
     function shareToX(item) {
       const shareUrl = buildShareUrl(item);
-      // XではURLは23文字(t.co換算)としてカウントされるため、全角140文字上限に収まるよう調整
       const footer = `\n@earth_hopper\n#Earthhopper Reels\n${shareUrl}`;
       const header = `${item.resort}\n`;
       const fixedVisualLen = header.length + 2 + (`\n@earth_hopper\n#Earthhopper Reels\n`).length + 14;
@@ -744,7 +828,6 @@
     }
 
     function updateCounter(reviewIndex) {
-      // 「#すべて」の時はレビュー合計数を隠すため非表示
       if (activeTag === 'すべて') {
         counterPill.classList.add('hidden');
         return;
@@ -758,7 +841,6 @@
       }
     }
 
-    // スライド表示監視
     let slideObserver;
     function observeSlides() {
       if (slideObserver) slideObserver.disconnect();
@@ -775,7 +857,6 @@
               if (rIdx > 0) dismissSwipeGuide();
               updateCounter(rIdx);
             } else {
-              // インフィードカード表示時はカウンターを一時非表示
               counterPill.classList.add('hidden');
             }
           }
@@ -785,13 +866,11 @@
       slides.forEach(s => slideObserver.observe(s));
     }
 
-    // 上部タグバーのクリック
     tagBar.addEventListener('click', (e) => {
       const chip = e.target.closest('.tag-chip');
       if (chip) applyFilter(chip.dataset.tag);
     });
 
-    // フィード内の各アクション（保存・共有・タグ絞り込み・続きを読む）
     feedContainer.addEventListener('click', (e) => {
       const saveBtn = e.target.closest('[data-action="save"]');
       if (saveBtn) {
@@ -821,7 +900,6 @@
       }
     });
 
-    // ダブルタップで保存
     let lastTapTime = 0;
     feedContainer.addEventListener('touchend', (e) => {
       if (e.target.closest('button, a')) return;
@@ -839,7 +917,6 @@
       if (slide) toggleSave(slide.dataset.id, true);
     });
 
-    // キーボード上下矢印キーでのナビゲーション
     window.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
         e.preventDefault();
@@ -855,7 +932,6 @@
       }
     });
 
-    // 末尾到達時のエンドレスループ
     let touchStartY = 0;
     feedContainer.addEventListener('touchstart', (e) => {
       touchStartY = e.touches[0].clientY;
