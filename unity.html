@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>株式会社ユニティー | 消防用設備設計・施工・保守点検</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e3a8a', // 信頼感のあるディープブルー
+                        accent: '#d97706',  // 注意・安全を喚起するオレンジ/アンバー
+                        dark: '#0f172a'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome (アイコン用) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased font-sans">
+
+    <!-- ヘッダー -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3">
+                <div class="bg-primary text-white p-2.5 rounded-lg shadow">
+                    <i class="fa-solid fa-fire-extinguisher text-xl"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-bold tracking-tight text-slate-900 block">株式会社ユニティー</span>
+                    <span class="text-xs text-slate-500 tracking-wider">消火設備設計・施工・保守点検</span>
+                </div>
+            </a>
+            
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-700">
+                <a href="#about" class="hover:text-primary transition">会社紹介</a>
+                <a href="#strength" class="hover:text-primary transition">私たちの強み</a>
+                <a href="#works" class="hover:text-primary transition">工事実績</a>
+                <a href="#services" class="hover:text-primary transition">事業内容</a>
+                <a href="#recruit" class="hover:text-primary transition">採用情報</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <a href="#contact" class="hidden sm:inline-flex items-center gap-2 bg-primary hover:bg-blue-900 text-white px-5 py-2.5 rounded-lg text-sm font-semibold shadow transition">
+                    <i class="fa-solid fa-envelope"></i> 法人のお問い合わせ
+                </a>
+                <button id="menu-btn" class="md:hidden text-slate-700 text-2xl focus:outline-none">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- モバイルメニュー -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-4 space-y-2">
+            <a href="#about" class="block py-2 text-slate-700 font-medium">会社紹介</a>
+            <a href="#strength" class="block py-2 text-slate-700 font-medium">私たちの強み</a>
+            <a href="#works" class="block py-2 text-slate-700 font-medium">工事実績</a>
+            <a href="#services" class="block py-2 text-slate-700 font-medium">事業内容</a>
+            <a href="#recruit" class="block py-2 text-slate-700 font-medium">採用情報</a>
+            <a href="#contact" class="block py-2 text-primary font-semibold"><i class="fa-solid fa-envelope mr-2"></i>法人のお問い合わせ</a>
+        </div>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="relative pt-32 pb-24 md:pt-44 md:pb-36 bg-slate-900 text-white overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-30 mix-blend-overlay bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=80')"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/80 to-transparent z-0"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-3xl">
+                <span class="inline-block bg-blue-600/30 border border-blue-400/40 text-blue-300 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-widest mb-6">
+                    創業1986年・実績と信頼の消防設備専門企業
+                </span>
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
+                    設置した瞬間から、<br class="hidden sm:inline">火災から命と財産を守り続ける。
+                </h1>
+                <p class="text-lg sm:text-xl text-slate-300 mb-10 leading-relaxed">
+                    商業施設、大規模オフィス、病院、駅まで。東京・首都圏を中心に、法的に求められる確かな技術と現場管理力で、社会の「安心・安全」を提供します。
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#contact" class="inline-flex items-center justify-center gap-2 bg-accent hover:bg-amber-600 text-white font-bold px-8 py-4 rounded-xl shadow-lg transition">
+                        <i class="fa-solid fa-paper-plane"></i> 法人のお客様・お見積り相談
+                    </a>
+                    <a href="#works" class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold px-8 py-4 rounded-xl backdrop-blur transition">
+                        <i class="fa-solid fa-building-shield"></i> 実績一覧を見る
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 数字で見るユニティー（インフォグラフィック） -->
+    <section class="bg-white py-12 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-slate-100">
+                <div class="pt-4 md:pt-0">
+                    <span class="block text-3xl md:text-4xl font-extrabold text-primary mb-1">約 40 <span class="text-lg font-normal text-slate-600">年</span></span>
+                    <span class="text-sm font-medium text-slate-500">創業からの実績と信頼</span>
+                </div>
+                <div class="pt-4 md:pt-0">
+                    <span class="block text-3xl md:text-4xl font-extrabold text-primary mb-1">1000+ <span class="text-lg font-normal text-slate-600">棟</span></span>
+                    <span class="text-sm font-medium text-slate-500">手がけた大規模・重要案件</span>
+                </div>
+                <div class="pt-4 md:pt-0">
+                    <span class="block text-3xl md:text-4xl font-extrabold text-primary mb-1">国家資格</span>
+                    <span class="text-sm font-medium text-slate-500">甲種消防設備士による徹底管理</span>
+                </div>
+                <div class="pt-4 md:pt-0">
+                    <span class="block text-3xl md:text-4xl font-extrabold text-primary mb-1">首都圏</span>
+                    <span class="text-sm font-medium text-slate-500">東京・神奈川・千葉・埼玉中心</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 会社紹介 / ABOUT US -->
+    <section id="about" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-primary tracking-widest uppercase mb-3">ABOUT US</h2>
+                <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight">建物がある限り、必要とされ続ける仕事</h3>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6 text-slate-700 leading-relaxed">
+                    <p class="text-lg font-medium text-slate-900">
+                        火事を未然に防ぎ、万が一の際にも人々の命や建物・財産を守る消防用設備。
+                    </p>
+                    <p>
+                        株式会社ユニティーは1986年の創業以来、スプリンクラー設備や屋内消火栓設備を中心とした消火設備の設置計画・施工・保守点検を専門に展開してきました。
+                    </p>
+                    <p>
+                        私たちの役割は、自ら工具を握って取り付けることだけではありません。法的に義務付けられた複雑な基準をクリアし、ゼネコンやクライアント、作業員と綿密にコミュニケーションを取りながら、安全かつ確実に工事を完遂させる「現場管理」のエキスパート集団です。
+                    </p>
+                    <div class="bg-blue-50 border-l-4 border-primary p-4 rounded-r-lg text-sm text-slate-800">
+                        <span class="font-bold block mb-1">法律に裏付けられた専門性</span>
+                        消防用設備の設置・点検には、国家資格である消防設備士の監督が絶対不可欠です。当社では有資格者による万全の監督体制を敷き、高いクオリティを維持しています。
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="bg-primary/10 rounded-2xl p-2 absolute -inset-4 transform -rotate-1"></div>
+                    <div class="relative bg-white p-8 rounded-2xl shadow-xl border border-slate-100">
+                        <h4 class="text-xl font-bold text-slate-900 mb-4 pb-3 border-b border-slate-100">会社概要</h4>
+                        <dl class="space-y-3 text-sm">
+                            <div class="grid grid-cols-3"><dt class="font-bold text-slate-500">会社名</dt><dd class="col-span-2 font-medium">株式会社ユニティー</dd></div>
+                            <div class="grid grid-cols-3"><dt class="font-bold text-slate-500">所在地</dt><dd class="col-span-2">〒141-0031 東京都品川区西五反田6-20-1</dd></div>
+                            <div class="grid grid-cols-3"><dt class="font-bold text-slate-500">代表者</dt><dd class="col-span-2">矢吹 勝</dd></div>
+                            <div class="grid grid-cols-3"><dt class="font-bold text-slate-500">創業</dt><dd class="col-span-2">1986年11月（資本金: 1,000万円）</dd></div>
+                            <div class="grid grid-cols-3"><dt class="font-bold text-slate-500">事業内容</dt><dd class="col-span-2">消火設備設計施工、保守点検 / 衛生設備、管工事一般</dd></div>
+                            <div class="grid grid-cols-3"><dt class="font-bold text-slate-500">保有資格</dt><dd class="col-span-2">消防設備士 甲種第1類・2類、乙種第6類 / 管工事施工管理技士2級</dd></div>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 私たちの強み / STRENGTHS -->
+    <section id="strength" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-primary tracking-widest uppercase mb-3">OUR STRENGTHS</h2>
+                <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight">ユニティーが選ばれる理由</h3>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:shadow-lg transition">
+                    <div class="w-12 h-12 bg-primary text-white rounded-xl flex items-center justify-center text-xl mb-6 shadow">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">大手ゼネコンからの厚い信頼</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        ゲートシティ大崎や渋谷駅周辺の再開発、大規模な商業施設や病院など、誰もが知るランドマークの消火設備を多数手がけてきた確かな実績があります。
+                    </p>
+                </div>
+
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:shadow-lg transition">
+                    <div class="w-12 h-12 bg-primary text-white rounded-xl flex items-center justify-center text-xl mb-6 shadow">
+                        <i class="fa-solid fa-users-gear"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">一貫した現場管理と円滑な調整力</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        クライアントの要求に対し、予算、納期、安全性、作業員との綿密な連携を徹底。安全かつ円滑に工事を進行させる高い調整力を誇ります。
+                    </p>
+                </div>
+
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:shadow-lg transition">
+                    <div class="w-12 h-12 bg-primary text-white rounded-xl flex items-center justify-center text-xl mb-6 shadow">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">若手育成と資格支援体制</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        充実した資格支援制度があり、未経験からでも入社3年目で難関の「甲種第1類消防設備士」に一発合格するなど、技術者としてのキャリアアップを強力にバックアップします。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 工事経歴 / WORKS (カテゴリーフィルター付き) -->
+    <section id="works" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-xs font-bold text-primary tracking-widest uppercase mb-3">WORKS & TRACK RECORD</h2>
+                <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight">主な工事経歴・実績</h3>
+                <p class="text-slate-600 mt-3 text-sm">創業以来、首都圏を中心に数多くの新築・改修工事を手がけてまいりました。</p>
+            </div>
+
+            <!-- フィルタータブ -->
+            <div class="flex flex-wrap justify-center gap-2 mb-10">
+                <button onclick="filterWorks('all')" class="work-tab active-tab px-5 py-2 rounded-full text-sm font-semibold bg-primary text-white shadow transition">すべて</button>
+                <button onclick="filterWorks('commercial')" class="work-tab px-5 py-2 rounded-full text-sm font-semibold bg-white text-slate-700 border border-slate-200 hover:bg-slate-100 transition">商業施設・ビル</button>
+                <button onclick="filterWorks('infra')" class="work-tab px-5 py-2 rounded-full text-sm font-semibold bg-white text-slate-700 border border-slate-200 hover:bg-slate-100 transition">駅・交通インフラ</button>
+                <button onclick="filterWorks('medical')" class="work-tab px-5 py-2 rounded-full text-sm font-semibold bg-white text-slate-700 border border-slate-200 hover:bg-slate-100 transition">医療・福祉施設</button>
+                <button onclick="filterWorks('logistic')" class="work-tab px-5 py-2 rounded-full text-sm font-semibold bg-white text-slate-700 border border-slate-200 hover:bg-slate-100 transition">物流センター</button>
+            </div>
+
+            <!-- 実績カード一覧 -->
+            <div id="works-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 項目1 -->
+                <div class="work-card bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between" data-category="commercial">
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="bg-blue-100 text-primary text-xs font-bold px-2.5 py-1 rounded">商業施設・ビル</span>
+                            <span class="text-xs text-slate-600 font-medium">新築 / 改修</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 mb-2">ゲートシティ大崎</h4>
+                        <p class="text-slate-600 text-sm">大規模複合施設における消火設備工事一式を担当。</p>
+                    </div>
+                </div>
+                <!-- 項目2 -->
+                <div class="work-card bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between" data-category="commercial">
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="bg-blue-100 text-primary text-xs font-bold px-2.5 py-1 rounded">商業施設・ビル</span>
+                            <span class="text-xs text-slate-600 font-medium">新築工事</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 mb-2">渋谷駅桜丘再開発 (shibuya Sakura Stage)</h4>
+                        <p class="text-slate-600 text-sm">注目を集める大規模再開発エリアの消防設備施工。</p>
+                    </div>
+                </div>
+                <!-- 項目3 -->
+                <div class="work-card bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between" data-category="infra">
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded">駅・交通インフラ</span>
+                            <span class="text-xs text-slate-600 font-medium">新築 / 改修</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 mb-2">成田空港第2ターミナルビル・駅</h4>
+                        <p class="text-slate-600 text-sm">国際的交通インフラの改修に伴う消火設備の施工。</p>
+                    </div>
+                </div>
+                <!-- 項目4 -->
+                <div class="work-card bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between" data-category="infra">
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded">駅・交通インフラ</span>
+                            <span class="text-xs text-slate-600 font-medium">新築工事</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 mb-2">銀座線渋谷駅新設 / 日比谷線虎ノ門駅新駅</h4>
+                        <p class="text-slate-600 text-sm">地下鉄新駅における高度な消防設備設置対応。</p>
+                    </div>
+                </div>
+                <!-- 項目5 -->
+                <div class="work-card bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between" data-category="medical">
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-1 rounded">医療・福祉施設</span>
+                            <span class="text-xs text-slate-600 font-medium">増築 / 改修</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 mb-2">東邦大学医療センター佐倉病院</h4>
+                        <p class="text-slate-600 text-sm">高度医療を支える病院施設の増築・改修時の設備工事。</p>
+                    </div>
+                </div>
+                <!-- 項目6 -->
+                <div class="work-card bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between" data-category="logistic">
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="bg-purple-100 text-purple-800 text-xs font-bold px-2.5 py-1 rounded">物流センター</span>
+                            <span class="text-xs text-slate-600 font-medium">新築工事</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 mb-2">DPL横浜戸塚 / DPL浦安 / DPL江東深川</h4>
+                        <p class="text-slate-600 text-sm">大型物流拠点の安全を守る大規模消火設備の設計・施工。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                <p class="text-sm text-slate-600 mb-2 font-medium">その他、新宿マインズタワー、東京ドームシティ、ウェスティンホテル東京、横浜美術館など実績多数</p>
+                <span class="text-xs text-slate-400">※他にもオフィスビル・病院・学校等の改修・新築実績が多数ございます。</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 採用情報 / RECRUIT -->
+    <section id="recruit" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-primary tracking-widest uppercase mb-3">RECRUIT</h2>
+                <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight">想いをカタチに。一緒に命を守る仕事をしませんか</h3>
+                <p class="text-slate-600 mt-3 text-sm">未経験からの挑戦も、資格を活かしたキャリアアップも、ユニティーなら実現できます。</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8 mb-12">
+                <!-- 職種1 -->
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200">
+                    <span class="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">正社員</span>
+                    <h4 class="text-xl font-bold text-slate-900 mt-4 mb-2">技術者（消火設備設計施工）</h4>
+                    <p class="text-sm text-slate-600 mb-6">消防設備士（甲種1〜3類）の資格・経験を活かして、設計から官庁提出までトータルで担当。</p>
+                    <div class="space-y-2 text-sm text-slate-700 border-t border-slate-200 pt-4">
+                        <div class="flex justify-between"><span>給与:</span> <span class="font-bold">月給 20万〜50万円</span></div>
+                        <div class="flex justify-between"><span>資格手当:</span> <span class="font-bold">あり</span></div>
+                    </div>
+                </div>
+
+                <!-- 職種2 -->
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200">
+                    <span class="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">正社員</span>
+                    <h4 class="text-xl font-bold text-slate-900 mt-4 mb-2">現場管理業務</h4>
+                    <p class="text-sm text-slate-600 mb-6">消防用設備設置の現場マネジメント。これから消防設備士を目指す未経験者も大歓迎です。</p>
+                    <div class="space-y-2 text-sm text-slate-700 border-t border-slate-200 pt-4">
+                        <div class="flex justify-between"><span>給与:</span> <span class="font-bold">月給 20万円〜</span></div>
+                        <div class="flex justify-between"><span>資格支援:</span> <span class="font-bold">費用会社負担</span></div>
+                    </div>
+                </div>
+
+                <!-- 職種3 -->
+                <div class="bg-primary text-white p-8 rounded-2xl shadow-xl flex flex-col justify-between">
+                    <div>
+                        <span class="bg-accent text-white text-xs font-bold px-3 py-1 rounded-full">キャリアアップ</span>
+                        <h4 class="text-xl font-bold mt-4 mb-3">資格取得支援制度が充実</h4>
+                        <p class="text-sm text-slate-200 leading-relaxed mb-6">
+                            「会社が指定した国家資格」の取得をフルバックアップ。実際に入社3年目の社員が難関の甲種第1類に1回目で合格しています！
+                        </p>
+                    </div>
+                    <div class="bg-white/10 p-4 rounded-xl text-xs backdrop-blur">
+                        <i class="fa-solid fa-circle-check text-accent mr-1"></i> 未経験からプロの技術者へ成長できる環境です。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 法人向けお問い合わせ / CONTACT -->
+    <section id="contact" class="py-20 bg-slate-900 text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-xs font-bold text-blue-400 tracking-widest uppercase mb-3">CONTACT US</h2>
+                <h3 class="text-3xl font-extrabold tracking-tight mb-3">工事のご相談・お見積り・お問い合わせ</h3>
+                <p class="text-slate-300 text-sm">消防設備の設計施工、保守点検に関するご依頼やご相談は、以下のお問い合わせフォームよりお気軽にご連絡ください。</p>
+            </div>
+
+            <div class="bg-white text-slate-800 p-8 sm:p-12 rounded-2xl shadow-2xl">
+                <form class="space-y-6" onsubmit="event.preventDefault(); alert('モックアップのため送信機能はありません。');">
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">会社名 / 組織名 <span class="text-red-500">*</span></label>
+                            <input type="text" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-primary focus:outline-none" placeholder="株式会社〇〇建設">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">ご担当者様のお名前 <span class="text-red-500">*</span></label>
+                            <input type="text" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-primary focus:outline-none" placeholder="山田 太郎">
+                        </div>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">メールアドレス <span class="text-red-500">*</span></label>
+                            <input type="email" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-primary focus:outline-none" placeholder="example@company.co.jp">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">お電話番号 <span class="text-red-500">*</span></label>
+                            <input type="tel" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-primary focus:outline-none" placeholder="03-0000-0000">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-2">お問い合わせ内容 <span class="text-red-500">*</span></label>
+                        <select class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-primary focus:outline-none mb-4">
+                            <option>消火設備の新規設計・施工について</option>
+                            <option>保守点検・メンテナンスについて</option>
+                            <option>採用について（求職者）</option>
+                            <option>その他のお問い合わせ</option>
+                        </select>
+                        <textarea rows="4" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-primary focus:outline-none" placeholder="ご相談内容の詳細をご記入ください。"></textarea>
+                    </div>
+
+                    <div class="text-center pt-4">
+                        <button type="submit" class="w-full sm:w-auto bg-primary hover:bg-blue-900 text-white font-bold px-12 py-4 rounded-xl shadow-lg transition">
+                            <i class="fa-solid fa-paper-plane mr-2"></i> 入力内容を確認して送信する
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-3">
+                <div class="bg-primary text-white p-2 rounded-lg">
+                    <i class="fa-solid fa-fire-extinguisher"></i>
+                </div>
+                <span class="text-white font-bold text-lg">株式会社ユニティー</span>
+            </div>
+            <p class="text-xs text-slate-500">
+                〒141-0031 東京都品川区西五反田6-20-1 (TEL: 03-3495-0509)
+            </p>
+            <p class="text-xs text-slate-600">
+                Copyright © <span id="current-year">2026</span> unity Co.,Ltd. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- インタラクション用JavaScript -->
+    <script>
+        // モバイルメニューのトグル
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 工事実績のフィルタリング機能
+        function filterWorks(category) {
+            const cards = document.querySelectorAll('.work-card');
+            const tabs = document.querySelectorAll('.work-tab');
+
+            // タブのアクティブ状態切替
+            tabs.forEach(tab => {
+                tab.classList.remove('bg-primary', 'text-white', 'shadow');
+                tab.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-200');
+            });
+            event.target.classList.remove('bg-white', 'text-slate-700', 'border', 'border-slate-200');
+            event.target.classList.add('bg-primary', 'text-white', 'shadow');
+
+            // カードの表示切替
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

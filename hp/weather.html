@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WEEKLY FIELD REPORT | アースホッパー 週末雪山コンディション分析</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#0093d4',
+            brandDark: '#006bb3',
+            brandLight: '#e0f2fe',
+            dark: '#111827',
+            accent: '#f43f5e',
+            line: '#06C755',
+            lineHover: '#05b34c'
+          },
+          fontFamily: {
+            sans: ['"Noto Sans JP"', 'sans-serif'],
+            eng: ['"Inter"', 'sans-serif'],
+          },
+          boxShadow: {
+            'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+            'glow-brand': '0 0 20px rgba(0, 147, 212, 0.3)',
+            'glow-line': '0 10px 25px -5px rgba(6, 199, 85, 0.4)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #fafafa;
+      color: #333;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="w-full relative overflow-x-hidden font-sans text-gray-800">
+
+  <!-- 1. HEADER (Inherited from EARTH HOPPER HP) -->
+  <header id="main-header" class="sticky top-0 left-0 w-full z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 transition-transform duration-300">
+    <div class="max-w-3xl mx-auto px-5 h-16 flex justify-between items-center">
+      <a href="#top" class="flex items-center gap-2.5 group">
+        <!-- Clean Typographic & Geometric Emblem matching EARTH HOPPER identity -->
+        <div class="w-8 h-8 rounded-full bg-brand flex items-center justify-center text-white font-eng font-black text-sm tracking-tighter group-hover:bg-brandDark transition-colors">
+          EH
+        </div>
+        <div class="flex flex-col">
+          <span class="font-eng font-black text-base tracking-tight text-dark leading-none">EARTH HOPPER</span>
+          <span class="text-[10px] font-bold text-gray-400 tracking-wider mt-0.5">WEEKLY FIELD REPORT</span>
+        </div>
+      </a>
+
+      <div class="flex items-center gap-3">
+        <span class="hidden sm:inline-block font-eng text-[11px] font-bold text-gray-400 tracking-widest">VOL.12</span>
+        <a href="https://note.com/earthhopper" target="_blank" rel="noopener noreferrer" class="bg-brand hover:bg-brandDark text-white text-xs font-bold px-4 py-2 rounded-full transition-colors shadow-sm flex items-center gap-1">
+          ブログ
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. EDITORIAL MASTHEAD & SYNOPTIC OVERVIEW (Full-bleed White Band) -->
+  <section id="top" class="bg-white pt-10 pb-12 md:pt-16 md:pb-16 border-b border-gray-200">
+    <div class="max-w-3xl mx-auto px-5">
+      <!-- Issue Meta -->
+      <div class="flex flex-wrap items-center gap-2.5 mb-5">
+        <span class="bg-brand text-white font-eng text-[11px] font-black px-3 py-1 rounded-full tracking-widest">
+          WEEKLY WEATHER & SNOW REPORT
+        </span>
+        <span class="font-eng text-xs font-bold text-gray-500 tracking-wider">
+          VOL.12 | 2026.11.19 (THU) ISSUE
+        </span>
+      </div>
+
+      <!-- Editorial Headline -->
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-black text-dark leading-[1.35] tracking-tight mb-6">
+        金曜夜の強い冬型で、上越・白馬エリアに今季初のまとまった新雪。<span class="text-brand">土曜朝イチは標高1,000m以上を狙え。</span>
+      </h1>
+
+      <!-- Lead / Synoptic Overview (No boxed card, pure editorial border-l-4 column) -->
+      <div class="border-l-4 border-brand pl-4 sm:pl-6 py-1 mb-8">
+        <p class="text-xs font-black text-brand tracking-wider uppercase font-eng mb-1.5">
+          METEOROLOGICAL ANALYSIS / 今週の気圧配置と狙い目
+        </p>
+        <p class="text-sm sm:text-base text-gray-700 leading-[1.85] font-medium">
+          木曜までは移動性高気圧に覆われ穏やかな陽気が続きますが、金曜夜から土曜にかけて上空に強い寒気が南下します。日本海側の山沿いでは<strong class="text-dark font-black">30cm前後のドライパウダー</strong>が期待できる一方、土曜午前は北西風が強まるため<strong class="text-dark font-black">「強風によるリフト運休リスクをどう避けるか」</strong>が今週末のゲレンデ選びの分かれ目です。
+        </p>
+      </div>
+
+      <!-- Quick Weekend Key Metrics Strip (Flat hairline grid, not cards) -->
+      <div class="grid grid-cols-3 border-y border-gray-200 divide-x divide-gray-200 py-4 text-center">
+        <div class="px-2">
+          <span class="block font-eng text-[10px] font-bold text-gray-400 tracking-widest mb-1">SNOW PEAK</span>
+          <span class="font-eng font-black text-lg sm:text-xl text-brand">FRI NIGHT–SAT</span>
+          <span class="block text-[11px] font-bold text-gray-600 mt-0.5">金曜夜〜土曜午前</span>
+        </div>
+        <div class="px-2">
+          <span class="block font-eng text-[10px] font-bold text-gray-400 tracking-widest mb-1">FREEZING LEVEL</span>
+          <span class="font-eng font-black text-lg sm:text-xl text-dark">900m</span>
+          <span class="block text-[11px] font-bold text-gray-600 mt-0.5">中腹以上は極上乾雪</span>
+        </div>
+        <div class="px-2">
+          <span class="block font-eng text-[10px] font-bold text-gray-400 tracking-widest mb-1">BEST TIMING</span>
+          <span class="font-eng font-black text-lg sm:text-xl text-accent">SUN AM</span>
+          <span class="block text-[11px] font-bold text-gray-600 mt-0.5">風収まり快晴×新雪</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. STYLE FILTER BAR (Clean Editorial Underlined Tabs) -->
+  <nav class="sticky top-16 z-30 bg-[#fafafa]/95 backdrop-blur-md border-b border-gray-200">
+    <div class="max-w-3xl mx-auto px-5">
+      <div class="flex overflow-x-auto no-scrollbar gap-6" id="style-tabs">
+        <button type="button" data-filter="all" class="style-tab active shrink-0 py-3.5 text-xs sm:text-sm font-black text-brand border-b-2 border-brand transition-colors">
+          すべて表示 (04)
+        </button>
+        <button type="button" data-filter="powder" class="style-tab shrink-0 py-3.5 text-xs sm:text-sm font-bold text-gray-500 hover:text-dark border-b-2 border-transparent transition-colors">
+          極上パウダー狙い
+        </button>
+        <button type="button" data-filter="bluebird" class="style-tab shrink-0 py-3.5 text-xs sm:text-sm font-bold text-gray-500 hover:text-dark border-b-2 border-transparent transition-colors">
+          快晴・圧雪クルーズ
+        </button>
+        <button type="button" data-filter="safewind" class="style-tab shrink-0 py-3.5 text-xs sm:text-sm font-bold text-gray-500 hover:text-dark border-b-2 border-transparent transition-colors">
+          強風回避・安定運行
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 4. FEATURED EDITORIAL RECOMMENDATIONS (Structured Magazine Entries, NO Cards) -->
+  <main class="max-w-3xl mx-auto px-5 divide-y divide-gray-200" id="editorial-list">
+
+    <!-- ENTRY 01: 神立スノーリゾート -->
+    <article class="resort-entry py-12 md:py-16 fade-up" data-tags="powder safewind">
+      <!-- Top Editorial Header -->
+      <div class="flex items-baseline justify-between gap-4 mb-3">
+        <div class="flex items-center gap-2.5">
+          <span class="font-eng font-black text-3xl sm:text-4xl text-brand leading-none">01</span>
+          <div>
+            <span class="font-eng text-[11px] font-bold text-gray-400 tracking-widest uppercase block">
+              NIIGATA / YUZAWA — ELEV. 460m–1,000m
+            </span>
+            <span class="text-xs font-bold text-brand">関越道・湯沢ICから約3分 / 新雪＋強風耐性◎</span>
+          </div>
+        </div>
+        <span class="shrink-0 font-eng text-xs font-black text-accent tracking-wider">
+          MAX 20% MILE
+        </span>
+      </div>
+
+      <h2 class="text-2xl sm:text-3xl font-black text-dark tracking-tight mb-5">
+        神立スノーリゾート
+      </h2>
+
+      <!-- Why EARTH HOPPER Recommends It -->
+      <div class="mb-7">
+        <h3 class="text-xs font-black text-gray-400 tracking-widest uppercase font-eng mb-2">
+          WHY WE RECOMMEND / なぜ今週末、神立を推すのか
+        </h3>
+        <p class="text-sm sm:text-base text-gray-700 leading-[1.85] font-medium">
+          金曜夜から土曜にかけて湯沢エリアには<strong class="text-dark font-bold">合計32cmの降雪予報</strong>が出ています。同じ湯沢・南魚沼エリアでも、神立はすり鉢状の地形が北西風を適度にブロックするため、<strong class="text-dark font-bold">強風によるリフト見合わせリスクが極めて低い</strong>のが最大の強み。土曜朝イチから非圧雪の「オリオン」やツリーランエリアで、吹き溜まりの深いパウダーを確実に味わえます。
+        </p>
+      </div>
+
+      <!-- Minimalist 7-Day Weather Strip (Thu–Wed) -->
+      <div class="mb-7">
+        <div class="flex items-center justify-between mb-2">
+          <span class="font-eng text-[11px] font-bold text-gray-400 tracking-widest">7-DAY FORECAST (ELEV. 900m)</span>
+          <span class="text-[11px] font-bold text-brand">土日合計降雪 +32cm</span>
+        </div>
+        <div class="grid grid-cols-7 border-y border-gray-200 text-center text-xs">
+          <!-- Thu -->
+          <div class="py-3 px-1">
+            <span class="block font-eng text-[10px] font-bold text-gray-400">11/19</span>
+            <span class="block font-bold text-gray-600 mb-1">木</span>
+            <span class="text-base block my-1">☁️</span>
+            <span class="block font-eng font-bold text-[11px] text-gray-400">0cm</span>
+            <span class="block font-eng text-[10px] text-gray-500 mt-1">3°/-2°</span>
+            <span class="block font-eng text-[10px] text-gray-400">3m/s</span>
+          </div>
+          <!-- Fri -->
+          <div class="py-3 px-1">
+            <span class="block font-eng text-[10px] font-bold text-gray-400">11/20</span>
+            <span class="block font-bold text-gray-600 mb-1">金</span>
+            <span class="text-base block my-1">🌨️</span>
+            <span class="block font-eng font-black text-[11px] text-brand">+10cm</span>
+            <span class="block font-eng text-[10px] text-gray-500 mt-1">0°/-5°</span>
+            <span class="block font-eng text-[10px] text-gray-400">5m/s</span>
+          </div>
+          <!-- Sat (Highlighted softly with brandLight tint & top border) -->
+          <div class="py-3 px-1 bg-brandLight/60 border-t-2 border-brand">
+            <span class="block font-eng text-[10px] font-bold text-brand">11/21</span>
+            <span class="block font-black text-brand mb-1">土</span>
+            <span class="text-base block my-1">❄️</span>
+            <span class="block font-eng font-black text-[11px] text-brand">+24cm</span>
+            <span class="block font-eng font-bold text-[10px] text-dark mt-1">-2°/-7°</span>
+            <span class="block font-eng text-[10px] text-gray-600">6m/s</span>
+          </div>
+          <!-- Sun (Highlighted softly) -->
+          <div class="py-3 px-1 bg-brandLight/60 border-t-2 border-brand">
+            <span class="block font-eng text-[10px] font-bold text-accent">11/22</span>
+            <span class="block font-black text-accent mb-1">日</span>
+            <span class="text-base block my-1">🌤️</span>
+            <span class="block font-eng font-black text-[11px] text-brand">+8cm</span>
+            <span class="block font-eng font-bold text-[10px] text-dark mt-1">0°/-6°</span>
+            <span class="block font-eng text-[10px] text-gray-600">3m/s</span>
+          </div>
+          <!-- Mon -->
+          <div class="py-3 px-1">
+            <span class="block font-eng text-[10px] font-bold text-gray-400">11/23</span>
+            <span class="block font-bold text-gray-600 mb-1">月</span>
+            <span class="text-base block my-1">☀️</span>
+            <span class="block font-eng font-bold text-[11px] text-gray-400">0cm</span>
+            <span class="block font-eng text-[10px] text-gray-500 mt-1">2°/-4°</span>
+            <span class="block font-eng text-[10px] text-gray-400">2m/s</span>
+          </div>
+          <!-- Tue -->
+          <div class="py-3 px-1">
+            <span class="block font-eng text-[10px] font-bold text-gray-400">11/24</span>
+            <span class="block font-bold text-gray-600 mb-1">火</span>
+            <span class="text-base block my-1">☁️</span>
+            <span class="block font-eng font-bold text-[11px] text-gray-400">0cm</span>
+            <span class="block font-eng text-[10px] text-gray-500 mt-1">3°/-2°</span>
+            <span class="block font-eng text-[10px] text-gray-400">3m/s</span>
+          </div>
+          <!-- Wed -->
+          <div class="py-3 px-1">
+            <span class="block font-eng text-[10px] font-bold text-gray-400">11/25</span>
+            <span class="block font-bold text-gray-600 mb-1">水</span>
+            <span class="text-base block my-1">🌨️</span>
+            <span class="block font-eng font-black text-[11px] text-brand">+12cm</span>
+            <span class="block font-eng text-[10px] text-gray-500 mt-1">-1°/-5°</span>
+            <span class="block font-eng text-[10px] text-gray-400">4m/s</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Community Voice (Editorial Pull-Quote, NO card box) -->
+      <blockquote class="border-l-2 border-brand pl-4 my-6">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="font-eng text-[10px] font-black text-brand tracking-widest uppercase">HOPPER'S VOICE</span>
+          <span class="text-xs font-bold text-gray-500">@kenta_jib • 昨シーズン同条件日の投稿</span>
+        </div>
+        <p class="text-xs sm:text-sm text-gray-700 font-medium leading-relaxed">
+          「湯沢エリアで北西風が吹いた翌日は迷わず神立。朝イチはまずBリフトで上がって、そのままCリフト側の非圧雪ラインを回すと荒れてないノートラックを3本は連続で食えます！」
+        </p>
+      </blockquote>
+
+      <!-- Expandable Hourly Breakdown & Action Link -->
+      <div class="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <button type="button" class="hourly-toggle text-left text-xs font-bold text-gray-500 hover:text-dark flex items-center gap-1.5 transition-colors">
+          <span>土曜の3時間ごと風速・雪質推移を見る</span>
+          <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+
+        <button type="button" onclick="openTicketDrawer('神立スノーリゾート', '新潟県・湯沢エリア', 5800, 20)" class="text-xs sm:text-sm font-black text-brand hover:text-brandDark flex items-center gap-1 transition-colors">
+          <span>このスキー場のチケット詳細・20%マイル還元を見る</span>
+          <span class="font-eng">→</span>
+        </button>
+      </div>
+
+      <!-- Hidden Hourly Table -->
+      <div class="hourly-detail hidden mt-4 pt-4 border-t border-dashed border-gray-200">
+        <div class="grid grid-cols-4 gap-2 text-center text-xs">
+          <div class="py-2">
+            <span class="block font-eng text-[10px] text-gray-400">SAT 06:00</span>
+            <span class="block font-black text-dark mt-0.5">-6.5℃ / +8cm</span>
+            <span class="block text-[11px] text-brand font-bold">北西 5.2m/s</span>
+          </div>
+          <div class="py-2">
+            <span class="block font-eng text-[10px] text-gray-400">SAT 09:00</span>
+            <span class="block font-black text-dark mt-0.5">-5.0℃ / +6cm</span>
+            <span class="block text-[11px] text-brand font-bold">北西 6.1m/s</span>
+          </div>
+          <div class="py-2">
+            <span class="block font-eng text-[10px] text-gray-400">SAT 12:00</span>
+            <span class="block font-black text-dark mt-0.5">-3.2℃ / +3cm</span>
+            <span class="block text-[11px] text-gray-600 font-bold">北西 5.8m/s</span>
+          </div>
+          <div class="py-2">
+            <span class="block font-eng text-[10px] text-gray-400">SAT 15:00</span>
+            <span class="block font-black text-dark mt-0.5">-4.1℃ / +2cm</span>
+            <span class="block text-[11px] text-gray-600 font-bold">北 4.0m/s</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ENTRY 02: 白馬八方尾根スキー場 -->
+    <article class="resort-entry py-12 md:py-16 fade-up" data-tags="powder bluebird">
+      <div class="flex items-baseline justify-between gap-4 mb-3">
+        <div class="flex items-center gap-2.5">
+          <span class="font-eng font-black text-3xl sm:text-4xl text-brand leading-none">02</span>
+          <div>
+            <span class="font-eng text-[11px] font-bold text-gray-400 tracking-widest uppercase block">
+              NAGANO / HAKUBA — ELEV. 760m–1,831m
+            </span>
+            <span class="text-xs font-bold text-brand">標高差1,071mの本格派 / 日曜の「THE DAY」候補</span>
+          </div>
+        </div>
+        <span class="shrink-0 font-eng text-xs font-black text-accent tracking-wider">
+          MAX 20% MILE
+        </span>
+      </div>
+
+      <h2 class="text-2xl sm:text-3xl font-black text-dark tracking-tight mb-5">
+        白馬八方尾根スキー場
+      </h2>
+
+      <div class="mb-7">
+        <h3 class="text-xs font-black text-gray-400 tracking-widest uppercase font-eng mb-2">
+          WHY WE RECOMMEND / なぜ今週末、八方尾根を推すのか
+        </h3>
+        <p class="text-sm sm:text-base text-gray-700 leading-[1.85] font-medium">
+          土曜午前は上部エリア（黒菱・グラート周辺）で風速11m/s前後のやや強い北西風が予想されるため、狙い目はズバリ<strong class="text-dark font-bold">「土曜午後の風収まりタイミング〜日曜朝イチ」</strong>。土曜夜までに標高1,500m以上で<strong class="text-dark font-bold">40cm超の超軽量パウダー</strong>が積もった直後、日曜朝には高気圧の張り出しとともに一気に晴れ間が広がる典型的な「THE DAY」パターンです。
+        </p>
+      </div>
+
+      <!-- Minimalist 7-Day Weather Strip -->
+      <div class="mb-7">
+        <div class="flex items-center justify-between mb-2">
+          <span class="font-eng text-[11px] font-bold text-gray-400 tracking-widest">7-DAY FORECAST (ELEV. 1,400m)</span>
+          <span class="text-[11px] font-bold text-brand">土日合計降雪 +42cm</span>
+        </div>
+        <div class="grid grid-cols-7 border-y border-gray-200 text-center text-xs">
+          <div class="py-3 px-1">
+            <span class="block font-eng text-[10px] font-bold text-gray-400">11/19</span>
+            <span class="block font-bold text-gray-600 mb-1">木</span>
+            <span class="text-base block my-1">☀️</span>
+            <span class="block font-eng font-bold text-[11px] text-gray-400">0cm</span>
+            <span class="block font-eng text-[10px] text-gray-500 mt-1">1°/-4°</span>
+            <span class="block font-eng text-[10px] text-gray-400">3m/s</span>
+          </div>
+          <div class="py-3 px-1">
+            <span class="block font-eng text-[10px] font-bold text-gray-400">11/20</span>
+            <span class="block font-bold text-gray-600 mb-1">金</span>
+            <span class="text-base block my-1">🌨️</span>
+            <span class="block font-eng font-black text-[11px] text-brand">+14cm</span>
+            <span class="block font-eng text-[10px] text-gray-500 mt-1">-2°/-8°</span>
+            <span class="block font-eng text-[10px] text-gray-400">7m/s</span>
+          </div>
+          <div class="py-3 px-1 bg-brandLight/60 border-t-2 border-brand">
+            <span class="block font-eng text-[10px] font-bold text-brand">11/21</span>
+            <span class="block font-black text-brand mb-1">土</span>
+            <span class="text-base block my-1">❄️</span>
+            <span class="block font-eng font-black text-[11px] text-brand">+34cm</span>
+            <span class="block font-eng font-bold text-[10px] text-dark mt-1">-5°/-11°</span>
+            <span class="block font-eng text-[10px] text-amber-600 font-bold">11m/s</span>
+          </div>
+          <div class="py-3 px-1 bg-brandLight/60 border-t-2 border-brand">
+            <span class="block font-eng text-[10px] font-bold text-accent">11/22</span>
+            <span class="block font-black text-accent mb-1">日</span>
+            <span class="text-base block my-1">☀️</span>
+            <span class="block font-eng font-black text-[11px] text-brand">+8cm</span>
+            <span class="block font-eng font-bold text-[10px] text-dark mt-1">-2°/-9°</span>
+            <span class="block font-eng text-[10px] text-gray-600">4m/s</span>
+          </div>
+          <div class="py-3 px-1">
+            <span class="block font-eng text-[10px] font-bold text-gray-400">11/23</span>
+            <span class="block font-bold text-gray-600 mb-1">月</span>
+            <span class="text-base block my-1">☀️</span>
+            <span class="block font-eng font-bold text-[11px] text-gray-400">0cm</span>
+            <span class="block font-eng text-[10px] text-gray-500 mt-1">1°/-5°</span>
+            <span class="block font-eng text-[10px] text-gray-400">2m/s</span>
+          </div>
+          <div class="py-3 px-1">
+            <span class="block font-eng text-[10px] font-bold text-gray-400">11/24</span>
+            <span class="block font-bold text-gray-600 mb-1">火</span>
+            <span class="text-base block my-1">⛅</span>
+            <span class="block font-eng font-bold text-[11px] text-gray-400">0cm</span>
+            <span class="block font-eng text-[10px] text-gray-500 mt-1">0°/-5°</span>
+            <span class="block font-eng text-[10px] text-gray-400">3m/s</span>
+          </div>
+          <div class="py-3 px-1">
+            <span class="block font-eng text-[10px] font-bold text-gray-400">11/25</span>
+            <span class="block font-bold text-gray-600 mb-1">水</span>
+            <span class="text-base block my-1">🌨️</span>
+            <span class="block font-eng font-black text-[11px] text-brand">+16cm</span>
+            <span class="block font-eng text-[10px] text-gray-500 mt-1">-3°/-8°</span>
+            <span class="block font-eng text-[10px] text-gray-400">6m/s</span>
+          </div>
+        </div>
+      </div>
+
+      <blockquote class="border-l-2 border-brand pl-4 my-6">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="font-eng text-[10px] font-black text-brand tracking-widest uppercase">HOPPER'S VOICE</span>
+          <span class="text-xs font-bold text-gray-500">@hakuba_rider • ホッパー会員</span>
+        </div>
+        <p class="text-xs sm:text-sm text-gray-700 font-medium leading-relaxed">
+          「土曜の吹雪で上部リフトが止まっていた場合、日曜朝イチのうさぎ平・黒菱のファーストトラックは別次元です。チケット窓口に並ばず発券機でQRをかざすだけでゴンドラ列に直行できるのが本当に助かります。」
+        </p>
+      </blockquote>
+
+      <div class="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <button type="button" class="hourly-toggle text-left text-xs font-bold text-gray-500 hover:text-dark flex items-center gap-1.5 transition-colors">
+          <span>土曜の3時間ごと風速・雪質推移を見る</span>
+          <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+
+        <button type="button" onclick="openTicketDrawer('白馬八方尾根スキー場', '長野県・白馬エリア', 7200, 15)" class="text-xs sm:text-sm font-black text-brand hover:text-brandDark flex items-center gap-1 transition-colors">
+          <span>このスキー場のチケット詳細・15%マイル還元を見る</span>
+          <span class="font-eng">→</span>
+        </button>
+      </div>
+
+      <div class="hourly-detail hidden mt-4 pt-4 border-t border-dashed border-gray-200">
+        <div class="grid grid-cols-4 gap-2 text-center text-xs">
+          <div class="py-2">
+            <span class="block font-eng text-[10px] text-gray-400">SAT 06:00</span>
+            <span class="block font-black text-dark mt-0.5">-10.2℃ / +12cm</span>
+            <span class="block text-[11px] text-amber-600 font-bold">北西 11.4m/s</span>
+          </div>
+          <div class="py-2">
+            <span class="block font-eng text-[10px] text-gray-400">SAT 09:00</span>
+            <span class="block font-black text-dark mt-0.5">-8.8℃ / +10cm</span>
+            <span class="block text-[11px] text-amber-600 font-bold">北西 10.2m/s</span>
+          </div>
+          <div class="py-2">
+            <span class="block font-eng text-[10px] text-gray-400">SAT 12:00</span>
+            <span class="block font-black text-dark mt-0.5">-6.5℃ / +7cm</span>
+            <span class="block text-[11px] text-brand font-bold">北西 7.5m/s</span>
+          </div>
+          <div class="py-2">
+            <span class="block font-eng text-[10px] text-gray-400">SAT 15:00</span>
+            <span class="block font-black text-dark mt-0.5">-7.4℃ / +5cm</span>
+            <span class="block text-[11px] text-brand font-bold">北 5.1m/s</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ENTRY 03: 川場スキー場 -->
+    <article class="resort-entry py-12 md:py-16 fade-up" data-tags="bluebird safewind">
+      <div class="flex items-baseline justify-between gap-4 mb-3">
+        <div class="flex items-center gap-2.5">
+          <span class="font-eng font-black text-3xl sm:text-4xl text-brand leading-none">03</span>
+          <div>
+            <span class="font-eng text-[11px] font-bold text-gray-400 tracking-widest uppercase block">
+              GUNMA / NUMATA — ELEV. 1,280m–1,870m
+            </span>
+            <span class="text-xs font-bold text-brand">首都圏から約2時間 / 谷川連峰ブロックの快晴バーン</span>
+          </div>
+        </div>
+        <span class="shrink-0 font-eng text-xs font-black text-accent tracking-wider">
+          MAX 20% MILE
+        </span>
+      </div>
+
+      <h2 class="text-2xl sm:text-3xl font-black text-dark tracking-tight mb-5">
+        川場スキー場
+      </h2>
+
+      <div class="mb-7">
+        <h3 class="text-xs font-black text-gray-400 tracking-widest uppercase font-eng mb-2">
+          WHY WE RECOMMEND / なぜ今週末、川場を推すのか
+        </h3>
+        <p class="text-sm sm:text-base text-gray-700 leading-[1.85] font-medium">
+          「日本海側の吹雪や雪道運転は避けつつ、極上の雪質で思い切りカービングしたい」なら川場がベストアンサー。県境の谷川連峰が雪雲をせき止めるため、<strong class="text-dark font-bold">週末の晴天率は80%超、風速も3〜4m/sと極めて穏やか</strong>です。それでいて標高1,870mの冷え込みにより雪面は終日締まった状態をキープ。3,300mのロングクルージングが最高に気持ちいい週末になります。
+        </p>
+      </div>
+
+      <!-- Minimalist 7-Day Weather Strip -->
+      <div class="mb-7">
+        <div class="flex items-center justify-between mb-2">
+          <span class="font-eng text-[11px] font-bold text-gray-400 tracking-widest">7-DAY FORECAST (ELEV. 1,500m)</span>
+          <span class="text-[11px] font-bold text-brand">快晴率 85% / 穏やかな微風</span>
+        </div>
+        <div class="grid grid-cols-7 border-y border-gray-200 text-center text-xs">
+          <div class="py-3 px-1">
+            <span class="block font-eng text-[10px] font-bold text-gray-400">11/19</span>
+            <span class="block font-bold text-gray-600 mb-1">木</span>
+            <span class="text-base block my-1">☀️</span>
+            <span class="block font-eng font-bold text-[11px] text-gray-400">0cm</span>
+            <span class="block font-eng text-[10px] text-gray-500 mt-1">2°/-3°</span>
+            <span class="block font-eng text-[10px] text-gray-400">2m/s</span>
+          </div>
+          <div class="py-3 px-1">
+            <span class="block font-eng text-[10px] font-bold text-gray-400">11/20</span>
+            <span class="block font-bold text-gray-600 mb-1">金</span>
+            <span class="text-base block my-1">⛅</span>
+            <span class="block font-eng font-black text-[11px] text-brand">+4cm</span>
+            <span class="block font-eng text-[10px] text-gray-500 mt-1">0°/-5°</span>
+            <span class="block font-eng text-[10px] text-gray-400">4m/s</span>
+          </div>
+          <div class="py-3 px-1 bg-brandLight/60 border-t-2 border-brand">
+            <span class="block font-eng text-[10px] font-bold text-brand">11/21</span>
+            <span class="block font-black text-brand mb-1">土</span>
+            <span class="text-base block my-1">☀️</span>
+            <span class="block font-eng font-black text-[11px] text-brand">+3cm</span>
+            <span class="block font-eng font-bold text-[10px] text-dark mt-1">-1°/-6°</span>
+            <span class="block font-eng text-[10px] text-gray-600">4m/s</span>
+          </div>
+          <div class="py-3 px-1 bg-brandLight/60 border-t-2 border-brand">
+            <span class="block font-eng text-[10px] font-bold text-accent">11/22</span>
+            <span class="block font-black text-accent mb-1">日</span>
+            <span class="text-base block my-1">☀️</span>
+            <span class="block font-eng font-bold text-[11px] text-gray-500">0cm</span>
+            <span class="block font-eng font-bold text-[10px] text-dark mt-1">1°/-5°</span>
+            <span class="block font-eng text-[10px] text-gray-600">2m/s</span>
+          </div>
+          <div class="py-3 px-1">
+            <span class="block font-eng text-[10px] font-bold text-gray-400">11/23</span>
+            <span class="block font-bold text-gray-600 mb-1">月</span>
+            <span class="text-base block my-1">☀️</span>
+            <span class="block font-eng font-bold text-[11px] text-gray-400">0cm</span>
+            <span class="block font-eng text-[10px] text-gray-500 mt-1">3°/-3°</span>
+            <span class="block font-eng text-[10px] text-gray-400">2m/s</span>
+          </div>
+          <div class="py-3 px-1">
+            <span class="block font-eng text-[10px] font-bold text-gray-400">11/24</span>
+            <span class="block font-bold text-gray-600 mb-1">火</span>
+            <span class="text-base block my-1">☁️</span>
+            <span class="block font-eng font-bold text-[11px] text-gray-400">0cm</span>
+            <span class="block font-eng text-[10px] text-gray-500 mt-1">2°/-2°</span>
+            <span class="block font-eng text-[10px] text-gray-400">3m/s</span>
+          </div>
+          <div class="py-3 px-1">
+            <span class="block font-eng text-[10px] font-bold text-gray-400">11/25</span>
+            <span class="block font-bold text-gray-600 mb-1">水</span>
+            <span class="text-base block my-1">⛅</span>
+            <span class="block font-eng font-black text-[11px] text-brand">+5cm</span>
+            <span class="block font-eng text-[10px] text-gray-500 mt-1">-1°/-5°</span>
+            <span class="block font-eng text-[10px] text-gray-400">4m/s</span>
+          </div>
+        </div>
+      </div>
+
+      <blockquote class="border-l-2 border-brand pl-4 my-6">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="font-eng text-[10px] font-black text-brand tracking-widest uppercase">HOPPER'S VOICE</span>
+          <span class="text-xs font-bold text-gray-500">@mika_carve • ホッパー会員</span>
+        </div>
+        <p class="text-xs sm:text-sm text-gray-700 font-medium leading-relaxed">
+          「日本海側が大荒れの予報の日でも、川場に来ると驚くほど晴れていることが多いです。朝イチのクリスタルコースの綺麗に整えられたピステンバーンは、エッジが吸い付く感覚で最高です！」
+        </p>
+      </blockquote>
+
+      <div class="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <button type="button" class="hourly-toggle text-left text-xs font-bold text-gray-500 hover:text-dark flex items-center gap-1.5 transition-colors">
+          <span>土曜の3時間ごと風速・雪質推移を見る</span>
+          <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+
+        <button type="button" onclick="openTicketDrawer('川場スキー場', '群馬県・沼田エリア', 6200, 20)" class="text-xs sm:text-sm font-black text-brand hover:text-brandDark flex items-center gap-1 transition-colors">
+          <span>このスキー場のチケット詳細・20%マイル還元を見る</span>
+          <span class="font-eng">→</span>
+        </button>
+      </div>
+
+      <div class="hourly-detail hidden mt-4 pt-4 border-t border-dashed border-gray-200">
+        <div class="grid grid-cols-4 gap-2 text-center text-xs">
+          <div class="py-2">
+            <span class="block font-eng text-[10px] text-gray-400">SAT 06:00</span>
+            <span class="block font-black text-dark mt-0.5">-5.8℃ / +2cm</span>
+            <span class="block text-[11px] text-gray-600 font-bold">北西 4.1m/s</span>
+          </div>
+          <div class="py-2">
+            <span class="block font-eng text-[10px] text-gray-400">SAT 09:00</span>
+            <span class="block font-black text-dark mt-0.5">-3.5℃ / 0cm</span>
+            <span class="block text-[11px] text-gray-600 font-bold">北西 3.8m/s</span>
+          </div>
+          <div class="py-2">
+            <span class="block font-eng text-[10px] text-gray-400">SAT 12:00</span>
+            <span class="block font-black text-dark mt-0.5">-1.2℃ / 0cm</span>
+            <span class="block text-[11px] text-gray-600 font-bold">北 3.0m/s</span>
+          </div>
+          <div class="py-2">
+            <span class="block font-eng text-[10px] text-gray-400">SAT 15:00</span>
+            <span class="block font-black text-dark mt-0.5">-2.4℃ / 0cm</span>
+            <span class="block text-[11px] text-gray-600 font-bold">北 2.5m/s</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ENTRY 04: ホワイトワールド尾瀬岩鞍 -->
+    <article class="resort-entry py-12 md:py-16 fade-up" data-tags="powder bluebird safewind">
+      <div class="flex items-baseline justify-between gap-4 mb-3">
+        <div class="flex items-center gap-2.5">
+          <span class="font-eng font-black text-3xl sm:text-4xl text-brand leading-none">04</span>
+          <div>
+            <span class="font-eng text-[11px] font-bold text-gray-400 tracking-widest uppercase block">
+              GUNMA / KATASHINA — ELEV. 1,000m–1,703m
+            </span>
+            <span class="text-xs font-bold text-brand">全ベース標高1,000m超 / 乾雪と広大バーンのバランス型</span>
+          </div>
+        </div>
+        <span class="shrink-0 font-eng text-xs font-black text-accent tracking-wider">
+          MAX 20% MILE
+        </span>
+      </div>
+
+      <h2 class="text-2xl sm:text-3xl font-black text-dark tracking-tight mb-5">
+        ホワイトワールド尾瀬岩鞍
+      </h2>
+
+      <div class="mb-7">
+        <h3 class="text-xs font-black text-gray-400 tracking-widest uppercase font-eng mb-2">
+          WHY WE RECOMMEND / なぜ今週末、尾瀬岩鞍を推すのか
+        </h3>
+        <p class="text-sm sm:text-base text-gray-700 leading-[1.85] font-medium">
+          山麓ベース自体が標高1,000mに位置するため、今回の寒気でも湿雪にならず<strong class="text-dark font-bold">ゲレンデ下部までサラサラの軽い雪質</strong>が保たれます。金曜夜〜土曜朝にかけて<strong class="text-dark font-bold">18cmの新雪</strong>が乗ったあと、土曜昼前には青空が覗く予報。パウダーも圧雪も両方欲張りたいホッパーや、ゆったりロングコースを滑りたい方にぴったりのバランス型スポットです。
+        </p>
+      </div>
+
+      <!-- Minimalist 7-Day Weather Strip -->
+      <div class="mb-7">
+        <div class="flex items-center justify-between mb-2">
+          <span class="font-eng text-[11px] font-bold text-gray-400 tracking-widest">7-DAY FORECAST (ELEV. 1,350m)</span>
+          <span class="text-[11px] font-bold text-brand">土日合計降雪 +18cm</span>
+        </div>
+        <div class="grid grid-cols-7 border-y border-gray-200 text-center text-xs">
+          <div class="py-3 px-1">
+            <span class="block font-eng text-[10px] font-bold text-gray-400">11/19</span>
+            <span class="block font-bold text-gray-600 mb-1">木</span>
+            <span class="text-base block my-1">☀️</span>
+            <span class="block font-eng font-bold text-[11px] text-gray-400">0cm</span>
+            <span class="block font-eng text-[10px] text-gray-500 mt-1">1°/-4°</span>
+            <span class="block font-eng text-[10px] text-gray-400">2m/s</span>
+          </div>
+          <div class="py-3 px-1">
+            <span class="block font-eng text-[10px] font-bold text-gray-400">11/20</span>
+            <span class="block font-bold text-gray-600 mb-1">金</span>
+            <span class="text-base block my-1">🌨️</span>
+            <span class="block font-eng font-black text-[11px] text-brand">+6cm</span>
+            <span class="block font-eng text-[10px] text-gray-500 mt-1">-1°/-6°</span>
+            <span class="block font-eng text-[10px] text-gray-400">4m/s</span>
+          </div>
+          <div class="py-3 px-1 bg-brandLight/60 border-t-2 border-brand">
+            <span class="block font-eng text-[10px] font-bold text-brand">11/21</span>
+            <span class="block font-black text-brand mb-1">土</span>
+            <span class="text-base block my-1">❄️☀️</span>
+            <span class="block font-eng font-black text-[11px] text-brand">+15cm</span>
+            <span class="block font-eng font-bold text-[10px] text-dark mt-1">-2°/-7°</span>
+            <span class="block font-eng text-[10px] text-gray-600">5m/s</span>
+          </div>
+          <div class="py-3 px-1 bg-brandLight/60 border-t-2 border-brand">
+            <span class="block font-eng text-[10px] font-bold text-accent">11/22</span>
+            <span class="block font-black text-accent mb-1">日</span>
+            <span class="text-base block my-1">☀️</span>
+            <span class="block font-eng font-black text-[11px] text-brand">+3cm</span>
+            <span class="block font-eng font-bold text-[10px] text-dark mt-1">0°/-6°</span>
+            <span class="block font-eng text-[10px] text-gray-600">3m/s</span>
+          </div>
+          <div class="py-3 px-1">
+            <span class="block font-eng text-[10px] font-bold text-gray-400">11/23</span>
+            <span class="block font-bold text-gray-600 mb-1">月</span>
+            <span class="text-base block my-1">☀️</span>
+            <span class="block font-eng font-bold text-[11px] text-gray-400">0cm</span>
+            <span class="block font-eng text-[10px] text-gray-500 mt-1">2°/-4°</span>
+            <span class="block font-eng text-[10px] text-gray-400">2m/s</span>
+          </div>
+          <div class="py-3 px-1">
+            <span class="block font-eng text-[10px] font-bold text-gray-400">11/24</span>
+            <span class="block font-bold text-gray-600 mb-1">火</span>
+            <span class="text-base block my-1">☁️</span>
+            <span class="block font-eng font-bold text-[11px] text-gray-400">0cm</span>
+            <span class="block font-eng text-[10px] text-gray-500 mt-1">1°/-3°</span>
+            <span class="block font-eng text-[10px] text-gray-400">3m/s</span>
+          </div>
+          <div class="py-3 px-1">
+            <span class="block font-eng text-[10px] font-bold text-gray-400">11/25</span>
+            <span class="block font-bold text-gray-600 mb-1">水</span>
+            <span class="text-base block my-1">🌨️</span>
+            <span class="block font-eng font-black text-[11px] text-brand">+8cm</span>
+            <span class="block font-eng text-[10px] text-gray-500 mt-1">-2°/-6°</span>
+            <span class="block font-eng text-[10px] text-gray-400">4m/s</span>
+          </div>
+        </div>
+      </div>
+
+      <blockquote class="border-l-2 border-brand pl-4 my-6">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="font-eng text-[10px] font-black text-brand tracking-widest uppercase">HOPPER'S VOICE</span>
+          <span class="text-xs font-bold text-gray-500">@shota_powder • ホッパー会員</span>
+        </div>
+        <p class="text-xs sm:text-sm text-gray-700 font-medium leading-relaxed">
+          「片品エリアの中でも岩鞍はコース幅が広くて人が分散するので、午後に向かっても雪質が荒れにくいのが好きです。ミルキーウェイのロングランは何度滑っても爽快！」
+        </p>
+      </blockquote>
+
+      <div class="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <button type="button" class="hourly-toggle text-left text-xs font-bold text-gray-500 hover:text-dark flex items-center gap-1.5 transition-colors">
+          <span>土曜の3時間ごと風速・雪質推移を見る</span>
+          <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+
+        <button type="button" onclick="openTicketDrawer('ホワイトワールド尾瀬岩鞍', '群馬県・片品エリア', 6000, 20)" class="text-xs sm:text-sm font-black text-brand hover:text-brandDark flex items-center gap-1 transition-colors">
+          <span>このスキー場のチケット詳細・20%マイル還元を見る</span>
+          <span class="font-eng">→</span>
+        </button>
+      </div>
+
+      <div class="hourly-detail hidden mt-4 pt-4 border-t border-dashed border-gray-200">
+        <div class="grid grid-cols-4 gap-2 text-center text-xs">
+          <div class="py-2">
+            <span class="block font-eng text-[10px] text-gray-400">SAT 06:00</span>
+            <span class="block font-black text-dark mt-0.5">-6.8℃ / +7cm</span>
+            <span class="block text-[11px] text-gray-600 font-bold">北西 4.8m/s</span>
+          </div>
+          <div class="py-2">
+            <span class="block font-eng text-[10px] text-gray-400">SAT 09:00</span>
+            <span class="block font-black text-dark mt-0.5">-4.5℃ / +5cm</span>
+            <span class="block text-[11px] text-gray-600 font-bold">北西 4.5m/s</span>
+          </div>
+          <div class="py-2">
+            <span class="block font-eng text-[10px] text-gray-400">SAT 12:00</span>
+            <span class="block font-black text-dark mt-0.5">-2.1℃ / +2cm</span>
+            <span class="block text-[11px] text-gray-600 font-bold">北 3.6m/s</span>
+          </div>
+          <div class="py-2">
+            <span class="block font-eng text-[10px] text-gray-400">SAT 15:00</span>
+            <span class="block font-black text-dark mt-0.5">-3.3℃ / +1cm</span>
+            <span class="block text-[11px] text-gray-600 font-bold">北 2.9m/s</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </main>
+
+  <!-- 5. DARK BAND SECTION (Matching HP's Mission Band: bg-gray-900 text-white) -->
+  <section class="py-16 md:py-24 bg-gray-900 text-white">
+    <div class="max-w-3xl mx-auto px-5">
+      
+      <!-- Part A: Area Matrix of Partner Resorts -->
+      <div class="mb-16">
+        <span class="bg-white/10 text-white font-eng text-[11px] font-black px-3.5 py-1 rounded-full mb-4 inline-block tracking-widest border border-white/20">
+          AREA MATRIX / 提携50施設 トレンド早見表
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-black leading-tight mb-3">
+          全国エリア別・週末コンディション概況
+        </h2>
+        <p class="text-xs sm:text-sm text-gray-400 font-medium mb-8">
+          今週末の「エリアホッパー」ミッション攻略や、遠征先選びの参考にしてください。
+        </p>
+
+        <!-- Clean Hairline Matrix Table (No cards) -->
+        <div class="border-t border-gray-800 divide-y divide-gray-800 text-xs sm:text-sm">
+          <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
+            <div>
+              <span class="font-eng text-[10px] font-bold text-brand tracking-widest block">HOKKAIDO</span>
+              <span class="font-bold text-white">キロロスノーワールド / 札幌国際 ほか</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="font-eng font-black text-brand">+45cm</span>
+              <span class="text-gray-300 font-medium">極寒ドライパウダー・山頂風注意</span>
+            </div>
+          </div>
+
+          <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
+            <div>
+              <span class="font-eng text-[10px] font-bold text-brand tracking-widest block">TOHOKU</span>
+              <span class="font-bold text-white">安比高原 / 夏油高原 / 蔵王温泉 ほか</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="font-eng font-black text-brand">+30cm</span>
+              <span class="text-gray-300 font-medium">土曜ツリーラン◎ / 日曜は視界回復</span>
+            </div>
+          </div>
+
+          <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
+            <div>
+              <span class="font-eng text-[10px] font-bold text-brand tracking-widest block">JOETSU / MYOKO</span>
+              <span class="font-bold text-white">舞子スノーリゾート / 斑尾高原 ほか</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="font-eng font-black text-brand">+35cm</span>
+              <span class="text-gray-300 font-medium">土曜パウダー◎ / 降雪量トップクラス</span>
+            </div>
+          </div>
+
+          <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
+            <div>
+              <span class="font-eng text-[10px] font-bold text-brand tracking-widest block">HAKUBA / SHINSHU</span>
+              <span class="font-bold text-white">白馬八方尾根 / 鹿島槍 / 菅平高原 ほか</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="font-eng font-black text-brand">+28cm</span>
+              <span class="text-gray-300 font-medium">土曜午前は上部強風 / 日曜朝イチ狙い目</span>
+            </div>
+          </div>
+
+          <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
+            <div>
+              <span class="font-eng text-[10px] font-bold text-brand tracking-widest block">GUNMA / KANTO</span>
+              <span class="font-bold text-white">川場 / 尾瀬岩鞍 / 丸沼高原 ほか</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="font-eng font-black text-gray-300">+10cm</span>
+              <span class="text-gray-300 font-medium">高い晴天率＆穏やかな風で圧雪◎</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Part B: Interactive Community Poll & Review Prompt (Clean border-t divider, not card) -->
+      <div class="pt-12 border-t border-gray-800">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="font-eng text-xs font-black text-brand tracking-widest uppercase">COMMUNITY POLL</span>
+          <span class="text-xs font-bold text-gray-400">• 毎週木曜集計</span>
+        </div>
+        <h3 class="text-xl sm:text-2xl font-black mb-2">
+          今週末、どこへホップする？
+        </h3>
+        <p class="text-xs sm:text-sm text-gray-400 font-medium mb-6">
+          ワンタップで回答すると、現在のホッパーたちの動向（投票割合）が表示されます。
+        </p>
+
+        <div class="space-y-3 mb-8" id="poll-list">
+          <button type="button" onclick="castVote(0)" class="poll-item w-full text-left py-3 px-4 border border-gray-700 hover:border-brand transition-colors relative overflow-hidden">
+            <div class="poll-bar absolute inset-y-0 left-0 bg-brand/25 transition-all duration-500" style="width: 0%"></div>
+            <div class="relative z-10 flex items-center justify-between text-xs sm:text-sm font-bold">
+              <span>上越・妙高・白馬エリアで新雪パウダー狙い</span>
+              <span class="poll-stat font-eng font-black text-brand opacity-0 transition-opacity">52%</span>
+            </div>
+          </button>
+
+          <button type="button" onclick="castVote(1)" class="poll-item w-full text-left py-3 px-4 border border-gray-700 hover:border-brand transition-colors relative overflow-hidden">
+            <div class="poll-bar absolute inset-y-0 left-0 bg-brand/25 transition-all duration-500" style="width: 0%"></div>
+            <div class="relative z-10 flex items-center justify-between text-xs sm:text-sm font-bold">
+              <span>群馬・八ヶ岳エリアで快晴カービング＆パーク</span>
+              <span class="poll-stat font-eng font-black text-brand opacity-0 transition-opacity">31%</span>
+            </div>
+          </button>
+
+          <button type="button" onclick="castVote(2)" class="poll-item w-full text-left py-3 px-4 border border-gray-700 hover:border-brand transition-colors relative overflow-hidden">
+            <div class="poll-bar absolute inset-y-0 left-0 bg-brand/25 transition-all duration-500" style="width: 0%"></div>
+            <div class="relative z-10 flex items-center justify-between text-xs sm:text-sm font-bold">
+              <span>北海道・東北エリアへ遠征ホッピング</span>
+              <span class="poll-stat font-eng font-black text-brand opacity-0 transition-opacity">17%</span>
+            </div>
+          </button>
+        </div>
+
+        <p id="poll-thanks" class="hidden text-xs font-bold text-brand mb-8">
+          投票ありがとうございます！現在 168名のホッパーが回答中です。
+        </p>
+
+        <!-- Slope Review Submission Prompt -->
+        <div class="border-l-2 border-line pl-4 py-1">
+          <p class="text-xs sm:text-sm text-gray-300 font-medium leading-relaxed mb-3">
+            ゲレンデから帰ったら、ぜひLINEのトーク画面から<strong class="text-white font-bold">「現地の雪質やおすすめリフトの口コミ」</strong>をお送りください。来週木曜のレポートの「HOPPER'S VOICE」に掲載させていただきます！
+          </p>
+          <a href="https://lin.ee/zXFhtBh" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-black text-line hover:text-lineHover transition-colors">
+            <span>LINEトーク画面から現地レビューを送る</span>
+            <span class="font-eng">→</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 6. FOOTER (Exact aesthetic match to EARTH HOPPER HP Footer) -->
+  <footer class="bg-white border-t border-gray-200 pt-10 pb-40 md:pt-12 md:pb-36 relative z-10 w-full">
+    <div class="max-w-3xl mx-auto px-5 flex flex-col md:flex-row justify-between items-center gap-6 md:gap-0">
+      <div class="flex flex-col items-center md:items-start text-center md:text-left">
+        <div class="flex items-center gap-2 mb-3 opacity-70">
+          <div class="w-7 h-7 rounded-full bg-gray-800 flex items-center justify-center text-white font-eng font-black text-xs">
+            EH
+          </div>
+          <span class="font-eng font-black text-lg tracking-tight text-gray-800">EARTH HOPPER</span>
+        </div>
+        <p class="text-xs md:text-sm font-bold text-gray-500">日本中をあなたのホームゲレンデに</p>
+        <p class="text-[11px] text-gray-400 mt-1">気象データ分析：Open-Meteo API / 毎週木曜配信</p>
+      </div>
+      <div class="flex flex-wrap justify-center items-center gap-5 mt-2 md:mt-0">
+        <a href="https://www.hopper.earth/hp/" target="_blank" rel="noopener noreferrer" class="text-xs md:text-sm font-bold text-gray-400 hover:text-gray-600 transition-colors underline-offset-4 hover:underline">
+          サービスTOP
+        </a>
+        <a href="https://note.com/earthhopper" target="_blank" rel="noopener noreferrer" class="text-xs md:text-sm font-bold text-gray-400 hover:text-gray-600 transition-colors underline-offset-4 hover:underline">
+          ブログ
+        </a>
+        <a href="https://www.hopper.earth/hp/terms.html" target="_blank" rel="noopener noreferrer" class="text-xs md:text-sm font-bold text-gray-400 hover:text-gray-600 transition-colors underline-offset-4 hover:underline">
+          利用規約
+        </a>
+        <a href="https://www.hopper.earth/hp/company.html" target="_blank" rel="noopener noreferrer" class="text-xs md:text-sm font-bold text-gray-400 hover:text-gray-600 transition-colors underline-offset-4 hover:underline">
+          運営会社
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 7. STICKY BOTTOM LINE CTA BAR (Inherited directly from EARTH HOPPER HP) -->
+  <div id="sticky-cta" class="fixed bottom-0 md:bottom-6 left-0 md:left-1/2 md:-translate-x-1/2 w-full md:w-[600px] z-40 transition-all duration-500 ease-out">
+    <div class="bg-white/95 md:bg-white/90 backdrop-blur-xl md:rounded-[2rem] shadow-[0_-10px_20px_rgba(0,0,0,0.05)] md:shadow-2xl border-t md:border border-gray-200/50 p-4 md:p-3">
+      <div class="text-center mb-2">
+        <p class="inline-block text-[11px] md:text-xs font-black text-gray-700 bg-gray-100/80 md:bg-gray-100 px-3 py-1 rounded-full border border-gray-200">
+          ＼ 会員登録などの面倒なステップは一切なし！ ／
+        </p>
+      </div>
+      <a href="https://lin.ee/zXFhtBh" target="_blank" rel="noopener noreferrer" class="w-full bg-line hover:bg-lineHover text-white font-black text-base md:text-lg py-3.5 md:py-3 rounded-xl md:rounded-full flex items-center justify-center gap-3 transition-all transform hover:scale-[1.01] active:scale-[0.98] shadow-glow-line group">
+        <svg class="w-6 h-6 md:w-7 md:h-7 text-white transform group-hover:-rotate-12 transition-transform" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63h-1.401v.866h1.401c.349 0 .63.283.63.63 0 .346-.281.63-.63.63h-2.032a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63h2.032c.349 0 .63.282.63.63 0 .348-.281.63-.63.63h-1.401v.881h1.401zm-5.228 2.757h-.01a.631.631 0 0 1-.502-.25l-2.003-2.673v2.292c0 .348-.282.63-.63.63a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.63-.63.218 0 .412.112.524.283l1.986 2.646V7.086c0-.348.282-.63.63-.63a.632.632 0 0 1 .631.63v5.534a.631.631 0 0 1-.625.63zm-5.617 0a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63a.632.632 0 0 1 .63.63v5.534a.632.632 0 0 1-.63.63zm-2.479 0H4.01a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63a.632.632 0 0 1 .63.63v4.903h2.031c.349 0 .63.283.63.63 0 .346-.281.63-.63.63zM24 10.614c0-5.304-5.378-9.614-12-9.614S0 5.31 0 10.614c0 4.754 4.264 8.72 10.027 9.475.39.084.922.258 1.057.592.122.303.079.778.039 1.085l-.171 1.027c-.053.303-.242 1.186 1.039.647 1.281-.54 6.911-4.069 9.428-6.967C23.068 14.708 24 12.77 24 10.614z"/>
+        </svg>
+        <span class="tracking-wide">LINE公式アカウントでチケットを購入</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- 8. CLEAN TICKET & 20% MILE SIMULATOR DRAWER (Slide-over Modal) -->
+  <div id="ticket-drawer" class="fixed inset-0 z-50 hidden">
+    <!-- Backdrop -->
+    <div id="drawer-backdrop" onclick="closeTicketDrawer()" class="fixed inset-0 bg-gray-900/60 backdrop-blur-xs transition-opacity"></div>
+    
+    <!-- Bottom Sheet / Drawer Panel -->
+    <div class="fixed bottom-0 left-0 right-0 md:left-1/2 md:-translate-x-1/2 md:bottom-auto md:top-1/2 md:-translate-y-1/2 w-full md:max-w-lg bg-white md:rounded-3xl rounded-t-3xl p-6 sm:p-8 shadow-2xl z-10 border-t md:border border-gray-200">
+      <div class="flex items-start justify-between mb-6">
+        <div>
+          <span id="drawer-area" class="font-eng text-xs font-bold text-brand tracking-widest block mb-1">AREA</span>
+          <h3 id="drawer-resort-name" class="text-xl sm:text-2xl font-black text-dark">スキー場名</h3>
+        </div>
+        <button type="button" onclick="closeTicketDrawer()" class="p-2 text-gray-400 hover:text-dark transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+
+      <!-- Mile Calculation Breakdown (Matching HP Benefit 01 style) -->
+      <div class="bg-gray-50 p-5 border border-gray-200 mb-6">
+        <div class="flex justify-between items-center text-sm font-bold text-gray-600 mb-2">
+          <span>1日リフト券（大人・窓口定価準拠）</span>
+          <span id="drawer-price" class="font-eng text-lg text-dark">¥6,000</span>
+        </div>
+        <div class="flex justify-between items-center text-sm font-bold text-brand pb-3 border-b border-gray-200">
+          <span id="drawer-rate-label">アースホッパー還元マイル (20%)</span>
+          <span id="drawer-miles" class="font-eng font-black text-lg">+ 1,200 M</span>
+        </div>
+        <div class="flex justify-between items-baseline pt-3">
+          <span class="text-xs font-bold text-gray-500">次回利用時の実質負担イメージ</span>
+          <span id="drawer-net-price" class="font-eng font-black text-xl text-accent">¥4,800</span>
+        </div>
+      </div>
+
+      <ul class="text-xs text-gray-600 font-bold space-y-2 mb-6">
+        <li class="flex items-center gap-2">
+          <span class="text-brand">✓</span> 当日の天候を見てから現地到着直前にLINEで決済可能
+        </li>
+        <li class="flex items-center gap-2">
+          <span class="text-brand">✓</span> 自動発券機にQRコードをかざすだけでチケット受取
+        </li>
+        <li class="flex items-center gap-2">
+          <span class="text-brand">✓</span> PayPay・楽天ペイ・各種クレジットカード対応
+        </li>
+      </ul>
+
+      <a href="https://lin.ee/zXFhtBh" target="_blank" rel="noopener noreferrer" class="w-full bg-line hover:bg-lineHover text-white font-black text-base py-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-glow-line">
+        <span>LINEでチケット購入画面を開く</span>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. Fade-up scroll animation (matching HP)
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+
+      document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+      // 2. Style Filter Tabs (Editorial underlined tabs)
+      const tabs = document.querySelectorAll('.style-tab');
+      const entries = document.querySelectorAll('.resort-entry');
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => {
+            t.classList.remove('text-brand', 'border-brand', 'font-black');
+            t.classList.add('text-gray-500', 'border-transparent', 'font-bold');
+          });
+          tab.classList.remove('text-gray-500', 'border-transparent', 'font-bold');
+          tab.classList.add('text-brand', 'border-brand', 'font-black');
+
+          const filter = tab.getAttribute('data-filter');
+          entries.forEach(entry => {
+            const tags = entry.getAttribute('data-tags').split(' ');
+            if (filter === 'all' || tags.includes(filter)) {
+              entry.style.display = 'block';
+            } else {
+              entry.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // 3. Hourly Detail Accordion Toggle
+      document.querySelectorAll('.hourly-toggle').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const article = btn.closest('article');
+          const detail = article.querySelector('.hourly-detail');
+          const icon = btn.querySelector('svg');
+          detail.classList.toggle('hidden');
+          icon.classList.toggle('rotate-180');
+        });
+      });
+    });
+
+    // 4. Community Poll Interaction
+    function castVote(selectedIndex) {
+      const percentages = [52, 31, 17];
+      const items = document.querySelectorAll('.poll-item');
+      
+      items.forEach((item, idx) => {
+        const bar = item.querySelector('.poll-bar');
+        const stat = item.querySelector('.poll-stat');
+        bar.style.width = percentages[idx] + '%';
+        stat.classList.remove('opacity-0');
+        
+        if (idx === selectedIndex) {
+          item.classList.add('border-brand', 'bg-white/5');
+        } else {
+          item.classList.remove('border-brand', 'bg-white/5');
+        }
+      });
+
+      document.getElementById('poll-thanks').classList.remove('hidden');
+    }
+
+    // 5. Ticket & 20% Mile Simulator Drawer
+    function openTicketDrawer(name, area, price, rate) {
+      const miles = Math.round(price * (rate / 100));
+      const netPrice = price - miles;
+
+      document.getElementById('drawer-resort-name').textContent = name;
+      document.getElementById('drawer-area').textContent = area;
+      document.getElementById('drawer-price').textContent = `¥${price.toLocaleString()}`;
+      document.getElementById('drawer-rate-label').textContent = `アースホッパー還元マイル (${rate}%)`;
+      document.getElementById('drawer-miles').textContent = `+ ${miles.toLocaleString()} M`;
+      document.getElementById('drawer-net-price').textContent = `¥${netPrice.toLocaleString()}`;
+
+      document.getElementById('ticket-drawer').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeTicketDrawer() {
+      document.getElementById('ticket-drawer').classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+  </script>
+</body>
+</html>

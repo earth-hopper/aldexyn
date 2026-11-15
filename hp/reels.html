@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>SNOW REELS | ゲレンデ口コミ 縦スワイプ閲覧アプリ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Noto Sans JP"', '"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Plus Jakarta Sans"', '"Noto Sans JP"', 'sans-serif'],
+          },
+          keyframes: {
+            slowZoom: {
+              '0%': { transform: 'scale(1)' },
+              '100%': { transform: 'scale(1.08)' },
+            },
+            popHeart: {
+              '0%': { transform: 'scale(0.6)', opacity: '0' },
+              '40%': { transform: 'scale(1.25)', opacity: '1' },
+              '100%': { transform: 'scale(1)', opacity: '0' },
+            },
+            bounceSubtle: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-4px)' },
+            }
+          },
+          animation: {
+            'slow-zoom': 'slowZoom 14s ease-out forwards',
+            'pop-heart': 'popHeart 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            'bounce-subtle': 'bounceSubtle 2.2s infinite ease-in-out',
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    /* スクロールバー非表示（スマホ・デスクトップ両対応） */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    /* 100dvh対応 & スムーズスクロールスナップ */
+    html, body {
+      height: 100dvh;
+      overflow: hidden;
+      background-color: #060b14;
+      overscroll-behavior-y: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .feed-container {
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+    }
+    .feed-card {
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+    }
+    /* レビューテキストの行数制限 */
+    .line-clamp-4-custom {
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body class="text-white antialiased selection:bg-sky-500 selection:text-white flex items-center justify-center relative">
+
+  <!-- デスクトップ用背景の雪山アンビエント演出 -->
+  <div class="hidden sm:block fixed inset-0 pointer-events-none overflow-hidden">
+    <div class="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-sky-500/10 blur-[120px]"></div>
+    <div class="absolute -bottom-32 -right-32 w-[520px] h-[520px] rounded-full bg-indigo-500/10 blur-[130px]"></div>
+    <div class="absolute top-6 left-8 flex items-center gap-3 text-white/60">
+      <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-sky-400 to-blue-600 flex items-center justify-center text-white font-display font-extrabold shadow-lg shadow-sky-500/20">
+        ❄
+      </div>
+      <div>
+        <p class="font-display font-extrabold text-sm tracking-wider text-white/90">SNOW REELS</p>
+        <p class="text-[11px] text-white/50">全国スキー場 リアル口コミフィード (242件)</p>
+      </div>
+    </div>
+    <div class="absolute bottom-6 left-8 text-xs text-white/40 space-y-1">
+      <p>↑↓ キー または マウスホイールでスワイプ</p>
+      <p>ダブルタップで「行きたい！」保存</p>
+    </div>
+  </div>
+
+  <!-- メインスマートフォンフレーム（モバイルは全画面、PCは中央スマホ枠） -->
+  <main class="relative w-full h-[100dvh] sm:w-[420px] sm:h-[92dvh] sm:max-h-[880px] sm:rounded-[2.4rem] sm:border sm:border-white/15 sm:shadow-[0_25px_80px_-15px_rgba(0,0,0,0.85)] bg-slate-950 overflow-hidden flex flex-col">
+
+    <!-- 上部オーバーレイヘッダー＆タグフィルター -->
+    <header class="absolute top-0 inset-x-0 z-30 pt-3 sm:pt-4 px-3.5 pb-2 bg-gradient-to-b from-black/80 via-black/45 to-transparent pointer-events-none">
+      <!-- トップバー -->
+      <div class="flex items-center justify-between gap-2 pointer-events-auto">
+        <div class="flex items-center gap-2">
+          <button onclick="resetAllFilters()" class="flex items-center gap-1.5 bg-black/45 hover:bg-black/65 backdrop-blur-md border border-white/15 px-3 py-1.5 rounded-full transition active:scale-95">
+            <span class="text-sky-400 text-sm">❄</span>
+            <span class="font-display font-extrabold text-xs tracking-wider text-white">SNOW REELS</span>
+          </button>
+          <span id="counterBadge" class="text-[11px] font-display font-bold text-white/85 bg-white/15 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10">
+            1 / 242
+          </span>
+        </div>
+
+        <div class="flex items-center gap-1.5">
+          <!-- スキー場検索ボタン -->
+          <button onclick="openResortSearchModal()" title="スキー場を探す" class="flex items-center gap-1 bg-black/45 hover:bg-black/65 backdrop-blur-md border border-white/15 px-2.5 py-1.5 rounded-full text-xs font-medium text-white/90 transition active:scale-95">
+            <svg class="w-3.5 h-3.5 text-sky-300" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.3-4.3"></path>
+            </svg>
+            <span class="hidden xs:inline">ゲレンデ</span>
+          </button>
+
+          <!-- シャッフルボタン -->
+          <button onclick="shuffleFeed()" title="ランダム順にする" class="p-2 bg-black/45 hover:bg-black/65 backdrop-blur-md border border-white/15 rounded-full text-white/90 transition active:scale-95">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"></path>
+            </svg>
+          </button>
+
+          <!-- 保存済み一覧ボタン -->
+          <button onclick="openSavedModal()" title="保存した口コミ" class="relative p-2 bg-black/45 hover:bg-black/65 backdrop-blur-md border border-white/15 rounded-full text-white/90 transition active:scale-95">
+            <svg class="w-3.5 h-3.5 text-amber-300" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M5 4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v17l-7-4-7 4V4z"></path>
+            </svg>
+            <span id="savedCountDot" class="hidden absolute -top-1 -right-1 min-w-[16px] h-4 px-1 rounded-full bg-rose-500 text-[10px] font-bold flex items-center justify-center">0</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- スキー場絞り込み中のアクティブチップ -->
+      <div id="activeResortBanner" class="hidden mt-2 pointer-events-auto">
+        <div class="inline-flex items-center gap-2 bg-sky-500/90 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+          <span>📍 <span id="activeResortName"></span> のみ表示中</span>
+          <button onclick="clearResortFilter()" class="bg-black/25 hover:bg-black/40 rounded-full px-2 py-0.5 text-[10px] transition">
+            解除 ✕
+          </button>
+        </div>
+      </div>
+
+      <!-- 横スクロール タグフィルターバー -->
+      <div id="tagFilterBar" class="mt-2.5 flex items-center gap-1.5 overflow-x-auto no-scrollbar pointer-events-auto pb-1">
+        <!-- JSでタグボタンを動的生成 -->
+      </div>
+    </header>
+
+    <!-- 縦スワイプ フィードコンテナ -->
+    <div id="feedContainer" class="feed-container w-full h-full overflow-y-scroll no-scrollbar relative">
+      <!-- JSでカードが動的にレンダリングされます -->
+    </div>
+
+    <!-- 初回スワイプヒント（下部中央・数秒後またはスクロールで消える） -->
+    <div id="swipeHint" class="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center text-white/70 animate-bounce-subtle transition-opacity duration-500">
+      <span class="text-[10px] font-medium tracking-widest uppercase bg-black/40 backdrop-blur-sm px-2.5 py-0.5 rounded-full border border-white/10">
+        ↑ スワイプして次の口コミへ
+      </span>
+    </div>
+
+    <!-- トースト通知 -->
+    <div id="toast" class="pointer-events-none opacity-0 translate-y-2 transition-all duration-300 absolute top-28 left-1/2 -translate-x-1/2 z-50 bg-slate-900/95 text-white text-xs font-semibold px-4 py-2.5 rounded-full border border-white/15 shadow-xl whitespace-nowrap">
+      通知メッセージ
+    </div>
+
+    <!-- ボトムシート：スキー場別全口コミ一覧 -->
+    <div id="resortSheetModal" class="hidden absolute inset-0 z-40 bg-black/70 backdrop-blur-sm flex flex-col justify-end transition-opacity">
+      <div class="bg-slate-900 border-t border-white/15 rounded-t-3xl max-h-[82%] flex flex-col shadow-2xl overflow-hidden">
+        <div class="p-4 border-b border-white/10 flex items-center justify-between">
+          <div>
+            <p class="text-[11px] text-sky-400 font-bold tracking-wider">SKI RESORT REVIEWS</p>
+            <h3 id="sheetResortTitle" class="text-base font-extrabold text-white mt-0.5">スキー場名</h3>
+            <div id="sheetResortStats" class="flex items-center gap-2 text-xs text-white/70 mt-1"></div>
+          </div>
+          <div class="flex items-center gap-2">
+            <button id="sheetFilterOnlyBtn" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs px-3 py-1.5 rounded-full transition">
+              フィードで絞る
+            </button>
+            <button onclick="closeResortSheet()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/80">
+              ✕
+            </button>
+          </div>
+        </div>
+        <div id="sheetReviewsList" class="p-4 overflow-y-auto space-y-3 no-scrollbar">
+          <!-- スキー場の全レビュー一覧 -->
+        </div>
+      </div>
+    </div>
+
+    <!-- モーダル：スキー場検索＆一覧 -->
+    <div id="searchModal" class="hidden absolute inset-0 z-40 bg-slate-950/95 backdrop-blur-xl flex flex-col">
+      <div class="p-4 border-b border-white/10 flex items-center gap-2">
+        <div class="relative flex-1">
+          <input id="resortSearchInput" type="text" placeholder="スキー場名で検索（例：たんばら、ニセコ、白馬...）"
+            class="w-full bg-white/10 border border-white/15 rounded-full pl-9 pr-4 py-2 text-sm text-white placeholder-white/40 focus:outline-none focus:border-sky-400" />
+          <svg class="w-4 h-4 text-white/50 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.3-4.3"></path>
+          </svg>
+        </div>
+        <button onclick="closeResortSearchModal()" class="text-xs font-bold text-white/75 hover:text-white px-2.5 py-2">
+          閉じる
+        </button>
+      </div>
+      <div class="px-4 py-2.5 bg-white/5 border-b border-white/10 flex items-center justify-between text-xs text-white/60">
+        <span>全 <strong id="totalResortsCount" class="text-white">0</strong> スキー場 / 242 口コミ</span>
+        <button onclick="resetAllFilters(); closeResortSearchModal();" class="text-sky-400 font-semibold hover:underline">
+          すべて表示に戻す
+        </button>
+      </div>
+      <div id="resortDirectoryList" class="flex-1 overflow-y-auto p-3 space-y-1.5 no-scrollbar">
+        <!-- スキー場リスト -->
+      </div>
+    </div>
+
+    <!-- モーダル：保存したお気に入り口コミ -->
+    <div id="savedModal" class="hidden absolute inset-0 z-40 bg-slate-950/95 backdrop-blur-xl flex flex-col">
+      <div class="p-4 border-b border-white/10 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="text-amber-400 text-lg">★</span>
+          <h3 class="font-extrabold text-base">保存したゲレンデ口コミ</h3>
+        </div>
+        <button onclick="closeSavedModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-sm">
+          ✕
+        </button>
+      </div>
+      <div id="savedListContainer" class="flex-1 overflow-y-auto p-4 space-y-3 no-scrollbar">
+        <!-- 保存済み一覧 -->
+      </div>
+    </div>
+
+  </main>
+
+  <!-- デスクトップ用：フレーム右側の前後ナビゲーションボタン -->
+  <div class="hidden sm:flex flex-col gap-3 ml-5 z-20">
+    <button onclick="navigateFeed(-1)" title="前の口コミ (↑)" class="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 backdrop-blur-md flex items-center justify-center text-white transition active:scale-90 shadow-lg">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
+      </svg>
+    </button>
+    <button onclick="navigateFeed(1)" title="次の口コミ (↓)" class="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 backdrop-blur-md flex items-center justify-center text-white transition active:scale-90 shadow-lg">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+      </svg>
+    </button>
+  </div>
+
+  <script>
+    // ==========================================
+    // 1. 全242件の実レビューデータ（CSVより完全収録）
+    // ==========================================
+    const REVIEWS_DATA = [
+      {"resort":"Asahi自然観スノーパーク","rate":2,"tag":"混雑少,キレイな施設","review":"規模は縮小で滑れる場所が少なくなってしまいました\n\n黙々と練習するなら良いかも"},
+      {"resort":"あわすのスキー場","rate":3,"tag":"絶景ビュー,ゲレ食,混雑少","review":"小規模なゲレンデですが、とてもアットホームな温かい雰囲気のスキー場でした。ゲレンデサイドにも個人経営の飲食店があり、タコライスが絶品でした。"},
+      {"resort":"かもい岳国際スキー場","rate":5,"tag":"初心者向け,混雑少","review":"天気が悪くコンディション悪い時に行ったので\nパーク回してましたが、めちゃくちゃ飛びやすかった。大きさも大きすぎず、角度もキツすぎず、まくられることもなく気持ちよく食べました。ポコじゃんもあるし、初心者でも滑りながら選んで食べる距離感でした。作り方が上手なんだと思います"},
+      {"resort":"さっぽろばんけいスキー場","rate":2,"tag":"混雑少","review":"三月の頭だったのでコースは二つだけ、雪も禿げていて土色になっている箇所も…。\nそれで通常料金はキツイなと思いました。\nアースホッパーが無かったら行かなかったかもしれません。\n今度は雪がたくさんある時に行きたいと思います。\nアートなどのコンセプトは良かったと思います。"},
+      {"resort":"たざわ湖スキー場","rate":5,"tag":"コース,パウダー,絶景ビュー","review":"雪質も良くて最高でした。また来たいと思うゲレンデです。"},
+      {"resort":"たんばらスキーパーク","rate":3,"tag":"初心者向け,コスパ","review":"初心者向けコースが多い。スタッフが親切です。"},
+      {"resort":"ちくさ高原スキー場","rate":3,"tag":"初心者向け,アクセス","review":"アクセスは急な上りやクネクネ道が無いので楽で安心\nコースはコンパクトなので迷わない逸れない\nツリーコースが出来たら嬉しいです"},
+      {"resort":"つがいけマウンテンリゾート","rate":5,"tag":"コース","review":"試乗会で行きました　ゲレンデが大きくてよく滑れました！\nご飯も美味しくてよかったです　井口コーラも飲みました！"},
+      {"resort":"ぴっぷスキー場","rate":5,"tag":"ゲレ食,コスパ,混雑少,キレイな施設","review":"アットホームなゲレンデで常連さんが色々教えてくれてとても暖かいスキー場でした😄施設もとてもキレイでした！"},
+      {"resort":"みやぎ蔵王えぼしリゾート","rate":3,"tag":"上級者向け,コース","review":"都内からだと遠いので行く機会ありませんでしたが、ホッパーを機に滑りに行く事になりました。コースバリエーションが思ったより多くて良かったです。"},
+      {"resort":"アライマウンテンリゾート","rate":4,"tag":"上級者向け,パウダー,コース,温泉・宿","review":"アライはやはり、非圧雪エリア！降雪日は最高の雪を堪能出来ます。"},
+      {"resort":"オグナほたかスキー場","rate":4,"tag":"パウダー","review":"良質のパウダーを楽しめました！\n新しくオープンしたコースではツリーランも楽しめるし、降雪のあとは最高です！\nただ、リフトにカバーがついてないので、寒さ対策は万全に"},
+      {"resort":"カムイスキーリンクス","rate":5,"tag":"初心者向け,上級者向け,パウダー,コース,アクセス","review":"超ロングランでとても楽しめました！パウダーも軽くパウダー初心者から上級者でも楽しめると思いました。"},
+      {"resort":"キャンモアスキービレッジ","rate":4,"tag":"初心者向け,アクセス","review":"旭川空港から近いのが最大のメリット！\n北海道遠征の最初の滑り出しに最適！"},
+      {"resort":"キューピットバレイ","rate":3,"tag":"混雑少","review":"人が少なくて滑りやすかった！\nメインのクワッドリフトがオープンしたら、もっと楽しいんだろうな〜"},
+      {"resort":"グランデコ スノーリゾート","rate":4,"tag":"初心者向け,上級者向け,パウダー,コース,キレイな施設","review":"ゴンドラで上まで行けるし、コースも初心者でも楽しめる！\n上級者には33°の壁を滑ってもらいたい！\n帰りには、センターハウスにあるクレープで決まりだね！"},
+      {"resort":"スカイバレイスキー場","rate":4,"tag":"混雑少,コスパ,初心者向け","review":"比較的空いていて、雪質も安定している。\nコースも地形で遊びやすい。"},
+      {"resort":"ニセコアンヌプリ国際スキー場","rate":5,"tag":"上級者向け,初心者向け,パウダー,絶景ビュー,コース,混雑少","review":"好きなスキー場で何度も行ってます！\n最高のパウダー、広いバーン、本当に大好きです！"},
+      {"resort":"ニノックススノーパーク","rate":3,"tag":"コース,初心者向け","review":"緩斜面が広く、スノーボードを始めたい方や始めたばかりでこれからどんどん練習したい方にはとても滑りやすいゲレンデです！"},
+      {"resort":"ハチ高原スキー場・ハチ北高原スキー場","rate":4,"tag":"コース","review":"関西最大級のゲレンデで、他のスキー場が雪不足の中でも滑れるコース数が豊富で、1日中楽しむことができました！上級者と初級者の混ざった大人数のグループで行っても楽しめます！\nアクセス路も高速道路のICからきれいに除雪された道で行きやすいのも魅力的です。来シーズンも滑りに行きたいです！"},
+      {"resort":"パルコール嬬恋スキーリゾート","rate":4,"tag":"コース,絶景ビュー,混雑少","review":"雪質やコース、パークは素晴らしく、混雑もほぼなし。\n遠いこと、レストランの質に目をつぶれば非常に良いゲレンデ。"},
+      {"resort":"ホワイトワールド尾瀬岩鞍","rate":5,"tag":"パウダー,コース","review":"コース幅が広くストレスフリーで滑れるゲレンデ\nロングコースも楽しめてゴンドラ降りてからの絶景を見てからの滑走はテンション上がります！"},
+      {"resort":"ムイカスノーリゾート","rate":4,"tag":"上級者向け,初心者向け,パウダー,絶景ビュー,アクセス,コスパ","review":"寒波が来たときに行ったのでフワフワパウダースノーでとても良かったです。\n斜度が急なコースはないしコースも広いので練習するにはとても良いと思います。"},
+      {"resort":"丸沼高原スキー場","rate":4,"tag":"上級者向け,初心者向け,ゲレ食,キレイな施設","review":"練習したいならバイオレットコースかおすすめ。12月のシーズン初めからGWまで幅広の中斜面が滑走できます。\n家族や仲間とワイワイ楽しむならゴンドラ使って山頂からのしらねコース〜ローズコース。ただローズコース後半は急なので要注意です。\n個人的には廃止になったゴールドコースの復活を願っています。\nまた夏期間のサマーリージュもおすすめです。"},
+      {"resort":"会津高原たかつえスキー場","rate":3,"tag":"上級者向け","review":"グラトリ向き！とてもいいゲレンデと思ったが都内からはアクセス良くない"},
+      {"resort":"会津高原だいくらスキー場","rate":4,"tag":"初心者向け,上級者向け,パウダー,混雑少","review":"週末でも人が少なく雪質も良いので東京から通っています。なにしろ人が少ないのが最高です！"},
+      {"resort":"会津高原南郷スキー場","rate":4,"tag":"上級者向け,パウダー,コース","review":"地形が楽しいのとゲレ食が良かった\n雪質もよくまた行こうと思う"},
+      {"resort":"佐久スキーガーデン PARADA","rate":3,"tag":"初心者向け,コース,キレイな施設,アクセス","review":"ご存知の通り、インターから直で入れるアクセスの良さ。いつも通過していましたが、アースホッパーきっかけで初めての訪問も、リフト待ちや混雑もなく気軽に滑れていい。レストハウスも綺麗でメニューのバリエーションも幅広いので、選択肢多め。温泉もゲレンデから程近く、快適に過ごせるのでここまでがセットでサクッと滑るのにもってこい！泊まりは佐久平のビジホがおすすめ。翌日早めからの行動も可能です！"},
+      {"resort":"八千穂高原スキー場","rate":4,"tag":"初心者向け,アクセス","review":"北信地域に比べて全然首都圏に近いので、日帰りでも全然大丈夫なところがいいですね。ゲレンデもコンパクトながらコブがあったりパークがあったりツリーランも出来たりとバリエーションに富んでます。子どもはキッズパークが楽しかったようです。また訪れたいと思います！"},
+      {"resort":"八幡平リゾート パノラマスキー場・下倉スキー場","rate":5,"tag":"パウダー,上級者向け","review":"大当たりでした♡もふもふでたのしかったです！"},
+      {"resort":"名寄ピヤシリスキー場","rate":4,"tag":"パウダー,混雑少","review":"当たれば最高だけどアクセスは良くないのでうーん。でもまた行きたい"},
+      {"resort":"夏油高原スキー場","rate":5,"tag":"パウダー","review":"雪不足で不安だった年末年始に伺いましたが寒波到来！次の日にはドカ雪でさすが豪雪って思いました！毎年伺うほどお気に入りのゲレンデです！"},
+      {"resort":"川場スキー場","rate":4,"tag":"初心者向け,ゲレ食","review":"道中スタックの危険がある様なコンディションではチェーン必須　立体駐車場があるので現地に着いてしまえば着替えも含めて楽です。"},
+      {"resort":"御嶽スキー場","rate":3,"tag":"初心者向け,ゲレ食,絶景ビュー,混雑少","review":"いいコブありました！\n裏に回れば御嶽山も見えて素晴らしいです！\nハイシーズンはなかなか行けてなかったので、今度はハイシーズンに来てみようと思います"},
+      {"resort":"戸隠スキー場","rate":4,"tag":"初心者向け,上級者向け,パウダー,ゲレ食","review":"年末の割には白馬、湯沢、群馬等よりははるかに空いていました。初心者から上級者まで楽しめそうなコース設定で汎用性が高いとかんじました。"},
+      {"resort":"池の平温泉アルペンブリックスキー場","rate":4,"tag":"パウダー,絶景ビュー,温泉・宿","review":"春の流せるパーク、スキー場のイベント企画も楽しかったです♪"},
+      {"resort":"沼尻スキー場","rate":5,"tag":"初心者向け","review":"初心者の方に優しいコースで一日中楽しめました。"},
+      {"resort":"湯殿山スキー場","rate":3,"tag":"パウダー,コース","review":"降った時のパウダー感は最高です！私的には、傾斜もちょうど良いです。"},
+      {"resort":"湯沢中里スノーリゾート","rate":3,"tag":"初心者向け,上級者向け,パウダー","review":"雪がとても軽くて飛び込んだら腰まで埋まるくらいの日に行きましたので、とてもよかったです"},
+      {"resort":"爺ガ岳スキー場","rate":3,"tag":"初心者向け,混雑少","review":"コースはそこまで長くないが、混雑が少なく、初級者やパーク目的の方におすすめ。"},
+      {"resort":"白馬八方尾根スキー場","rate":3,"tag":"コース","review":"晴天に恵まれ絶好のスキー日和でした。しかしながら、融雪が進み滑走不可のコースがチラホラあったことだけが残念でした。"},
+      {"resort":"神立スノーリゾート","rate":4,"tag":"上級者向け,初心者向け,パウダー,コース,キレイな施設,アクセス","review":"高速のインターから近く道も平坦で除雪もサイコー"},
+      {"resort":"福井和泉スキー場","rate":5,"tag":"パウダー,混雑少,コスパ","review":"昔から奥美濃で屈指の雪質を誇る石徹白エリアの極上パウダーがライバル少なめで存分に堪能できる神ゲレンデです🐒\n大雪の中で岐阜方面からのアクセスは少し欠点があるかもだけど…空いてるのはそのおかげかな？"},
+      {"resort":"竜王スキーパーク","rate":4,"tag":"絶景ビュー","review":"山頂付近のテラスから見る景色は最高でした"},
+      {"resort":"網張温泉スキー場","rate":5,"tag":"上級者向け,混雑少","review":"景色很棒、人少、適合初學者到中階滑雪者，有ski in/out的渡假村很方便"},
+      {"resort":"舞子スノーリゾート","rate":4,"tag":"初心者向け,上級者向け,パウダー,コース,アクセス","review":"舞子は雪が良いときに行くとパウダー好きも楽しめるので大好きです\n朝イチで奥添地をめざしてAMガッツリ楽しんだらPMはまったり迂回コース等で滑ってます"},
+      {"resort":"蔵王ライザワールド","rate":5,"tag":"初心者向け,絶景ビュー","review":"樹氷がリフトから見れて良かった\n板を履いてない人も多かったので注意"},
+      {"resort":"赤倉観光リゾートスキー場","rate":5,"tag":"パウダー","review":"雪降った日のパウダーが素晴らしい。コースもバリエーションあるので楽しめる"},
+      {"resort":"高鷲スノーパーク＆ダイナランド","rate":5,"tag":"初心者向け,上級者向け,パウダー,コース,絶景ビュー,ゲレ食","review":"広く多彩なコースで1日中楽しめるです。シーズン初めから春スキーまで色んな顔を持つゲレンデです。毎シーズン数回はリピートしたいゲレンデです。"},
+      {"resort":"黒姫高原スノーパーク","rate":3,"tag":"初心者向け,コース,混雑少","review":"ピステがきれいなので冷えた日のスキーにオススメ！\n広くてよいです！"},
+      {"resort":"Asahi自然観スノーパーク","rate":1,"tag":"初心者向け","review":"奥のリフトが、稼働しなくなってしまい残念"},
+      {"resort":"かもい岳国際スキー場","rate":3,"tag":"コース","review":"コンパクトなゲレンデでしたか、パウダー有り、ピステンも綺麗でした。"},
+      {"resort":"さっぽろばんけいスキー場","rate":3,"tag":"初心者向け,コスパ","review":"札幌からのアクセスは良いシンプルなコース。"},
+      {"resort":"たざわ湖スキー場","rate":4,"tag":"パウダー,絶景ビュー,温泉・宿,コスパ","review":"コースのバリエーションが多い。雪質も良く、混雑しない。規模は中規模だけどポテンシャルの高いゲレンデで、ガンガン滑る人でも丸1日楽しめるゲレンデだと思います。"},
+      {"resort":"たんばらスキーパーク","rate":5,"tag":"初心者向け","review":"緩斜面が多いので、グラトリ練習にオススメなゲレンデです👌"},
+      {"resort":"ちくさ高原スキー場","rate":4,"tag":"絶景ビュー,初心者向け,アクセス","review":"急な坂道もなくアクセスしやすいです。コースも緩やかなところもあればテクニカルなところもあるのでいろんな方が楽しめると思いました！"},
+      {"resort":"つがいけマウンテンリゾート","rate":5,"tag":"初心者向け,上級者向け,ゲレ食","review":"昼にバーガーキングを食べれるところがいいなあと思いました。"},
+      {"resort":"ぴっぷスキー場","rate":5,"tag":"ゲレ食,コスパ,混雑少,キレイな施設","review":"ローカル感のあるゲレンデで楽しかったです！\nからあげ丼美味しかった！"},
+      {"resort":"みやぎ蔵王えぼしリゾート","rate":5,"tag":"上級者向け,パウダー","review":"バックカントリーをする際に使用しました。雪質、景色、コースともに最高でした。"},
+      {"resort":"アライマウンテンリゾート","rate":5,"tag":"上級者向け,パウダー,絶景ビュー","review":"なんと言ってもパウダーです！\nセンターハウスにあるMYOKO COFFEEのラテとスイーツが最高❤︎"},
+      {"resort":"オグナほたかスキー場","rate":5,"tag":"初心者向け,パウダー,絶景ビュー,上級者向け","review":"小学3年生の子どもと行きました。初心者でもTTBできる一方で滑りごたえあるコースもあります。"},
+      {"resort":"カムイスキーリンクス","rate":4,"tag":"絶景ビュー,上級者向け,パウダー,コース","review":"ゲレンデ 全体が広いのでコースが楽しく 雪質も 日本海側のニセコよりいいのでリピートしたくなるスキー場です！またいきます"},
+      {"resort":"キャンモアスキービレッジ","rate":3,"tag":"アクセス,混雑少,コスパ","review":"旭川市街や旭川空港から近いスキー場、ナイターもやっています。近くの温浴施設きとうしの森きとろんのサウナはお勧めです。"},
+      {"resort":"グランデコ スノーリゾート","rate":3,"tag":"パウダー","review":"• サラサラのパウダースノー。\n• ほとんどのリフトにフード（防風カバー）が付いており、寒さや雪の日も安心です。\n• 緩斜面やコース幅が広い所が多く、初級者でもゴンドラを利用してロングラン滑走できる。ただ、コース途中に平坦な緩い場所があり、スノーボードだと止まってしまう。"},
+      {"resort":"スカイバレイスキー場","rate":5,"tag":"コース,混雑少,コスパ","review":"パウダーも楽しめ、広い\nキッカーあるのはありがたい"},
+      {"resort":"ニセコアンヌプリ国際スキー場","rate":5,"tag":"上級者向け,初心者向け,パウダー,コース,絶景ビュー,混雑少","review":"バーン広くてフラットなところが多い\nカービングが気持ち良いです"},
+      {"resort":"ニノックススノーパーク","rate":4,"tag":"初心者向け,混雑少","review":"4歳6歳の子連れで行きました。\nワイドな緩斜面がメインバーンなので、子供達と一緒に安心して滑れるスキー場でした。2026/1/5(月) リフト待ちはほぼなく、多いときでも10人程度でした。"},
+      {"resort":"ハチ高原スキー場・ハチ北高原スキー場","rate":4,"tag":"ゲレ食","review":"１２月３０日まだまだ雪が足りてない様で上部はクローズ...\n空いてて石窯ピザが美味しかったので満足。"},
+      {"resort":"パルコール嬬恋スキーリゾート","rate":3,"tag":"パウダー,混雑少,初心者向け","review":"降雪量は少ないが、乾いた雪が特徴\n比較的空いていて、気持ちよく滑れるし、広いコースもあるので、初心者の練習に向いている\n風が強いので、注意"},
+      {"resort":"ホワイトワールド尾瀬岩鞍","rate":4,"tag":"コース,アクセス","review":"ゴンドラで山頂まで上がり、ミルキーウェイなどを周回すると、とにかく長い距離を気持ちよく滑れるのが魅力！奥のエリアにもコースがあり、比較的落ち着いて練習できるのも良いところ。滑りごたえがあり、初心者から上級者まで楽しめるスキー場だと思います。"},
+      {"resort":"ムイカスノーリゾート","rate":4,"tag":"初心者向け,パウダー,混雑少,コスパ","review":"雪質がよく、コースも色々とあり初心者から上級者まで楽しく過ごせます！雪が多ければハイクアップエリアは必ず行ってほしいエリアです！"},
+      {"resort":"丸沼高原スキー場","rate":4,"tag":"初心者向け,コース","review":"初心者でも安心して楽しめるコースがあって嬉しい！\nレベルの違う人と行っても別々のコースで楽しめたり待ち合わせも迷子にならずできる"},
+      {"resort":"会津高原たかつえスキー場","rate":4,"tag":"コース,パウダー,混雑少","review":"雪質最高です。アクセスがちょっと遠いですが。"},
+      {"resort":"会津高原だいくらスキー場","rate":5,"tag":"初心者向け,パウダー,コース","review":"コンパクトなゲレンデで、迷う事なくリフト乗り場にたどり着くのでファミリー向けかと思います\n雪質も軽いサラサラパウダーでした"},
+      {"resort":"会津高原南郷スキー場","rate":4,"tag":"初心者向け,上級者向け,ゲレ食,コース","review":"コンパクトですが、とても良いゲレンデです。\n\nサイズはコンパクトですが、地形を生かしたアイテムやバンクやリップを沢山作っていてとても楽しいです。アイテムやキッカーの数も沢山あるし、今では少ないハーフパイプを備えたゲレンデです。\nゲレ食はジンギスカン定食は外せないです。\n毎年必ず訪れるゲレンデ。いつまでも続いてもらいたいゲレンデのひとつです。"},
+      {"resort":"八千穂高原スキー場","rate":4,"tag":"コスパ","review":"標高が高いので、暖冬少雪でもそれなりの雪質で滑れることが多いかと思います。コースバリエーションも豊富で、快適にカービングで飛ばしたり、ハード版コブ斜面に挑戦したり優しい版コブ斜面で練習したり、もちろんパークで飛んだりする方にも満足行くゲレンデが用意されてます。それでいて比較的お手頃なリフト券価格なのはとても嬉しいです！"},
+      {"resort":"八幡平リゾート パノラマスキー場・下倉スキー場","rate":5,"tag":"パウダー,コスパ","review":"極上パウダーとめちゃめちゃ美味しいゲレ食が最高だった！"},
+      {"resort":"名寄ピヤシリスキー場","rate":4,"tag":"初心者向け,パウダー,コスパ","review":"非圧雪エリアは滑走前に申請が必要だが、パウダーのそのそのロングランができるのでオススメ。今どきリフト券が4,000円台な上に中学生以下は無料。ファミリーにもオススメですね。"},
+      {"resort":"夏油高原スキー場","rate":4,"tag":"初心者向け,パウダー,コース,上級者向け,キレイな施設,ゲレ食","review":"設備が綺麗で快適に使える。ゲレ食もおいしい"},
+      {"resort":"川場スキー場","rate":3,"tag":"初心者向け,上級者向け,パウダー,コース,キレイな施設,アクセス","review":"とにかく都心から近いこと\nリフトが強いこと\n坂でスタックするの多いので\n降ったら四駆かチェーンが必須です"},
+      {"resort":"御嶽スキー場","rate":3,"tag":"コース,絶景ビュー","review":"夜の車中泊の星が本当に綺麗でした。\n朝一は綺麗なピステンバーンで、カービングがすごく楽しいです！"},
+      {"resort":"戸隠スキー場","rate":4,"tag":"上級者向け,コース,ゲレ食","review":"攻め甲斐のある急斜面と遊べる緩斜面。中腹にあるレストランのメニューの豪華さは最高"},
+      {"resort":"池の平温泉アルペンブリックスキー場","rate":3,"tag":"ゲレ食,混雑少","review":"年末年始に行ってますが、リフト待ちもなく快適に滑れる"},
+      {"resort":"沼尻スキー場","rate":5,"tag":"初心者向け","review":"初心者子供にちょうどいい斜度と距離でした。"},
+      {"resort":"湯殿山スキー場","rate":4,"tag":"初心者向け,上級者向け,コース,コスパ","review":"まさしくR天国\n壁というか壁が全部Rでしかも綺麗だから滑っていてもストレスなくいろんなラインが繋げて初心者の方から上級者の方まで同じ場所でいろんな楽しみ方が出来て最高でした\nゲレ食を食べてないので次回は食べてみたいです。"},
+      {"resort":"湯沢中里スノーリゾート","rate":5,"tag":"混雑少","review":"雪が降るとパウダー狙いの穴場として最高のゲレンデですが通常時も空いていて良い感じです。"},
+      {"resort":"爺ガ岳スキー場","rate":4,"tag":"コース,上級者向け","review":"パークが充実しています。リフト券もリーズナブル"},
+      {"resort":"白馬八方尾根スキー場","rate":5,"tag":"上級者向け,コース,絶景ビュー,アクセス","review":"スキーヤーの聖地と言われますが、スノボでガッツリ滑りたい人にもゼヒ。急斜面のパウダーにゴリゴリのコブ、太ももの筋力が試されるフリーランに、トップから麓まで一気に滑れるロングコースは体力がゴリゴリに削られて修行になる、大変楽しいゲレンデです。\n晴れた日に頂上まで行くと絶景。周囲のスキー場より標高が高いので景色は格別です。"},
+      {"resort":"神立スノーリゾート","rate":5,"tag":"コース,パウダー,ゲレ食","review":"コブコースの管理が素晴らしい。\n初級者、上級者問わずコブの上達に最適です。"},
+      {"resort":"竜王スキーパーク","rate":4,"tag":"パウダー,コース,絶景ビュー,ゲレ食","review":"電波が悪いとモタモタしてしまう。\nそこが難点。。。"},
+      {"resort":"網張温泉スキー場","rate":5,"tag":"パウダー,コース","review":"元旦に行ったのだが、1日中雪が降っていてドパウでした\n太板でスネパウを味わいました。\n山頂までリフトで上がり、双子滑走コースのパウダーは良かった"},
+      {"resort":"舞子スノーリゾート","rate":4,"tag":"パウダー,コース,アクセス","review":"アクセスがいい　フリーランが楽しい　パークが優し　コースが広い　パウダーが楽しい"},
+      {"resort":"蔵王ライザワールド","rate":5,"tag":"上級者向け,初心者向け,パウダー,コース,絶景ビュー,アクセス","review":"山形蔵王温泉スキー場に近いだけあって、雪質もいい‼️\n樹氷はライザの方が大きくて立派な気がする。\n小さめなスキー場だけど、満足度が高い。\nなにより、ピザが美味しい‼️"},
+      {"resort":"赤倉観光リゾートスキー場","rate":5,"tag":"上級者向け,コース,キレイな施設,アクセス","review":"毎年お世話になっている大好きなゲレンデです！"},
+      {"resort":"高鷲スノーパーク＆ダイナランド","rate":5,"tag":"初心者向け,上級者向け,ゲレ食,アクセス","review":"さすが人気のゲレンデ。コースも楽しく整備されているしイベントもたくさん、長期間滑れる。レストランだけじゃなくキッチンカーや軽食も充実してます。地味に嬉しいのが、ゴミが捨てられること。長野だとほんとにゴミが捨てられなくて車中泊で出たゴミを持って帰ることが多いけど、大きいゴミ箱があって常に処分されてるのでほんとありがたいです。ただし混む時はめちゃくちゃ混むので、空いてる日程を選ぶことをお勧めします。、"},
+      {"resort":"黒姫高原スノーパーク","rate":3,"tag":"初心者向け,上級者向け,コース,コスパ","review":"ゲレンデ下部はなだらかでファミリー向け上部は急斜面で上級者向き。センターハウスも綺麗で混雑も余りないのでオススメです。"},
+      {"resort":"かもい岳国際スキー場","rate":3,"tag":"コース","review":"営業再開になって行ってみました。\n今まで無かったパークが新しく出来てて、楽しかったですよ。"},
+      {"resort":"さっぽろばんけいスキー場","rate":4,"tag":"上級者向け","review":"気持ちいい雪が魅力です。ご飯もうまい😋"},
+      {"resort":"たざわ湖スキー場","rate":5,"tag":"パウダー,絶景ビュー,ゲレ食,混雑少,コスパ","review":"断然、雪質の良さと晴れた日はたざわ湖が見えて景色は最高です。若干アクセスが悪く、積雪時であれば盛岡駅周辺からは2時間位かかりますが、その分混雜しないので、思う存分楽しめます。"},
+      {"resort":"たんばらスキーパーク","rate":2,"tag":"初心者向け","review":"コースがなだらかなのでマッタリ滑るには良。"},
+      {"resort":"ちくさ高原スキー場","rate":3,"tag":"初心者向け,コース,アクセス,コスパ","review":"コンパクトですがコースにバリエーションがあり楽しいです。ただ、リフト待ちが長い時もあります。"},
+      {"resort":"つがいけマウンテンリゾート","rate":5,"tag":"初心者向け,パウダー,コース","review":"降った日のツリーランや下部の広く緩いバーン、あまり並ばないパークなど色々な人が楽しめるゲレンデ！広く緩いバーンは雪板の練習にもピッタリです♪"},
+      {"resort":"ぴっぷスキー場","rate":5,"tag":"コスパ,ゲレ食,パウダー,混雑少,コース","review":"コースもよくパウダーも楽しめます\nゲレ食も美味しくコスパも最高です。\n隣には温泉♨️もあり冷えた体を解凍できます！"},
+      {"resort":"みやぎ蔵王えぼしリゾート","rate":5,"tag":"パウダー,コース,絶景ビュー","review":"絶景パウダー最高でした。\nパウダー競争率も低くて滑り放題でした。"},
+      {"resort":"アライマウンテンリゾート","rate":5,"tag":"上級者向け,パウダー,絶景ビュー,キレイな施設","review":"リゾートにふさわしいゲレンデだと思います。\n特別な日に訪れたいスキー場です。"},
+      {"resort":"オグナほたかスキー場","rate":4,"tag":"混雑少,レンタル,コース","review":"上級者にもファミリー層にもオススメのスキー場です"},
+      {"resort":"キャンモアスキービレッジ","rate":4,"tag":"初心者向け,コース","review":"初心者向けコースが多く、ビギナーにおすすめです！"},
+      {"resort":"グランデコ スノーリゾート","rate":3,"tag":"キレイな施設,絶景ビュー","review":"手軽にいけますよ。クルマある人はぜひいってみてください。"},
+      {"resort":"スカイバレイスキー場","rate":4,"tag":"上級者向け","review":"長い壁がたくさんあるところ\n平日はよく空いているところ"},
+      {"resort":"ニセコアンヌプリ国際スキー場","rate":4,"tag":"コース,パウダー","review":"おすすめです！とりあえず最高でしたー！\n今シーズンも行きます"},
+      {"resort":"ハチ高原スキー場・ハチ北高原スキー場","rate":4,"tag":"コース,初心者向け,上級者向け","review":"関西地方屈指のスキー場！\nパークが充実していて、地形変化もあって、とても楽しいです。"},
+      {"resort":"パルコール嬬恋スキーリゾート","rate":5,"tag":"コース,絶景ビュー,パウダー,温泉・宿","review":"ロングコースが楽しめて、雪質が安定して良いと思う。朝日を浴びた斜面を滑る感動を皆様で‼️"},
+      {"resort":"ホワイトワールド尾瀬岩鞍","rate":4,"tag":"初心者向け,上級者向け,コース,混雑少,ゲレ食","review":"色んな斜度が楽しめるコース\nコースもいっぱいあって飽きません！\n裏と表のコースの雪質も違ってそれも楽しい！\nゲレンデ途中で食べる焼きカレーは絶品！"},
+      {"resort":"ムイカスノーリゾート","rate":4,"tag":"ゲレ食","review":"意外とパウダーが狙いめ、ゲレンデ中腹のレストランは景色良くてご飯が美味い。"},
+      {"resort":"丸沼高原スキー場","rate":4,"tag":"パウダー","review":"標高が高い場所に位置しているため、雪質が良くロングシーズン営業なので春まで楽しめる施設です。\nゴンドラ一本で山頂まで行くことができ、山頂から山麓まで約4000mのロングランをすることが出来ます！\n地元群馬のスキー場でもある為、また26-27シーズンも訪れたい場所です。"},
+      {"resort":"会津高原たかつえスキー場","rate":4,"tag":"混雑少","review":"全体的に空いています\n自分が行った時は学生の集団がいて少し混んでましたけど、いなければガラガラくらいでした\n基本、気温が低いのでバーンは硬めです\n降ってくれればサラサラできもちよさそう"},
+      {"resort":"会津高原だいくらスキー場","rate":5,"tag":"絶景ビュー,コース,混雑少","review":"晴れた日に行きましたが、フード付きリフトがあって、天気が悪くても安心。南会津の中でも数少ない山越えが不要なスキー場なので、運転に自信が無い人でもたどり着けるところにあります。"},
+      {"resort":"会津高原南郷スキー場","rate":5,"tag":"パウダー,ゲレ食,混雑少,上級者向け,初心者向け,コース","review":"リフト三本とは思えないコースバリエーションで、カービング好きからパウダー好き、パーク好きまで楽しめる山だと思います。\n難点はリフトが遅いことと、フードがなくて寒いこと。でも、リフトの待ち時間は殆ど無いので快適です。ゲレンデも空いているので、好きなラインが描きやすい。知れば知るほど、楽しい自分だけの秘密のラインが見つかる山です。\nゲレ食もおいしいです。少し値は張りますが、ジンギスカン定食がオススメ"},
+      {"resort":"八千穂高原スキー場","rate":4,"tag":"アクセス,混雑少,コスパ","review":"自宅から片道200kmで日帰りには丁度いいところです"},
+      {"resort":"八幡平リゾート パノラマスキー場・下倉スキー場","rate":4,"tag":"コース,パウダー,混雑少","review":"東北なので雪質◎\nツリーランが魅力的で滑走レベルに関係なく楽しめます！\nシナモンロールは早い者勝ち"},
+      {"resort":"名寄ピヤシリスキー場","rate":5,"tag":"パウダー,コース,混雑少","review":"混んでなくて、いろんなコースがあって滑りやすいです。"},
+      {"resort":"夏油高原スキー場","rate":5,"tag":"パウダー,上級者向け","review":"パウダーが最高なので、天氣予報とにらめっこして行ってください。\nただ、THE DAYは激混みです。"},
+      {"resort":"川場スキー場","rate":3,"tag":"上級者向け,アクセス","review":"沼田インターから近くて大変便利です。\nコースもロングでとても楽しめます。"},
+      {"resort":"御嶽スキー場","rate":4,"tag":"絶景ビュー","review":"真夜中に着いた時の星空も綺麗で人も少なく良いゲレンデでした"},
+      {"resort":"戸隠スキー場","rate":5,"tag":"コース,絶景ビュー,ゲレ食","review":"カービングに適した圧雪バーンが豊富。上級者向けの傾斜があるコースはレベルアップに最適。天気の良い日は戸隠連峰の景色が圧巻です。"},
+      {"resort":"池の平温泉アルペンブリックスキー場","rate":4,"tag":"初心者向け,絶景ビュー,パウダー","review":"ゲレンデが広く、開放感があってとても滑りやすいスキー場です。特にワイドな一枚バーンは、周りを気にせず自分のペースで気持ちよく滑れるのが魅力。緩斜面から中斜面までバリエーションもあり、ロングクルージングを楽しめます。天気が良い日は妙高山などの景色もきれいで、滑っていて気分が上がります。初心者から上級者まで、それぞれの楽しみ方ができるゲレンデだと思います。"},
+      {"resort":"湯殿山スキー場","rate":5,"tag":"コース","review":"とにかくRが楽しい。\n厳冬期はパウダーも狙えるが、沢コースがオープンした後のRが最高。ただ壁を登って滑るだけでもいつものゲレンデとは違った楽しみ方ができる。"},
+      {"resort":"湯沢中里スノーリゾート","rate":4,"tag":"初心者向け,コース","review":"アクセスしやすく、シーズン初めの練習に良い"},
+      {"resort":"爺ガ岳スキー場","rate":3,"tag":"混雑少","review":"終盤に行ったので融雪が進んでいた。当日はイベントもあり思い描いてたものとは違った。"},
+      {"resort":"神立スノーリゾート","rate":5,"tag":"初心者向け,コース,キレイな施設,ゲレ食,アクセス","review":"キッカーのサイズがちょうど良く、練習のしがいがある"},
+      {"resort":"蔵王ライザワールド","rate":4,"tag":"パウダー","review":"パウダー最高！\n天気がいいと、景色もキレイ🌟"},
+      {"resort":"赤倉観光リゾートスキー場","rate":4,"tag":"パウダー,コース","review":"ロングラン可能です\nパウダーやツリーランも最高"},
+      {"resort":"高鷲スノーパーク＆ダイナランド","rate":5,"tag":"コース,初心者向け,上級者向け","review":"いろんなコースがあります！楽しいです！春も、パークが充実してます。また、そこら辺にバナナもあり、たのしすぎ。広いので、分散して、そこまでリフトも混みません。"},
+      {"resort":"黒姫高原スノーパーク","rate":3,"tag":"ゲレ食,混雑少","review":"カレーに地ビール他、ゲレ食が豊富。\n斜度もそこまでキツくなくちょうど良い。"},
+      {"resort":"かもい岳国際スキー場","rate":5,"tag":"初心者向け,上級者向け,パウダー,コース,混雑少","review":"北海道ならではの\nザ！ローカルゲレンデ！！\nこじんまりとしてるけどパウダーの日なんて特に\nぜっっったい楽しいはず。\nパークも充実しててどこ滑っても楽しいゲレンデでした。\nまた行きます！！"},
+      {"resort":"さっぽろばんけいスキー場","rate":3,"tag":"アクセス","review":"市街地からとても近くアクセスが良かった。"},
+      {"resort":"たざわ湖スキー場","rate":5,"tag":"上級者向け,コース,パウダー,アクセス","review":"スキー技術選の練習が出来る施設として田沢湖スキー場を利用させていただきました。温泉もあり、近隣にも宿泊施設が多いので利用しやすいと思います。コースは最高です。"},
+      {"resort":"たんばらスキーパーク","rate":4,"tag":"初心者向け,アクセス,パウダー,コース","review":"都心から近くて雪質も良いです。降雪の後は風の影響も少なくてパウも期待できます。ただバーンは緩いので初心者のパウ体験にはちょうど良いと思います。"},
+      {"resort":"ちくさ高原スキー場","rate":4,"tag":"初心者向け,パウダー,ゲレ食","review":"降雪時のゲレンデのパウダー感は最高です。\n通常時は、初心者にも優しいコースも多いです。\nゲレ食も地元ならではのモノや韓国系、ラーメンもクオリティが高くコスパ良しです。\n家族連れにも優しいゲレンデです。"},
+      {"resort":"つがいけマウンテンリゾート","rate":5,"tag":"初心者向け,上級者向け","review":"ファミリーで利用しましたが、レベルの異なる人が一緒に行ってもコースのバリエーションが豊富でそれぞれ満足ができるスキー場です。\nゴンドラからのロングコースは仲間とずっと一緒に時間を共有したい時に最適です。"},
+      {"resort":"ぴっぷスキー場","rate":4,"tag":"コスパ,混雑少","review":"ローカルゲレンデの雰囲気が良かったです。あいにくしばらく降っていないタイミングだったので雪質は…でしたが、降雪の時にまた訪れたいと思いました！"},
+      {"resort":"オグナほたかスキー場","rate":4,"tag":"初心者向け,上級者向け,絶景ビュー","review":"初心者に最適な幅の広いコースがありますが、調子に乗って上に行くと、滑り降りれないぐらい急なコースもあり、上級者なら楽しめそうです。"},
+      {"resort":"キャンモアスキービレッジ","rate":4,"tag":"絶景ビュー,初心者向け,コース","review":"東川町にある子供連れで人気のスキー場。\n平日は小中学校のスキー授業で賑わいます。\n\nゲレ食も美味しく、近くには温泉もあります！\n休日を楽しむには最高の環境です😊"},
+      {"resort":"グランデコ スノーリゾート","rate":5,"tag":"初心者向け,絶景ビュー,キレイな施設","review":"１本の距離があり、コースも自分に合わせて選べる。私はバングドスラローム楽しかった！"},
+      {"resort":"スカイバレイスキー場","rate":3,"tag":"初心者向け","review":"ハチと風の入り方がちがうため爆風ハチ高原をかわせる"},
+      {"resort":"ニセコアンヌプリ国際スキー場","rate":4,"tag":"コース,パウダー","review":"ニセコでも比較的初心者でも滑りやすい。もちろん上級者も。ワイドなコースが多い印象。"},
+      {"resort":"ハチ高原スキー場・ハチ北高原スキー場","rate":5,"tag":"コース,上級者向け","review":"パークが面白かった、壁やコブなどの地形もあっていろんな人が楽しめそう"},
+      {"resort":"パルコール嬬恋スキーリゾート","rate":4,"tag":"絶景ビュー,初心者向け","review":"パークが遊びやすい。初心者も安心のキッカーですね。ジブは少し尖ったアイテム多くて大変かも"},
+      {"resort":"ホワイトワールド尾瀬岩鞍","rate":4,"tag":"コース,初心者向け,上級者向け,絶景ビュー","review":"ロングコースが楽しく、存分に楽しめます♪\n群馬の山を見渡せて気持ちがいい！！"},
+      {"resort":"ムイカスノーリゾート","rate":4,"tag":"初心者向け","review":"雪の量が多いかったので、かなり楽しめた。"},
+      {"resort":"丸沼高原スキー場","rate":4,"tag":"初心者向け,上級者向け,コース","review":"春になっても気持ちよくゴンドラ使ってロングコース滑れる。"},
+      {"resort":"会津高原たかつえスキー場","rate":5,"tag":"パウダー","review":"甲信越より南会津エリアにくる寒波の日の平日に当たるとパラダイス、その日に当たると30回以上はリフト乗ってしまいます。"},
+      {"resort":"会津高原だいくらスキー場","rate":3,"tag":"混雑少","review":"雪はあまり多くなくて土が見えているところが少しだけありましたが、人が多くなくて滑りやすかったです。\n次は雪がある時に行きたいです。"},
+      {"resort":"会津高原南郷スキー場","rate":4,"tag":"上級者向け","review":"小さいゲレンデですがパークが充実してると思います"},
+      {"resort":"八千穂高原スキー場","rate":5,"tag":"初心者向け,パウダー,ゲレ食","review":"ご飯美味しい！朝一はカービング練習にもってこい！"},
+      {"resort":"八幡平リゾート パノラマスキー場・下倉スキー場","rate":3,"tag":"パウダー,混雑少,コスパ","review":"ゲレンデが空いているのでお勧めです。\nただし、土日はリフト券を買うのに時間がかかります。"},
+      {"resort":"名寄ピヤシリスキー場","rate":5,"tag":"パウダー,温泉・宿","review":"旭川から少し離れますが、雪質がよく混み過ぎていないので北海道に行くたびに、必ず一度はココで滑ります。\nゲレンデサイドに温泉施設があるのもとても良いです！"},
+      {"resort":"夏油高原スキー場","rate":4,"tag":"上級者向け,パウダー,コース,温泉・宿,キレイな施設","review":"シーズン早くから遅くまでやってます。\nハイシーズンはツリーランエリアが沢山あり、パウダーもすごいです"},
+      {"resort":"御嶽スキー場","rate":3,"tag":"混雑少","review":"シーズン終盤までやっている雪質の良いスキー場！"},
+      {"resort":"戸隠スキー場","rate":5,"tag":"上級者向け","review":"さいこうでした！また遊びに行きたい！いろんなゲレンデ！"},
+      {"resort":"池の平温泉アルペンブリックスキー場","rate":4,"tag":"初心者向け,コース,絶景ビュー,温泉・宿","review":"景色がよくアクセスも悪くなく着いてから滑るまでがわかりやすいスキー場。QR発券があるとないではリフト券交換の時間がすごく変わります。平日でも人が多いけどリフトは混まなくて快適なとこ^_^"},
+      {"resort":"湯殿山スキー場","rate":4,"tag":"パウダー","review":"コースは短いけどやや重たいがたくさんパウダーあり"},
+      {"resort":"神立スノーリゾート","rate":5,"tag":"パウダー,ゲレ食,絶景ビュー,コース,キレイな施設,アクセス,温泉・宿","review":"シーズンインからパウダーで楽しめました✨\n前日夜からの大雪で高速道路が減速運転になるなどたどり着くまで大変でしたがそれも含めていい思い出です✨"},
+      {"resort":"蔵王ライザワールド","rate":5,"tag":"絶景ビュー,パウダー,ゲレ食,コース","review":"リフトに乗りながら樹氷を見れて景色が最高です。"},
+      {"resort":"赤倉観光リゾートスキー場","rate":5,"tag":"絶景ビュー,キレイな施設,混雑少","review":"リゾート感溢れる綺麗な施設と、幅広いレベルに対応したゲレンデに癒されます！"},
+      {"resort":"黒姫高原スノーパーク","rate":5,"tag":"初心者向け,パウダー,アクセス","review":"アクセスが良く、雪質も良い\nレストハウスも綺麗でご飯も美味しい"},
+      {"resort":"たざわ湖スキー場","rate":4,"tag":"絶景ビュー,初心者向け","review":"暖冬でシャバゆきだったがパウダー当たるとかなり質のいいコースになるのでオススメ"},
+      {"resort":"たんばらスキーパーク","rate":4,"tag":"初心者向け,コース,キレイな施設","review":"ラベンダーが咲いていた時に訪れた場所だったので季節が違った景色が見れた思い出の場所となりました。コースも整備されてシーズンの足ならしにはとても良かったです"},
+      {"resort":"つがいけマウンテンリゾート","rate":2,"tag":"ゲレ食","review":"足湯やバーなどインバウンド向けの施設があり混雑している"},
+      {"resort":"ぴっぷスキー場","rate":5,"tag":"初心者向け,パウダー,上級者向け,キレイな施設,アクセス,温泉・宿,混雑少,コスパ","review":"バリエーション豊かなコースがあって楽しめました。"},
+      {"resort":"オグナほたかスキー場","rate":3,"tag":"初心者向け","review":"パークのアイテムの種類をもう少し増やしてほしいなって思いました。"},
+      {"resort":"スカイバレイスキー場","rate":5,"tag":"パウダー,コース,混雑少,コスパ,アクセス,絶景ビュー","review":"コースが多彩で、人も少なく好き放題滑れます。\n隣のハイパーボウル東鉢とも繋がっているので、かなり広いです。\n新雪の日は、非圧雪急斜面が楽しい！"},
+      {"resort":"ニセコアンヌプリ国際スキー場","rate":3,"tag":"上級者向け,パウダー,温泉・宿","review":"お手軽に長い距離のパウダーが楽しめます！温泉もたくさんあり最高です。"},
+      {"resort":"ハチ高原スキー場・ハチ北高原スキー場","rate":5,"tag":"上級者向け,パウダー,コース","review":"大雪の日の北壁は最高です。\nコースも豊富で楽しい！"},
+      {"resort":"パルコール嬬恋スキーリゾート","rate":4,"tag":"キレイな施設,絶景ビュー","review":"とにかく1番はサンライズゴンドラで早朝から滑れるのが大きな魅力です🌅\n早朝は人が少なく綺麗なピステンのゲレンデ、そのうえ日の出を拝みながら滑れます🙏笑\nもちろん景色だけじゃなく、ゲレ食は離れたところからでもモバイルオーダーが出来、どれも美味しくて満足です！\n個人的にはハンバーガーが好み🤤💛\nあとトイレが綺麗なのがめっちゃ神です！！ほんとにありがたい！！\nまた次シーズンの嬬恋も楽しみです🙌"},
+      {"resort":"ホワイトワールド尾瀬岩鞍","rate":5,"tag":"コース,パウダー","review":"カービングの練習にもってこい。非圧雪もコブもあって一日飽きないスキー場でした😊"},
+      {"resort":"ムイカスノーリゾート","rate":4,"tag":"初心者向け,キレイな施設,コース","review":"ゲレンデは開放的で滑走しやすいスキー場です。\n最上部エリアはハイクで登れば利用可能です。\n一部非圧雪エリアもありバリエーションに富んだコースが楽しいです。"},
+      {"resort":"丸沼高原スキー場","rate":5,"tag":"コース,アクセス","review":"広大なゲレンデで、初心者から上級者まで楽しめるコースがあります。\n車でのアクレスもしやすいので、おすすめです。"},
+      {"resort":"会津高原たかつえスキー場","rate":5,"tag":"パウダー,コース,ゲレ食","review":"パウダー、コース、ゲレ食等、良い所しかない。\n海外の人に見つからない事を祈る。"},
+      {"resort":"会津高原だいくらスキー場","rate":4,"tag":"初心者向け,混雑少","review":"混雑がなく初心者でも滑りやすかったです。"},
+      {"resort":"八千穂高原スキー場","rate":4,"tag":"コスパ","review":"アクセスは良いわけでもなく、豪雪なわけでもなく、ビックゲレンデでもないですがいい意味でまとまっていて遊べるお気に入りのゲレンデの一つです。\n営業も長く雪がある限り営業する経営にスタッフの情熱を感じ、ローカルながら応援したくなるそんな魅力的なゲレンデです。"},
+      {"resort":"八幡平リゾート パノラマスキー場・下倉スキー場","rate":5,"tag":"初心者向け,絶景ビュー","review":"緩すぎない程良い斜度が一定に続き、初心者も上級者も楽しめるスキー場！\n積雪量の情報より雪があるように思います。\n特におすすめはファミリーや初心者の方です👍"},
+      {"resort":"名寄ピヤシリスキー場","rate":4,"tag":"パウダー","review":"北海道ならではの雪の良さとパウダーを楽しめた。"},
+      {"resort":"御嶽スキー場","rate":5,"tag":"パウダー,コース","review":"パウダースノーが魅力的😍😍😍😍😍"},
+      {"resort":"戸隠スキー場","rate":4,"tag":"初心者向け,コース","review":"そこまで混んでないですが駐車場が割と早くいっぱいになってしまうイメージですわ。"},
+      {"resort":"湯殿山スキー場","rate":3,"tag":"上級者向け","review":"雪質で楽しみ方がかなり変わるゲレンデかと思いました。\n春雪のR天国はかなり楽しいのでは？"},
+      {"resort":"神立スノーリゾート","rate":5,"tag":"キレイな施設,パウダー","review":"神立スノーリゾートは、高速からのアクセスもよくて、いままでもよく利用させてもらってます。こぶをすべったり、パウダーもあったりと、楽しいスキー場です"},
+      {"resort":"蔵王ライザワールド","rate":3,"tag":"初心者向け,パウダー,絶景ビュー,コスパ","review":"樹氷を見ながらゆったりと滑るスキー⛷️はサイコー"},
+      {"resort":"赤倉観光リゾートスキー場","rate":4,"tag":"アクセス,温泉・宿,パウダー","review":"駐車場からゲレンデが近いため、すぐに滑れて良いです！"},
+      {"resort":"黒姫高原スノーパーク","rate":2,"tag":"キレイな施設","review":"色んなカタチのソリ無料で遊び放題は大人も楽しめるサービスでした✨"},
+      {"resort":"たざわ湖スキー場","rate":5,"tag":"上級者向け,初心者向け,絶景ビュー,パウダー,ゲレ食","review":"天気が良いと田沢湖が目の前にドーン！\n初心者から上級者まで楽しめるスキー場でした。"},
+      {"resort":"たんばらスキーパーク","rate":4,"tag":"初心者向け,キレイな施設,アクセス,コスパ","review":"ゲレンデ下部は初心者、上部は中、上級者向けとレベル別になっている為滑りやすい。\nまた、11月下旬から5月上旬まで営業している為、長い期間楽しめる。"},
+      {"resort":"つがいけマウンテンリゾート","rate":4,"tag":"初心者向け,パウダー,コース,上級者向け","review":"コースが広くて初心者から上級者まで楽しめるスキー場になっています！"},
+      {"resort":"ぴっぷスキー場","rate":5,"tag":"コース,ゲレ食,混雑少,パウダー,アクセス,コスパ","review":"リフトは古いがコースは多い。一日券が安いのに、温泉付"},
+      {"resort":"オグナほたかスキー場","rate":5,"tag":"初心者向け,上級者向け,パウダー,コース","review":"雪の質は比較的powder、勿論硬い日もあります。\nリフトアクセスはやや不便でありますが良いスキー場です。\nベースは初心者にもってこいの緩慢な斜面、中間エリアは非圧雪の斜面が豊富。"},
+      {"resort":"スカイバレイスキー場","rate":4,"tag":"混雑少,コース","review":"スカイバレイは\nとなりのハイパーボウル東鉢とリフト券ひとつで遊べ\nコース数多く、混雑も比較的少なめなので\n楽しめます\n上手く新雪が降れば、頂上コースからの滑りは\n格別です(๑•̀ㅁ•́ฅ✨"},
+      {"resort":"ニセコアンヌプリ国際スキー場","rate":5,"tag":"絶景ビュー,上級者向け,パウダー","review":"ゲートが開けばリフトアクセスでパウダーやツリーランを楽しめます。\nお天気良ければ羊蹄山もとても綺麗です。"},
+      {"resort":"ハチ高原スキー場・ハチ北高原スキー場","rate":5,"tag":"パウダー","review":"高速道路止まるほど雪が降った時の北壁は最高"},
+      {"resort":"パルコール嬬恋スキーリゾート","rate":5,"tag":"キレイな施設","review":"パークが楽しい😀😀😀😀😀😃😃"},
+      {"resort":"会津高原たかつえスキー場","rate":5,"tag":"絶景ビュー,初心者向け,上級者向け","review":"脚に自信があればてっぺんまでシングルリフト(!)であがって、絶景ビューを楽しんでからパウダーラン！自信がなくてもてっぺんから迂回があるから絶景ビューを楽しめる。ゴン降りの日は上から下までパウダーラン、初心者でもふかふかをたのしめる。パーク、ハーフパイプ、クロスコースもあるからフリースキーヤー御用達だよ！"},
+      {"resort":"会津高原だいくらスキー場","rate":3,"tag":"混雑少,コスパ,パウダー","review":"程よいローカル感！小さいように見えてコースは多彩"},
+      {"resort":"名寄ピヤシリスキー場","rate":5,"tag":"パウダー","review":"毎年行きますが、裏切られたことは無い。降って無くても必ず楽しいノートラックが残ってます。"},
+      {"resort":"御嶽スキー場","rate":3,"tag":"混雑少","review":"狭いけどそんなに混まないスキー場でした。色々な割引やっているので良く調べてからアースホッパーを適用するか判断してみてください"},
+      {"resort":"戸隠スキー場","rate":5,"tag":"上級者向け,パウダー,ゲレ食,混雑少","review":"綺麗な圧雪\n隠れパウダー\nやなぎらんのランチは必須"},
+      {"resort":"湯殿山スキー場","rate":5,"tag":"パウダー,コース,アクセス","review":"豪雪。なんと言っても滑れる期間が長いのはもちろんの事、ツリーランエリアが充実も魅力。"},
+      {"resort":"神立スノーリゾート","rate":4,"tag":"初心者向け,パウダー,コース,キレイな施設,レンタル,コスパ,温泉・宿","review":"初心者が集まるゲレンデというイメージが結構強いが、パウダーも地形も楽しいよ"},
+      {"resort":"蔵王ライザワールド","rate":5,"tag":"パウダー,絶景ビュー","review":"ライザワールドでもスノーモンスターが見れると知り、アースホッパーにあったので行ってみました。\nコースは少なめでコンパクトなスキー場ですが、雪質は抜群に良く人も少なくて初心者でも上級者でも楽しめるスキー場でした。\n1月下旬に行き、立派なスノーモンスターを見る事が出来ました。リフトで真横を通ったり、すぐ近くを滑る事ができるので、かなり迫力もあり、行ってよかったです！"},
+      {"resort":"赤倉観光リゾートスキー場","rate":4,"tag":"コース","review":"ツリーエリアが豊富で、結構滑りごたえがあって楽しいです。まだまだ未開のコースもあるので、今シーズンと楽しみにしてます。"},
+      {"resort":"黒姫高原スノーパーク","rate":3,"tag":"初心者向け,アクセス,混雑少","review":"高速道路からすぐのアクセス抜群な立地と、とにかく広いドックフレンドリーなゲレンデ！\nワンコと一緒にリフトに乗り、ノーリードで一緒に滑走も可能。\n妙高エリアの外れでインバウンドも比較的少なめで意外とパウダー競争率は低めな穴場なのは内緒にしておきたい"},
+      {"resort":"たんばらスキーパーク","rate":3,"tag":"初心者向け","review":"春先なのに意外に雪がのこっています。ゲレ食も美味しそうなのがありました"},
+      {"resort":"ぴっぷスキー場","rate":5,"tag":"パウダー,コスパ,混雑少","review":"北海道トリップの時に伺いました。混雑もなく、ご飯も美味しく食べれて初めて行ったゲレンデですが、良かったです。ちょうど新雪もあり、パウダーを楽しめました✨"},
+      {"resort":"オグナほたかスキー場","rate":5,"tag":"初心者向け,上級者向け","review":"3月中旬にスノーボードをしました！\n朝9時から10時ごろは雪が柔らか過ぎず滑りやすかったです！初心者から上級者まで楽しめるいいスキー場でした🏂"},
+      {"resort":"ニセコアンヌプリ国際スキー場","rate":4,"tag":"上級者向け,初心者向け,パウダー,コース,絶景ビュー,温泉・宿","review":"麓付近は初心者が回し、頂上付近やサイドカントリーは上級者でも十分に楽しめます。ニセコならではの雪質、パウダーに当たればThe北海道のゲレンデ、といった経験間違いありません。アフターの温泉の選択肢が多いのも魅力です。"},
+      {"resort":"パルコール嬬恋スキーリゾート","rate":1,"tag":"絶景ビュー","review":"昔は良かったけど昨シーズンは余り良くなかった。ゴンドラ乗って降りるコース以外はほとんどクローズ。しかも途中にパークアイテムが多く滑れるコース幅が狭くて危ない。グラトリとパークだけ遊ぶ人は行ってもいいと思います。カービングやスキーをする人は気持ちよく滑れないスキー場です。あとリフト券がパルコールのカードにチャージするタイプなのですが、アースホッパーの発券が上手くいかず一緒に行った友達と別に滑る羽目に"},
+      {"resort":"会津高原たかつえスキー場","rate":4,"tag":"初心者向け,混雑少,コスパ","review":"南郷、だいくらと会津三兄弟ゲレンデですが個人的にはここが1番好きですね。\n学生さんの大軍団に巻き込まれる前、午前中ガッツリ滑って後半はパーク流したりと広いので遊びごたえはあると思います。"},
+      {"resort":"会津高原だいくらスキー場","rate":4,"tag":"混雑少","review":"空いてて穴場だと感じました。\n山頂行きリフトが動いていなかったのは残念でした。"},
+      {"resort":"名寄ピヤシリスキー場","rate":5,"tag":"パウダー,コスパ,ゲレ食,初心者向け,上級者向け","review":"人が少なくてコースも滑りやすくて最高です。"},
+      {"resort":"御嶽スキー場","rate":5,"tag":"パウダー,絶景ビュー,ゲレ食","review":"まず御嶽はパウダーが軽い。\nそのうえ訪問日はチャンピオンゲレンデのオープン初日だったから足パンになるまで御嶽パウダー満喫したよ。\nそのうえ御嶽はゲレ食が最高。今シーズンもゲレ食目的で行きたいな。\nそんな最強御嶽も風に弱いのが玉に瑕かな。"},
+      {"resort":"戸隠スキー場","rate":4,"tag":"上級者向け,絶景ビュー,混雑少","review":"カービング最高！！！！！！！！！！！！！！"},
+      {"resort":"神立スノーリゾート","rate":5,"tag":"コース,アクセス","review":"高速出口から近く施設内に温泉もあります。\nコースも充実しておりマイゲレンデとして利用しています。"},
+      {"resort":"蔵王ライザワールド","rate":4,"tag":"絶景ビュー","review":"ピザ🍕美味しいです\n樹氷が観れます。\n雪もドライで滑りやすいです"},
+      {"resort":"赤倉観光リゾートスキー場","rate":4,"tag":"パウダー,コース","review":"ドカ雪の時のパウダーがかなりいい。いつ行っても混んではいるが駐車場からアクセスはいい"},
+      {"resort":"たんばらスキーパーク","rate":4,"tag":"初心者向け,パウダー,アクセス","review":"メインゲレンデ1コースが色々遊びながら流して来れるのが良い"},
+      {"resort":"ぴっぷスキー場","rate":5,"tag":"初心者向け,コース,絶景ビュー,コスパ","review":"とにかくコスパ最強！\nコースは多くないですが綺麗な1枚バーンが多く、練習に最適でした☺︎\nキッカーも飛びやすく、キッカー初心者にはありがたいです！！"},
+      {"resort":"オグナほたかスキー場","rate":4,"tag":"初心者向け","review":"初級、中級者の練習にピッタリだと思います。"},
+      {"resort":"パルコール嬬恋スキーリゾート","rate":5,"tag":"コース","review":"昨シーズンから新しくなったパークがめちゃくちゃ楽しい！8mくらいの5連キッカーが最高！"},
+      {"resort":"会津高原たかつえスキー場","rate":5,"tag":"混雑少","review":"のどかな雰囲気\n外人も居なくて最高です！"},
+      {"resort":"会津高原だいくらスキー場","rate":5,"tag":"パウダー,ゲレ食","review":"最高のスキー場でした!ゲレ食ボリューミーで最高です!"},
+      {"resort":"戸隠スキー場","rate":4,"tag":"ゲレ食,アクセス,絶景ビュー","review":"最下部のクワッドリフト降りてから斜面に向かってUターンするとバーンとそびえ立つギザギザの戸隠連峰と青空と雪の白色！に、わぉ！！って声が出ちゃいます。もちろん雪質はシーズン通じてちょうどいい硬さが保たれてます。"},
+      {"resort":"蔵王ライザワールド","rate":5,"tag":"初心者向け,絶景ビュー,混雑少","review":"蔵王の樹氷が混雑と無縁で目の前で見れる穴場スキー場。蔵王温泉スキー場と比べるとコンパクトだけどリフト待ちがほぼ無いことを考えると快適さは桁違い。\nコース数は決して多く無いスキー場だけど、モーグルやスラロームにチャレンジしたり樹氷と絶景を楽しむだけで一日満喫出来ます。"},
+      {"resort":"赤倉観光リゾートスキー場","rate":5,"tag":"初心者向け,上級者向け,パウダー,コース,ゲレ食,温泉・宿,アクセス","review":"コースが面白くて、パウダーがかなり楽しめます。ご飯も美味しいです。ゲレンデ近隣の温泉で疲れが取れて、スキー場以外でも楽しめます。"},
+      {"resort":"たんばらスキーパーク","rate":3,"tag":"初心者向け","review":"春先でも人工雪を使ってくれてるお陰で雪質が良かったです！\nシーズンイン、アウトの時期にはおすすめだと思います♪"},
+      {"resort":"ぴっぷスキー場","rate":5,"tag":"上級者向け,パウダー,絶景ビュー,ゲレ食","review":"道北クオリティのパウダー、急斜面が多く軽すぎてどこまでも沈んでいく感覚がたまらない。あまりバレたくないスキー場です笑"},
+      {"resort":"蔵王ライザワールド","rate":5,"tag":"パウダー,絶景ビュー,キレイな施設,コース,混雑少","review":"樹氷がめちゃくちゃ綺麗で感動ですっ！！！\n何度も行きたい！"},
+      {"resort":"たんばらスキーパーク","rate":4,"tag":"初心者向け,パウダー,キレイな施設,アクセス","review":"全体になだらかで滑りやすい斜面です。初心者でも安心して楽しめます。しかし、パウダーもなかなかのもので初心者が避ける斜面には美味しいパウダーが午前中いっぱい残っています。初心者が麓のリフトで練習している間に、パウダーフリークが楽しむこともできるのがいいですね。もちろん昼は充実したレストハウスで一緒に過ごし、午後は合流した後ゆったりと午後雪を楽しめます。沼田インターからも近くアクセス良好です。"},
+      {"resort":"ぴっぷスキー場","rate":4,"tag":"パウダー,ゲレ食","review":"人が少なく、ゲレ食が美味しいゲレンデです。\nまた、北海道トリップの際は行ってみたいです。"},
+      {"resort":"たんばらスキーパーク","rate":4,"tag":"キレイな施設,絶景ビュー,アクセス","review":"天気によっては朝イチでパウダーの時もあります。\n広すぎないので迷子にならないし、コースも覚えやすいです。山頂から少し下ると晴れの日はたんばら湖がキレイに見えます。"},
+      {"resort":"ぴっぷスキー場","rate":5,"tag":"初心者向け,アクセス,コスパ,混雑少","review":"旭川から近く、誰でも楽しめるスキー場です"},
+      {"resort":"たんばらスキーパーク","rate":4,"tag":"初心者向け","review":"早期から終盤まで長く滑れるので、ハイシーズン以外で利用できるのがありがたい。"},
+      {"resort":"たんばらスキーパーク","rate":5,"tag":"初心者向け,キレイな施設,コスパ","review":"いつも初滑りをたんばらにしているくらい、様々なコースが滑りやすくなっており、初心者を連れて行って、一緒にスノーボードを教えることもありました。\n\nまた、リゾートセンターが綺麗で使いやすく、さらに駐車場からのアクセスも良いため、混雑時などは車に戻ってゆっくり休むことも可能です。\n\n１１月から、GWあたりまで、長い営業期間オープンしてもらえて、滑れる回数も多くとても助かっております。"},
+      {"resort":"たんばらスキーパーク","rate":5,"tag":"初心者向け,絶景ビュー,コース,キレイな施設","review":"下のコースは初心者を連れて行った時に滑りやすいと喜ばれました。\n上の方のコースは斜度もあり圧雪もパウダーも最高に気持ち良かったです。"},
+      {"resort":"たんばらスキーパーク","rate":4,"tag":"初心者向け","review":"小さな子供と行っても楽しく遊べるスキー場ですね"}
+    ];
+
+    // 各レビューに一意IDと初期いいね数を付与
+    REVIEWS_DATA.forEach((item, idx) => {
+      item.id = idx;
+      item.baseLikes = 18 + ((idx * 17 + item.rate * 13) % 145);
+    });
+
+    // ==========================================
+    // 2. 高解像度ゲレンデ背景写真プール（Unsplash）
+    // ==========================================
+    const SKI_PHOTOS = [
+      "https://images.unsplash.com/photo-1551524559-8af4e6624178?auto=format&fit=crop&w=900&q=80", // パウダースノー滑走
+      "https://images.unsplash.com/photo-1518098268026-4e89f1a2cd8e?auto=format&fit=crop&w=900&q=80", // 雪山絶景・リフト
+      "https://images.unsplash.com/photo-1605540436563-5bca919ae766?auto=format&fit=crop&w=900&q=80", // スノーボード・ゲレンデ
+      "https://images.unsplash.com/photo-1565992441121-4367c2967103?auto=format&fit=crop&w=900&q=80", // 晴天の雪山ピーク
+      "https://images.unsplash.com/photo-1482867996988-29ec3aee816d?auto=format&fit=crop&w=900&q=80", // 樹氷・冬景色
+      "https://images.unsplash.com/photo-1517639493569-5666a7b2f494?auto=format&fit=crop&w=900&q=80", // スキーヤー・パウダースプレー
+      "https://images.unsplash.com/photo-1522163182402-834f871fd851?auto=format&fit=crop&w=900&q=80", // アルプス山脈・青い空
+      "https://images.unsplash.com/photo-1486915309851-b0cc1f8a0084?auto=format&fit=crop&w=900&q=80", // 夕暮れのゲレンデ
+      "https://images.unsplash.com/photo-1518608774889-b04d2abe7702?auto=format&fit=crop&w=900&q=80", // ワイドバーン圧雪
+      "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=900&q=80", // スキー・冬山
+      "https://images.unsplash.com/photo-1548777123-e216912df7d8?auto=format&fit=crop&w=900&q=80", // ツリーラン・森林雪道
+      "https://images.unsplash.com/photo-1516466723877-e4ec1d736c8a?auto=format&fit=crop&w=900&q=80", // 雪化粧のロッジ・リゾート
+      "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=900&q=80", // 雄大な雪峰
+      "https://images.unsplash.com/photo-1491002052546-bf38f186af56?auto=format&fit=crop&w=900&q=80", // 朝焼けの雪景色
+      "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=900&q=80"  // ゲレンデ滑走シーン
+    ];
+
+    // スキー場名とインデックスから決定的に写真URLを取得
+    function getPhotoForReview(review) {
+      let hash = review.id * 7;
+      for (let i = 0; i < review.resort.length; i++) {
+        hash = (hash * 31 + review.resort.charCodeAt(i)) >>> 0;
+      }
+      return SKI_PHOTOS[hash % SKI_PHOTOS.length];
+    }
+
+    // ==========================================
+    // 3. スキー場ごとの集計マップ作成
+    // ==========================================
+    const RESORT_STATS = {};
+    REVIEWS_DATA.forEach(item => {
+      if (!RESORT_STATS[item.resort]) {
+        RESORT_STATS[item.resort] = { count: 0, totalRate: 0, reviews: [] };
+      }
+      RESORT_STATS[item.resort].count += 1;
+      RESORT_STATS[item.resort].totalRate += item.rate;
+      RESORT_STATS[item.resort].reviews.push(item);
+    });
+    Object.keys(RESORT_STATS).forEach(resort => {
+      const s = RESORT_STATS[resort];
+      s.avgRate = (s.totalRate / s.count).toFixed(1);
+    });
+
+    // ==========================================
+    // 4. アプリ状態管理
+    // ==========================================
+    const ALL_TAGS = [
+      "すべて", "パウダー", "初心者向け", "上級者向け", "絶景ビュー",
+      "ゲレ食", "混雑少", "コスパ", "アクセス", "コース",
+      "キレイな施設", "温泉・宿", "レンタル"
+    ];
+
+    let state = {
+      selectedTag: "すべて",
+      selectedResort: null,
+      feedItems: [...REVIEWS_DATA],
+      activeIndex: 0,
+      likedIds: new Set(),
+      savedIds: new Set(),
+      isShuffled: false
+    };
+
+    const feedContainer = document.getElementById("feedContainer");
+    const tagFilterBar = document.getElementById("tagFilterBar");
+    const counterBadge = document.getElementById("counterBadge");
+
+    // ==========================================
+    // 5. タグフィルターバー描画
+    // ==========================================
+    function renderTagBar() {
+      tagFilterBar.innerHTML = ALL_TAGS.map(tag => {
+        const isActive = state.selectedTag === tag;
+        const baseClass = "shrink-0 px-3 py-1 rounded-full text-xs font-bold transition-all cursor-pointer select-none border";
+        const activeClass = isActive
+          ? "bg-white text-slate-950 border-white shadow-md scale-[1.02]"
+          : "bg-black/40 hover:bg-black/60 text-white/90 border-white/15 backdrop-blur-md";
+        return `<button onclick="selectTag('${tag}')" class="${baseClass} ${activeClass}">${tag}</button>`;
+      }).join("");
+    }
+
+    // ==========================================
+    // 6. フィルタリング＆無限スワイプ用アイテム生成
+    // ==========================================
+    function applyFilters(resetScroll = true) {
+      let filtered = REVIEWS_DATA.filter(item => {
+        const matchTag = state.selectedTag === "すべて" || item.tag.split(",").includes(state.selectedTag);
+        const matchResort = !state.selectedResort || item.resort === state.selectedResort;
+        return matchTag && matchResort;
+      });
+
+      if (state.isShuffled) {
+        filtered = [...filtered].sort(() => Math.random() - 0.5);
+      }
+
+      state.feedItems = filtered;
+      state.activeIndex = 0;
+
+      // スキー場絞り込みバナー表示制御
+      const banner = document.getElementById("activeResortBanner");
+      if (state.selectedResort) {
+        banner.classList.remove("hidden");
+        document.getElementById("activeResortName").textContent = state.selectedResort;
+      } else {
+        banner.classList.add("hidden");
+      }
+
+      renderFeed();
+      if (resetScroll) {
+        feedContainer.scrollTop = 0;
+      }
+      updateCounter();
+    }
+
+    function selectTag(tag) {
+      state.selectedTag = tag;
+      renderTagBar();
+      applyFilters(true);
+    }
+
+    function filterByResort(resortName) {
+      state.selectedResort = resortName;
+      closeResortSheet();
+      closeResortSearchModal();
+      applyFilters(true);
+      showToast(`📍 ${resortName} の口コミを表示中`);
+    }
+
+    function clearResortFilter() {
+      state.selectedResort = null;
+      applyFilters(true);
+    }
+
+    function resetAllFilters() {
+      state.selectedTag = "すべて";
+      state.selectedResort = null;
+      state.isShuffled = false;
+      renderTagBar();
+      applyFilters(true);
+      showToast("すべての口コミ（242件）を表示します");
+    }
+
+    function shuffleFeed() {
+      state.isShuffled = true;
+      applyFilters(true);
+      showToast("🔀 口コミをシャッフルしました");
+    }
+
+    // ==========================================
+    // 7. フィードカードのHTML生成（TikTok風UI）
+    // ==========================================
+    function createCardHTML(item, listIndex) {
+      const photoUrl = getPhotoForReview(item);
+      const tags = item.tag ? item.tag.split(",").filter(Boolean) : [];
+      const stats = RESORT_STATS[item.resort];
+      const isLiked = state.likedIds.has(item.id);
+      const isSaved = state.savedIds.has(item.id);
+      const likeCount = item.baseLikes + (isLiked ? 1 : 0);
+      const isLongReview = item.review.length > 105 || (item.review.match(/\n/g) || []).length >= 3;
+
+      // 星評価の生成
+      const starsHTML = Array.from({ length: 5 }, (_, i) => {
+        const filled = i < item.rate;
+        return `<span class="${filled ? 'text-amber-400' : 'text-white/25'} text-sm">★</span>`;
+      }).join("");
+
+      // タグピルの生成
+      const tagsHTML = tags.map(t => `
+        <button onclick="event.stopPropagation(); selectTag('${t}')"
+          class="bg-white/15 hover:bg-white/30 active:scale-95 backdrop-blur-md border border-white/20 text-white text-[11px] font-semibold px-2.5 py-0.5 rounded-full transition">
+          #${t}
+        </button>
+      `).join("");
+
+      const resortInitial = item.resort.replace(/[^ぁ-んァ-ン一-龥A-Za-z]/g, "").slice(0, 1) || "❄";
+
+      return `
+        <section data-index="${listIndex}" data-id="${item.id}"
+          ondblclick="handleDoubleTap(event, ${item.id})"
+          class="feed-card relative w-full h-full bg-slate-900 overflow-hidden select-none">
+
+          <!-- 背景写真 + 緩やかなズームアニメーション -->
+          <img src="${photoUrl}" alt="${item.resort}" loading="${listIndex < 3 ? 'eager' : 'lazy'}"
+            onerror="this.style.display='none'"
+            class="card-bg-img absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700" />
+
+          <!-- フォールバック＆視認性確保用マルチストップ・グラデーション -->
+          <div class="absolute inset-0 bg-gradient-to-br from-sky-950/40 via-transparent to-slate-950/60 pointer-events-none"></div>
+          <div class="absolute inset-x-0 bottom-0 h-[68%] bg-gradient-to-t from-black/95 via-black/60 to-transparent pointer-events-none"></div>
+
+          <!-- ダブルタップ時のハートエフェクト用コンテナ -->
+          <div class="double-tap-heart pointer-events-none absolute inset-0 flex items-center justify-center z-20"></div>
+
+          <!-- 右側 TikTokスタイル アクションレール -->
+          <div class="absolute right-3 bottom-7 z-20 flex flex-col items-center gap-4">
+            <!-- スキー場アバター（タップでスキー場詳細シート） -->
+            <button onclick="openResortSheet('${item.resort.replace(/'/g, "\\'")}')"
+              class="relative group flex flex-col items-center">
+              <div class="w-11 h-11 rounded-full bg-gradient-to-br from-sky-400 to-indigo-600 p-0.5 shadow-lg">
+                <div class="w-full h-full rounded-full bg-slate-900/90 flex items-center justify-center font-extrabold text-sm text-white">
+                  ${resortInitial}
+                </div>
+              </div>
+              <span class="mt-1 text-[10px] font-bold text-white/90 bg-black/50 backdrop-blur-sm px-1.5 py-0.2 rounded-full">
+                ${stats.count}件
+              </span>
+            </button>
+
+            <!-- 行きたい / いいねボタン -->
+            <button onclick="toggleLike(${item.id}, this)" class="flex flex-col items-center gap-1 group">
+              <div class="w-11 h-11 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/15 flex items-center justify-center transition active:scale-125">
+                <svg class="like-icon w-6 h-6 transition-colors ${isLiked ? 'text-rose-500 fill-rose-500' : 'text-white fill-none'}" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                </svg>
+              </div>
+              <span class="like-count text-[11px] font-display font-bold text-white drop-shadow">${likeCount}</span>
+            </button>
+
+            <!-- お気に入り保存ボタン -->
+            <button onclick="toggleSave(${item.id}, this)" class="flex flex-col items-center gap-1">
+              <div class="w-11 h-11 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/15 flex items-center justify-center transition active:scale-125">
+                <svg class="save-icon w-5 h-5 transition-colors ${isSaved ? 'text-amber-400 fill-amber-400' : 'text-white fill-none'}" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v17l-7-4-7 4V4z" />
+                </svg>
+              </div>
+              <span class="text-[10px] font-bold text-white/90 drop-shadow">${isSaved ? '保存済' : '保存'}</span>
+            </button>
+
+            <!-- 全口コミ一覧ボトムシートボタン -->
+            <button onclick="openResortSheet('${item.resort.replace(/'/g, "\\'")}')" class="flex flex-col items-center gap-1">
+              <div class="w-11 h-11 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/15 flex items-center justify-center transition active:scale-110">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                </svg>
+              </div>
+              <span class="text-[10px] font-bold text-white/90 drop-shadow">一覧</span>
+            </button>
+
+            <!-- シェアボタン -->
+            <button onclick="shareReview(${item.id})" class="flex flex-col items-center gap-1">
+              <div class="w-11 h-11 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/15 flex items-center justify-center transition active:scale-110">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" />
+                </svg>
+              </div>
+              <span class="text-[10px] font-bold text-white/90 drop-shadow">共有</span>
+            </button>
+          </div>
+
+          <!-- 左下 メインオーバーレイコンテンツ（スキー場名・評価・タグ・レビュー本文） -->
+          <div class="absolute left-4 right-16 bottom-6 z-20 flex flex-col items-start">
+            <!-- スキー場名バッジ（タップでそのスキー場の全口コミシート表示） -->
+            <button onclick="openResortSheet('${item.resort.replace(/'/g, "\\'")}')"
+              class="group text-left mb-1.5 flex items-start gap-1.5">
+              <span class="text-sky-400 text-lg leading-tight mt-0.5">📍</span>
+              <div>
+                <h2 class="text-xl sm:text-[22px] font-black leading-snug tracking-tight text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] group-hover:text-sky-300 transition">
+                  ${item.resort}
+                </h2>
+                <div class="flex items-center gap-2 mt-0.5">
+                  <div class="flex items-center gap-0.5 bg-black/45 backdrop-blur-md px-2 py-0.5 rounded-full border border-white/10">
+                    ${starsHTML}
+                    <span class="ml-1 text-xs font-display font-extrabold text-amber-300">${item.rate}.0</span>
+                  </div>
+                  <span class="text-[11px] text-white/75 font-medium">
+                    平均 ★${stats.avgRate} (${stats.count}件) ›
+                  </span>
+                </div>
+              </div>
+            </button>
+
+            <!-- タグ一覧 -->
+            <div class="flex flex-wrap gap-1.5 my-2">
+              ${tagsHTML}
+            </div>
+
+            <!-- レビュー本文（長文は4行クランプ＋続きを読むトグル） -->
+            <div class="review-box w-full rounded-2xl transition-all duration-200">
+              <p id="review-text-${listIndex}" class="text-sm sm:text-[15px] leading-relaxed text-white/95 whitespace-pre-line drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)] ${isLongReview ? 'line-clamp-4-custom' : ''}">${escapeHTML(item.review)}</p>
+              ${isLongReview ? `
+                <button onclick="toggleExpandReview(${listIndex}, this)"
+                  class="mt-1.5 inline-flex items-center gap-1 text-xs font-bold text-sky-300 hover:text-sky-200 bg-black/45 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/15">
+                  続きを読む
+                </button>
+              ` : ''}
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    function escapeHTML(str) {
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    // ==========================================
+    // 8. フィード描画 & 無限ループ継ぎ足し
+    // ==========================================
+    function renderFeed() {
+      if (state.feedItems.length === 0) {
+        feedContainer.innerHTML = `
+          <div class="w-full h-full flex flex-col items-center justify-center p-8 text-center">
+            <p class="text-4xl mb-3">🎿</p>
+            <p class="text-base font-bold text-white">条件に一致する口コミがありません</p>
+            <p class="text-xs text-white/60 mt-1 mb-5">別のタグやスキー場を選択してみてください</p>
+            <button onclick="resetAllFilters()" class="bg-sky-500 text-slate-950 font-bold text-xs px-5 py-2.5 rounded-full">
+              すべての口コミを表示
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      // 初期バッチ描画（最大40件ずつ追加して超軽量維持）
+      const initialBatch = state.feedItems.slice(0, 40);
+      feedContainer.innerHTML = initialBatch.map((item, idx) => createCardHTML(item, idx)).join("");
+      activateCardZoom(0);
+    }
+
+    // スクロール位置に応じて追加バッチ・無限ループ用カードを追加
+    function appendMoreCardsIfNeeded(currentIdx) {
+      const totalRendered = feedContainer.querySelectorAll(".feed-card").length;
+      if (totalRendered - currentIdx <= 6 && state.feedItems.length > 0) {
+        const fragment = document.createDocumentFragment();
+        const temp = document.createElement("div");
+        for (let i = 0; i < 20; i++) {
+          const nextIdx = totalRendered + i;
+          // 末尾に達したら先頭へシームレスに循環（エンドレススワイプ体験）
+          const item = state.feedItems[nextIdx % state.feedItems.length];
+          temp.innerHTML = createCardHTML(item, nextIdx);
+          fragment.appendChild(temp.firstElementChild);
+        }
+        feedContainer.appendChild(fragment);
+      }
+    }
+
+    // アクティブカードの背景にゆっくりズームアニメーションを付与
+    function activateCardZoom(index) {
+      const cards = feedContainer.querySelectorAll(".feed-card");
+      cards.forEach((card, i) => {
+        const img = card.querySelector(".card-bg-img");
+        if (!img) return;
+        if (i === index) {
+          img.classList.add("animate-slow-zoom");
+        } else {
+          img.classList.remove("animate-slow-zoom");
+        }
+      });
+    }
+
+    function updateCounter() {
+      if (state.feedItems.length === 0) {
+        counterBadge.textContent = "0 / 0";
+        return;
+      }
+      const displayNum = (state.activeIndex % state.feedItems.length) + 1;
+      counterBadge.textContent = `${displayNum} / ${state.feedItems.length}`;
+    }
+
+    // スクロール監視（現在表示中のカードを特定）
+    let scrollTimeout;
+    feedContainer.addEventListener("scroll", () => {
+      const hint = document.getElementById("swipeHint");
+      if (hint && !hint.classList.contains("opacity-0")) {
+        hint.classList.add("opacity-0");
+      }
+
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        const cardHeight = feedContainer.clientHeight;
+        if (cardHeight === 0) return;
+        const newIndex = Math.round(feedContainer.scrollTop / cardHeight);
+        if (newIndex !== state.activeIndex) {
+          state.activeIndex = newIndex;
+          updateCounter();
+          activateCardZoom(newIndex);
+          appendMoreCardsIfNeeded(newIndex);
+        }
+      }, 60);
+    }, { passive: true });
+
+    // 上下ナビゲーション（ボタン・キーボード矢印）
+    function navigateFeed(direction) {
+      const cardHeight = feedContainer.clientHeight;
+      const targetIndex = Math.max(0, state.activeIndex + direction);
+      appendMoreCardsIfNeeded(targetIndex);
+      feedContainer.scrollTo({
+        top: targetIndex * cardHeight,
+        behavior: "smooth"
+      });
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        navigateFeed(1);
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        navigateFeed(-1);
+      }
+    });
+
+    // ==========================================
+    // 9. カード内インタラクション（続きを読む・いいね・保存・共有）
+    // ==========================================
+    function toggleExpandReview(listIndex, btn) {
+      const textEl = document.getElementById(`review-text-${listIndex}`);
+      const boxEl = textEl.parentElement;
+      const isClamped = textEl.classList.contains("line-clamp-4-custom");
+      if (isClamped) {
+        textEl.classList.remove("line-clamp-4-custom");
+        boxEl.classList.add("bg-black/65", "backdrop-blur-md", "p-3", "border", "border-white/15");
+        btn.textContent = "閉じる ▲";
+      } else {
+        textEl.classList.add("line-clamp-4-custom");
+        boxEl.classList.remove("bg-black/65", "backdrop-blur-md", "p-3", "border", "border-white/15");
+        btn.textContent = "続きを読む";
+      }
+    }
+
+    function toggleLike(id, btnEl) {
+      if (state.likedIds.has(id)) {
+        state.likedIds.delete(id);
+      } else {
+        state.likedIds.add(id);
+        showToast("❤️「行きたい！」リストに追加しました");
+      }
+      syncCardActionStates(id);
+    }
+
+    function handleDoubleTap(event, id) {
+      const card = event.currentTarget;
+      const heartLayer = card.querySelector(".double-tap-heart");
+      heartLayer.innerHTML = `
+        <svg class="w-24 h-24 text-rose-500 fill-rose-500 drop-shadow-[0_0_25px_rgba(244,63,94,0.8)] animate-pop-heart" viewBox="0 0 24 24">
+          <path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+        </svg>
+      `;
+      if (!state.likedIds.has(id)) {
+        state.likedIds.add(id);
+        syncCardActionStates(id);
+      }
+    }
+
+    function toggleSave(id) {
+      if (state.savedIds.has(id)) {
+        state.savedIds.delete(id);
+        showToast("保存を解除しました");
+      } else {
+        state.savedIds.add(id);
+        showToast("🔖 口コミを保存しました");
+      }
+      syncCardActionStates(id);
+      updateSavedBadge();
+    }
+
+    function syncCardActionStates(id) {
+      const item = REVIEWS_DATA.find(r => r.id === id);
+      const isLiked = state.likedIds.has(id);
+      const isSaved = state.savedIds.has(id);
+      document.querySelectorAll(`.feed-card[data-id="${id}"]`).forEach(card => {
+        const likeIcon = card.querySelector(".like-icon");
+        const likeCount = card.querySelector(".like-count");
+        const saveIcon = card.querySelector(".save-icon");
+        if (likeIcon) {
+          likeIcon.classList.toggle("text-rose-500", isLiked);
+          likeIcon.classList.toggle("fill-rose-500", isLiked);
+          likeIcon.classList.toggle("text-white", !isLiked);
+          likeIcon.classList.toggle("fill-none", !isLiked);
+        }
+        if (likeCount) {
+          likeCount.textContent = item.baseLikes + (isLiked ? 1 : 0);
+        }
+        if (saveIcon) {
+          saveIcon.classList.toggle("text-amber-400", isSaved);
+          saveIcon.classList.toggle("fill-amber-400", isSaved);
+          saveIcon.classList.toggle("text-white", !isSaved);
+          saveIcon.classList.toggle("fill-none", !isSaved);
+        }
+      });
+    }
+
+    function updateSavedBadge() {
+      const dot = document.getElementById("savedCountDot");
+      if (state.savedIds.size > 0) {
+        dot.textContent = state.savedIds.size;
+        dot.classList.remove("hidden");
+      } else {
+        dot.classList.add("hidden");
+      }
+    }
+
+    function shareReview(id) {
+      const item = REVIEWS_DATA.find(r => r.id === id);
+      if (!item) return;
+      const text = `【${item.resort}】★${item.rate}.0\n${item.review}\n#SNOWREELS #ゲレンデ口コミ`;
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand("copy");
+        showToast("📋 口コミテキストをクリップボードにコピーしました");
+      } catch (e) {
+        showToast("シェア用リンクを準備しました");
+      }
+      document.body.removeChild(textarea);
+    }
+
+    // ==========================================
+    // 10. ボトムシート & モーダル操作
+    // ==========================================
+    function openResortSheet(resortName) {
+      const stats = RESORT_STATS[resortName];
+      if (!stats) return;
+      document.getElementById("sheetResortTitle").textContent = resortName;
+      document.getElementById("sheetResortStats").innerHTML = `
+        <span class="text-amber-400 font-bold">★ ${stats.avgRate}</span>
+        <span>•</span>
+        <span>全 ${stats.count} 件のリアル口コミ</span>
+      `;
+      document.getElementById("sheetFilterOnlyBtn").onclick = () => filterByResort(resortName);
+
+      const listEl = document.getElementById("sheetReviewsList");
+      listEl.innerHTML = stats.reviews.map(r => `
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-3.5">
+          <div class="flex items-center justify-between mb-1.5">
+            <div class="flex items-center gap-1 text-amber-400 text-xs font-bold">
+              ${"★".repeat(r.rate)}<span class="text-white/25">${"★".repeat(5 - r.rate)}</span>
+              <span class="ml-1 text-white/80">${r.rate}.0</span>
+            </div>
+            <div class="flex flex-wrap gap-1 justify-end">
+              ${r.tag.split(",").map(t => `<span class="text-[10px] bg-white/10 text-white/80 px-2 py-0.5 rounded-full">#${t}</span>`).join("")}
+            </div>
+          </div>
+          <p class="text-xs sm:text-sm text-white/90 leading-relaxed whitespace-pre-line">${escapeHTML(r.review)}</p>
+        </div>
+      `).join("");
+
+      document.getElementById("resortSheetModal").classList.remove("hidden");
+    }
+
+    function closeResortSheet() {
+      document.getElementById("resortSheetModal").classList.add("hidden");
+    }
+
+    // スキー場検索モーダル
+    function openResortSearchModal() {
+      document.getElementById("searchModal").classList.remove("hidden");
+      const input = document.getElementById("resortSearchInput");
+      input.value = "";
+      renderResortDirectory("");
+      setTimeout(() => input.focus(), 100);
+    }
+
+    function closeResortSearchModal() {
+      document.getElementById("searchModal").classList.add("hidden");
+    }
+
+    document.getElementById("resortSearchInput").addEventListener("input", (e) => {
+      renderResortDirectory(e.target.value.trim());
+    });
+
+    function renderResortDirectory(query) {
+      const resorts = Object.keys(RESORT_STATS)
+        .filter(name => name.toLowerCase().includes(query.toLowerCase()))
+        .sort((a, b) => RESORT_STATS[b].count - RESORT_STATS[a].count);
+
+      document.getElementById("totalResortsCount").textContent = Object.keys(RESORT_STATS).length;
+
+      const listEl = document.getElementById("resortDirectoryList");
+      if (resorts.length === 0) {
+        listEl.innerHTML = `<p class="text-center text-xs text-white/50 py-10">該当するスキー場が見つかりませんでした</p>`;
+        return;
+      }
+
+      listEl.innerHTML = resorts.map(name => {
+        const s = RESORT_STATS[name];
+        return `
+          <button onclick="filterByResort('${name.replace(/'/g, "\\'")}')"
+            class="w-full flex items-center justify-between p-3 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/5 transition text-left">
+            <div>
+              <p class="font-bold text-sm text-white">${name}</p>
+              <p class="text-[11px] text-white/60 mt-0.5">平均 <span class="text-amber-400 font-bold">★${s.avgRate}</span></p>
+            </div>
+            <span class="bg-sky-500/20 text-sky-300 border border-sky-400/30 text-xs font-bold px-2.5 py-1 rounded-full">
+              ${s.count}件 ›
+            </span>
+          </button>
+        `;
+      }).join("");
+    }
+
+    // 保存済み一覧モーダル
+    function openSavedModal() {
+      const container = document.getElementById("savedListContainer");
+      const savedItems = REVIEWS_DATA.filter(r => state.savedIds.has(r.id));
+
+      if (savedItems.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-16 text-white/50">
+            <p class="text-3xl mb-2">🔖</p>
+            <p class="text-sm font-bold text-white/80">まだ保存した口コミがありません</p>
+            <p class="text-xs mt-1">右側の「保存」ボタンから気になったゲレンデをストックできます</p>
+          </div>
+        `;
+      } else {
+        container.innerHTML = savedItems.map(r => `
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-3.5">
+            <div class="flex items-center justify-between mb-1">
+              <button onclick="closeSavedModal(); filterByResort('${r.resort.replace(/'/g, "\\'")}')"
+                class="font-extrabold text-sm text-sky-300 hover:underline text-left">
+                📍 ${r.resort}
+              </button>
+              <button onclick="toggleSave(${r.id}); openSavedModal();" class="text-[11px] text-white/50 hover:text-rose-400">
+                削除
+              </button>
+            </div>
+            <div class="text-amber-400 text-xs mb-1.5">${"★".repeat(r.rate)} <span class="text-white/70">${r.rate}.0</span></div>
+            <p class="text-xs text-white/90 leading-relaxed whitespace-pre-line">${escapeHTML(r.review)}</p>
+          </div>
+        `).join("");
+      }
+
+      document.getElementById("savedModal").classList.remove("hidden");
+    }
+
+    function closeSavedModal() {
+      document.getElementById("savedModal").classList.add("hidden");
+    }
+
+    // トースト通知
+    let toastTimer;
+    function showToast(msg) {
+      const toast = document.getElementById("toast");
+      toast.textContent = msg;
+      toast.classList.remove("opacity-0", "translate-y-2");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.add("opacity-0", "translate-y-2");
+      }, 2200);
+    }
+
+    // ==========================================
+    // 11. 初期化実行
+    // ==========================================
+    window.addEventListener("DOMContentLoaded", () => {
+      renderTagBar();
+      applyFilters(true);
+    });
+  </script>
+</body>
+</html>
