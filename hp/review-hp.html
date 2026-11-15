@@ -3,17 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <title>EARTH HOPPER Reels | ゲレンデ口コミ</title>
+  <title>レビュー | Earthhopper</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            brand: '#0093d4',
-            brandDark: '#006bb3',
-            accent: '#f43f5e',
+            brand: '#0088C6',
+            brandDark: '#006899',
+            paper: '#F6F5F0',
+            paperDark: '#ECEAE2',
+            ink: '#14191F',
+            muted: '#5A6470',
             line: '#06C755',
             lineHover: '#05b34c'
           },
@@ -34,9 +39,17 @@
       height: 100dvh;
       width: 100%;
       overflow: hidden;
-      background-color: #dfeffb;
+      background-color: #14191F;
       font-family: 'Noto Sans JP', sans-serif;
       overscroll-behavior-y: none;
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: "palt";
+    }
+
+    @media (min-width: 1024px) {
+      html, body {
+        background-color: #F6F5F0;
+      }
     }
 
     .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -49,27 +62,22 @@
       will-change: scroll-position;
     }
 
-    .reel-slide {
+    .review-slide {
       height: 100%;
       transform: translateZ(0);
       backface-visibility: hidden;
       contain: layout style paint;
     }
 
-    /* デスクトップ背景のウィンタースカイグラデーション */
-    .winter-sky-bg {
-      background: linear-gradient(155deg, #d7ebfa 0%, #e7f3fc 45%, #cfe5f7 100%);
-    }
-
-    /* 全画面ビネット */
+    /* 写真の美しさを損なわず、下部テキストの可読性をしっかり守るシネマティックビネット */
     .photo-vignette {
       background: linear-gradient(
         180deg,
-        rgba(9, 13, 22, 0.65) 0%,
-        rgba(9, 13, 22, 0.06) 24%,
-        rgba(9, 13, 22, 0.14) 38%,
-        rgba(9, 13, 22, 0.82) 62%,
-        rgba(9, 13, 22, 0.97) 100%
+        rgba(12, 16, 22, 0.72) 0%,
+        rgba(12, 16, 22, 0.12) 24%,
+        rgba(12, 16, 22, 0.16) 38%,
+        rgba(12, 16, 22, 0.84) 60%,
+        rgba(12, 16, 22, 0.98) 100%
       );
     }
 
@@ -77,18 +85,18 @@
     .infeed-vignette {
       background: linear-gradient(
         180deg,
-        rgba(8, 18, 34, 0.82) 0%,
-        rgba(8, 18, 34, 0.72) 45%,
-        rgba(8, 18, 34, 0.97) 100%
+        rgba(14, 19, 26, 0.86) 0%,
+        rgba(14, 19, 26, 0.78) 45%,
+        rgba(14, 19, 26, 0.98) 100%
       );
     }
 
     .text-shadow-strong {
-      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.85), 0 1px 3px rgba(0, 0, 0, 0.9);
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8), 0 1px 3px rgba(0, 0, 0, 0.9);
     }
 
     .text-shadow-body {
-      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.92), 0 1px 2px rgba(0, 0, 0, 0.95);
+      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.9), 0 1px 2px rgba(0, 0, 0, 0.95);
     }
 
     .clamp-review {
@@ -98,113 +106,114 @@
       overflow: hidden;
     }
 
-    /* アクティブスライドのみKen Burnsアニメーションを実行して負荷軽減 */
+    /* アクティブスライドのみ緩やかなKen Burnsアニメーションを実行 */
     @keyframes kenBurns {
       0% { transform: scale3d(1, 1, 1); }
-      100% { transform: scale3d(1.06, 1.06, 1); }
+      100% { transform: scale3d(1.05, 1.05, 1); }
     }
     .active-slide .bg-photo {
-      animation: kenBurns 12s ease-out forwards;
+      animation: kenBurns 14s ease-out forwards;
       will-change: transform;
     }
 
     @keyframes swipeHintFloat {
       0%, 100% { transform: translateY(0); opacity: 0.94; }
-      50% { transform: translateY(-6px); opacity: 1; }
+      50% { transform: translateY(-5px); opacity: 1; }
     }
     .animate-swipe-hint {
-      animation: swipeHintFloat 1.8s ease-in-out infinite;
+      animation: swipeHintFloat 2s ease-in-out infinite;
     }
 
     .safe-top { padding-top: max(14px, env(safe-area-inset-top)); }
-    .safe-bottom { padding-bottom: max(18px, env(safe-area-inset-bottom)); }
+    .safe-bottom { padding-bottom: max(20px, env(safe-area-inset-bottom)); }
   </style>
 </head>
-<body class="text-slate-800 select-none winter-sky-bg">
+<body class="text-ink select-none bg-ink lg:bg-paper">
 
-  <!-- デスクトップ向け雪アニメーション＆左説明・右リール配置 -->
-  <div class="fixed inset-0 w-full h-full flex items-center justify-center winter-sky-bg overflow-hidden">
+  <!-- デスクトップ2カラム／モバイル全画面コンテナ -->
+  <div class="fixed inset-0 w-full h-full flex items-center justify-center bg-ink lg:bg-paper overflow-hidden">
 
-    <!-- 降雪Canvasレイヤー（デスクトップ表示用） -->
-    <canvas id="snow-canvas" class="hidden lg:block fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
+    <div class="relative z-10 w-full max-w-[1060px] h-full lg:px-10 flex items-center justify-center lg:justify-between gap-14">
 
-    <!-- 2カラムコンテナ：左にサービス紹介、右にリール本体 -->
-    <div class="relative z-10 w-full max-w-[1080px] h-full lg:px-10 flex items-center justify-center lg:justify-between gap-12">
-
-      <!-- 左カラム：ロゴ＆サービス紹介（デスクトップのみ表示） -->
-      <aside class="hidden lg:flex flex-col justify-center max-w-[490px] text-left">
-        <div class="mb-6">
-          <a href="https://www.hopper.earth/hp/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center hover:opacity-85 transition-opacity">
-            <img src="logo.png" alt="EARTH HOPPER" class="h-14 w-auto object-contain"
+      <!-- デスクトップ左カラム：LPと統一したエディトリアルなブランドプレゼンテーション -->
+      <aside class="hidden lg:flex flex-col justify-center max-w-[470px] text-left">
+        <div class="mb-7">
+          <a href="https://www.hopper.earth/hp/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center hover:opacity-80 transition-opacity">
+            <img src="logo.png" alt="EARTH HOPPER" class="h-12 w-auto object-contain"
                  onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
-            <span style="display:none;" class="items-center gap-2 font-eng font-black text-2xl tracking-wider text-slate-900">
-              <span class="w-3.5 h-3.5 rounded-full bg-brand inline-block"></span>EARTH HOPPER
+            <span style="display:none;" class="items-center gap-2 font-eng font-extrabold text-xl tracking-widest text-ink">
+              <span class="w-3 h-3 rounded-full bg-brand inline-block"></span>EARTH HOPPER
             </span>
           </a>
         </div>
 
-        <h1 class="text-[38px] xl:text-[42px] font-black leading-[1.28] tracking-tight text-slate-900 mb-4">
-          日本中をあなたの、<br>
-          <span class="text-brand">ホームゲレンデに。</span>
+        <div class="inline-flex items-center gap-2.5 mb-4">
+          <span class="w-5 h-[1.5px] bg-brand"></span>
+          <span class="font-eng text-[11px] font-bold tracking-[0.22em] text-brand uppercase">
+            HOPPER'S REVIEWS
+          </span>
+        </div>
+
+        <h1 class="text-[38px] xl:text-[42px] font-black leading-[1.24] tracking-tight text-ink mb-5">
+          まだ知らない、<br>
+          最高の雪山へ。<br>
+          <span class="text-brand">日本中をホッピング。</span>
         </h1>
 
-        <p class="text-[15px] text-slate-600 leading-[1.8] font-medium mb-7">
-          その日の雪質や天気に合わせて、行きたい山を自由に選ぼう。<br>
-          アースホッパーは、<strong class="text-slate-900 font-bold">全国約50スキー場のリフト券をスマホひとつで当日購入・発券できる</strong>サービスです。
+        <p class="text-[15px] text-muted leading-[1.85] font-normal mb-8">
+          リアルなレビューから、次の週末に行きたいゲレンデを発見しよう。<br>
+          アースホッパーは、<strong class="text-ink font-bold">全国約50スキー場のリフト券をLINEひとつで当日購入・発券</strong>できる「雪山の旅パス」です。
         </p>
 
-        <!-- 3つのメリットカード -->
-        <div class="grid grid-cols-3 gap-3 mb-7">
-          <div class="bg-white/95 border border-white rounded-2xl p-4 shadow-[0_8px_24px_-8px_rgba(15,23,42,0.1)]">
-            <div class="text-xl mb-1.5">📱</div>
-            <p class="text-[11px] font-bold text-slate-400 mb-0.5">登録・年会費</p>
-            <p class="text-base font-black text-slate-900 leading-tight">ずっと 0円</p>
-            <p class="text-[11px] text-slate-500 mt-1 leading-snug">LINEを開くだけですぐ使える</p>
+        <!-- 3つの誠実なファクト（会員登録不要で統一） -->
+        <div class="grid grid-cols-3 gap-4 py-5 border-y border-stone-300/80 mb-8">
+          <div>
+            <p class="text-[11px] font-bold text-muted mb-1">ご利用手続き</p>
+            <p class="text-xl font-black text-ink leading-8">会員登録不要</p>
+            <p class="text-[11px] text-muted mt-0.5">LINEを開くだけですぐ使える</p>
           </div>
-
-          <div class="bg-white/95 border border-white rounded-2xl p-4 shadow-[0_8px_24px_-8px_rgba(15,23,42,0.1)]">
-            <div class="text-xl mb-1.5">🏔️</div>
-            <p class="text-[11px] font-bold text-slate-400 mb-0.5">対象ゲレンデ</p>
-            <p class="text-base font-black text-slate-900 leading-tight">全国 約50施設</p>
-            <p class="text-[11px] text-slate-500 mt-1 leading-snug">当日スマホでそのまま発券OK</p>
+          <div>
+            <p class="text-[11px] font-bold text-muted mb-1">提携ゲレンデ</p>
+            <p class="text-xl font-black text-ink leading-8">約50施設</p>
+            <p class="text-[11px] text-muted mt-0.5">いつもの山も初めての山も</p>
           </div>
-
-          <div class="bg-white/95 border border-white rounded-2xl p-4 shadow-[0_8px_24px_-8px_rgba(15,23,42,0.1)]">
-            <div class="text-xl mb-1.5">🎟️</div>
-            <p class="text-[11px] font-bold text-slate-400 mb-0.5">滑るほど貯まる</p>
-            <p class="text-base font-black text-brand leading-tight">マイル還元つき</p>
-            <p class="text-[11px] text-slate-500 mt-1 leading-snug">次回以降のチケット割引に利用</p>
+          <div>
+            <p class="text-[11px] font-bold text-muted mb-1">ポイント還元</p>
+            <p class="text-xl font-black text-brand leading-8">最大20%</p>
+            <p class="text-[11px] text-muted mt-0.5">滑るほどマイルが貯まる</p>
           </div>
         </div>
 
-        <!-- アクション導線 -->
+        <!-- デスクトップアクション：品格ある2ボタン -->
         <div class="flex items-center gap-3">
           <a href="https://lin.ee/zXFhtBh" target="_blank" rel="noopener noreferrer"
-             class="bg-line hover:bg-lineHover text-white font-black text-sm py-3.5 px-6 rounded-xl inline-flex items-center justify-center gap-2.5 shadow-[0_10px_24px_-6px_rgba(6,199,85,0.45)] transition-all hover:-translate-y-0.5 active:scale-95">
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-              <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63h-1.401v.866h1.401c.349 0 .63.283.63.63 0 .346-.281.63-.63.63h-2.032a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63h2.032c.349 0 .63.282.63.63 0 .348-.281.63-.63.63h-1.401v.881h1.401zm-5.228 2.757h-.01a.631.631 0 0 1-.502-.25l-2.003-2.673v2.292c0 .348-.282.63-.63.63a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.63-.63.218 0 .412.112.524.283l1.986 2.646V7.086c0-.348.282-.63.63-.63a.632.632 0 0 1 .631.63v5.534a.631.631 0 0 1-.625.63zm-5.617 0a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63a.632.632 0 0 1 .63.63v5.534a.632.632 0 0 1-.63.63zm-2.479 0H4.01a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63a.632.632 0 0 1 .63.63v4.903h2.031c.349 0 .63.283.63.63 0 .346-.281.63-.63.63zM24 10.614c0-5.304-5.378-9.614-12-9.614S0 5.31 0 10.614c0 4.754 4.264 8.72 10.027 9.475.39.084.922.258 1.057.592.122.303.079.778.039 1.085l-.171 1.027c-.053.303-.242 1.186 1.039.647 1.281-.54 6.911-4.069 9.428-6.967C23.068 14.708 24 12.77 24 10.614z"/>
-            </svg>
+             class="h-13 py-3.5 px-7 rounded-full bg-ink hover:bg-slate-800 text-white font-black text-sm inline-flex items-center justify-center gap-2.5 shadow-[0_12px_28px_-8px_rgba(20,25,31,0.3)] transition-transform active:scale-95">
+            <span class="w-5 h-5 rounded-full bg-line flex items-center justify-center shrink-0">
+              <svg class="w-3 h-3 fill-white" viewBox="0 0 24 24">
+                <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63h-1.401v.866h1.401c.349 0 .63.283.63.63 0 .346-.281.63-.63.63h-2.032a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63h2.032c.349 0 .63.282.63.63 0 .348-.281.63-.63.63h-1.401v.881h1.401zm-5.228 2.757h-.01a.631.631 0 0 1-.502-.25l-2.003-2.673v2.292c0 .348-.282.63-.63.63a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.63-.63.218 0 .412.112.524.283l1.986 2.646V7.086c0-.348.282-.63.63-.63a.632.632 0 0 1 .631.63v5.534a.631.631 0 0 1-.625.63zm-5.617 0a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63a.632.632 0 0 1 .63.63v5.534a.632.632 0 0 1-.63.63zm-2.479 0H4.01a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63a.632.632 0 0 1 .63.63v4.903h2.031c.349 0 .63.283.63.63 0 .346-.281.63-.63.63zM24 10.614c0-5.304-5.378-9.614-12-9.614S0 5.31 0 10.614c0 4.754 4.264 8.72 10.027 9.475.39.084.922.258 1.057.592.122.303.079.778.039 1.085l-.171 1.027c-.053.303-.242 1.186 1.039.647 1.281-.54 6.911-4.069 9.428-6.967C23.068 14.708 24 12.77 24 10.614z"/>
+              </svg>
+            </span>
             <span>LINEでおトクに遊ぶ</span>
           </a>
 
           <a href="https://www.hopper.earth/hp/" target="_blank" rel="noopener noreferrer"
-             class="bg-white/90 hover:bg-white text-slate-700 hover:text-brand border border-white font-bold text-xs py-3.5 px-4 rounded-xl inline-flex items-center gap-1.5 shadow-sm transition-all">
+             class="py-3.5 px-5 rounded-full bg-white hover:bg-paperDark text-ink border border-stone-300/80 font-bold text-xs inline-flex items-center gap-1.5 transition-colors">
             <span>サービスについて</span>
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <svg class="w-3.5 h-3.5 text-muted" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
             </svg>
           </a>
         </div>
       </aside>
 
-      <!-- 右カラム：メインアプリコンテナ -->
-      <main id="app-shell" class="relative w-full h-full lg:w-[430px] lg:h-[92vh] lg:max-h-[880px] lg:rounded-[2.4rem] lg:overflow-hidden lg:border-[6px] lg:border-white lg:shadow-[0_28px_70px_-12px_rgba(15,23,42,0.28)] bg-slate-950 text-white flex flex-col shrink-0">
+      <!-- 右カラム：メインレビューコンテナ（モバイル全画面／デスクトップデバイス枠） -->
+      <main id="app-shell" class="relative w-full h-full lg:w-[430px] lg:h-[92vh] lg:max-h-[880px] lg:rounded-[2.4rem] lg:overflow-hidden lg:border-[6px] lg:border-white lg:shadow-[0_28px_70px_-14px_rgba(20,25,31,0.22)] bg-ink text-white flex flex-col shrink-0">
 
         <!-- トップオーバーレイ：ロゴ＆タグフィルター -->
-        <header class="absolute top-0 left-0 right-0 z-30 safe-top px-4 pb-2 pointer-events-none">
+        <header class="absolute top-0 left-0 right-0 z-30 safe-top px-4 pb-2.5 pointer-events-none">
           <div class="flex items-center justify-between pointer-events-auto">
             <a href="https://www.hopper.earth/hp/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 hover:opacity-90 transition-opacity">
-              <img src="logo.png" alt="EARTH HOPPER" class="h-9 sm:h-10 w-auto object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+              <img src="logo.png" alt="EARTH HOPPER" class="h-10 sm:h-11 w-auto object-contain drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)]"
                    onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
               <span style="display:none;" class="items-center gap-1.5 font-eng font-black text-lg tracking-wider text-white text-shadow-strong">
                 <span class="w-3 h-3 rounded-full bg-brand inline-block"></span>EARTH HOPPER
@@ -212,25 +221,25 @@
             </a>
 
             <!-- 右上カウンター：「#すべて」以外のタグ選択時のみ表示 -->
-            <span id="counter-pill" class="hidden px-3 py-1 rounded-full bg-black/65 border border-white/20 text-xs font-eng font-bold tracking-wider text-white">
+            <span id="counter-pill" class="hidden px-3.5 py-1.5 rounded-full bg-black/75 border border-white/25 text-sm font-eng font-bold tracking-wider text-white shadow-sm">
               1 / 1
             </span>
           </div>
 
           <!-- 横スクロール タグフィルター -->
-          <div id="tag-bar" class="mt-2.5 flex items-center gap-2 overflow-x-auto no-scrollbar pointer-events-auto py-0.5">
+          <div id="tag-bar" class="mt-3 flex items-center gap-2 overflow-x-auto no-scrollbar pointer-events-auto py-1">
             <!-- JSで生成 -->
           </div>
         </header>
 
-        <!-- 縦スワイプ フィードコンテナ（scroll-smoothを除外してスワイプ追従性を最適化） -->
+        <!-- 縦スワイプ フィードコンテナ -->
         <div id="feed-container" class="w-full h-full overflow-y-scroll snap-y snap-mandatory no-scrollbar relative">
           <!-- スライドが動的に挿入されます -->
         </div>
 
         <!-- トースト通知 -->
-        <div id="toast" class="pointer-events-none fixed left-1/2 top-28 -translate-x-1/2 z-50 opacity-0 transition-all duration-300 translate-y-2 max-w-[90vw]">
-          <div class="px-4 py-2.5 rounded-2xl bg-slate-900/95 border border-white/20 text-xs sm:text-sm font-bold text-white shadow-2xl flex items-center gap-2 text-center leading-snug">
+        <div id="toast" class="pointer-events-none fixed left-1/2 top-32 -translate-x-1/2 z-50 opacity-0 transition-all duration-300 translate-y-2 max-w-[90vw]">
+          <div class="px-4 py-3 rounded-2xl bg-ink/95 border border-white/20 text-sm font-bold text-white shadow-2xl flex items-center gap-2 text-center leading-snug">
             <span id="toast-icon" class="shrink-0 text-base">📋</span>
             <span id="toast-text">コピーしました</span>
           </div>
@@ -241,81 +250,6 @@
   </div>
 
   <script>
-    // ------------------------------------------------------------------
-    // 0. デスクトップ背景の降雪アニメーション
-    // ------------------------------------------------------------------
-    (function initSnowAnimation() {
-      const canvas = document.getElementById('snow-canvas');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (prefersReduced) return;
-
-      let width = 0;
-      let height = 0;
-      let flakes = [];
-
-      function createFlake(randomY = false) {
-        const isForeground = Math.random() < 0.3;
-        return {
-          x: Math.random() * (width || window.innerWidth),
-          y: randomY ? Math.random() * (height || window.innerHeight) : -15,
-          r: isForeground ? (Math.random() * 3.8 + 4.2) : (Math.random() * 2.2 + 2.0),
-          speedY: isForeground ? (Math.random() * 0.9 + 0.85) : (Math.random() * 0.5 + 0.4),
-          swayAmp: isForeground ? (Math.random() * 0.8 + 0.5) : (Math.random() * 0.4 + 0.2),
-          swaySpeed: Math.random() * 0.018 + 0.008,
-          phase: Math.random() * Math.PI * 2,
-          alpha: isForeground ? (Math.random() * 0.15 + 0.82) : (Math.random() * 0.2 + 0.65),
-          isForeground
-        };
-      }
-
-      function resize() {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-        const count = Math.min(120, Math.max(70, Math.floor(width / 13)));
-        flakes = Array.from({ length: count }, () => createFlake(true));
-      }
-
-      function render() {
-        if (window.innerWidth >= 1024) {
-          ctx.clearRect(0, 0, width, height);
-
-          for (const f of flakes) {
-            f.phase += f.swaySpeed;
-            f.y += f.speedY;
-            f.x += Math.sin(f.phase) * f.swayAmp;
-
-            if (f.y > height + 15) {
-              Object.assign(f, createFlake(false));
-            }
-            if (f.x > width + 15) f.x = -15;
-            if (f.x < -15) f.x = width + 15;
-
-            ctx.save();
-            ctx.shadowColor = 'rgba(0, 147, 212, 0.22)';
-            ctx.shadowBlur = f.isForeground ? 8 : 4;
-
-            const grad = ctx.createRadialGradient(f.x, f.y, 0, f.x, f.y, f.r);
-            grad.addColorStop(0, `rgba(255, 255, 255, ${f.alpha})`);
-            grad.addColorStop(0.65, `rgba(255, 255, 255, ${f.alpha * 0.85})`);
-            grad.addColorStop(1, 'rgba(255, 255, 255, 0)');
-
-            ctx.fillStyle = grad;
-            ctx.beginPath();
-            ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.restore();
-          }
-        }
-        requestAnimationFrame(render);
-      }
-
-      window.addEventListener('resize', resize);
-      resize();
-      render();
-    })();
-
     // ------------------------------------------------------------------
     // 1. ゲレンデ背景写真プール
     // ------------------------------------------------------------------
@@ -350,8 +284,9 @@
     // ------------------------------------------------------------------
     const LINE_URL = 'https://lin.ee/zXFhtBh';
     const HP_URL = 'https://www.hopper.earth/hp/';
-    const FIRST_INFEED_AT = 3; // 新規リードの離脱前に認知・LINE誘導するため3枚目の直後に表示
-    const INFEED_INTERVAL = 4; // 以降は4枚ごとに表示
+    const REVIEW_PUBLIC_URL = 'https://www.hopper.earth/review';
+    const FIRST_INFEED_AT = 3; // 3枚目のレビューの直後に案内カードを挿入
+    const INFEED_INTERVAL = 4; // 以降は4枚ごとに挿入
 
     let allReviews = [];
     let filteredReviews = [];
@@ -399,7 +334,7 @@
     }
 
     let toastTimer;
-    function showToast(text, icon = '📋', duration = 2600) {
+    function showToast(text, icon = '📋', duration = 2800) {
       const toast = document.getElementById('toast');
       document.getElementById('toast-text').textContent = text;
       document.getElementById('toast-icon').textContent = icon;
@@ -413,12 +348,12 @@
     }
 
     // ------------------------------------------------------------------
-    // 3. データ読み込み＆URLパラメータ制御
+    // 3. データ読み込み
     // ------------------------------------------------------------------
     async function init() {
       let rawData = [];
       try {
-        const res = await fetch('./reels.json', { cache: 'no-store' });
+        const res = await fetch('./review.json', { cache: 'no-store' });
         if (!res.ok) throw new Error('HTTP ' + res.status);
         rawData = await res.json();
       } catch (e) {
@@ -439,39 +374,13 @@
           };
         });
 
-      let shuffled = shuffleArray(cleaned);
-
-      const params = new URLSearchParams(window.location.search);
-      const targetId = params.get('r');
-      const targetResort = params.get('resort');
-
-      if (targetId) {
-        const idx = shuffled.findIndex(item => item.id === targetId);
-        if (idx > 0) {
-          const [targetItem] = shuffled.splice(idx, 1);
-          shuffled.unshift(targetItem);
-        } else if (idx === -1 && targetResort) {
-          const rIdx = shuffled.findIndex(item => item.resort === targetResort);
-          if (rIdx > 0) {
-            const [targetItem] = shuffled.splice(rIdx, 1);
-            shuffled.unshift(targetItem);
-          }
-        }
-      } else if (targetResort) {
-        const rIdx = shuffled.findIndex(item => item.resort === targetResort);
-        if (rIdx > 0) {
-          const [targetItem] = shuffled.splice(rIdx, 1);
-          shuffled.unshift(targetItem);
-        }
-      }
-
-      allReviews = shuffled;
+      allReviews = shuffleArray(cleaned);
       renderTagBar();
       applyFilter('すべて');
     }
 
     // ------------------------------------------------------------------
-    // 4. タグフィルター描画（保存済みタブ削除）
+    // 4. 上部タグフィルター描画
     // ------------------------------------------------------------------
     function renderTagBar() {
       const tagSet = new Set();
@@ -484,10 +393,10 @@
         return `
           <button
             data-tag="${escapeHtml(tag)}"
-            class="tag-chip shrink-0 px-3.5 py-1.5 rounded-full text-xs sm:text-[13px] font-bold tracking-wide transition-colors border ${
+            class="tag-chip shrink-0 px-4 py-2 rounded-full text-[14px] font-bold tracking-wide transition-colors border ${
               isActive
-                ? 'bg-brand text-white border-brand shadow-[0_2px_10px_rgba(0,147,212,0.5)]'
-                : 'bg-black/60 text-white/95 border-white/20 hover:bg-black/80'
+                ? 'bg-white text-ink border-white shadow-[0_4px_14px_rgba(0,0,0,0.35)]'
+                : 'bg-black/65 text-white border-white/25 hover:bg-black/85'
             }">
             ${label}
           </button>
@@ -511,63 +420,64 @@
     // ------------------------------------------------------------------
     // 5. インフィード案内カード HTML生成
     // ------------------------------------------------------------------
-    function buildInfeedCardHtml(lastResortName, photoUrl) {
-      const safeResort = escapeHtml(lastResortName || '気になったゲレンデ');
+    function buildInfeedCardHtml(photoUrl) {
       return `
-        <section class="reel-slide infeed-slide relative w-full h-full snap-start snap-always overflow-hidden flex flex-col justify-between">
+        <section class="review-slide infeed-slide relative w-full h-full snap-start snap-always overflow-hidden flex flex-col justify-between">
           <img src="${photoUrl}" alt="" loading="lazy" class="bg-photo absolute inset-0 w-full h-full object-cover object-center scale-105 pointer-events-none" />
           <div class="infeed-vignette absolute inset-0 pointer-events-none"></div>
 
           <!-- 上部ラベル -->
-          <div class="relative z-20 pt-24 sm:pt-28 px-6">
-            <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white/15 border border-white/25 text-xs font-bold tracking-wider text-sky-200">
-              <span class="w-2 h-2 rounded-full bg-line"></span>
-              EARTH HOPPERとは？
-            </span>
+          <div class="relative z-20 pt-28 sm:pt-32 px-6">
+            <div class="inline-flex items-center gap-2">
+              <span class="w-4 h-[1.5px] bg-sky-300"></span>
+              <span class="font-eng text-xs font-bold tracking-[0.2em] text-sky-300 uppercase">
+                ABOUT EARTH HOPPER
+              </span>
+            </div>
           </div>
 
-          <!-- 中央メッセージ：初見リード向けに「何か」「どう使うか」「なぜお得か」を端的に伝達 -->
+          <!-- 中央メッセージ -->
           <div class="relative z-20 px-6 my-auto">
-            <p class="text-[13px] sm:text-sm font-bold text-sky-300 mb-2 tracking-wide">
-              「${safeResort}」も、思い立ったその日に。
-            </p>
-            <h2 class="text-[25px] sm:text-[28px] font-black leading-[1.32] text-white text-shadow-strong tracking-tight mb-3.5">
-              全国約50スキー場のリフト券を、<br>
-              LINEで当日購入・即発券。
+            <h2 class="text-[28px] sm:text-[31px] font-black leading-[1.28] text-white text-shadow-strong tracking-tight mb-4">
+              まだ知らない、<br>
+              最高の雪山へ。<br>
+              <span class="text-sky-300">日本中をホッピング。</span>
             </h2>
-            <p class="text-[14px] sm:text-[15px] leading-[1.7] text-white/90 font-medium mb-4">
-              その日の雪質や天気で行き先を決めてOK。面倒な会員登録なしで、滑るたびに次回割引に使えるマイルも貯まります。
+            <p class="text-[15px] sm:text-[16px] leading-[1.78] text-white/90 font-normal mb-6">
+              全国約50スキー場のリフト券を、LINEひとつで当日購入・QR発券。面倒な会員登録は不要で、滑るたびに次の新しい山へ使えるマイルも貯まります。
             </p>
 
-            <!-- 初見ユーザーの不安を解消する利用3ステップ -->
-            <div class="grid grid-cols-3 gap-2 mb-4">
-              <div class="rounded-xl bg-white/10 border border-white/15 p-2.5 text-center">
-                <div class="text-xs font-eng font-black text-line mb-0.5">STEP 1</div>
-                <p class="text-[11px] sm:text-xs font-bold text-white leading-snug">LINE友だち追加<br><span class="text-white/70 font-normal">（登録・年会費0円）</span></p>
+            <!-- 3つの事実 -->
+            <div class="grid grid-cols-3 gap-3 pt-4 border-t border-white/15">
+              <div>
+                <span class="block text-white/60 text-xs font-medium mb-0.5">ご利用手続き</span>
+                <span class="text-base font-black text-white">会員登録不要</span>
               </div>
-              <div class="rounded-xl bg-white/10 border border-white/15 p-2.5 text-center">
-                <div class="text-xs font-eng font-black text-sky-300 mb-0.5">STEP 2</div>
-                <p class="text-[11px] sm:text-xs font-bold text-white leading-snug">当日ゲレンデ選択<br><span class="text-white/70 font-normal">（スマホで即決済）</span></p>
+              <div>
+                <span class="block text-white/60 text-xs font-medium mb-0.5">提携ゲレンデ</span>
+                <span class="text-base font-black text-white">約50施設</span>
               </div>
-              <div class="rounded-xl bg-white/10 border border-white/15 p-2.5 text-center">
-                <div class="text-xs font-eng font-black text-amber-300 mb-0.5">STEP 3</div>
-                <p class="text-[11px] sm:text-xs font-bold text-white leading-snug">QRコードで発券<br><span class="text-white/70 font-normal">（滑るほどマイル還元）</span></p>
+              <div>
+                <span class="block text-white/60 text-xs font-medium mb-0.5">ポイント還元</span>
+                <span class="text-base font-black text-sky-300">最大20%</span>
               </div>
             </div>
           </div>
 
-          <!-- 下部アクションエリア：メインCTA＆同格ボタン化した「サービスについて」 -->
-          <div class="relative z-20 px-5 safe-bottom pt-2 space-y-2.5">
+          <!-- 下部アクションエリア -->
+          <div class="relative z-20 px-6 safe-bottom pt-3 space-y-2.5">
             <a href="${LINE_URL}" target="_blank" rel="noopener noreferrer"
-               class="w-full h-14 rounded-2xl bg-line hover:bg-lineHover text-white font-black text-[16px] flex items-center justify-center gap-2.5 shadow-[0_8px_24px_rgba(6,199,85,0.42)] transition-transform active:scale-95">
-              <svg class="w-6 h-6 fill-current shrink-0" viewBox="0 0 24 24">
-                <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63h-1.401v.866h1.401c.349 0 .63.283.63.63 0 .346-.281.63-.63.63h-2.032a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63h2.032c.349 0 .63.282.63.63 0 .348-.281.63-.63.63h-1.401v.881h1.401zm-5.228 2.757h-.01a.631.631 0 0 1-.502-.25l-2.003-2.673v2.292c0 .348-.282.63-.63.63a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.63-.63.218 0 .412.112.524.283l1.986 2.646V7.086c0-.348.282-.63.63-.63a.632.632 0 0 1 .631.63v5.534a.631.631 0 0 1-.625.63zm-5.617 0a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63a.632.632 0 0 1 .63.63v5.534a.632.632 0 0 1-.63.63zm-2.479 0H4.01a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63a.632.632 0 0 1 .63.63v4.903h2.031c.349 0 .63.283.63.63 0 .346-.281.63-.63.63zM24 10.614c0-5.304-5.378-9.614-12-9.614S0 5.31 0 10.614c0 4.754 4.264 8.72 10.027 9.475.39.084.922.258 1.057.592.122.303.079.778.039 1.085l-.171 1.027c-.053.303-.242 1.186 1.039.647 1.281-.54 6.911-4.069 9.428-6.967C23.068 14.708 24 12.77 24 10.614z"/>
-              </svg>
+               class="w-full h-14 rounded-2xl bg-white hover:bg-paper text-ink font-black text-[16px] flex items-center justify-center gap-2.5 shadow-[0_12px_30px_rgba(0,0,0,0.38)] transition-transform active:scale-95">
+              <span class="w-6 h-6 rounded-full bg-line flex items-center justify-center shrink-0">
+                <svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24">
+                  <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63h-1.401v.866h1.401c.349 0 .63.283.63.63 0 .346-.281.63-.63.63h-2.032a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63h2.032c.349 0 .63.282.63.63 0 .348-.281.63-.63.63h-1.401v.881h1.401zm-5.228 2.757h-.01a.631.631 0 0 1-.502-.25l-2.003-2.673v2.292c0 .348-.282.63-.63.63a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.63-.63.218 0 .412.112.524.283l1.986 2.646V7.086c0-.348.282-.63.63-.63a.632.632 0 0 1 .631.63v5.534a.631.631 0 0 1-.625.63zm-5.617 0a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63a.632.632 0 0 1 .63.63v5.534a.632.632 0 0 1-.63.63zm-2.479 0H4.01a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63a.632.632 0 0 1 .63.63v4.903h2.031c.349 0 .63.283.63.63 0 .346-.281.63-.63.63zM24 10.614c0-5.304-5.378-9.614-12-9.614S0 5.31 0 10.614c0 4.754 4.264 8.72 10.027 9.475.39.084.922.258 1.057.592.122.303.079.778.039 1.085l-.171 1.027c-.053.303-.242 1.186 1.039.647 1.281-.54 6.911-4.069 9.428-6.967C23.068 14.708 24 12.77 24 10.614z"/>
+                </svg>
+              </span>
               <span>LINEでおトクに遊ぶ</span>
             </a>
 
             <a href="${HP_URL}" target="_blank" rel="noopener noreferrer"
-               class="w-full h-12 rounded-2xl bg-white/15 hover:bg-white/25 border border-white/25 text-white/90 font-bold text-[14px] flex items-center justify-center gap-1.5 transition-transform active:scale-95">
+               class="w-full h-12 rounded-2xl bg-white/12 hover:bg-white/20 border border-white/20 text-white/90 font-bold text-[14px] flex items-center justify-center gap-1.5 transition-transform active:scale-95">
               <span>サービスについて</span>
               <svg class="w-4 h-4 text-white/70" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
@@ -579,20 +489,20 @@
     }
 
     // ------------------------------------------------------------------
-    // 6. フィード描画（保存ボタン削除・新規リード向け価値訴求強化）
+    // 6. フィード描画
     // ------------------------------------------------------------------
     function renderFeed() {
       const slidesHtml = [];
 
       filteredReviews.forEach((item, idx) => {
-        const isLong = item.review.length > 95 || (item.review.match(/\n/g) || []).length >= 3;
+        const isLong = item.review.length > 90 || (item.review.match(/\n/g) || []).length >= 3;
         const photoUrl = getPhotoForResort(item.resort);
         const isFirstSlide = idx === 0;
 
         const swipeGuideHtml = (isFirstSlide && !hasSwipedOnce) ? `
-          <div id="swipe-guide" class="pointer-events-none absolute top-[24%] left-1/2 -translate-x-1/2 z-30 transition-opacity duration-500 flex flex-col items-center gap-2 w-full px-4">
-            <div class="animate-swipe-hint flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-black/65 border border-white/25 shadow-lg">
-              <span class="text-xs font-bold tracking-wide text-white whitespace-nowrap">スワイプして次の口コミを見る</span>
+          <div id="swipe-guide" class="pointer-events-none absolute top-[26%] left-1/2 -translate-x-1/2 z-30 transition-opacity duration-500">
+            <div class="animate-swipe-hint flex items-center gap-2 px-4 py-2 rounded-full bg-black/70 border border-white/25 shadow-lg">
+              <span class="text-[13px] font-bold tracking-wide text-white whitespace-nowrap">スワイプして次のレビューを見る</span>
               <svg class="w-4 h-4 text-sky-300" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
               </svg>
@@ -604,7 +514,7 @@
           <section
             data-review-index="${idx}"
             data-id="${escapeHtml(item.id)}"
-            class="reel-slide review-slide relative w-full h-full snap-start snap-always overflow-hidden flex flex-col justify-end">
+            class="review-slide relative w-full h-full snap-start snap-always overflow-hidden flex flex-col justify-end">
 
             <!-- 背景写真 -->
             <img
@@ -614,71 +524,64 @@
               decoding="async"
               class="bg-photo absolute inset-0 w-full h-full object-cover object-center pointer-events-none" />
 
-            <!-- グラデーションビネット -->
+            <!-- シネマティックビネット -->
             <div class="photo-vignette absolute inset-0 pointer-events-none"></div>
 
             ${swipeGuideHtml}
 
             <!-- コンテンツエリア -->
-            <div class="relative z-20 w-full px-5 safe-bottom pt-8 flex flex-col">
+            <div class="relative z-20 w-full px-5 sm:px-6 safe-bottom pt-8 flex flex-col">
 
               <!-- スキー場名＆評価 -->
-              <div class="mb-3">
-                <div class="flex items-center gap-2 mb-1">
-                  <span class="text-amber-400 text-sm tracking-wider drop-shadow">${renderStars(item.rate)}</span>
-                  <span class="font-eng text-sm font-bold text-white/90">${item.rate}.0</span>
-                  <span class="ml-1 px-2 py-0.5 rounded bg-white/15 text-[10px] font-bold text-sky-200">アースホッパー対象施設</span>
+              <div class="mb-4">
+                <div class="flex items-center gap-2 mb-1.5">
+                  <span class="text-amber-400 text-[15px] tracking-wider drop-shadow">${renderStars(item.rate)}</span>
+                  <span class="font-eng text-[15px] font-bold text-white/95">${item.rate}.0</span>
+                  <span class="ml-1 px-2.5 py-0.5 rounded-full bg-white/15 border border-white/15 text-xs font-bold text-sky-200">提携ゲレンデ</span>
                 </div>
-                <h2 class="text-[25px] sm:text-[27px] font-black leading-[1.3] text-white text-shadow-strong tracking-tight">
+                <h2 class="text-[28px] sm:text-[30px] font-black leading-[1.26] text-white text-shadow-strong tracking-tight">
                   ${escapeHtml(item.resort)}
                 </h2>
               </div>
 
-              <!-- タグバッジ -->
-              ${item.tags.length > 0 ? `
-                <div class="flex flex-wrap gap-1.5 mb-3.5">
-                  ${item.tags.map(t => `
-                    <button
-                      data-tag="${escapeHtml(t)}"
-                      class="inline-tag px-3 py-1 rounded-full bg-white/15 hover:bg-brand/80 border border-white/25 text-xs font-bold text-white transition-colors">
-                      #${escapeHtml(t)}
-                    </button>
-                  `).join('')}
-                </div>
-              ` : ''}
-
               <!-- 主役のレビュー本文 -->
               <div class="mb-5">
-                <p class="review-body text-[20px] sm:text-[21px] leading-[1.7] font-medium text-white text-shadow-body whitespace-pre-line ${isLong ? 'clamp-review' : ''}">${escapeHtml(item.review)}</p>
+                <p class="review-body text-[21px] sm:text-[22px] leading-[1.72] font-medium text-white text-shadow-body whitespace-pre-line ${isLong ? 'clamp-review' : ''}">${escapeHtml(item.review)}</p>
                 ${isLong ? `
-                  <button class="expand-btn mt-1.5 py-1 text-[13px] font-bold text-sky-300 hover:text-white transition-colors">
+                  <button class="expand-btn mt-2 py-1 text-[14px] font-bold text-sky-300 hover:text-white transition-colors">
                     続きを読む
                   </button>
                 ` : ''}
               </div>
 
-              <!-- ボトムCTAドック：保存ボタンを廃止し、LINE導線＋共有の2ボタン構成に集約 -->
-              <div class="flex items-stretch gap-2.5 pt-3 border-t border-white/15">
-                <!-- メインCTA（新規リード向けに「何を・いくらで・どう使えるか」を明示） -->
+              <!-- ボトムCTAドック -->
+              <div class="flex items-stretch gap-2.5 pt-3.5 border-t border-white/15">
                 <a
                   href="${LINE_URL}"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="flex-1 min-w-0 h-14 px-4 rounded-2xl bg-line hover:bg-lineHover text-white shadow-[0_6px_20px_rgba(6,199,85,0.42)] flex items-center justify-center gap-2.5 transition-transform active:scale-95">
-                  <svg class="w-6 h-6 fill-current shrink-0" viewBox="0 0 24 24">
-                    <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63h-1.401v.866h1.401c.349 0 .63.283.63.63 0 .346-.281.63-.63.63h-2.032a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63h2.032c.349 0 .63.282.63.63 0 .348-.281.63-.63.63h-1.401v.881h1.401zm-5.228 2.757h-.01a.631.631 0 0 1-.502-.25l-2.003-2.673v2.292c0 .348-.282.63-.63.63a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.63-.63.218 0 .412.112.524.283l1.986 2.646V7.086c0-.348.282-.63.63-.63a.632.632 0 0 1 .631.63v5.534a.631.631 0 0 1-.625.63zm-5.617 0a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63a.632.632 0 0 1 .63.63v5.534a.632.632 0 0 1-.63.63zm-2.479 0H4.01a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63a.632.632 0 0 1 .63.63v4.903h2.031c.349 0 .63.283.63.63 0 .346-.281.63-.63.63zM24 10.614c0-5.304-5.378-9.614-12-9.614S0 5.31 0 10.614c0 4.754 4.264 8.72 10.027 9.475.39.084.922.258 1.057.592.122.303.079.778.039 1.085l-.171 1.027c-.053.303-.242 1.186 1.039.647 1.281-.54 6.911-4.069 9.428-6.967C23.068 14.708 24 12.77 24 10.614z"/>
-                  </svg>
-                  <div class="flex flex-col items-start min-w-0">
-                    <span class="text-[14px] sm:text-[15px] font-black leading-tight tracking-tight truncate w-full">LINEでリフト券を見る</span>
-                    <span class="text-[11px] font-bold text-emerald-100 leading-tight mt-0.5 truncate w-full">会員登録不要でもお得に</span>
+                  class="flex-1 min-w-0 h-14 px-4 rounded-2xl bg-ink/90 hover:bg-ink border border-white/20 text-white shadow-[0_8px_24px_rgba(0,0,0,0.4)] flex items-center justify-between gap-2.5 transition-transform active:scale-95">
+                  <div class="flex items-center gap-3 min-w-0">
+                    <span class="w-8 h-8 rounded-xl bg-line flex items-center justify-center shrink-0">
+                      <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24">
+                        <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63h-1.401v.866h1.401c.349 0 .63.283.63.63 0 .346-.281.63-.63.63h-2.032a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63h2.032c.349 0 .63.282.63.63 0 .348-.281.63-.63.63h-1.401v.881h1.401zm-5.228 2.757h-.01a.631.631 0 0 1-.502-.25l-2.003-2.673v2.292c0 .348-.282.63-.63.63a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.63-.63.218 0 .412.112.524.283l1.986 2.646V7.086c0-.348.282-.63.63-.63a.632.632 0 0 1 .631.63v5.534a.631.631 0 0 1-.625.63zm-5.617 0a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63a.632.632 0 0 1 .63.63v5.534a.632.632 0 0 1-.63.63zm-2.479 0H4.01a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63a.632.632 0 0 1 .63.63v4.903h2.031c.349 0 .63.283.63.63 0 .346-.281.63-.63.63zM24 10.614c0-5.304-5.378-9.614-12-9.614S0 5.31 0 10.614c0 4.754 4.264 8.72 10.027 9.475.39.084.922.258 1.057.592.122.303.079.778.039 1.085l-.171 1.027c-.053.303-.242 1.186 1.039.647 1.281-.54 6.911-4.069 9.428-6.967C23.068 14.708 24 12.77 24 10.614z"/>
+                      </svg>
+                    </span>
+                    <div class="flex flex-col items-start min-w-0">
+                      <span class="text-[15px] font-black leading-tight tracking-tight truncate w-full">LINEでリフト券を買う</span>
+                      <span class="text-[12px] font-medium text-white/70 leading-tight mt-0.5 truncate w-full">会員登録不要でおトクに</span>
+                    </div>
                   </div>
+                  <svg class="w-4 h-4 text-white/60 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
                 </a>
 
                 <!-- サブCTA：共有 -->
                 <button
                   data-action="share"
                   data-review-index="${idx}"
-                  class="w-[74px] shrink-0 h-14 rounded-2xl bg-black/70 hover:bg-black/90 border border-white/25 text-white font-bold text-xs flex flex-col items-center justify-center gap-1 transition-transform active:scale-95">
+                  class="w-[72px] shrink-0 h-14 rounded-2xl bg-black/75 hover:bg-black/90 border border-white/25 text-white font-bold text-[13px] flex flex-col items-center justify-center gap-1 transition-transform active:scale-95">
                   <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                   </svg>
@@ -697,7 +600,7 @@
           (currentCount > FIRST_INFEED_AT && (currentCount - FIRST_INFEED_AT) % INFEED_INTERVAL === 0);
 
         if (shouldInsertInfeed && idx < filteredReviews.length - 1) {
-          slidesHtml.push(buildInfeedCardHtml(item.resort, photoUrl));
+          slidesHtml.push(buildInfeedCardHtml(photoUrl));
         }
       });
 
@@ -708,18 +611,17 @@
     }
 
     // ------------------------------------------------------------------
-    // 7. X共有（LINE内ブラウザでのネイティブアプリ起動対応）
+    // 7. X共有（1行目【Hopper's Reviews】／📍スキー場名／ハッシュタグなし／/review）
     // ------------------------------------------------------------------
-    function buildShareUrl(item) {
+    function buildShareUrl() {
       try {
         const url = new URL(window.location.href);
+        url.pathname = '/review';
         url.search = '';
         url.hash = '';
-        url.searchParams.set('r', item.id);
-        url.searchParams.set('resort', item.resort);
         return url.toString();
       } catch (e) {
-        return `https://www.hopper.earth/reels/?r=${encodeURIComponent(item.id)}&resort=${encodeURIComponent(item.resort)}`;
+        return REVIEW_PUBLIC_URL;
       }
     }
 
@@ -746,10 +648,10 @@
     }
 
     async function shareToX(item) {
-      const shareUrl = buildShareUrl(item);
-      const footer = `\n@earth_hopper\n#Earthhopper Reels\n${shareUrl}`;
-      const header = `${item.resort}\n`;
-      const fixedVisualLen = header.length + 2 + (`\n@earth_hopper\n#Earthhopper Reels\n`).length + 14;
+      const shareUrl = buildShareUrl();
+      const header = `【Hopper's Reviews】\n📍${item.resort}\n`;
+      const footer = `\n@earth_hopper\n${shareUrl}`;
+      const fixedVisualLen = header.length + 2 + (`\n@earth_hopper\n`).length + 14;
       const maxReviewLen = Math.max(25, 136 - fixedVisualLen);
 
       let body = item.review.replace(/\n+/g, ' ');
@@ -819,7 +721,7 @@
     let slideObserver;
     function observeSlides() {
       if (slideObserver) slideObserver.disconnect();
-      const slides = feedContainer.querySelectorAll('.reel-slide');
+      const slides = feedContainer.querySelectorAll('.review-slide');
 
       slideObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -854,12 +756,6 @@
         return;
       }
 
-      const inlineTag = e.target.closest('.inline-tag');
-      if (inlineTag) {
-        applyFilter(inlineTag.dataset.tag);
-        return;
-      }
-
       const expandBtn = e.target.closest('.expand-btn');
       if (expandBtn) {
         const p = expandBtn.previousElementSibling;
@@ -874,7 +770,7 @@
         e.preventDefault();
         dismissSwipeGuide();
         const h = feedContainer.clientHeight;
-        const totalSlides = feedContainer.querySelectorAll('.reel-slide').length;
+        const totalSlides = feedContainer.querySelectorAll('.review-slide').length;
         if (totalSlides === 0) return;
         const current = Math.round(feedContainer.scrollTop / h);
         const next = e.key === 'ArrowDown'
