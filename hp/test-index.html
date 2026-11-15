@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>アースホッパー | その日の雪で、滑る山を選ぼう。</title>
+  <meta name="description" content="年会費・初期費用は一切なし。スマホひとつで全国約50のスキー場・アクティビティ施設を自由に巡れるリフト券購入プラットフォーム。決済金額の最大20%をマイル還元。">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#0284c7',
+            brandDark: '#0369a1',
+            brandLight: '#e0f2fe',
+            ink: '#0f172a',
+            accent: '#f43f5e',
+            line: '#06C755',
+            lineHover: '#05b34c'
+          },
+          fontFamily: {
+            sans: ['"Noto Sans JP"', 'sans-serif'],
+            eng: ['"Inter"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * { -webkit-tap-highlight-color: transparent; }
+    body {
+      background-color: #f8fafc;
+      color: #0f172a;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes scrollCue {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(200%); }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://www.hopper.earth/#website",
+        "url": "https://www.hopper.earth/",
+        "name": "アースホッパー",
+        "alternateName": ["EARTH HOPPER", "earth hopper"],
+        "publisher": { "@id": "https://www.hopper.earth/#organization" },
+        "inLanguage": "ja"
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://www.hopper.earth/#organization",
+        "name": "株式会社アースホッパー",
+        "alternateName": "EARTH HOPPER",
+        "url": "https://www.hopper.earth/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.hopper.earth/logo.png"
+        },
+        "sameAs": [
+          "https://lin.ee/zXFhtBh",
+          "https://note.com/earthhopper",
+          "https://prtimes.jp/main/html/searchrlp/company_id/58215"
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://www.hopper.earth/hp/#webpage",
+        "url": "https://www.hopper.earth/hp/",
+        "name": "アースホッパー | 日本中をあなたのホームゲレンデに",
+        "description": "年会費・初期費用は一切なし。スマホひとつで全国約50のスキー場・アクティビティ施設を自由に巡れるリフト券購入プラットフォーム。決済金額の最大20%をマイル還元。",
+        "isPartOf": { "@id": "https://www.hopper.earth/#website" },
+        "about": { "@id": "https://www.hopper.earth/#service" },
+        "inLanguage": "ja"
+      },
+      {
+        "@type": "Service",
+        "@id": "https://www.hopper.earth/#service",
+        "name": "アースホッパー（EARTH HOPPER）",
+        "serviceType": "スキー場リフト券・アウトドアアクティビティ施設利用券購入プラットフォーム",
+        "provider": { "@id": "https://www.hopper.earth/#organization" },
+        "description": "全国約50の提携スキー場およびアウトドアアクティビティ施設（MTB、SUP、Citywave等）のチケットをLINEで購入・発券できるサービス。決済金額の最大20%がマイル還元され、次回以降のチケット購入に利用可能です。",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "JPY",
+          "description": "年会費・初期費用無料（チケット代金は各施設の当日窓口価格に準拠）"
+        },
+        "areaServed": { "@type": "Country", "name": "JP" }
+      },
+      {
+        "@type": "HowTo",
+        "@id": "https://www.hopper.earth/hp/#howto",
+        "name": "アースホッパーの利用手順（スマホひとつで完結する3ステップ）",
+        "description": "LINE公式アカウントからチケットを購入し、現地の発券機で発券してアクティビティを楽しむまでの手順。",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "position": 1,
+            "name": "LINEでチケット購入",
+            "text": "いつでもどこでもキャッシュレス決済で購入します。"
+          },
+          {
+            "@type": "HowToStep",
+            "position": 2,
+            "name": "自動発券機でQR発券",
+            "text": "現地の自動発券機（または窓口）で、簡単QR発券します。"
+          },
+          {
+            "@type": "HowToStep",
+            "position": 3,
+            "name": "そのままフィールドへ！",
+            "text": "チケットを受け取ったら、あとは全力で楽しむだけ！"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.hopper.earth/hp/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "チケットの価格はいくらですか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "各施設の当日の窓口価格に準拠します。価格はLINE公式アカウントで確認いただけます。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "支払い方法は何が使えますか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "クレジットカード、PayPay、楽天ペイがご利用いただけます。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "家族や子供のチケットも一緒に買えますか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "はい。大人1枚のご購入につき、子供用チケットを2枚まで同時にご購入いただけます。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "同じ施設を何度も利用できますか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "各施設につき、年2回まで利用可能です。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "獲得したマイルに有効期限はありますか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "最終利用日から1年間となります。期間内に再度ご利用いただければ延長されます。"
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="w-full relative overflow-x-hidden font-sans text-ink selection:bg-brand selection:text-white">
+
+  <!-- =====================================================================
+       HEADER：透明感と視認性を両立したミニマルナビゲーション
+  ====================================================================== -->
+  <header id="site-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+    <div class="max-w-6xl mx-auto px-5 h-16 md:h-20 flex justify-between items-center">
+      <a href="/hp/" class="flex items-center gap-2 transition-opacity hover:opacity-85">
+        <img src="logo.png" alt="EARTH HOPPER" class="h-9 md:h-11 w-auto object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]">
+      </a>
+      
+      <nav class="hidden md:flex items-center gap-8 text-sm font-bold text-white/90 drop-shadow-[0_1px_6px_rgba(0,0,0,0.6)]">
+        <a href="#playground" class="hover:text-white transition-colors">提携施設</a>
+        <a href="#how-to-use" class="hover:text-white transition-colors">使い方</a>
+        <a href="#benefits" class="hover:text-white transition-colors">マイル還元</a>
+        <a href="#faq" class="hover:text-white transition-colors">よくある質問</a>
+      </nav>
+
+      <div class="flex items-center gap-2.5">
+        <a href="/reels/" class="px-3.5 py-2 rounded-full bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/20 text-white text-xs font-bold transition-colors">
+          ゲレンデ口コミ
+        </a>
+        <a href="https://lin.ee/zXFhtBh" target="_blank" rel="noopener noreferrer"
+           class="px-4 py-2 rounded-full bg-white hover:bg-slate-100 text-ink text-xs font-black inline-flex items-center gap-1.5 shadow-sm transition-transform active:scale-95">
+          <span class="w-2 h-2 rounded-full bg-line"></span>
+          <span>LINEで開く</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       HERO：リールから流入した新規リードが「10秒で全体像を理解する」ファーストビュー
+  ====================================================================== -->
+  <section class="relative min-h-[92vh] md:min-h-screen flex items-center justify-center overflow-hidden bg-slate-950 text-white">
+    <div class="absolute inset-0 w-full h-full z-0">
+      <video src="/hp/hero.mp4" autoplay loop muted playsinline class="w-full h-full object-cover scale-105"></video>
+      <div class="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-slate-950/45 to-slate-950/90 z-10"></div>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-5 relative z-20 w-full pt-24 pb-20 text-center">
+      <p class="font-eng text-[11px] md:text-xs font-bold tracking-[0.25em] text-sky-300 uppercase mb-4">
+        SKIER'S FREE PASS &amp; MILEAGE PLATFORM
+      </p>
+
+      <h1 class="text-[34px] sm:text-5xl md:text-6xl lg:text-[64px] font-black text-white leading-[1.22] tracking-tight mb-6">
+        その日の雪で、<br>
+        滑る山を選ぼう。
+      </h1>
+
+      <p class="text-[15px] sm:text-lg md:text-xl font-medium text-slate-200 leading-[1.8] max-w-2xl mx-auto mb-9">
+        日本中をあなたのホームゲレンデに。<br class="hidden sm:block">
+        全国約50スキー場のリフト券を、<strong class="text-white font-bold">LINEひとつで当日購入・発券</strong>できる新しい雪山パスです。
+      </p>
+
+      <!-- 初見ユーザーの疑問を即座に解消する3つのファクト -->
+      <div class="max-w-xl mx-auto grid grid-cols-3 gap-2 sm:gap-4 p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 mb-10">
+        <div>
+          <p class="text-[11px] text-slate-300 font-medium mb-0.5">登録・年会費</p>
+          <p class="font-eng text-xl sm:text-2xl font-black text-white">¥0</p>
+        </div>
+        <div class="border-x border-white/15">
+          <p class="text-[11px] text-slate-300 font-medium mb-0.5">対象ゲレンデ</p>
+          <p class="text-lg sm:text-xl font-black text-white">全国 約50施設</p>
+        </div>
+        <div>
+          <p class="text-[11px] text-slate-300 font-medium mb-0.5">滑るほど貯まる</p>
+          <p class="text-lg sm:text-xl font-black text-sky-300">最大20%還元</p>
+        </div>
+      </div>
+
+      <!-- 品格のあるデュアルアクション -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 max-w-md sm:max-w-none mx-auto">
+        <a href="https://lin.ee/zXFhtBh" target="_blank" rel="noopener noreferrer"
+           class="w-full sm:w-auto h-14 px-8 rounded-full bg-white hover:bg-slate-100 text-ink font-black text-[15px] inline-flex items-center justify-center gap-2.5 shadow-[0_14px_34px_rgba(0,0,0,0.35)] transition-transform active:scale-95">
+          <span class="w-6 h-6 rounded-full bg-line flex items-center justify-center shrink-0">
+            <svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24">
+              <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63h-1.401v.866h1.401c.349 0 .63.283.63.63 0 .346-.281.63-.63.63h-2.032a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63h2.032c.349 0 .63.282.63.63 0 .348-.281.63-.63.63h-1.401v.881h1.401zm-5.228 2.757h-.01a.631.631 0 0 1-.502-.25l-2.003-2.673v2.292c0 .348-.282.63-.63.63a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.63-.63.218 0 .412.112.524.283l1.986 2.646V7.086c0-.348.282-.63.63-.63a.632.632 0 0 1 .631.63v5.534a.631.631 0 0 1-.625.63zm-5.617 0a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63a.632.632 0 0 1 .63.63v5.534a.632.632 0 0 1-.63.63zm-2.479 0H4.01a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63a.632.632 0 0 1 .63.63v4.903h2.031c.349 0 .63.283.63.63 0 .346-.281.63-.63.63zM24 10.614c0-5.304-5.378-9.614-12-9.614S0 5.31 0 10.614c0 4.754 4.264 8.72 10.027 9.475.39.084.922.258 1.057.592.122.303.079.778.039 1.085l-.171 1.027c-.053.303-.242 1.186 1.039.647 1.281-.54 6.911-4.069 9.428-6.967C23.068 14.708 24 12.77 24 10.614z"/>
+            </svg>
+          </span>
+          <span>LINEで提携スキー場・料金を見る</span>
+        </a>
+
+        <a href="#playground"
+           class="w-full sm:w-auto h-14 px-7 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/25 text-white font-bold text-sm inline-flex items-center justify-center gap-1.5 transition-colors">
+          <span>詳しい仕組みを見る</span>
+          <svg class="w-4 h-4 text-white/75" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="absolute bottom-7 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center pointer-events-none">
+      <span class="text-[10px] font-eng font-bold tracking-[0.3em] text-white/50 mb-2">SCROLL</span>
+      <div class="w-[1px] h-9 bg-white/20 overflow-hidden relative">
+        <div class="w-full h-full bg-white/80 absolute top-0 left-0 animate-[scrollCue_1.6s_ease-in-out_infinite]"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       SECTION 01：YOUR PLAYGROUND（提携フィールドの広がり）
+  ====================================================================== -->
+  <section id="playground" class="py-20 md:py-28 bg-white fade-up">
+    <div class="max-w-6xl mx-auto px-5">
+      <div class="grid md:grid-cols-12 gap-10 lg:gap-14 items-center">
+        <div class="md:col-span-6">
+          <p class="font-eng text-xs font-extrabold text-brand tracking-[0.2em] uppercase mb-3">01 / YOUR PLAYGROUND</p>
+          <h2 class="text-3xl md:text-4xl lg:text-[42px] font-black text-ink mb-5 leading-[1.26] tracking-tight">
+            全国<span class="text-brand mx-1">約50</span>のフィールドが、<br>
+            あなたの遊び場に。
+          </h2>
+          <p class="text-[15px] md:text-base text-slate-600 leading-[1.85] mb-7">
+            早割券やシーズン券のように「行く前から場所や日程を縛られる」必要はありません。週末の雪予報やコンディションを見てから、一番いい山へ。冬のスキー場から、夏秋のMTB・SUP・ウェーブプールまで1年中シームレスに楽しめます。
+          </p>
+
+          <!-- 提携施設タグ -->
+          <div class="mb-7">
+            <p class="text-xs font-bold text-slate-400 mb-2.5">提携施設の一例（順次拡大中）</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-slate-50 border border-slate-200/80 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-bold text-slate-700">ホワイトワールド尾瀬岩鞍</span>
+              <span class="bg-slate-50 border border-slate-200/80 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-bold text-slate-700">川場スキー場</span>
+              <span class="bg-slate-50 border border-slate-200/80 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-bold text-slate-700">神立スノーリゾート</span>
+              <span class="bg-slate-50 border border-slate-200/80 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-bold text-slate-700">舞子スノーリゾート</span>
+              <span class="bg-slate-50 border border-slate-200/80 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-bold text-slate-700">蔵王ライザワールド</span>
+              <span class="bg-slate-50 border border-slate-200/80 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-bold text-slate-700">Citywave Tokyo</span>
+            </div>
+          </div>
+
+          <a href="https://lin.ee/zXFhtBh" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 text-sm font-black text-brand hover:text-brandDark transition-colors group">
+            <span>すべての提携施設一覧をLINEで確認する</span>
+            <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+          </a>
+        </div>
+
+        <div class="md:col-span-6">
+          <div class="grid grid-cols-2 gap-3.5 sm:gap-4 h-[380px] sm:h-[460px]">
+            <div class="rounded-3xl col-span-1 row-span-2 relative overflow-hidden bg-slate-100 shadow-sm">
+              <img src="/hp/snow.jpeg" alt="雪山・スキー場" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+              <span class="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md text-[11px] font-eng font-bold text-white tracking-wider">SNOW</span>
+            </div>
+            <div class="rounded-3xl relative overflow-hidden bg-slate-100 shadow-sm">
+              <img src="/hp/mtb.jpg" alt="マウンテンバイク" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+              <span class="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md text-[11px] font-eng font-bold text-white tracking-wider">MTB</span>
+            </div>
+            <div class="rounded-3xl relative overflow-hidden bg-slate-100 shadow-sm">
+              <img src="/hp/sup.png" alt="SUP・ウォータースポーツ" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+              <span class="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md text-[11px] font-eng font-bold text-white tracking-wider">WATER</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       SECTION 02：HOW TO USE（アプリ不要・3ステップで完結）
+  ====================================================================== -->
+  <section id="how-to-use" class="py-20 md:py-28 bg-slate-50 border-y border-slate-200/60 fade-up">
+    <div class="max-w-5xl mx-auto px-5">
+      <div class="text-center max-w-2xl mx-auto mb-14 md:mb-16">
+        <p class="font-eng text-xs font-extrabold text-brand tracking-[0.2em] uppercase mb-3">02 / HOW IT WORKS</p>
+        <h2 class="text-3xl md:text-4xl font-black text-ink mb-4 tracking-tight">
+          アプリのダウンロードも、<br class="sm:hidden">会員登録も不要。
+        </h2>
+        <p class="text-[15px] md:text-base text-slate-600">
+          いつものLINEを開くだけ。スキー場に向かう車内や駐車場でも、たった3ステップで発券できます。
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+        <div class="bg-white rounded-3xl p-7 border border-slate-200/70 shadow-[0_8px_30px_rgba(15,23,42,0.03)] relative">
+          <span class="font-eng text-xs font-extrabold text-brand bg-brandLight px-3 py-1 rounded-full inline-block mb-5">STEP 01</span>
+          <h3 class="font-black text-xl text-ink mb-2.5">LINEでチケット購入</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            公式LINEから行きたい施設と日付を選び、クレジットカード・PayPay・楽天ペイでそのまま決済。
+          </p>
+        </div>
+
+        <div class="bg-white rounded-3xl p-7 border border-slate-200/70 shadow-[0_8px_30px_rgba(15,23,42,0.03)] relative">
+          <span class="font-eng text-xs font-extrabold text-brand bg-brandLight px-3 py-1 rounded-full inline-block mb-5">STEP 02</span>
+          <h3 class="font-black text-xl text-ink mb-2.5">現地でQRコード発券</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            ゲレンデに到着したら、LINEに届いたQRコードを自動発券機（またはチケット窓口）にかざすだけ。
+          </p>
+        </div>
+
+        <div class="bg-white rounded-3xl p-7 border border-slate-200/70 shadow-[0_8px_30px_rgba(15,23,42,0.03)] relative">
+          <span class="font-eng text-xs font-extrabold text-white bg-ink px-3 py-1 rounded-full inline-block mb-5">STEP 03</span>
+          <h3 class="font-black text-xl text-ink mb-2.5">そのままリフトへ直行</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            発券されたリフト券を受け取ったら、あとは思いきり滑るだけ。滑った分のマイルも自動で貯まります。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       SECTION 03：PLAY TO EARN（なぜお得なのかを直感的に伝えるマイル循環）
+  ====================================================================== -->
+  <section id="benefits" class="py-20 md:py-28 bg-white fade-up">
+    <div class="max-w-6xl mx-auto px-5">
+      <div class="text-center max-w-2xl mx-auto mb-14 md:mb-16">
+        <p class="font-eng text-xs font-extrabold text-brand tracking-[0.2em] uppercase mb-3">03 / MILEAGE SYSTEM</p>
+        <h2 class="text-3xl md:text-4xl font-black text-ink mb-4 tracking-tight">
+          窓口と同じ定価なのに、<br>
+          滑るほど<span class="text-brand">最大20%</span>おトクになる理由。
+        </h2>
+        <p class="text-[15px] md:text-base text-slate-600">
+          チケット代金は各施設の当日窓口価格とまったく同じ。違いは、決済するたびに「1マイル＝1円」として次回使えるマイルが貯まることです。
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+        <!-- STEP 1 -->
+        <div class="bg-slate-50 rounded-3xl p-7 border border-slate-200/70 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="font-eng text-xs font-extrabold text-brand">1回目の滑走</span>
+              <span class="text-xs font-bold text-slate-400">貯める</span>
+            </div>
+            <h3 class="font-black text-xl text-ink mb-5">購入額の最大20%を還元</h3>
+            <div class="bg-white rounded-2xl p-5 border border-slate-200/70 space-y-3 text-sm">
+              <div class="flex justify-between items-center text-slate-600">
+                <span>リフト1日券（例）</span>
+                <span class="font-eng font-bold text-base text-ink">¥6,000</span>
+              </div>
+              <div class="pt-3 border-t border-slate-100 flex justify-between items-center text-brand font-bold">
+                <span>獲得マイル（20%）</span>
+                <span class="font-eng font-black text-lg">+ 1,200 M</span>
+              </div>
+            </div>
+          </div>
+          <p class="text-xs text-slate-500 mt-5 leading-relaxed">
+            ※還元率は施設や時期により異なる場合があります。1マイル＝1円として次回以降に利用できます。
+          </p>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="bg-slate-50 rounded-3xl p-7 border border-slate-200/70 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="font-eng text-xs font-extrabold text-brand">2回目の滑走</span>
+              <span class="text-xs font-bold text-slate-400">使う</span>
+            </div>
+            <h3 class="font-black text-xl text-ink mb-5">貯まったマイルで割引購入</h3>
+            <div class="bg-white rounded-2xl p-5 border border-slate-200/70 space-y-3 text-sm">
+              <div class="flex justify-between items-center text-slate-600">
+                <span>次回チケット（例）</span>
+                <span class="font-eng font-bold text-base text-ink">¥6,000</span>
+              </div>
+              <div class="flex justify-between items-center text-brand font-bold">
+                <span>マイルを利用</span>
+                <span class="font-eng font-black text-base">- 1,200 M</span>
+              </div>
+              <div class="pt-3 border-t border-slate-100 flex justify-between items-center font-black">
+                <span class="text-ink">お支払い金額</span>
+                <span class="font-eng text-xl text-accent">¥4,800</span>
+              </div>
+            </div>
+          </div>
+          <p class="text-xs text-slate-500 mt-5 leading-relaxed">
+            どの提携スキー場でも自由にマイルを使えるので、1つの山に縛られません。
+          </p>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="bg-sky-50/70 rounded-3xl p-7 border border-sky-200/80 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="font-eng text-xs font-extrabold text-accent">さらに還元</span>
+              <span class="text-xs font-bold text-brand">エンドレス</span>
+            </div>
+            <h3 class="font-black text-xl text-ink mb-5">割引後の支払いにも再還元</h3>
+            <div class="bg-white rounded-2xl p-5 border border-sky-100 space-y-3 text-sm">
+              <div class="flex justify-between items-center text-slate-600">
+                <span>割引後のお支払い</span>
+                <span class="font-eng font-bold text-base text-ink">¥4,800</span>
+              </div>
+              <div class="pt-3 border-t border-slate-100 flex justify-between items-center text-accent font-black">
+                <span>さらに獲得（20%）</span>
+                <span class="font-eng text-lg">+ 960 M</span>
+              </div>
+            </div>
+          </div>
+          <p class="text-xs text-slate-600 font-medium mt-5 leading-relaxed">
+            マイルを使った後の決済額に対しても再びマイルが付与されるため、滑るほどお得が続きます。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       SECTION 04：MISSIONS（全国を巡る楽しみ）
+  ====================================================================== -->
+  <section class="py-20 md:py-28 bg-slate-900 text-white fade-up">
+    <div class="max-w-6xl mx-auto px-5">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-16">
+        <div>
+          <p class="font-eng text-xs font-extrabold text-sky-400 tracking-[0.2em] uppercase mb-3">04 / MISSIONS</p>
+          <h2 class="text-3xl md:text-4xl font-black leading-tight tracking-tight">
+            いろんな山を巡るほど、<br>
+            ボーナスマイルが貯まる。
+          </h2>
+        </div>
+        <p class="text-sm md:text-base text-slate-400 max-w-md leading-relaxed">
+          利用回数やエリア制覇などの条件を達成すると、通常の還元に加えてボーナスマイルを獲得できます。
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="bg-white/5 border border-white/10 rounded-3xl p-6 flex flex-col justify-between">
+          <div>
+            <span class="text-2xl mb-4 block">👑</span>
+            <h3 class="font-black text-lg mb-2">プロホッパー</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-6">アースホッパーの利用回数に応じてマイルを獲得。</p>
+          </div>
+          <div class="pt-4 border-t border-white/10 flex items-baseline justify-between">
+            <span class="text-[11px] text-slate-400">最大ボーナス</span>
+            <span class="font-eng font-black text-xl text-sky-400">5,000 <span class="text-xs">M</span></span>
+          </div>
+        </div>
+
+        <div class="bg-white/5 border border-white/10 rounded-3xl p-6 flex flex-col justify-between">
+          <div>
+            <span class="text-2xl mb-4 block">🗺️</span>
+            <h3 class="font-black text-lg mb-2">エリアホッパー</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-6">日本各地のエリアを横断して滑るとボーナス獲得。</p>
+          </div>
+          <div class="pt-4 border-t border-white/10 flex items-baseline justify-between">
+            <span class="text-[11px] text-slate-400">最大ボーナス</span>
+            <span class="font-eng font-black text-xl text-indigo-400">1,500 <span class="text-xs">M</span></span>
+          </div>
+        </div>
+
+        <div class="bg-white/5 border border-white/10 rounded-3xl p-6 flex flex-col justify-between">
+          <div>
+            <span class="text-2xl mb-4 block">🏂</span>
+            <h3 class="font-black text-lg mb-2">カテゴリホッパー</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-6">雪山だけでなく夏のアクティビティも楽しむと達成。</p>
+          </div>
+          <div class="pt-4 border-t border-white/10 flex items-baseline justify-between">
+            <span class="text-[11px] text-slate-400">最大ボーナス</span>
+            <span class="font-eng font-black text-xl text-teal-400">1,500 <span class="text-xs">M</span></span>
+          </div>
+        </div>
+
+        <div class="bg-white/5 border border-white/10 rounded-3xl p-6 flex flex-col justify-between">
+          <div>
+            <span class="text-2xl mb-4 block">🏕️</span>
+            <h3 class="font-black text-lg mb-2">ノマドホッパー</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-6">空いている平日のゲレンデ利用で追加ボーナス。</p>
+          </div>
+          <div class="pt-4 border-t border-white/10 flex items-baseline justify-between">
+            <span class="text-[11px] text-slate-400">最大ボーナス</span>
+            <span class="font-eng font-black text-xl text-amber-400">1,500 <span class="text-xs">M</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       SECTION 05：FAQ（よくある質問）
+  ====================================================================== -->
+  <section id="faq" class="py-20 md:py-28 bg-white fade-up">
+    <div class="max-w-3xl mx-auto px-5">
+      <div class="text-center mb-12 md:mb-14">
+        <p class="font-eng text-xs font-extrabold text-brand tracking-[0.2em] uppercase mb-3">05 / FAQ</p>
+        <h2 class="text-3xl md:text-4xl font-black text-ink tracking-tight">
+          よくあるご質問
+        </h2>
+      </div>
+
+      <div class="divide-y divide-slate-200 border-y border-slate-200">
+        <details class="group py-5">
+          <summary class="flex justify-between items-center font-bold cursor-pointer list-none gap-4">
+            <span class="text-[15px] md:text-base text-ink">Q. チケットの価格はいくらですか？</span>
+            <span class="transition-transform duration-300 group-open:rotate-180 text-slate-400 shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+            </span>
+          </summary>
+          <p class="mt-3 text-sm md:text-[15px] text-slate-600 leading-relaxed">
+            各施設の当日の窓口価格に準拠します。具体的な料金や対象券種はLINE公式アカウントですぐにご確認いただけます。
+          </p>
+        </details>
+
+        <details class="group py-5">
+          <summary class="flex justify-between items-center font-bold cursor-pointer list-none gap-4">
+            <span class="text-[15px] md:text-base text-ink">Q. 支払い方法は何が使えますか？</span>
+            <span class="transition-transform duration-300 group-open:rotate-180 text-slate-400 shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+            </span>
+          </summary>
+          <p class="mt-3 text-sm md:text-[15px] text-slate-600 leading-relaxed">
+            クレジットカード、PayPay、楽天ペイがご利用いただけます。
+          </p>
+        </details>
+
+        <details class="group py-5">
+          <summary class="flex justify-between items-center font-bold cursor-pointer list-none gap-4">
+            <span class="text-[15px] md:text-base text-ink">Q. 家族や子供のチケットも一緒に買えますか？</span>
+            <span class="transition-transform duration-300 group-open:rotate-180 text-slate-400 shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+            </span>
+          </summary>
+          <p class="mt-3 text-sm md:text-[15px] text-slate-600 leading-relaxed">
+            はい。大人1枚のご購入につき、子供用チケットを2枚まで同時にご購入いただけます。
+          </p>
+        </details>
+
+        <details class="group py-5">
+          <summary class="flex justify-between items-center font-bold cursor-pointer list-none gap-4">
+            <span class="text-[15px] md:text-base text-ink">Q. 同じ施設を何度も利用できますか？</span>
+            <span class="transition-transform duration-300 group-open:rotate-180 text-slate-400 shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+            </span>
+          </summary>
+          <p class="mt-3 text-sm md:text-[15px] text-slate-600 leading-relaxed">
+            各施設につき、年2回まで利用可能です。
+          </p>
+        </details>
+
+        <details class="group py-5">
+          <summary class="flex justify-between items-center font-bold cursor-pointer list-none gap-4">
+            <span class="text-[15px] md:text-base text-ink">Q. 獲得したマイルに有効期限はありますか？</span>
+            <span class="transition-transform duration-300 group-open:rotate-180 text-slate-400 shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+            </span>
+          </summary>
+          <p class="mt-3 text-sm md:text-[15px] text-slate-600 leading-relaxed">
+            最終利用日から1年間となります。期間内に再度ご利用いただければ有効期限が延長されます。
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       CLOSING SECTION：納得したユーザーが自然にLINEへ進むエンディング
+  ====================================================================== -->
+  <section class="py-20 md:py-28 bg-slate-50 border-t border-slate-200/60 text-center fade-up">
+    <div class="max-w-2xl mx-auto px-5">
+      <p class="font-eng text-xs font-extrabold text-brand tracking-[0.2em] uppercase mb-3">READY TO HOP?</p>
+      <h2 class="text-3xl md:text-4xl font-black text-ink mb-4 leading-tight tracking-tight">
+        まずはLINEで、<br>
+        行けるスキー場を見てみよう。
+      </h2>
+      <p class="text-sm md:text-base text-slate-600 leading-relaxed mb-8">
+        登録料・年会費はかかりません。提携ゲレンデの一覧やチケット価格は、LINE友だち追加だけですぐにチェックできます。
+      </p>
+      <a href="https://lin.ee/zXFhtBh" target="_blank" rel="noopener noreferrer"
+         class="w-full sm:w-auto h-14 px-9 rounded-full bg-ink hover:bg-slate-800 text-white font-black text-[15px] inline-flex items-center justify-center gap-2.5 shadow-[0_14px_30px_-8px_rgba(15,23,42,0.35)] transition-transform active:scale-95">
+        <span class="w-6 h-6 rounded-full bg-line flex items-center justify-center shrink-0">
+          <svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24">
+            <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63h-1.401v.866h1.401c.349 0 .63.283.63.63 0 .346-.281.63-.63.63h-2.032a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63h2.032c.349 0 .63.282.63.63 0 .348-.281.63-.63.63h-1.401v.881h1.401zm-5.228 2.757h-.01a.631.631 0 0 1-.502-.25l-2.003-2.673v2.292c0 .348-.282.63-.63.63a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.63-.63.218 0 .412.112.524.283l1.986 2.646V7.086c0-.348.282-.63.63-.63a.632.632 0 0 1 .631.63v5.534a.631.631 0 0 1-.625.63zm-5.617 0a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63a.632.632 0 0 1 .63.63v5.534a.632.632 0 0 1-.63.63zm-2.479 0H4.01a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63a.632.632 0 0 1 .63.63v4.903h2.031c.349 0 .63.283.63.63 0 .346-.281.63-.63.63zM24 10.614c0-5.304-5.378-9.614-12-9.614S0 5.31 0 10.614c0 4.754 4.264 8.72 10.027 9.475.39.084.922.258 1.057.592.122.303.079.778.039 1.085l-.171 1.027c-.053.303-.242 1.186 1.039.647 1.281-.54 6.911-4.069 9.428-6.967C23.068 14.708 24 12.77 24 10.614z"/>
+          </svg>
+        </span>
+        <span>LINEでおトクに遊ぶ</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       FLOATING DOCK：セールス臭を排したすりガラス質感の追従ドック
+  ====================================================================== -->
+  <div id="sticky-cta" class="fixed bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 w-[92%] max-w-[440px] z-50 translate-y-24 opacity-0 pointer-events-none transition-all duration-500 ease-out">
+    <a href="https://lin.ee/zXFhtBh" target="_blank" rel="noopener noreferrer"
+       class="w-full h-14 px-4 rounded-2xl bg-slate-900/90 hover:bg-slate-900 backdrop-blur-xl border border-white/15 text-white shadow-[0_16px_40px_rgba(15,23,42,0.35)] flex items-center justify-between gap-3 transition-transform active:scale-[0.98]">
+      <div class="flex items-center gap-3 min-w-0">
+        <span class="w-8 h-8 rounded-xl bg-line flex items-center justify-center shrink-0">
+          <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24">
+            <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63h-1.401v.866h1.401c.349 0 .63.283.63.63 0 .346-.281.63-.63.63h-2.032a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63h2.032c.349 0 .63.282.63.63 0 .348-.281.63-.63.63h-1.401v.881h1.401zm-5.228 2.757h-.01a.631.631 0 0 1-.502-.25l-2.003-2.673v2.292c0 .348-.282.63-.63.63a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.63-.63.218 0 .412.112.524.283l1.986 2.646V7.086c0-.348.282-.63.63-.63a.632.632 0 0 1 .631.63v5.534a.631.631 0 0 1-.625.63zm-5.617 0a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63a.632.632 0 0 1 .63.63v5.534a.632.632 0 0 1-.63.63zm-2.479 0H4.01a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63a.632.632 0 0 1 .63.63v4.903h2.031c.349 0 .63.283.63.63 0 .346-.281.63-.63.63zM24 10.614c0-5.304-5.378-9.614-12-9.614S0 5.31 0 10.614c0 4.754 4.264 8.72 10.027 9.475.39.084.922.258 1.057.592.122.303.079.778.039 1.085l-.171 1.027c-.053.303-.242 1.186 1.039.647 1.281-.54 6.911-4.069 9.428-6.967C23.068 14.708 24 12.77 24 10.614z"/>
+          </svg>
+        </span>
+        <div class="flex flex-col min-w-0">
+          <span class="text-[13px] font-black leading-tight truncate">LINEで提携スキー場・料金を見る</span>
+          <span class="text-[10px] text-slate-300 font-medium leading-tight mt-0.5 truncate">登録・年会費0円｜当日スマホで即発券</span>
+        </div>
+      </div>
+      <svg class="w-4 h-4 text-slate-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+      </svg>
+    </a>
+  </div>
+
+  <!-- =====================================================================
+       FOOTER
+  ====================================================================== -->
+  <footer class="bg-white border-t border-slate-200 pt-12 pb-28 md:pb-24 relative z-10 w-full">
+    <div class="max-w-6xl mx-auto px-5 flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex flex-col items-center md:items-start text-center md:text-left">
+        <img src="logo.png" alt="EARTH HOPPER" class="h-10 md:h-12 w-auto object-contain mb-3 grayscale opacity-70">
+        <p class="text-xs font-bold text-slate-400">日本中をあなたのホームゲレンデに</p>
+      </div>
+      <div class="flex flex-wrap justify-center items-center gap-6 text-xs font-bold text-slate-500">
+        <a href="/reels/" class="hover:text-ink transition-colors">ゲレンデ口コミ</a>
+        <a href="https://prtimes.jp/main/html/searchrlp/company_id/58215" target="_blank" rel="noopener noreferrer" class="hover:text-ink transition-colors">お知らせ</a>
+        <a href="https://note.com/earthhopper" target="_blank" rel="noopener noreferrer" class="hover:text-ink transition-colors">ブログ</a>
+        <a href="/hp/terms.html" class="hover:text-ink transition-colors">利用規約</a>
+        <a href="/hp/company.html" class="hover:text-ink transition-colors">運営会社</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // スクロール出現アニメーション
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+
+      document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+      // ヘッダー背景＆フローティングドック制御
+      const header = document.getElementById('site-header');
+      const stickyCta = document.getElementById('sticky-cta');
+      let lastScroll = 0;
+
+      window.addEventListener('scroll', () => {
+        const y = window.scrollY;
+
+        // ヒーローを抜けたらフローティングドックを表示
+        if (y > 420) {
+          stickyCta.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+          stickyCta.classList.add('translate-y-0', 'opacity-100', 'pointer-events-auto');
+        } else {
+          stickyCta.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+          stickyCta.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
+        }
+
+        // ヘッダー背景の適応
+        if (y > 60) {
+          header.classList.add('bg-slate-950/80', 'backdrop-blur-md', 'border-b', 'border-white/10');
+        } else {
+          header.classList.remove('bg-slate-950/80', 'backdrop-blur-md', 'border-b', 'border-white/10');
+        }
+
+        if (y > 200 && y > lastScroll) {
+          header.classList.add('-translate-y-full');
+        } else {
+          header.classList.remove('-translate-y-full');
+        }
+        lastScroll = y;
+      }, { passive: true });
+    });
+  </script>
+</body>
+</html>
