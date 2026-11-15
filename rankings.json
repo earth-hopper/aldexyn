@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026年11月08日 16:51",
+  "lastUpdated": "2026年11月09日 14:51",
   "categories": {
     "ski_men": {
       "title": "Ski Men",
@@ -727,7 +727,7 @@
         },
         {
           "japanRank": 17,
-          "worldRank": 538,
+          "worldRank": 539,
           "name": "Takuya Nakahama",
           "athleteId": "1142108",
           "points": 970,
@@ -758,7 +758,7 @@
         },
         {
           "japanRank": 18,
-          "worldRank": 556,
+          "worldRank": 557,
           "name": "Kakeru Maekawa",
           "athleteId": "904813",
           "points": 930,
@@ -775,7 +775,7 @@
         },
         {
           "japanRank": 19,
-          "worldRank": 572,
+          "worldRank": 573,
           "name": "Kouga Takeda",
           "athleteId": "1517714",
           "points": 900,
@@ -799,7 +799,7 @@
         },
         {
           "japanRank": 20,
-          "worldRank": 683,
+          "worldRank": 684,
           "name": "Takuma Fujita",
           "athleteId": "902764",
           "points": 740,
@@ -823,7 +823,7 @@
         },
         {
           "japanRank": 21,
-          "worldRank": 703,
+          "worldRank": 704,
           "name": "Thomas Espitau",
           "athleteId": "1877229",
           "points": 717,
@@ -868,7 +868,7 @@
         },
         {
           "japanRank": 22,
-          "worldRank": 768,
+          "worldRank": 770,
           "name": "Kaiwa Namiki",
           "athleteId": "904873",
           "points": 639,
@@ -906,7 +906,7 @@
         },
         {
           "japanRank": 23,
-          "worldRank": 784,
+          "worldRank": 786,
           "name": "Atsuya Wada",
           "athleteId": "1482998",
           "points": 604,
@@ -930,7 +930,7 @@
         },
         {
           "japanRank": 24,
-          "worldRank": 785,
+          "worldRank": 787,
           "name": "Shinji Saiki",
           "athleteId": "902756",
           "points": 600,
@@ -947,7 +947,7 @@
         },
         {
           "japanRank": 25,
-          "worldRank": 829,
+          "worldRank": 831,
           "name": "Ryoma Tada",
           "athleteId": "1120201",
           "points": 550,
@@ -971,7 +971,7 @@
         },
         {
           "japanRank": 26,
-          "worldRank": 911,
+          "worldRank": 913,
           "name": "Kotaro Yamamoto",
           "athleteId": "903054",
           "points": 475,
@@ -988,7 +988,7 @@
         },
         {
           "japanRank": 27,
-          "worldRank": 932,
+          "worldRank": 934,
           "name": "Kai Hanada",
           "athleteId": "1904769",
           "points": 465,
@@ -1012,7 +1012,7 @@
         },
         {
           "japanRank": 28,
-          "worldRank": 934,
+          "worldRank": 936,
           "name": "Mark Yokokawa",
           "athleteId": "1523479",
           "points": 462,
@@ -1036,7 +1036,7 @@
         },
         {
           "japanRank": 29,
-          "worldRank": 943,
+          "worldRank": 945,
           "name": "Takahiro Yamazaki",
           "athleteId": "1917978",
           "points": 450,
@@ -1053,7 +1053,7 @@
         },
         {
           "japanRank": 30,
-          "worldRank": 957,
+          "worldRank": 959,
           "name": "Takuto Ogawa",
           "athleteId": "1088912",
           "points": 439,
@@ -1077,7 +1077,7 @@
         },
         {
           "japanRank": 31,
-          "worldRank": 993,
+          "worldRank": 995,
           "name": "Yuto Yamakawa",
           "athleteId": "1498682",
           "points": 410,
@@ -1094,7 +1094,7 @@
         },
         {
           "japanRank": 32,
-          "worldRank": 1066,
+          "worldRank": 1068,
           "name": "Ryoya Takashima",
           "athleteId": "1434231",
           "points": 353,
@@ -1118,7 +1118,7 @@
         },
         {
           "japanRank": 33,
-          "worldRank": 1071,
+          "worldRank": 1073,
           "name": "Rei Kitano",
           "athleteId": "1091012",
           "points": 350,
@@ -1135,7 +1135,7 @@
         },
         {
           "japanRank": 34,
-          "worldRank": 1078,
+          "worldRank": 1080,
           "name": "Shuya Kaneko",
           "athleteId": "1876986",
           "points": 346,
@@ -1159,7 +1159,7 @@
         },
         {
           "japanRank": 35,
-          "worldRank": 1206,
+          "worldRank": 1208,
           "name": "Yosuke Fujii",
           "athleteId": "608870",
           "points": 264,
@@ -1176,7 +1176,7 @@
         },
         {
           "japanRank": 36,
-          "worldRank": 1213,
+          "worldRank": 1215,
           "name": "Shogo Morifuji",
           "athleteId": "1936504",
           "points": 260,
@@ -1193,7 +1193,7 @@
         },
         {
           "japanRank": 37,
-          "worldRank": 1227,
+          "worldRank": 1229,
           "name": "Daichi Furuya",
           "athleteId": "608862",
           "points": 258,
@@ -1210,7 +1210,7 @@
         },
         {
           "japanRank": 38,
-          "worldRank": 1227,
+          "worldRank": 1229,
           "name": "Hayato Takeuchi",
           "athleteId": "906495",
           "points": 258,
@@ -1227,7 +1227,7 @@
         },
         {
           "japanRank": 39,
-          "worldRank": 1355,
+          "worldRank": 1357,
           "name": "Saito Masayuki",
           "athleteId": "1483190",
           "points": 193,
@@ -1251,7 +1251,7 @@
         },
         {
           "japanRank": 40,
-          "worldRank": 1459,
+          "worldRank": 1461,
           "name": "Akinori Tezuka",
           "athleteId": "1876407",
           "points": 145,
@@ -1268,7 +1268,7 @@
         },
         {
           "japanRank": 41,
-          "worldRank": 1461,
+          "worldRank": 1463,
           "name": "RINTO TAJIMA",
           "athleteId": "1919721",
           "points": 141,
