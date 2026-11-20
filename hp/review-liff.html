@@ -521,6 +521,9 @@
       }
     }
 
+    // ------------------------------------------------------------------
+    // X共有（OS標準共有シート優先で二重遷移＆ログイン画面を防止）
+    // ------------------------------------------------------------------
     async function shareToX(item) {
       const shareUrl = buildShareUrl();
       const header = `【Hopper's Reviews】\n📍${item.resort}\n`;
@@ -534,40 +537,28 @@
       }
 
       const tweetText = `${header}"${body}"${footer}`;
-      const encoded = encodeURIComponent(tweetText);
-      const webIntentUrl = `https://x.com/intent/tweet?text=${encoded}`;
-
       const ua = navigator.userAgent || '';
-      const isLineInApp = /Line\//i.test(ua);
       const isMobile = /iPhone|iPad|iPod|Android/i.test(ua);
 
-      await copyToClipboard(tweetText);
-
-      if (isLineInApp || isMobile) {
-        const appSchemeUrl = `twitter://post?message=${encoded}`;
-        let appOpened = false;
-
-        const onVisibilityChange = () => {
-          if (document.hidden) appOpened = true;
-        };
-        document.addEventListener('visibilitychange', onVisibilityChange, { once: true });
-
-        window.location.href = appSchemeUrl;
-
-        setTimeout(() => {
-          document.removeEventListener('visibilitychange', onVisibilityChange);
-          if (!appOpened && !document.hidden) {
-            if (isLineInApp) {
-              showToast('投稿文をコピーしました！Xが開かない場合は右上のメニューから「ブラウザで開く」をお試しください', '📋', 4200);
-            }
-            window.open(webIntentUrl, '_blank', 'noopener,noreferrer');
-          }
-        }, 650);
-      } else {
-        window.open(webIntentUrl, '_blank', 'noopener,noreferrer');
+      // 1. スマホ・LINE内ブラウザ（LIFF）はOS標準の共有メニューを使用
+      // ※「外部アプリを開きますか？」や裏でのログイン画面遷移が起きず、戻った時も元の画面のままになる
+      if (isMobile && navigator.share) {
+        try {
+          await navigator.share({
+            text: tweetText
+          });
+          return;
+        } catch (err) {
+          // ユーザーが共有シートを閉じた（キャンセルした）場合は何もしない
+          if (err && err.name === 'AbortError') return;
+        }
       }
-    }
 
+      // 2. PCブラウザまたはWeb Share API非対応端末はWeb版X投稿画面を開く
+      const webIntentUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
+      window.open(webIntentUrl, '_blank', 'noopener,noreferrer');
+    }
+    
     function dismissSwipeGuide() {
       if (hasSwipedOnce) return;
       hasSwipedOnce = true;
