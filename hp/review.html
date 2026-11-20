@@ -703,9 +703,9 @@
     }
 
     // ------------------------------------------------------------------
-    // X共有（OS標準共有シート優先で二重遷移＆ログイン画面を防止）
+    // X共有（X限定・直接アプリ起動／裏でのログイン画面遷移なし）
     // ------------------------------------------------------------------
-    async function shareToX(item) {
+    function shareToX(item) {
       const shareUrl = buildShareUrl();
       const header = `【Hopper's Reviews】\n📍${item.resort}\n`;
       const footer = `\n@earth_hopper\n${shareUrl}`;
@@ -718,26 +718,31 @@
       }
 
       const tweetText = `${header}"${body}"${footer}`;
+      const encoded = encodeURIComponent(tweetText);
       const ua = navigator.userAgent || '';
       const isMobile = /iPhone|iPad|iPod|Android/i.test(ua);
 
-      // 1. スマホ・LINE内ブラウザ（LIFF）はOS標準の共有メニューを使用
-      // ※「外部アプリを開きますか？」や裏でのログイン画面遷移が起きず、戻った時も元の画面のままになる
-      if (isMobile && navigator.share) {
-        try {
-          await navigator.share({
-            text: tweetText
-          });
-          return;
-        } catch (err) {
-          // ユーザーが共有シートを閉じた（キャンセルした）場合は何もしない
-          if (err && err.name === 'AbortError') return;
-        }
-      }
+      if (isMobile) {
+        let appOpened = false;
+        const onVisibilityChange = () => {
+          if (document.hidden) appOpened = true;
+        };
+        document.addEventListener('visibilitychange', onVisibilityChange, { once: true });
 
-      // 2. PCブラウザまたはWeb Share API非対応端末はWeb版X投稿画面を開く
-      const webIntentUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
-      window.open(webIntentUrl, '_blank', 'noopener,noreferrer');
+        // Xアプリを直接起動（Web版ログイン画面への自動遷移は行わない）
+        window.location.href = `twitter://post?message=${encoded}`;
+
+        // 2.5秒経ってもアプリが開かず画面が残っている場合のみ軽く案内（X未インストール時など）
+        setTimeout(() => {
+          document.removeEventListener('visibilitychange', onVisibilityChange);
+          if (!appOpened && !document.hidden) {
+            showToast('Xアプリが開けない場合は、Xアプリをインストールしてお試しください', '𝕏', 3000);
+          }
+        }, 2500);
+      } else {
+        // PCブラウザはWeb版X投稿画面を別タブで開く
+        window.open(`https://x.com/intent/tweet?text=${encoded}`, '_blank', 'noopener,noreferrer');
+      }
     }
     
     function dismissSwipeGuide() {
