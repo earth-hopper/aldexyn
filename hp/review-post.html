@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>レビューを投稿する | アースホッパー</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#0088C6',
+            brandDark: '#006899',
+            paper: '#F6F5F0',
+            paperDark: '#ECEAE2',
+            ink: '#14191F',
+            muted: '#5A6470',
+            accent: '#E11D48',
+          },
+          fontFamily: {
+            sans: ['"Noto Sans JP"', 'sans-serif'],
+            eng: ['"Inter"', 'sans-serif'],
+          },
+          animation: {
+            'bounce-x': 'bounceX 1.5s infinite',
+            'pop': 'pop 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards',
+          },
+          keyframes: {
+            bounceX: {
+              '0%, 100%': { transform: 'translateX(0)' },
+              '50%': { transform: 'translateX(4px)' },
+            },
+            pop: {
+              '0%': { transform: 'scale(0.92)', opacity: '0' },
+              '100%': { transform: 'scale(1)', opacity: '1' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * { -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
+    body {
+      background-color: #ECEAE2;
+      color: #14191F;
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: "palt";
+    }
+    
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .star-btn svg {
+      transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1), fill 0.15s ease, stroke 0.15s ease;
+    }
+    .star-btn:active svg {
+      transform: scale(1.22);
+    }
+
+    .tag-chip {
+      transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .modal-backdrop {
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .safe-top { padding-top: max(12px, env(safe-area-inset-top)); }
+    .safe-bottom { padding-bottom: max(28px, env(safe-area-inset-bottom)); }
+  </style>
+</head>
+<body class="flex justify-center font-sans text-ink selection:bg-brand selection:text-white">
+
+  <div class="w-full max-w-md bg-paper min-h-screen relative overflow-x-hidden shadow-[0_0_50px_rgba(20,25,31,0.08)] flex flex-col justify-between safe-bottom">
+
+    <div>
+      <!-- ヘッダー -->
+      <header class="sticky top-0 z-30 bg-paper/90 backdrop-blur-md border-b border-stone-200/80 safe-top">
+        <div class="px-5 h-14 flex items-center justify-between">
+          <a href="/review" class="inline-flex items-center gap-1.5 text-xs font-bold text-muted hover:text-ink transition-colors py-1.5 pr-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+            <span>レビュー一覧へ</span>
+          </a>
+
+          <img src="logo.png" alt="EARTH HOPPER" class="h-7 w-auto object-contain opacity-90"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
+          <span style="display:none;" class="items-center gap-1.5 font-eng font-black text-xs tracking-wider text-ink">
+            <span class="w-2 h-2 rounded-full bg-brand inline-block"></span>EARTH HOPPER
+          </span>
+
+          <span class="font-eng text-[11px] font-bold tracking-wider text-muted">
+            REVIEW
+          </span>
+        </div>
+      </header>
+
+      <!-- タイトル導入 -->
+      <section class="px-5 pt-6 pb-5 fade-up">
+        <p class="font-eng text-[11px] font-bold tracking-[0.2em] text-brand uppercase mb-1.5">SHARE YOUR EXPERIENCE</p>
+        <h1 class="text-2xl font-black text-ink tracking-tight leading-snug">
+          ゲレンデの体験を投稿しよう
+        </h1>
+        <p class="text-xs text-muted mt-1.5 leading-relaxed">
+          過去に滑った思い出のゲレンデや、お気に入りの雪山ならいつでも投稿OK。あなたのリアルな声が、仲間のゲレンデ選びに役立ちます。
+        </p>
+      </section>
+
+      <!-- レビュー入力フォーム -->
+      <form id="review-form" onsubmit="return false;" class="px-5 space-y-5 fade-up">
+
+        <!-- STEP 01：スキー場を選ぶ（プリセット＋ドロップダウン選択） -->
+        <div class="bg-white rounded-2xl p-6 border border-stone-200/80 shadow-[0_2px_12px_rgba(20,25,31,0.02)]">
+          <div class="flex items-center justify-between mb-1">
+            <span class="font-eng text-[11px] font-bold tracking-[0.18em] text-brand uppercase">STEP 01</span>
+            <span class="text-[11px] font-bold text-accent bg-rose-50 border border-rose-200/70 px-2 py-0.5 rounded-md">必須</span>
+          </div>
+          <label class="block text-lg font-black text-ink mb-1" for="resort-select">
+            スキー場を選ぶ
+          </label>
+          <p class="text-xs font-medium text-muted mb-4">リストからレビューするスキー場を選択してください</p>
+
+          <div class="relative">
+            <select
+              id="resort-select"
+              class="w-full h-12 pl-4 pr-10 bg-paper/70 border border-stone-200 rounded-xl text-[15px] font-bold text-ink appearance-none focus:bg-white focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/15 transition-all cursor-pointer">
+              <!-- JSで生成・プリセット反映 -->
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-3.5 flex items-center text-muted">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        
+        <!-- STEP 02：総合評価 -->
+        <div class="bg-white rounded-2xl p-6 border border-stone-200/80 shadow-[0_2px_12px_rgba(20,25,31,0.02)]">
+          <div class="flex items-center justify-between mb-1">
+            <span class="font-eng text-[11px] font-bold tracking-[0.18em] text-brand uppercase">STEP 02</span>
+            <span class="text-[11px] font-bold text-accent bg-rose-50 border border-rose-200/70 px-2 py-0.5 rounded-md">必須</span>
+          </div>
+          <label class="block text-lg font-black text-ink mb-1">
+            総合評価
+          </label>
+          <p class="text-xs font-medium text-muted mb-5">星をタップしてゲレンデの満足度を選択</p>
+          
+          <div class="flex justify-center items-center gap-2.5" id="star-container">
+            <button type="button" class="star-btn p-1 flex items-center justify-center" data-value="1" aria-label="星1">
+              <svg class="w-11 h-11 stroke-stone-300 fill-stone-100" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+            </button>
+            <button type="button" class="star-btn p-1 flex items-center justify-center" data-value="2" aria-label="星2">
+              <svg class="w-11 h-11 stroke-stone-300 fill-stone-100" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+            </button>
+            <button type="button" class="star-btn p-1 flex items-center justify-center" data-value="3" aria-label="星3">
+              <svg class="w-11 h-11 stroke-stone-300 fill-stone-100" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+            </button>
+            <button type="button" class="star-btn p-1 flex items-center justify-center" data-value="4" aria-label="星4">
+              <svg class="w-11 h-11 stroke-stone-300 fill-stone-100" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+            </button>
+            <button type="button" class="star-btn p-1 flex items-center justify-center" data-value="5" aria-label="星5">
+              <svg class="w-11 h-11 stroke-stone-300 fill-stone-100" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+            </button>
+          </div>
+          <p id="rating-text" class="text-sm font-black text-brand mt-3 text-center h-5"></p>
+        </div>
+
+        <!-- STEP 03：おすすめポイント -->
+        <div class="bg-white rounded-2xl p-6 border border-stone-200/80 shadow-[0_2px_12px_rgba(20,25,31,0.02)]">
+          <div class="flex items-center justify-between mb-1">
+            <span class="font-eng text-[11px] font-bold tracking-[0.18em] text-brand uppercase">STEP 03</span>
+            <span class="text-[11px] font-bold text-accent bg-rose-50 border border-rose-200/70 px-2 py-0.5 rounded-md">必須・複数可</span>
+          </div>
+          <label class="block text-lg font-black text-ink mb-1">
+            おすすめポイント
+          </label>
+          <p class="text-xs font-medium text-muted mb-4">最低1つ、当てはまるタグを選択</p>
+          
+          <div class="flex flex-wrap gap-2" id="tag-container">
+            <button type="button" class="tag-chip border border-stone-200 bg-paper px-3.5 py-2 rounded-full text-[13px] font-bold text-ink hover:border-brand">🐣 初心者向け</button>
+            <button type="button" class="tag-chip border border-stone-200 bg-paper px-3.5 py-2 rounded-full text-[13px] font-bold text-ink hover:border-brand">⚡️ 上級者向け</button>
+            <button type="button" class="tag-chip border border-stone-200 bg-paper px-3.5 py-2 rounded-full text-[13px] font-bold text-ink hover:border-brand">❄️ パウダー</button>
+            <button type="button" class="tag-chip border border-stone-200 bg-paper px-3.5 py-2 rounded-full text-[13px] font-bold text-ink hover:border-brand">🏂 コース</button>
+            <button type="button" class="tag-chip border border-stone-200 bg-paper px-3.5 py-2 rounded-full text-[13px] font-bold text-ink hover:border-brand">🏔️ 絶景ビュー</button>
+            <button type="button" class="tag-chip border border-stone-200 bg-paper px-3.5 py-2 rounded-full text-[13px] font-bold text-ink hover:border-brand">🍜 ゲレ食</button>
+            <button type="button" class="tag-chip border border-stone-200 bg-paper px-3.5 py-2 rounded-full text-[13px] font-bold text-ink hover:border-brand">🛗 キレイな施設</button>
+            <button type="button" class="tag-chip border border-stone-200 bg-paper px-3.5 py-2 rounded-full text-[13px] font-bold text-ink hover:border-brand">🎿 レンタル</button>
+            <button type="button" class="tag-chip border border-stone-200 bg-paper px-3.5 py-2 rounded-full text-[13px] font-bold text-ink hover:border-brand">🚗 アクセス</button>
+            <button type="button" class="tag-chip border border-stone-200 bg-paper px-3.5 py-2 rounded-full text-[13px] font-bold text-ink hover:border-brand">♨️ 温泉・宿</button>
+            <button type="button" class="tag-chip border border-stone-200 bg-paper px-3.5 py-2 rounded-full text-[13px] font-bold text-ink hover:border-brand">😌 混雑少</button>
+            <button type="button" class="tag-chip border border-stone-200 bg-paper px-3.5 py-2 rounded-full text-[13px] font-bold text-ink hover:border-brand">💰 コスパ</button>
+          </div>
+        </div>
+
+        <!-- STEP 04：感想（20〜100文字） -->
+        <div class="bg-white rounded-2xl p-6 border border-stone-200/80 shadow-[0_2px_12px_rgba(20,25,31,0.02)]">
+          <div class="flex items-center justify-between mb-1">
+            <span class="font-eng text-[11px] font-bold tracking-[0.18em] text-brand uppercase">STEP 04</span>
+            <span class="text-[11px] font-bold text-accent bg-rose-50 border border-rose-200/70 px-2 py-0.5 rounded-md">必須</span>
+          </div>
+
+          <div class="flex justify-between items-baseline mb-1.5">
+            <label class="text-lg font-black text-ink" for="review-comment">
+              感想・おすすめポイント
+            </label>
+            <span class="font-eng text-xs font-bold text-muted"><span id="char-count" class="text-ink font-black">0</span> / 100</span>
+          </div>
+
+          <p class="text-xs font-medium text-muted leading-relaxed mb-4">
+            次のホッパーに向けて「良かった点」や「おすすめの過ごし方」を20文字以上で教えてください😊
+          </p>
+          
+          <textarea id="review-comment" rows="4" maxlength="100" placeholder="雪質の良さ、景色、ゲレ食など..." class="w-full p-4 bg-paper/70 border border-stone-200 rounded-xl text-[15px] font-medium text-ink placeholder:text-stone-400 focus:bg-white focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/15 transition-all resize-none leading-relaxed"></textarea>
+          
+          <div id="length-warning" class="text-xs font-bold text-accent mt-2.5 flex items-center gap-1.5 hidden">
+            <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <span>あと <strong id="remaining-chars">20</strong> 文字必要です</span>
+          </div>
+        </div>
+
+        <!-- 注意事項 -->
+        <div class="bg-paperDark/70 p-4 rounded-2xl border border-stone-200/80">
+          <p class="text-[11px] font-medium text-muted leading-relaxed">
+            ※投稿されたレビューは、アースホッパーのレビュー一覧ページやSNS等で紹介される場合があります。<br>
+            ※公序良俗に反する内容や、施設・他者への誹謗中傷を含む投稿は掲載を見送らせていただきます。
+          </p>
+        </div>
+
+        <!-- メイン送信CTA -->
+        <div class="pt-1 pb-4">
+          <button id="submit-btn" type="button" class="w-full h-14 px-6 font-black text-[15px] rounded-full flex items-center justify-center gap-2.5 transition-all duration-300 pointer-events-none bg-stone-200 text-stone-400">
+            <span>レビューを投稿する</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- 投稿完了モーダル -->
+    <div id="success-modal" class="fixed inset-0 z-50 flex items-center justify-center p-5 modal-backdrop bg-ink/75 hidden">
+      <div class="bg-white w-full max-w-sm rounded-3xl overflow-hidden shadow-2xl animate-pop border border-stone-200">
+        
+        <div class="bg-ink text-white px-6 pt-7 pb-6 text-center relative">
+          <div class="w-14 h-14 rounded-2xl bg-brand/20 border border-brand/40 flex items-center justify-center text-2xl mx-auto mb-3.5 text-sky-300">
+            🏔️
+          </div>
+          <p class="font-eng font-bold text-[11px] text-sky-300 tracking-[0.22em] uppercase mb-1">THANK YOU FOR SHARING</p>
+          <h3 class="text-[22px] font-black text-white tracking-tight">レビューを投稿しました！</h3>
+        </div>
+
+        <div class="p-6 text-center bg-paper">
+          <p class="text-sm font-medium text-muted mb-5 leading-relaxed">
+            素敵なレビューをありがとうございました。<br>
+            あなたの体験が、次のホッパーの雪山選びにつながります。
+          </p>
+
+          <div class="bg-white border border-stone-200/90 rounded-2xl p-4 mb-6 shadow-sm text-left">
+            <div class="flex items-center justify-between text-xs mb-1">
+              <span id="modal-resort-name" class="font-black text-ink truncate pr-2">選択したスキー場</span>
+              <span id="modal-stars" class="text-amber-400 font-eng font-bold shrink-0">★★★★★</span>
+            </div>
+            <p id="modal-comment-preview" class="text-xs text-muted leading-relaxed line-clamp-3 mt-1.5"></p>
+          </div>
+
+          <div class="space-y-2.5">
+            <a href="/review" class="w-full py-3.5 bg-ink hover:bg-slate-800 text-white font-black rounded-full text-sm flex items-center justify-center gap-2 shadow-sm transition-transform active:scale-[0.98]">
+              <span>みんなのレビューを見る</span>
+            </a>
+            <button id="post-another-btn" type="button" class="w-full py-2.5 text-xs font-bold text-muted hover:text-ink transition-colors">
+              別のスキー場のレビューも書く
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const DEFAULT_RESORTS = [
+      "ホワイトワールド尾瀬岩鞍",
+      "蔵王ライザワールド",
+      "ニセコアンヌプリ国際スキー場",
+      "たんばらスキーパーク",
+      "たざわ湖スキー場",
+      "神立スノーリゾート",
+      "赤倉観光リゾートスキー場",
+      "ぴっぷスキー場",
+      "川場スキー場",
+      "舞子スノーリゾート",
+      "夏油高原スキー場",
+      "丸沼高原スキー場",
+      "オグナほたかスキー場",
+      "武尊牧場スキー場",
+      "ハンターマウンテン塩原",
+      "マウントジーンズ那須",
+      "星野リゾート ネコマ マウンテン",
+      "グランデコ スノーリゾート",
+      "安比高原スキー場",
+      "雫石スキー場",
+      "網張温泉スキー場",
+      "八幡平リゾート パノラマスキー場",
+      "富良野スキー場",
+      "カムイスキーリンクス",
+      "サッポロテイネ",
+      "キロロスノーワールド",
+      "ルスツリゾート",
+      "斑尾高原スキー場",
+      "タングラムスキーサーカス",
+      "戸隠スキー場",
+      "黒姫高原スノーパーク",
+      "竜王スキーパーク",
+      "X-JAM高井富士",
+      "よませ温泉スキー場",
+      "木島平スキー場",
+      "野沢温泉スキー場",
+      "菅平高原スノーリゾート",
+      "白馬岩岳スノーフィールド",
+      "つがいけマウンテンリゾート",
+      "白馬八方尾根スキー場",
+      "エイブル白馬五竜",
+      "Hakuba47 ウィンタースポーツパーク",
+      "爺ガ岳スキー場",
+      "鹿島槍スキー場ファミリーパーク",
+      "めいほうスキー場",
+      "高鷲スノーパーク",
+      "ダイナランド",
+      "鷲ヶ岳スキー場",
+      "ホワイトピアたかす",
+      "ひるがの高原スキー場"
+    ];
+
+    const MIN_CHARS = 20;
+    const MAX_CHARS = 100;
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: "0px 0px -20px 0px" });
+
+      document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+      // review.json が読み込めれば候補リストへ統合
+      let resortList = [...DEFAULT_RESORTS];
+      try {
+        const res = await fetch('./review.json', { cache: 'no-store' });
+        if (res.ok) {
+          const data = await res.json();
+          const set = new Set(resortList);
+          data.forEach(item => {
+            if (item && item.resort) set.add(String(item.resort).trim());
+          });
+          resortList = Array.from(set);
+        }
+      } catch (e) {}
+
+      // URLパラメータ ?resort=... から直前に閲覧していたスキー場を取得
+      const params = new URLSearchParams(window.location.search);
+      const presetResort = (params.get('resort') || '').trim();
+      if (presetResort && !resortList.includes(presetResort)) {
+        resortList.unshift(presetResort);
+      }
+
+      const resortSelect = document.getElementById('resort-select');
+      resortSelect.innerHTML = resortList.map(name => {
+        const selected = name === presetResort ? 'selected' : '';
+        return `<option value="${name}" ${selected}>${name}</option>`;
+      }).join('');
+
+      let selectedRating = 0;
+      let selectedTagsCount = 0;
+      const ratingTexts = ["", "うーん... 😞", "イマイチ 😐", "普通・満足 🙂", "とても良い！ 😄", "最高！！ 🔥"];
+
+      const starButtons = document.querySelectorAll('.star-btn');
+      const ratingTextEl = document.getElementById('rating-text');
+      const commentInput = document.getElementById('review-comment');
+      const charCountEl = document.getElementById('char-count');
+      const lengthWarningEl = document.getElementById('length-warning');
+      const remainingCharsEl = document.getElementById('remaining-chars');
+      const submitBtn = document.getElementById('submit-btn');
+
+      resortSelect.addEventListener('change', validateForm);
+
+      starButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          selectedRating = parseInt(btn.getAttribute('data-value'), 10);
+          updateStars(selectedRating);
+          validateForm();
+        });
+      });
+
+      function updateStars(rating) {
+        starButtons.forEach((btn, idx) => {
+          const svg = btn.querySelector('svg');
+          if (idx < rating) {
+            svg.classList.remove('stroke-stone-300', 'fill-stone-100');
+            svg.classList.add('stroke-amber-400', 'fill-amber-400');
+          } else {
+            svg.classList.remove('stroke-amber-400', 'fill-amber-400');
+            svg.classList.add('stroke-stone-300', 'fill-stone-100');
+          }
+        });
+        ratingTextEl.textContent = ratingTexts[rating] || "";
+      }
+
+      const tagChips = document.querySelectorAll('.tag-chip');
+      tagChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          const isSelected = chip.classList.toggle('bg-ink');
+          chip.classList.toggle('text-white');
+          chip.classList.toggle('border-ink');
+          chip.classList.toggle('shadow-sm');
+          chip.classList.toggle('bg-paper');
+          chip.classList.toggle('text-ink');
+          chip.classList.toggle('border-stone-200');
+          
+          if (isSelected) {
+            selectedTagsCount++;
+          } else {
+            selectedTagsCount--;
+          }
+          validateForm();
+        });
+      });
+
+      commentInput.addEventListener('input', () => {
+        const text = commentInput.value.trim();
+        const currentLength = text.length;
+        charCountEl.textContent = currentLength;
+
+        if (currentLength > 0 && currentLength < MIN_CHARS) {
+          lengthWarningEl.classList.remove('hidden');
+          remainingCharsEl.textContent = MIN_CHARS - currentLength;
+        } else {
+          lengthWarningEl.classList.add('hidden');
+        }
+
+        validateForm();
+      });
+
+      function validateForm() {
+        const resortName = resortSelect.value.trim();
+        const text = commentInput.value.trim();
+        const hasResort = resortName.length > 0;
+        const hasRating = selectedRating > 0;
+        const hasTags = selectedTagsCount > 0;
+        const hasValidComment = text.length >= MIN_CHARS && text.length <= MAX_CHARS;
+
+        if (hasResort && hasRating && hasTags && hasValidComment) {
+          submitBtn.classList.remove('pointer-events-none', 'bg-stone-200', 'text-stone-400');
+          submitBtn.classList.add('bg-brand', 'text-white', 'shadow-[0_12px_28px_rgba(0,136,198,0.32)]', 'hover:bg-brandDark', 'active:scale-[0.98]');
+          submitBtn.querySelector('svg').classList.add('animate-bounce-x');
+        } else {
+          submitBtn.classList.add('pointer-events-none', 'bg-stone-200', 'text-stone-400');
+          submitBtn.classList.remove('bg-brand', 'text-white', 'shadow-[0_12px_28px_rgba(0,136,198,0.32)]', 'hover:bg-brandDark', 'active:scale-[0.98]');
+          submitBtn.querySelector('svg').classList.remove('animate-bounce-x');
+        }
+      }
+
+      const successModal = document.getElementById('success-modal');
+      const modalResortName = document.getElementById('modal-resort-name');
+      const modalStars = document.getElementById('modal-stars');
+      const modalCommentPreview = document.getElementById('modal-comment-preview');
+      const postAnotherBtn = document.getElementById('post-another-btn');
+
+      submitBtn.addEventListener('click', () => {
+        modalResortName.textContent = resortSelect.value.trim();
+        modalStars.textContent = '★'.repeat(selectedRating) + '☆'.repeat(5 - selectedRating);
+        modalCommentPreview.textContent = commentInput.value.trim();
+        successModal.classList.remove('hidden');
+      });
+
+      postAnotherBtn.addEventListener('click', () => {
+        window.location.reload();
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>レビュー</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#0088C6',
+            brandDark: '#006899',
+            ink: '#14191F'
+          },
+          fontFamily: {
+            sans: ['"Noto Sans JP"', 'sans-serif'],
+            eng: ['"Inter"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      height: 100dvh;
+      width: 100%;
+      overflow: hidden;
+      background-color: #14191F;
+      font-family: 'Noto Sans JP', sans-serif;
+      overscroll-behavior-y: none;
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: "palt";
+    }
+
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* スワイプ最適化：GPUレイヤー化＆ネイティブ慣性スクロールの阻害要因を排除 */
+    #feed-container {
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior-y: contain;
+      will-change: scroll-position;
+    }
+
+    .review-slide {
+      height: 100%;
+      transform: translateZ(0);
+      backface-visibility: hidden;
+      contain: layout style paint;
+    }
+
+    /* 写真の美しさを損なわず、下部テキストの可読性をしっかり守るシネマティックビネット */
+    .photo-vignette {
+      background: linear-gradient(
+        180deg,
+        rgba(12, 16, 22, 0.72) 0%,
+        rgba(12, 16, 22, 0.12) 24%,
+        rgba(12, 16, 22, 0.16) 38%,
+        rgba(12, 16, 22, 0.84) 60%,
+        rgba(12, 16, 22, 0.98) 100%
+      );
+    }
+
+    .text-shadow-strong {
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8), 0 1px 3px rgba(0, 0, 0, 0.9);
+    }
+
+    .text-shadow-body {
+      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.9), 0 1px 2px rgba(0, 0, 0, 0.95);
+    }
+
+    .clamp-review {
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* アクティブスライドのみ緩やかなKen Burnsアニメーションを実行 */
+    @keyframes kenBurns {
+      0% { transform: scale3d(1, 1, 1); }
+      100% { transform: scale3d(1.05, 1.05, 1); }
+    }
+    .active-slide .bg-photo {
+      animation: kenBurns 14s ease-out forwards;
+      will-change: transform;
+    }
+
+    @keyframes swipeHintFloat {
+      0%, 100% { transform: translateY(0); opacity: 0.94; }
+      50% { transform: translateY(-5px); opacity: 1; }
+    }
+    .animate-swipe-hint {
+      animation: swipeHintFloat 2s ease-in-out infinite;
+    }
+
+    /* ローディング画面用：ロゴの軽やかなホップ＆プログレスバーアニメーション */
+    @keyframes logoHop {
+      0%, 100% { transform: translateY(0) scale(1); }
+      40% { transform: translateY(-10px) scale(1.03); }
+      65% { transform: translateY(2px) scale(0.98); }
+    }
+    .animate-logo-hop {
+      animation: logoHop 1.6s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+    }
+
+    @keyframes loadingSweep {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(220%); }
+    }
+    .animate-loading-sweep {
+      animation: loadingSweep 1.3s ease-in-out infinite;
+    }
+
+    .safe-top { padding-top: max(14px, env(safe-area-inset-top)); }
+    .safe-bottom { padding-bottom: max(20px, env(safe-area-inset-bottom)); }
+  </style>
+</head>
+<body class="select-none bg-ink text-white">
+
+  <!-- ローディングオーバーレイ（logo.pngを活用したスプラッシュ） -->
+  <div id="app-loader" class="fixed inset-0 z-50 bg-ink flex flex-col items-center justify-center transition-opacity duration-500">
+    <div class="absolute w-64 h-64 rounded-full bg-brand/20 blur-3xl pointer-events-none"></div>
+
+    <div class="relative z-10 flex flex-col items-center px-6">
+      <div class="animate-logo-hop mb-6">
+        <img src="logo.png" alt="EARTH HOPPER" class="h-14 sm:h-16 w-auto object-contain drop-shadow-[0_6px_24px_rgba(0,136,198,0.45)]"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
+        <span style="display:none;" class="items-center gap-2 font-eng font-black text-2xl tracking-widest text-white">
+          <span class="w-3.5 h-3.5 rounded-full bg-brand inline-block"></span>EARTH HOPPER
+        </span>
+      </div>
+
+      <div class="w-40 h-[3px] rounded-full bg-white/15 overflow-hidden mb-3.5">
+        <div class="w-1/2 h-full rounded-full bg-gradient-to-r from-brand via-sky-300 to-brand animate-loading-sweep"></div>
+      </div>
+
+      <p class="font-eng text-[11px] font-bold tracking-[0.26em] text-white/70 uppercase">
+        LOADING HOPPER'S REVIEWS
+      </p>
+    </div>
+  </div>
+
+  <!-- モバイル全画面レビューコンテナ -->
+  <main id="app-shell" class="fixed inset-0 w-full h-full bg-ink text-white flex flex-col overflow-hidden">
+
+    <!-- トップオーバーレイ：ロゴ＆タグフィルター -->
+    <header class="absolute top-0 left-0 right-0 z-30 safe-top px-4 pb-2.5 pointer-events-none">
+      <div class="flex items-center justify-between pointer-events-auto">
+        <div class="flex items-center gap-2">
+          <img src="logo.png" alt="EARTH HOPPER" class="h-10 sm:h-11 w-auto object-contain drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)]"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
+          <span style="display:none;" class="items-center gap-1.5 font-eng font-black text-lg tracking-wider text-white text-shadow-strong">
+            <span class="w-3 h-3 rounded-full bg-brand inline-block"></span>EARTH HOPPER
+          </span>
+        </div>
+
+        <!-- 右上カウンター：「#すべて」以外のタグ選択時のみ表示 -->
+        <span id="counter-pill" class="hidden px-3.5 py-1.5 rounded-full bg-black/75 border border-white/25 text-sm font-eng font-bold tracking-wider text-white shadow-sm">
+          1 / 1
+        </span>
+      </div>
+
+      <!-- 横スクロール タグフィルター -->
+      <div id="tag-bar" class="mt-3 flex items-center gap-2 overflow-x-auto no-scrollbar pointer-events-auto py-1"></div>
+    </header>
+
+    <!-- 縦スワイプ フィードコンテナ -->
+    <div id="feed-container" class="w-full h-full overflow-y-scroll snap-y snap-mandatory no-scrollbar relative"></div>
+
+    <!-- トースト通知 -->
+    <div id="toast" class="pointer-events-none fixed left-1/2 top-32 -translate-x-1/2 z-50 opacity-0 transition-all duration-300 translate-y-2 max-w-[90vw]">
+      <div class="px-4 py-3 rounded-2xl bg-ink/95 border border-white/20 text-sm font-bold text-white shadow-2xl flex items-center gap-2 text-center leading-snug">
+        <span id="toast-icon" class="shrink-0 text-base">📋</span>
+        <span id="toast-text">コピーしました</span>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    // ------------------------------------------------------------------
+    // 1. ローカル背景写真プール（./images/review01.webp 〜 review30.webp）
+    // ------------------------------------------------------------------
+    const TOTAL_PHOTOS = 30;
+    const SNOW_PHOTOS = Array.from({ length: TOTAL_PHOTOS }, (_, i) => {
+      const num = String(i + 1).padStart(2, '0');
+      return `./images/review${num}.webp`;
+    });
+
+    const FALLBACK_REVIEWS = [
+      { resort: "ホワイトワールド尾瀬岩鞍", rate: 5, tag: "パウダー,コース", review: "コース幅が広くストレスフリーで滑れるゲレンデ。ロングコースも楽しめてゴンドラ降りてからの絶景を見てからの滑走はテンション上がります！" },
+      { resort: "蔵王ライザワールド", rate: 5, tag: "パウダー,絶景ビュー,混雑少", review: "蔵王の樹氷が混雑と無縁で目の前で見れる穴場スキー場。リフト待ちがほぼ無いことを考えると快適さは桁違い。樹氷と絶景を楽しむだけで一日満喫出来ます。" },
+      { resort: "ニセコアンヌプリ国際スキー場", rate: 5, tag: "上級者向け,初心者向け,パウダー,絶景ビュー,コース,混雑少", review: "好きなスキー場で何度も行ってます！最高のパウダー、広いバーン、本当に大好きです！" },
+      { resort: "たんばらスキーパーク", rate: 4, tag: "初心者向け,アクセス,パウダー,コース", review: "都心から近くて雪質も良いです。降雪の後は風の影響も少なくてパウも期待できます。ただバーンは緩いので初心者のパウ体験にはちょうど良いと思います。" }
+    ];
+
+    // ------------------------------------------------------------------
+    // 2. アプリ状態＆ユーティリティ
+    // ------------------------------------------------------------------
+    // ※実際のレビュー投稿フォーム（LIFFやGoogleフォーム等）のURLに変更してください
+    const REVIEW_POST_URL = 'https://www.hopper.earth/review/post';
+    const REVIEW_PUBLIC_URL = 'https://www.hopper.earth/review';
+
+    let allReviews = [];
+    let filteredReviews = [];
+    let activeTag = 'すべて';
+    let hasSwipedOnce = false;
+
+    const appLoader = document.getElementById('app-loader');
+    const feedContainer = document.getElementById('feed-container');
+    const tagBar = document.getElementById('tag-bar');
+    const counterPill = document.getElementById('counter-pill');
+
+    function shuffleArray(arr) {
+      const a = [...arr];
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function renderStars(rate) {
+      const n = Math.max(1, Math.min(5, Number(rate) || 5));
+      return '★'.repeat(n) + '<span class="text-white/30">' + '★'.repeat(5 - n) + '</span>';
+    }
+
+    function preloadImage(src) {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = resolve;
+        img.onerror = resolve;
+        img.src = src;
+      });
+    }
+
+    function hideLoader() {
+      if (!appLoader || appLoader.dataset.hidden) return;
+      appLoader.dataset.hidden = 'true';
+      appLoader.classList.add('opacity-0', 'pointer-events-none');
+      setTimeout(() => appLoader.remove(), 500);
+    }
+
+    let toastTimer;
+    function showToast(text, icon = '📋', duration = 2800) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-text').textContent = text;
+      document.getElementById('toast-icon').textContent = icon;
+      toast.classList.remove('opacity-0', 'translate-y-2');
+      toast.classList.add('opacity-100', 'translate-y-0');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', 'translate-y-2');
+      }, duration);
+    }
+
+    // ------------------------------------------------------------------
+    // 3. データ読み込み＆初期ローディング制御
+    // ------------------------------------------------------------------
+    async function init() {
+      // 最大2.5秒でローダーを強制解除（通信環境が悪い場合のフェイルセーフ）
+      const fallbackTimer = setTimeout(hideLoader, 2500);
+
+      let rawData = [];
+      try {
+        const res = await fetch('./review.json', { cache: 'no-store' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        rawData = await res.json();
+      } catch (e) {
+        rawData = FALLBACK_REVIEWS;
+      }
+
+      const cleaned = rawData
+        .filter(item => item && item.resort && item.review && !String(item.review).includes('testですですです'))
+        .map((item, idx) => ({
+          id: `r_${idx}`,
+          resort: String(item.resort).trim(),
+          rate: Number(item.rate) || 5,
+          tags: String(item.tag || '').split(',').map(t => t.trim()).filter(Boolean),
+          review: String(item.review).trim()
+        }));
+
+      allReviews = shuffleArray(cleaned);
+      renderTagBar();
+      const firstPhoto = applyFilter('すべて');
+
+      // 最初のスライド画像の読み込み完了＋最低限のロゴアニメーション表示を待ってからフェードアウト
+      await Promise.all([
+        firstPhoto ? preloadImage(firstPhoto) : Promise.resolve(),
+        new Promise(r => setTimeout(r, 650))
+      ]);
+
+      clearTimeout(fallbackTimer);
+      hideLoader();
+    }
+
+    // ------------------------------------------------------------------
+    // 4. 上部タグフィルター描画
+    // ------------------------------------------------------------------
+    function renderTagBar() {
+      const tagSet = new Set();
+      allReviews.forEach(r => r.tags.forEach(t => tagSet.add(t)));
+      const tags = ['すべて', ...Array.from(tagSet)];
+
+      tagBar.innerHTML = tags.map(tag => {
+        const isActive = activeTag === tag;
+        return `
+          <button
+            data-tag="${escapeHtml(tag)}"
+            class="tag-chip shrink-0 px-4 py-2 rounded-full text-[14px] font-bold tracking-wide transition-colors border ${
+              isActive
+                ? 'bg-white text-ink border-white shadow-[0_4px_14px_rgba(0,0,0,0.35)]'
+                : 'bg-black/65 text-white border-white/25 hover:bg-black/85'
+            }">
+            #${escapeHtml(tag)}
+          </button>
+        `;
+      }).join('');
+    }
+
+    function applyFilter(tag) {
+      activeTag = tag;
+      renderTagBar();
+      filteredReviews = tag === 'すべて'
+        ? [...allReviews]
+        : allReviews.filter(r => r.tags.includes(tag));
+
+      return renderFeed();
+    }
+
+    // ------------------------------------------------------------------
+    // 5. フィード描画（30枚の写真をランダム割り当て）
+    // ------------------------------------------------------------------
+    function renderFeed() {
+      const shuffledPhotos = shuffleArray(SNOW_PHOTOS);
+      let firstPhotoUrl = null;
+
+      const slidesHtml = filteredReviews.map((item, idx) => {
+        const isLong = item.review.length > 90 || (item.review.match(/\n/g) || []).length >= 3;
+        const photoUrl = shuffledPhotos[idx % shuffledPhotos.length];
+        if (idx === 0) firstPhotoUrl = photoUrl;
+
+        const swipeGuideHtml = (idx === 0 && !hasSwipedOnce) ? `
+          <div id="swipe-guide" class="pointer-events-none absolute top-[34%] left-1/2 -translate-x-1/2 z-30 transition-opacity duration-500">
+            <div class="animate-swipe-hint flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-brand/95 backdrop-blur-md border-2 border-white/90 shadow-[0_10px_28px_rgba(0,0,0,0.65)]">
+              <span class="text-[14px] font-black tracking-wider text-white whitespace-nowrap drop-shadow">スワイプして次のレビューを見る</span>
+              <span class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center shrink-0">
+                <svg class="w-3.5 h-3.5 text-white animate-bounce" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </div>
+          </div>
+        ` : '';
+
+        return `
+          <section
+            data-review-index="${idx}"
+            data-id="${escapeHtml(item.id)}"
+            class="review-slide relative w-full h-full snap-start snap-always overflow-hidden flex flex-col justify-end">
+
+            <!-- 背景写真（人物の顔が切れないよう上部20%基準で配置） -->
+            <img
+              src="${photoUrl}"
+              alt="${escapeHtml(item.resort)}"
+              loading="${idx < 3 ? 'eager' : 'lazy'}"
+              decoding="async"
+              class="bg-photo absolute inset-0 w-full h-full object-cover object-[center_20%] pointer-events-none" />
+
+            <!-- シネマティックビネット -->
+            <div class="photo-vignette absolute inset-0 pointer-events-none"></div>
+
+            ${swipeGuideHtml}
+
+            <!-- コンテンツエリア -->
+            <div class="relative z-20 w-full px-5 sm:px-6 safe-bottom pt-8 flex flex-col">
+
+              <!-- スキー場名＆評価 -->
+              <div class="mb-4">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+                  <div class="flex items-center gap-2">
+                    <span class="text-amber-400 text-[15px] tracking-wider drop-shadow">${renderStars(item.rate)}</span>
+                    <span class="font-eng text-[15px] font-bold text-white/95">${item.rate}.0</span>
+                    <span class="ml-1 px-2.5 py-0.5 rounded-full bg-white/15 border border-white/15 text-xs font-bold text-sky-200">提携ゲレンデ</span>
+                  </div>
+                  <span class="px-2 py-0.5 rounded bg-black/55 border border-white/15 text-[10px] font-medium text-white/75 tracking-tight">
+                    ※画像はイメージです
+                  </span>
+                </div>
+                <h2 class="text-[28px] sm:text-[30px] font-black leading-[1.26] text-white text-shadow-strong tracking-tight">
+                  ${escapeHtml(item.resort)}
+                </h2>
+              </div>
+
+              <!-- 主役のレビュー本文 -->
+              <div class="mb-5">
+                <p class="review-body text-[21px] sm:text-[22px] leading-[1.72] font-medium text-white text-shadow-body whitespace-pre-line ${isLong ? 'clamp-review' : ''}">${escapeHtml(item.review)}</p>
+                ${isLong ? `
+                  <button class="expand-btn mt-2 py-1 text-[14px] font-bold text-sky-300 hover:text-white transition-colors">
+                    続きを読む
+                  </button>
+                ` : ''}
+              </div>
+
+              <!-- ボトムCTAドック：コミュニティへのレビュー投稿促進 -->
+              <div class="flex items-stretch gap-2.5 pt-3.5 border-t border-white/15">
+                <a
+                  href="${REVIEW_POST_URL}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex-1 min-w-0 h-14 px-3.5 rounded-2xl bg-brand hover:bg-brandDark border border-white/25 text-white shadow-[0_8px_24px_rgba(0,136,198,0.4)] flex items-center justify-between gap-2 transition-transform active:scale-95">
+                  <div class="flex items-center gap-2.5 min-w-0">
+                    <span class="w-8 h-8 rounded-xl bg-white/20 flex items-center justify-center shrink-0">
+                      <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                      </svg>
+                    </span>
+                    <div class="flex flex-col items-start min-w-0">
+                      <span class="text-[15px] font-black leading-tight tracking-tight truncate w-full">レビューを投稿する</span>
+                      <span class="text-[11px] font-medium text-white/85 leading-tight mt-0.5 truncate w-full">仲間のゲレンデ選びに役立てよう</span>
+                    </div>
+                  </div>
+                  <svg class="w-4 h-4 text-white/80 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+
+                <!-- サブCTA：共有 -->
+                <button
+                  data-action="share"
+                  data-review-index="${idx}"
+                  class="w-[68px] shrink-0 h-14 rounded-2xl bg-black/75 hover:bg-black/90 border border-white/25 text-white font-bold text-[12px] flex flex-col items-center justify-center gap-1 transition-transform active:scale-95">
+                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  </svg>
+                  <span class="leading-none">共有</span>
+                </button>
+              </div>
+
+            </div>
+          </section>
+        `;
+      });
+
+      feedContainer.innerHTML = slidesHtml.join('');
+      feedContainer.scrollTop = 0;
+      updateCounter(0);
+      observeSlides();
+      return firstPhotoUrl;
+    }
+
+    // ------------------------------------------------------------------
+    // 6. X共有
+    // ------------------------------------------------------------------
+    function buildShareUrl() {
+      try {
+        const url = new URL(window.location.href);
+        url.pathname = '/review';
+        url.search = '';
+        url.hash = '';
+        return url.toString();
+      } catch (e) {
+        return REVIEW_PUBLIC_URL;
+      }
+    }
+
+    async function copyToClipboard(text) {
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+          return true;
+        }
+      } catch (e) {}
+      try {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+
+    async function shareToX(item) {
+      const shareUrl = buildShareUrl();
+      const header = `【Hopper's Reviews】\n📍${item.resort}\n`;
+      const footer = `\n@earth_hopper\n${shareUrl}`;
+      const fixedVisualLen = header.length + 2 + (`\n@earth_hopper\n`).length + 14;
+      const maxReviewLen = Math.max(25, 136 - fixedVisualLen);
+
+      let body = item.review.replace(/\n+/g, ' ');
+      if (body.length > maxReviewLen) {
+        body = body.slice(0, maxReviewLen - 1) + '…';
+      }
+
+      const tweetText = `${header}"${body}"${footer}`;
+      const encoded = encodeURIComponent(tweetText);
+      const webIntentUrl = `https://x.com/intent/tweet?text=${encoded}`;
+
+      const ua = navigator.userAgent || '';
+      const isLineInApp = /Line\//i.test(ua);
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(ua);
+
+      await copyToClipboard(tweetText);
+
+      if (isLineInApp || isMobile) {
+        const appSchemeUrl = `twitter://post?message=${encoded}`;
+        let appOpened = false;
+
+        const onVisibilityChange = () => {
+          if (document.hidden) appOpened = true;
+        };
+        document.addEventListener('visibilitychange', onVisibilityChange, { once: true });
+
+        window.location.href = appSchemeUrl;
+
+        setTimeout(() => {
+          document.removeEventListener('visibilitychange', onVisibilityChange);
+          if (!appOpened && !document.hidden) {
+            if (isLineInApp) {
+              showToast('投稿文をコピーしました！Xが開かない場合は右上のメニューから「ブラウザで開く」をお試しください', '📋', 4200);
+            }
+            window.open(webIntentUrl, '_blank', 'noopener,noreferrer');
+          }
+        }, 650);
+      } else {
+        window.open(webIntentUrl, '_blank', 'noopener,noreferrer');
+      }
+    }
+
+    function dismissSwipeGuide() {
+      if (hasSwipedOnce) return;
+      hasSwipedOnce = true;
+      const guide = document.getElementById('swipe-guide');
+      if (guide) {
+        guide.style.opacity = '0';
+        setTimeout(() => guide.remove(), 500);
+      }
+    }
+
+    function updateCounter(reviewIndex) {
+      if (activeTag === 'すべて') {
+        counterPill.classList.add('hidden');
+        return;
+      }
+      const total = filteredReviews.length;
+      if (total > 0) {
+        counterPill.classList.remove('hidden');
+        counterPill.textContent = `${reviewIndex + 1} / ${total}`;
+      } else {
+        counterPill.classList.add('hidden');
+      }
+    }
+
+    let slideObserver;
+    function observeSlides() {
+      if (slideObserver) slideObserver.disconnect();
+      const slides = feedContainer.querySelectorAll('.review-slide');
+
+      slideObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            slides.forEach(s => s.classList.remove('active-slide'));
+            entry.target.classList.add('active-slide');
+
+            const rIdx = Number(entry.target.dataset.reviewIndex);
+            if (rIdx > 0) dismissSwipeGuide();
+            updateCounter(rIdx);
+          }
+        });
+      }, { root: feedContainer, threshold: 0.65 });
+
+      slides.forEach(s => slideObserver.observe(s));
+    }
+
+    tagBar.addEventListener('click', (e) => {
+      const chip = e.target.closest('.tag-chip');
+      if (chip) applyFilter(chip.dataset.tag);
+    });
+
+    feedContainer.addEventListener('click', (e) => {
+      const shareBtn = e.target.closest('[data-action="share"]');
+      if (shareBtn) {
+        const item = filteredReviews[Number(shareBtn.dataset.reviewIndex)];
+        if (item) shareToX(item);
+        return;
+      }
+
+      const expandBtn = e.target.closest('.expand-btn');
+      if (expandBtn) {
+        const p = expandBtn.previousElementSibling;
+        const expanded = !p.classList.contains('clamp-review');
+        p.classList.toggle('clamp-review', expanded);
+        expandBtn.textContent = expanded ? '続きを読む' : '閉じる';
+      }
+    });
+
+    let touchStartY = 0;
+    feedContainer.addEventListener('touchstart', (e) => {
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    feedContainer.addEventListener('touchend', (e) => {
+      const diffY = touchStartY - e.changedTouches[0].clientY;
+      if (Math.abs(diffY) > 15) dismissSwipeGuide();
+      const atBottom = feedContainer.scrollTop + feedContainer.clientHeight >= feedContainer.scrollHeight - 8;
+      if (atBottom && diffY > 50 && filteredReviews.length > 1) {
+        feedContainer.scrollTo({ top: 0, behavior: 'auto' });
+      }
+    }, { passive: true });
+
+    init();
+  </script>
+</body>
+</html>
