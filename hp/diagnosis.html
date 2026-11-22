@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>15秒でわかる！次の週末に行くべきスキー場診断 | アースホッパー</title>
-  <meta name="description" content="いつものゲレンデを卒業しよう。3つの質問に答えるだけで、全国約50の提携スキー場から今のあなたにベストな雪山をピックアップします。">
+  <meta name="description" content="いつものゲレンデを卒業しよう。3つの質問に答えるだけで、全国約50の提携スキー場から今のあなたにベストな雪山をピックアップ。診断受診者限定で¥300相当マイル進呈中。">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,21 +46,21 @@
 
     /* 画面遷移アニメーション */
     .view-panel {
-      transition: opacity 0.32s cubic-bezier(0.22, 1, 0.36, 1), transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+      transition: opacity 0.28s cubic-bezier(0.22, 1, 0.36, 1), transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
     }
     .view-hidden {
       display: none !important;
     }
     .view-fade-out {
       opacity: 0;
-      transform: translateY(10px);
+      transform: translateY(8px);
     }
     .view-fade-in {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* 選択肢カードのインタラクション（index.htmlの紙カード質感に統一） */
+    /* 選択肢カードのインタラクション */
     .option-card {
       transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
     }
@@ -87,7 +87,7 @@
       color: #0088C6;
     }
 
-    /* リフト券・旅パスをイメージしたミシン目＆切り欠きデザイン（index.html承継） */
+    /* リフト券・旅パスをイメージしたミシン目＆切り欠きデザイン */
     .pass-ticket {
       position: relative;
     }
@@ -122,7 +122,7 @@
 <body class="w-full relative overflow-x-hidden font-sans text-ink selection:bg-brand selection:text-white flex flex-col min-h-screen">
 
   <!-- =====================================================================
-       HEADER：index.htmlと統一した静謐なナビゲーション
+       HEADER
   ====================================================================== -->
   <header id="site-header" class="w-full z-40 bg-paper/90 backdrop-blur-md border-b border-stone-200/80 sticky top-0">
     <div class="max-w-5xl mx-auto px-5 sm:px-8 h-14 md:h-16 flex justify-between items-center">
@@ -150,7 +150,7 @@
   <main class="flex-grow flex flex-col">
 
     <!-- =====================================================================
-         1. QUESTION FLOW（カバーページなし・ファーストビューから即Q1へ）
+         1. QUESTION FLOW（全3問で高さを統一＋1行特典マイクロコピー）
     ====================================================================== -->
     <section id="view-question" class="view-panel view-fade-in flex-grow flex flex-col">
       <!-- 極細トッププログレスバー -->
@@ -158,23 +158,10 @@
         <div id="progress-bar" class="h-full bg-brand transition-all duration-300 ease-out" style="width: 33.33%;"></div>
       </div>
 
-      <div class="max-w-2xl w-full mx-auto px-5 sm:px-8 pt-6 pb-12 md:py-12 flex-grow flex flex-col justify-between">
+      <div class="max-w-2xl w-full mx-auto px-5 sm:px-8 pt-5 pb-12 md:py-10 flex-grow flex flex-col justify-between">
         <div>
-          <!-- 広告流入向け：ファーストビューに収まるコンパクトな導入ヘッダー（Q1のみ表示） -->
-          <div id="ad-intro-banner" class="mb-6 pb-5 border-b border-stone-200/80">
-            <div class="flex flex-wrap items-center gap-2 mb-2">
-              <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-brand/10 text-brand font-eng text-[11px] font-bold tracking-wider">
-                3 QUESTIONS / 15 SEC
-              </span>
-              <span class="text-[11px] font-bold text-muted">登録不要・全国約50スキー場から抽出</span>
-            </div>
-            <h1 class="text-lg sm:text-xl font-black text-ink tracking-tight leading-snug">
-              いつものゲレンデを卒業しよう。<br class="sm:hidden">今のあなたにベストな雪山診断
-            </h1>
-          </div>
-
           <!-- ステップ表示＆戻るリンク -->
-          <div class="flex items-center justify-between mb-6">
+          <div class="flex items-center justify-between mb-4">
             <button id="btn-back" onclick="handleBack()" class="invisible text-xs font-bold text-muted hover:text-ink transition-colors flex items-center gap-1.5 py-1">
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
@@ -186,15 +173,23 @@
             </div>
           </div>
 
-          <!-- 質問見出し -->
-          <div class="mb-6 md:mb-8">
-            <p class="font-eng text-xs font-bold text-brand tracking-[0.2em] uppercase mb-2" id="q-eyebrow">QUESTION 01</p>
-            <h2 id="q-heading" class="text-2xl sm:text-[28px] font-black text-ink leading-[1.35] tracking-tight">
-              メインとなる滑走者のレベルや同行者は？
-            </h2>
+          <!-- 全問共通の1行特典ピル（高さを変えずにQ1〜Q3の完了動機を維持） -->
+          <div class="mb-5">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-brand/10 border border-brand/20 text-brand text-xs font-bold">
+              <span class="px-1.5 py-0.5 rounded bg-brand text-white font-eng text-[10px] font-extrabold tracking-wider">GIFT</span>
+              <span>全3問回答で、初回から使える¥300相当マイル進呈中</span>
+            </div>
           </div>
 
-          <!-- 選択肢リスト（タップしやすい紙カードUI） -->
+          <!-- 質問見出し -->
+          <div class="mb-6">
+            <p class="font-eng text-xs font-bold text-brand tracking-[0.2em] uppercase mb-1.5" id="q-eyebrow">QUESTION 01</p>
+            <h1 id="q-heading" class="text-2xl sm:text-[28px] font-black text-ink leading-[1.35] tracking-tight">
+              メインとなる滑走者のレベルや同行者は？
+            </h1>
+          </div>
+
+          <!-- 選択肢リスト -->
           <div id="options-container" class="space-y-3">
             <!-- JSで動的生成 -->
           </div>
@@ -209,10 +204,10 @@
     </section>
 
     <!-- =====================================================================
-         2. ANALYZING VIEW（ミニマルなローディング演出）
+         2. ANALYZING VIEW
     ====================================================================== -->
     <section id="view-loading" class="view-panel view-hidden flex-grow bg-paper flex flex-col items-center justify-center px-5 py-20">
-      <div class="max-w-sm w-full text-center bg-white rounded-2xl p-8 border border-stone-200/80 shadow-[0_4px_20px_rgba(20,25,31,0.03)]">
+      <div class="max-w-sm w-full text-center bg-white rounded-2xl p-8 border border-stone-200/80">
         <p class="font-eng text-xs font-bold text-brand tracking-[0.24em] uppercase mb-2.5">ANALYZING</p>
         <h3 class="text-lg sm:text-xl font-black text-ink mb-5">
           あなたに合う雪山を抽出中…
@@ -228,133 +223,150 @@
 
     <!-- =====================================================================
          3. RESULT VIEW
-            構成：
-            ① 最もおすすめなスキー場（BEST MATCH）
-            ② アースホッパーの宣伝（THE HOPPING PASS / チケット風デザイン）
-            ③ その他おすすめスキー場（OTHER RECOMMENDED RESORTS）
     ====================================================================== -->
     <section id="view-result" class="view-panel view-hidden pb-32">
 
-      <!-- 診断結果トップバー -->
-      <div class="bg-white border-b border-stone-200/80">
-        <div class="max-w-4xl mx-auto px-5 sm:px-8 py-7 md:py-10">
-          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-            <div>
-              <p class="font-eng text-xs font-bold text-brand tracking-[0.2em] uppercase mb-1.5">YOUR BEST MATCH</p>
-              <h2 class="text-2xl sm:text-3xl font-black text-ink tracking-tight leading-tight">
-                診断結果が出ました！
-              </h2>
-            </div>
-            <button onclick="restartDiagnosis()" class="self-start sm:self-auto text-xs font-bold text-muted hover:text-brand border-b border-stone-300 hover:border-brand pb-1 transition-colors flex items-center gap-1.5">
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
-              </svg>
-              <span>条件を変えて再診断</span>
-            </button>
-          </div>
-
-          <!-- ユーザーが選択した条件 -->
-          <div class="mt-5 pt-4 border-t border-stone-100 flex flex-wrap items-center gap-2">
-            <span class="text-xs font-bold text-muted mr-1">あなたの希望：</span>
-            <div id="chosen-tags" class="flex flex-wrap gap-1.5">
-              <!-- JS挿入 -->
-            </div>
-          </div>
-        </div>
-      </div>
-
       <!-- =================================================================
-           ① 最もおすすめなスキー場（BEST MATCH）
+           ① 最もおすすめなスキー場（BEST MATCH）＋ 診断受診者限定プロモコード
       ================================================================== -->
-      <div class="max-w-4xl mx-auto px-5 sm:px-8 pt-10 pb-14">
-        <div class="bg-white rounded-3xl overflow-hidden border border-stone-200/90 shadow-[0_8px_30px_rgba(20,25,31,0.04)]">
-          <!-- 施設メインビジュアル -->
-          <div class="relative aspect-[16/10] sm:aspect-[21/10] bg-stone-100">
-            <img id="best-img"
-                 src="https://images.unsplash.com/photo-1605540436563-5bca919ae766?auto=format&fit=crop&w=1200&q=80"
-                 onerror="this.src='https://placehold.co/1200x600/0088C6/FFFFFF?text=BEST+MATCH+RESORT'"
-                 alt="最もおすすめなスキー場"
-                 class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent"></div>
+      <div class="max-w-5xl mx-auto px-5 sm:px-8 pt-6 sm:pt-10 pb-12 sm:pb-16">
 
-            <!-- バッジ -->
-            <div class="absolute top-4 left-4 sm:top-6 sm:left-6">
-              <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-brand text-white font-eng text-xs font-bold tracking-wider shadow-sm">
-                <span>★ MOST RECOMMENDED</span>
-              </span>
-            </div>
+        <article class="bg-white rounded-3xl overflow-hidden border border-stone-200/90 shadow-[0_8px_28px_rgba(20,25,31,0.04)]">
+          <div class="grid md:grid-cols-12">
 
-            <!-- 施設名・エリア（画像下部オーバーレイ） -->
-            <div class="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 text-white">
-              <p id="best-area" class="text-xs sm:text-sm font-bold text-white/85 mb-1">
-                秋田県・仙北市 / 盛岡ICから車で約50分
-              </p>
-              <h3 id="best-name" class="text-2xl sm:text-4xl font-black tracking-tight leading-tight">
-                たざわ湖スキー場
-              </h3>
-            </div>
-          </div>
+            <!-- 縦型写真（/hp/images/review01.webp 〜 review30.webp） -->
+            <div class="md:col-span-5 relative bg-stone-900 h-[250px] sm:h-[340px] md:h-auto md:min-h-[480px] overflow-hidden">
+              <img id="best-img"
+                   src="/hp/images/review01.webp"
+                   onerror="this.onerror=null; this.src='https://placehold.co/720x1280/0088C6/FFFFFF?text=EARTH+HOPPER';"
+                   alt="おすすめスキー場のイメージ"
+                   class="w-full h-full object-cover object-center">
+              <div class="absolute inset-0 bg-gradient-to-t from-ink/75 via-transparent to-ink/25 pointer-events-none"></div>
 
-          <!-- 施設詳細コンテンツ -->
-          <div class="p-6 sm:p-8 md:p-10">
-            <!-- ハッシュタグ -->
-            <div id="best-tags" class="flex flex-wrap gap-1.5 mb-5">
-              <!-- JS挿入 -->
-            </div>
-
-            <!-- 解説テキスト -->
-            <p id="best-desc" class="text-[15px] sm:text-base text-ink/90 leading-[1.85] mb-7">
-              日本一深い湖・田沢湖を見下ろす圧倒的なロケーションと、内陸ならではのさらさらパウダースノーが魅力。幅広で斜度変化の少ないメインバーンは初心者やファミリーでも安心して滑走でき、上級者向けの非圧雪コースも充実しています。
-            </p>
-
-            <div class="grid md:grid-cols-12 gap-6 items-stretch">
-              <!-- HOPPER'S POINT -->
-              <div class="md:col-span-7 bg-paper rounded-2xl p-5 sm:p-6 border border-stone-200/70 flex flex-col justify-center">
-                <p class="font-eng text-[11px] font-bold text-brand tracking-[0.2em] uppercase mb-1.5">
-                  WHY THIS RESORT / おすすめ理由
-                </p>
-                <p id="best-point" class="text-sm sm:text-[15px] font-bold text-ink leading-[1.75]">
-                  湖に向かって滑り降りる爽快感は格別。穴場なので休日でもリフト待ちが少なく、自分のペースで快適に滑れます。
-                </p>
+              <!-- 左上バッジ -->
+              <div class="absolute top-3.5 left-3.5 sm:top-5 sm:left-5">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand text-white font-eng text-[11px] font-bold tracking-wider shadow-sm">
+                  <span>★ YOUR BEST MATCH</span>
+                </span>
               </div>
 
-              <!-- 実際のユーザーレビュー -->
-              <div class="md:col-span-5 bg-paperDark/50 rounded-2xl p-5 sm:p-6 border border-stone-200/70 flex flex-col justify-between">
-                <div>
-                  <div class="flex items-center justify-between text-xs text-muted mb-2">
-                    <span class="font-bold text-ink">実際の滑走者レビュー</span>
-                    <span class="text-amber-500 font-eng font-bold">★ 5.0</span>
+              <!-- 右下「写真はイメージです」注釈 -->
+              <div class="absolute bottom-3 right-3.5 sm:bottom-4 sm:right-5">
+                <span class="inline-block px-2 py-0.5 rounded bg-ink/55 backdrop-blur-sm text-[10px] font-medium text-white/85">
+                  ※写真はイメージです
+                </span>
+              </div>
+            </div>
+
+            <!-- 右カラム：フラット構成 -->
+            <div class="md:col-span-7 p-5 sm:p-8 lg:p-10 flex flex-col justify-between">
+              <div>
+                <!-- タイトル＆選択条件タグ -->
+                <div class="pb-5 border-b border-stone-200/80">
+                  <p class="font-eng text-[11px] font-bold text-brand tracking-[0.18em] uppercase mb-1">
+                    BEST RECOMMENDED RESORT
+                  </p>
+                  <h2 id="best-name" class="text-2xl sm:text-3xl lg:text-[34px] font-black text-ink tracking-tight leading-[1.25] mb-3">
+                    スキー場名
+                  </h2>
+                  <div id="chosen-tags" class="flex flex-wrap gap-1.5">
+                    <!-- JS挿入 -->
                   </div>
-                  <p id="best-review" class="text-xs sm:text-[13px] text-ink/85 leading-[1.75]">
-                    「雪質が最高で、晴れた日の田沢湖の景色は圧巻でした。コース幅も広くて滑りやすいので、一日中飽きずに楽しめます。」
+                </div>
+
+                <!-- 1. おすすめ理由（reason） -->
+                <div class="py-5 border-b border-stone-200/80">
+                  <p class="font-eng text-[11px] font-bold text-brand tracking-[0.16em] uppercase mb-2 flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+                    <span>WHY THIS RESORT / おすすめ理由</span>
+                  </p>
+                  <p id="best-reason" class="text-[14px] sm:text-[15px] font-medium text-ink leading-[1.8]">
+                    <!-- diagnosis.json の reason -->
                   </p>
                 </div>
+
+                <!-- 2. 実際の滑走者レビュー（review） -->
+                <div class="py-5 border-b border-stone-200/80">
+                  <p class="text-[11px] font-bold text-muted tracking-wider mb-2">
+                    アースホッパー利用者のリアルレビュー
+                  </p>
+                  <blockquote class="pl-3.5 border-l-2 border-brand/60">
+                    <p id="best-review" class="text-xs sm:text-[13.5px] text-ink/85 leading-[1.75] whitespace-pre-line">
+                      <!-- diagnosis.json の review -->
+                    </p>
+                  </blockquote>
+                </div>
+              </div>
+
+              <!-- 3. 診断受診者限定プロモコード（HOPPER27）＆ LINE CTA -->
+              <div class="pt-5">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+                  <div class="flex items-center gap-2">
+                    <span class="px-2 py-0.5 rounded bg-amber-500 text-white text-[10px] font-black tracking-wider">
+                      診断受診者限定
+                    </span>
+                    <span class="text-xs sm:text-[13px] font-black text-ink">
+                      初回から使える¥300相当マイル進呈
+                    </span>
+                  </div>
+                  <span class="text-[11px] font-bold text-amber-700">
+                    ※友だち追加後24時間以内
+                  </span>
+                </div>
+
+                <!-- ワンタップコピーバー -->
+                <div class="flex items-center justify-between gap-3 px-3.5 py-2.5 rounded-xl bg-paper border border-dashed border-brand/50 mb-2.5">
+                  <div class="flex items-baseline gap-2 min-w-0">
+                    <span class="text-[11px] font-bold text-muted shrink-0">特典コード</span>
+                    <code class="font-eng text-base sm:text-lg font-extrabold text-brand tracking-wider select-all">HOPPER27</code>
+                  </div>
+                  <button type="button" onclick="copyPromoCode(this)" class="px-3 py-1.5 rounded-lg bg-white hover:bg-stone-100 border border-stone-200 text-xs font-black text-ink transition-colors shrink-0 flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5 text-brand" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                    </svg>
+                    <span>コピー</span>
+                  </button>
+                </div>
+
+                <!-- 入力手順の簡潔な案内 -->
+                <p class="text-[11px] text-muted leading-relaxed mb-4">
+                  使い方：LINEメニュー「マイページ」下部の「特典コードの利用」から入力するだけ！当日窓口と同額のチケットにすぐ使えます。
+                </p>
+
+                <!-- メインCTAボタン -->
+                <a href="https://lin.ee/zXFhtBh" target="_blank" rel="noopener noreferrer"
+                   id="best-cta-btn"
+                   class="w-full h-13 py-3.5 px-6 rounded-full bg-line hover:bg-lineHover text-white font-black text-sm sm:text-[15px] inline-flex items-center justify-center gap-2 shadow-sm transition-transform active:scale-[0.99]">
+                  <svg class="w-5 h-5 fill-white shrink-0" viewBox="0 0 24 24">
+                    <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63h-1.401v.866h1.401c.349 0 .63.283.63.63 0 .346-.281.63-.63.63h-2.032a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63h2.032c.349 0 .63.282.63.63 0 .348-.281.63-.63.63h-1.401v.881h1.401zm-5.228 2.757h-.01a.631.631 0 0 1-.502-.25l-2.003-2.673v2.292c0 .348-.282.63-.63.63a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.63-.63.218 0 .412.112.524.283l1.986 2.646V7.086c0-.348.282-.63.63-.63a.632.632 0 0 1 .631.63v5.534a.631.631 0 0 1-.625.63zm-5.617 0a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63a.632.632 0 0 1 .63.63v5.534a.632.632 0 0 1-.63.63zm-2.479 0H4.01a.632.632 0 0 1-.631-.63V7.086c0-.348.282-.63.631-.63a.632.632 0 0 1 .63.63v4.903h2.031c.349 0 .63.283.63.63 0 .346-.281.63-.63.63zM24 10.614c0-5.304-5.378-9.614-12-9.614S0 5.31 0 10.614c0 4.754 4.264 8.72 10.027 9.475.39.084.922.258 1.057.592.122.303.079.778.039 1.085l-.171 1.027c-.053.303-.242 1.186 1.039.647 1.281-.54 6.911-4.069 9.428-6.967C23.068 14.708 24 12.77 24 10.614z"/>
+                  </svg>
+                  <span id="best-cta-label">LINEで¥300分マイルを受け取る</span>
+                </a>
+                <p class="text-[11px] text-muted text-center mt-2.5">
+                  ※お住まいのエリアから行ける提携約50ゲレンデもLINEで一覧チェックできます
+                </p>
               </div>
             </div>
 
-            <!-- 施設チケット確認CTA -->
-            <div class="mt-7 pt-6 border-t border-stone-200/70 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div class="text-xs text-muted">
-                <span class="font-bold text-ink">当日窓口と同額・最大20%マイル還元</span><br>
-                スマホのQRコードで現地発券機からすぐ受け取れます
-              </div>
-              <a href="https://lin.ee/zXFhtBh" target="_blank" rel="noopener noreferrer"
-                 class="h-12 px-6 rounded-full bg-brand hover:bg-brandDark text-white font-black text-sm inline-flex items-center justify-center gap-2 transition-transform active:scale-95 shrink-0">
-                <span>LINEでこのスキー場のチケットを見る</span>
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-                </svg>
-              </a>
-            </div>
           </div>
+        </article>
+
+        <!-- BEST MATCH 直下の「条件を変えて再診断」ボタン -->
+        <div class="mt-6 text-center">
+          <button onclick="restartDiagnosis()" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white hover:bg-paperDark border border-stone-200/90 text-xs font-bold text-muted hover:text-ink transition-colors">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+            </svg>
+            <span>条件を変えて再診断する</span>
+          </button>
         </div>
       </div>
 
       <!-- =================================================================
-           ② アースホッパーの宣伝（index.htmlのダーク＆チケットデザイン承継）
+           ② アースホッパーの宣伝
       ================================================================== -->
       <div class="bg-ink text-white py-14 md:py-20">
-        <div class="max-w-4xl mx-auto px-5 sm:px-8">
+        <div class="max-w-5xl mx-auto px-5 sm:px-8">
           <div class="mb-10">
             <div class="inline-flex items-center gap-2.5 mb-3">
               <span class="w-5 h-[1.5px] bg-sky-300"></span>
@@ -371,8 +383,8 @@
             </p>
           </div>
 
-          <!-- リフト券風パスカード（index.htmlのpass-ticketを踏襲） -->
-          <div class="pass-ticket bg-white text-ink rounded-2xl p-6 sm:p-8 mb-8">
+          <!-- リフト券風パスカード -->
+          <div class="pass-ticket bg-white text-ink rounded-2xl p-6 sm:p-8 mb-6">
             <div class="grid sm:grid-cols-3 gap-6 pb-6">
               <div>
                 <p class="font-eng text-[11px] font-bold text-brand tracking-wider uppercase mb-1">POINT 01</p>
@@ -394,7 +406,7 @@
             <!-- ミシン目ディバイダー -->
             <div class="pass-divider pt-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
               <div>
-                <p class="text-xs font-bold text-muted">まずは提携スキー場一覧・料金をチェック</p>
+                <p class="text-xs font-bold text-muted">特典コード <span class="text-brand font-eng font-extrabold">HOPPER27</span> で初回¥300分進呈</p>
                 <p class="text-sm font-black text-ink">全国約50のゲレンデが対象</p>
               </div>
 
@@ -408,17 +420,11 @@
             </div>
           </div>
 
-          <!-- Xシェア＆サービス詳細リンク -->
-          <div class="flex flex-wrap items-center justify-between gap-4 text-xs">
+          <!-- サービス詳細リンク -->
+          <div class="text-xs">
             <a href="/hp/" class="text-white/75 hover:text-white underline underline-offset-4 font-bold transition-colors">
               アースホッパーの仕組み・FAQを詳しく見る →
             </a>
-            <button onclick="shareOnX()" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 hover:bg-white/15 border border-white/15 text-white font-bold transition-colors">
-              <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-              </svg>
-              <span>診断結果をXでシェア</span>
-            </button>
           </div>
         </div>
       </div>
@@ -426,18 +432,18 @@
       <!-- =================================================================
            ③ その他おすすめスキー場（OTHER RECOMMENDED RESORTS）
       ================================================================== -->
-      <div class="max-w-4xl mx-auto px-5 sm:px-8 pt-14 md:pt-16">
+      <div class="max-w-5xl mx-auto px-5 sm:px-8 pt-14 md:pt-16">
         <div class="mb-8">
           <p class="font-eng text-xs font-bold tracking-[0.2em] text-brand uppercase mb-2">OTHER OPTIONS</p>
           <h3 class="text-2xl sm:text-3xl font-black text-ink tracking-tight">
             こちらも相性抜群！その他おすすめスキー場
           </h3>
           <p class="text-sm text-muted mt-1.5">
-            日程やアクセスエリアに合わせて、こちらのゲレンデも候補に入れてみてください。
+            日程やエリアに合わせて、こちらのゲレンデもぜひ候補に入れてみてください。
           </p>
         </div>
 
-        <div id="other-resorts-grid" class="grid md:grid-cols-2 gap-6">
+        <div id="other-resorts-grid" class="grid lg:grid-cols-2 gap-6">
           <!-- JSで2施設を動的生成 -->
         </div>
 
@@ -457,11 +463,11 @@
   </main>
 
   <!-- =====================================================================
-       FLOATING DOCK：index.htmlと完全統一した控えめなフローティング導線
+       FLOATING DOCK（スクロール後に自然に出現・特典コード明記）
   ====================================================================== -->
   <div id="sticky-cta" class="fixed bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 w-[92%] max-w-[420px] z-50 translate-y-24 opacity-0 pointer-events-none transition-all duration-500 ease-out">
     <a href="https://lin.ee/zXFhtBh" target="_blank" rel="noopener noreferrer"
-       class="w-full h-14 px-4 rounded-2xl bg-ink/90 hover:bg-ink backdrop-blur-xl border border-white/15 text-white shadow-[0_16px_40px_rgba(20,25,31,0.3)] flex items-center justify-between gap-3 transition-transform active:scale-[0.98]">
+       class="w-full h-14 px-4 rounded-2xl bg-ink/95 hover:bg-ink backdrop-blur-xl border border-white/15 text-white shadow-[0_16px_40px_rgba(20,25,31,0.3)] flex items-center justify-between gap-3 transition-transform active:scale-[0.98]">
       <div class="flex items-center gap-3 min-w-0">
         <span class="w-8 h-8 rounded-xl bg-line flex items-center justify-center shrink-0">
           <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24">
@@ -469,18 +475,18 @@
           </svg>
         </span>
         <div class="flex flex-col min-w-0">
-          <span class="text-[13px] font-black leading-tight truncate">LINEで提携スキー場を見る</span>
-          <span class="text-[10px] text-white/65 font-medium leading-tight mt-0.5 truncate">会員登録不要｜滑るほどマイル還元</span>
+          <span class="text-[13px] font-black leading-tight truncate">LINEで¥300分マイルを受け取る</span>
+          <span class="text-[10px] text-sky-300 font-bold leading-tight mt-0.5 truncate">特典コード：HOPPER27（登録後24h以内）</span>
         </div>
       </div>
-      <svg class="w-4 h-4 text-white/50 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+      <svg class="w-4 h-4 text-white/60 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
       </svg>
     </a>
   </div>
 
   <!-- =====================================================================
-       FOOTER：index.htmlと統一
+       FOOTER
   ====================================================================== -->
   <footer class="bg-white border-t border-stone-200 pt-10 pb-28 md:pb-24 relative z-10 w-full">
     <div class="max-w-5xl mx-auto px-5 sm:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
@@ -501,7 +507,7 @@
 
   <script>
     // ==========================================
-    // 1. 質問・選択肢データ定義
+    // 1. 質問・選択肢データ定義（27パターン対応：第3問は3択）
     // ==========================================
     const QUIZ_DATA = [
       {
@@ -518,7 +524,7 @@
         heading: "ゲレンデや雪質への一番のこだわりは？",
         options: [
           { id: "powder", text: "とにかく極上のパウダースノーを味わいたい", tag: "パウダースノー" },
-          { id: "long", text: "ロングランや多彩なコースバリエーションを楽しみたい", tag: "多彩なロングコース" },
+          { id: "long", text: "ロングランや多彩なバリエーションのコースを楽しみたい", tag: "多彩なロングコース" },
           { id: "uncrowded", text: "混雑を避けて自分のペースで悠々と滑りたい", tag: "混雑回避・ゆったり" }
         ]
       },
@@ -528,90 +534,115 @@
         options: [
           { id: "access", text: "行きやすさ・アクセスの良さ（移動の負担減）", tag: "アクセス重視" },
           { id: "facility", text: "美味しいゲレ食や、キレイな施設・温泉での癒やし", tag: "ゲレ食・施設・温泉" },
-          { id: "view", text: "思わず写真を撮りたくなる絶景ビュー", tag: "絶景ビュー" },
-          { id: "cospa", text: "チケット還元やコスパ（おトクに何度も滑りたい）", tag: "コスパ重視" }
+          { id: "view", text: "思わず写真を撮りたくなる絶景ビュー", tag: "絶景ビュー" }
         ]
       }
     ];
 
     // ==========================================
-    // 2. スキー場データベース（回答に応じて最適マッチを抽出）
+    // 2. ランダム画像プール（/hp/images/review01.webp 〜 review30.webp）
     // ==========================================
-    const RESORTS_DB = [
-      {
-        id: "tazawako",
-        name: "たざわ湖スキー場",
-        area: "秋田県・仙北市 / 盛岡ICから車で約50分",
-        img: "https://images.unsplash.com/photo-1605540436563-5bca919ae766?auto=format&fit=crop&w=1200&q=80",
-        tags: ["#パウダー", "#絶景ビュー", "#混雑少"],
-        desc: "日本一深い湖・田沢湖を見下ろす圧倒的なロケーションと、内陸ならではのさらさらパウダースノーが魅力。幅広で斜度変化の少ないメインバーンは初心者でも安心して滑走でき、上級者向けの非圧雪コースも充実しています。",
-        point: "湖に向かって滑り降りる爽快感は格別。穴場なので休日でもリフト待ちが少なく、自分のペースで快適に滑れます。",
-        review: "「雪質が最高で、晴れた日の田沢湖の景色は圧巻でした。コース幅も広くて滑りやすいので、一日中飽きずに楽しめます。」",
-        weights: { beginner: 2, advanced: 2, mixed: 3, powder: 3, long: 1, uncrowded: 3, access: 1, facility: 1, view: 4, cospa: 2 }
-      },
-      {
-        id: "tambara",
-        name: "たんばらスキーパーク",
-        area: "群馬県・沼田市 / 沼田ICから車で約30分",
-        img: "https://images.unsplash.com/photo-1518085250887-2f903c200fee?auto=format&fit=crop&w=1200&q=80",
-        tags: ["#アクセス抜群", "#初心者向け", "#パウダー"],
-        desc: "首都圏から車で約2時間という好アクセスながら、標高1,250m〜1,550mに位置するため雪質は抜群。コース全体の約8割が初・中級者向けに設定されており、仲間同士やファミリーでも全員が一緒に楽しめる安心設計です。",
-        point: "5月上旬まで滑走可能なロングシーズンも強み。思い立った週末に日帰りでさらさら雪を満喫できます。",
-        review: "「東京から日帰りで気軽に行けるのに雪質がとても良くて驚きました。センターハウスも綺麗でランチも美味しいです。」",
-        weights: { beginner: 4, advanced: 1, mixed: 3, powder: 2, long: 1, uncrowded: 1, access: 4, facility: 3, view: 1, cospa: 3 }
-      },
-      {
-        id: "granddeco",
-        name: "グランデコ スノーリゾート",
-        area: "福島県・北塩原村 / 猪苗代磐梯高原ICから車で約25分",
-        img: "https://images.unsplash.com/photo-1548777123-e216912df7d8?auto=format&fit=crop&w=1200&q=80",
-        tags: ["#神雪パウダー", "#キレイな施設", "#ロングコース"],
-        desc: "裏磐梯エリア屈指の極上「神雪」と、ゴンドラで一気に山頂へアクセスできる最長3,500mのロングクルージングが自慢。リゾートホテル併設ならではの清潔感ある施設や、こだわりのゲレ食も高い評価を集めています。",
-        point: "フード付き高速リフトやゴンドラ中心で寒さ知らず。滑りの質もアフタースキーの快適さも妥協したくない方に最適です。",
-        review: "「ふわふわのパウダースノーが最高でした。ゴンドラで長い距離を一気に滑れるので満足感が違います。」",
-        weights: { beginner: 2, advanced: 3, mixed: 3, powder: 4, long: 3, uncrowded: 2, access: 2, facility: 4, view: 2, cospa: 2 }
-      },
-      {
-        id: "ozeiwakura",
-        name: "ホワイトワールド尾瀬岩鞍",
-        area: "群馬県・片品村 / 沼田ICから車で約40分",
-        img: "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1200&q=80",
-        tags: ["#パウダー", "#ロングコース", "#全16コース"],
-        desc: "関東最大級のスケールを誇る全16コースのビッグゲレンデ。最大斜度40度のエキスパート向けバーンから、初心者も安心の林間ロングコースまで揃い、滑走派スノーボーダー・スキーヤーから絶大な支持を集めています。",
-        point: "コース幅が広くストレスフリーにカービングやパウダーランを満喫可能。日帰り温泉も隣接しており疲れを癒やせます。",
-        review: "「コース幅が広くストレスフリーで滑れるゲレンデ。ゴンドラ降りてからの絶景を見てからの滑走はテンション上がります！」",
-        weights: { beginner: 1, advanced: 4, mixed: 3, powder: 3, long: 4, uncrowded: 2, access: 3, facility: 2, view: 2, cospa: 3 }
-      },
-      {
-        id: "zaoliza",
-        name: "蔵王ライザワールド",
-        area: "山形県・上山市 / 山形上山ICから車で約30分",
-        img: "https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?auto=format&fit=crop&w=1200&q=80",
-        tags: ["#樹氷絶景", "#穴場・混雑少", "#パウダー"],
-        desc: "世界的にも珍しい「樹氷原」のすぐそばを滑走できる希少なゲレンデ。メインエリアの喧騒から離れた穴場的ロケーションのため、リフト待ちが少なく極上のアスピリンスノーを独り占め感覚で楽しめます。",
-        point: "石窯焼きの本格ピッツァなどゲレ食のクオリティも抜群。絶景と静かな滑走時間を求める方にぴったりの隠れ家ゲレンデです。",
-        review: "「蔵王の樹氷が混雑と無縁で目の前で見れる穴場スキー場。リフト待ちがほぼ無いことを考えると快適さは桁違い。」",
-        weights: { beginner: 2, advanced: 2, mixed: 2, powder: 3, long: 2, uncrowded: 4, access: 1, facility: 3, view: 4, cospa: 2 }
+    const IMAGE_POOL = Array.from({ length: 30 }, (_, i) => {
+      const num = String(i + 1).padStart(2, '0');
+      return `/hp/images/review${num}.webp`;
+    });
+
+    function getUniqueRandomImages(count) {
+      const pool = [...IMAGE_POOL];
+      for (let i = pool.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [pool[i], pool[j]] = [pool[j], pool[i]];
       }
-    ];
+      return pool.slice(0, count);
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    // プロモコード（HOPPER27）ワンタップコピー処理
+    function copyPromoCode(btnEl) {
+      const code = 'HOPPER27';
+      const originalHtml = btnEl.innerHTML;
+
+      const onSuccess = () => {
+        btnEl.innerHTML = `
+          <svg class="w-3.5 h-3.5 text-line" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span class="text-line">コピー完了</span>
+        `;
+        setTimeout(() => {
+          btnEl.innerHTML = originalHtml;
+        }, 2200);
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(code).then(onSuccess).catch(() => {
+          fallbackCopyText(code);
+          onSuccess();
+        });
+      } else {
+        fallbackCopyText(code);
+        onSuccess();
+      }
+    }
+
+    function fallbackCopyText(text) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+      } catch (e) {}
+      document.body.removeChild(textarea);
+    }
 
     // ==========================================
-    // 3. 状態管理・ビュー遷移
+    // 3. 状態管理・diagnosis.json 読み込み
     // ==========================================
+    let diagnosisDataMap = null;
     let currentIndex = 0;
     let selectedOptions = [null, null, null];
     let isAnimating = false;
-    let currentBestResort = RESORTS_DB[0];
+    let stickyTimer = null;
 
     const viewQuestion = document.getElementById('view-question');
     const viewLoading = document.getElementById('view-loading');
     const viewResult = document.getElementById('view-result');
     const stickyCta = document.getElementById('sticky-cta');
 
-    // 初期描画（ページを開いてすぐにQ1を表示）
+    async function loadDiagnosisData() {
+      if (diagnosisDataMap) return diagnosisDataMap;
+      const response = await fetch('diagnosis.json', { cache: 'no-cache' });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      diagnosisDataMap = await response.json();
+      return diagnosisDataMap;
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       renderQuestionStep(0);
+      loadDiagnosisData().catch(() => {});
     });
+
+    // スクロールでフローティングドックを表示（ファーストビューのスクショを邪魔しない設計）
+    window.addEventListener('scroll', () => {
+      if (viewResult.classList.contains('view-hidden')) return;
+      if (window.scrollY > 180) {
+        showStickyCta();
+      }
+    }, { passive: true });
 
     function transitionView(fromView, toView, onMiddle = null) {
       if (isAnimating) return;
@@ -641,13 +672,14 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
 
         if (toView === viewResult) {
-          setTimeout(() => {
+          clearTimeout(stickyTimer);
+          stickyTimer = setTimeout(() => {
             showStickyCta();
-          }, 350);
+          }, 3200);
         }
 
         isAnimating = false;
-      }, 260);
+      }, 240);
     }
 
     function showStickyCta() {
@@ -656,23 +688,14 @@
     }
 
     function hideStickyCta() {
+      clearTimeout(stickyTimer);
       stickyCta.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
       stickyCta.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
     }
 
-    // 質問ステップのレンダリング
     function renderQuestionStep(index) {
       const data = QUIZ_DATA[index];
 
-      // 広告導入バナーはQ1のみ表示して視覚的スッキリ感を保つ
-      const adBanner = document.getElementById('ad-intro-banner');
-      if (index === 0) {
-        adBanner.classList.remove('hidden');
-      } else {
-        adBanner.classList.add('hidden');
-      }
-
-      // 戻るボタン制御（Q1では非表示）
       const backBtn = document.getElementById('btn-back');
       if (index === 0) {
         backBtn.classList.add('invisible');
@@ -701,7 +724,7 @@
               <span class="option-radio-dot w-2 h-2 rounded-full bg-white transition-all ${isSelected ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}"></span>
             </span>
             <span class="text-[15px] sm:text-base font-bold text-ink leading-snug">
-              ${opt.text}
+              ${escapeHtml(opt.text)}
             </span>
           </div>
           <svg class="option-arrow w-4 h-4 text-stone-400 group-hover:text-brand shrink-0 transition-all" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
@@ -714,7 +737,6 @@
       });
     }
 
-    // 選択肢タップ処理
     function handleOptionSelect(index, optObj, cardEl) {
       if (isAnimating) return;
       selectedOptions[index] = optObj;
@@ -732,22 +754,26 @@
 
           setTimeout(() => {
             renderQuestionStep(currentIndex);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             viewQuestion.classList.remove('view-fade-out');
             viewQuestion.classList.add('view-fade-in');
-          }, 200);
+          }, 180);
         } else {
-          // Q3完了 -> 分析中 -> 結果表示
-          transitionView(viewQuestion, viewLoading, () => {
-            setTimeout(() => {
-              computeAndRenderResults();
+          transitionView(viewQuestion, viewLoading, async () => {
+            const minLoadingTime = new Promise(resolve => setTimeout(resolve, 750));
+            try {
+              const [dataMap] = await Promise.all([loadDiagnosisData(), minLoadingTime]);
+              renderDiagnosisResult(dataMap);
               transitionView(viewLoading, viewResult);
-            }, 800);
+            } catch (err) {
+              console.error('diagnosis.json の読み込みに失敗しました:', err);
+              renderLoadError();
+            }
           });
         }
-      }, 240);
+      }, 220);
     }
 
-    // 前の質問へ戻る
     function handleBack() {
       if (isAnimating || currentIndex === 0) return;
       currentIndex--;
@@ -755,89 +781,114 @@
       viewQuestion.classList.add('view-fade-out');
       setTimeout(() => {
         renderQuestionStep(currentIndex);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
         viewQuestion.classList.remove('view-fade-out');
         viewQuestion.classList.add('view-fade-in');
-      }, 200);
+      }, 180);
     }
 
-    // スコアリング＆結果レンダリング（最もおすすめ1件 ＋ その他おすすめ2件）
-    function computeAndRenderResults() {
-      // 選択条件タグ描画
+    function renderDiagnosisResult(dataMap) {
       const tagsContainer = document.getElementById('chosen-tags');
       tagsContainer.innerHTML = '';
       selectedOptions.forEach(opt => {
         if (!opt) return;
         const span = document.createElement('span');
-        span.className = 'text-xs font-bold text-brand bg-brand/10 px-3 py-1 rounded-full';
-        span.textContent = opt.tag;
+        span.className = 'text-[11px] font-bold text-brand bg-brand/10 px-2.5 py-0.5 rounded-full';
+        span.textContent = `#${opt.tag}`;
         tagsContainer.appendChild(span);
       });
 
-      // 各スキー場の適合スコア計算
-      const scored = RESORTS_DB.map(resort => {
-        let score = 0;
-        selectedOptions.forEach(opt => {
-          if (opt && resort.weights[opt.id]) {
-            score += resort.weights[opt.id];
-          }
-        });
-        return { ...resort, score };
-      }).sort((a, b) => b.score - a.score);
+      const patternKey = selectedOptions.map(o => o.id).join('_');
+      const resultEntry = dataMap[patternKey] || Object.values(dataMap)[0];
 
-      const best = scored[0];
-      const others = [scored[1], scored[2]];
-      currentBestResort = best;
+      const best = resultEntry.best_match;
+      const others = resultEntry.other_picks || [];
 
-      // ① 最もおすすめなスキー場を反映
-      document.getElementById('best-img').src = best.img;
-      document.getElementById('best-area').textContent = best.area;
-      document.getElementById('best-name').textContent = best.name;
-      document.getElementById('best-desc').textContent = best.desc;
-      document.getElementById('best-point').textContent = best.point;
-      document.getElementById('best-review').textContent = best.review;
+      const randomImages = getUniqueRandomImages(3);
 
-      const bestTagsEl = document.getElementById('best-tags');
-      bestTagsEl.innerHTML = best.tags.map(t =>
-        `<span class="px-2.5 py-0.5 rounded-full bg-paper text-xs font-bold text-muted">${t}</span>`
-      ).join('');
+      // ① BEST MATCH 反映
+      const bestImgEl = document.getElementById('best-img');
+      bestImgEl.src = randomImages[0];
+      bestImgEl.alt = `${best.resort}のイメージ`;
+      document.getElementById('best-name').textContent = best.resort;
+      document.getElementById('best-reason').textContent = best.reason || '';
+      document.getElementById('best-review').textContent = best.review || '';
+      document.getElementById('best-cta-label').textContent = `LINEで「${best.resort}」と¥300分マイルを見る`;
 
-      // ③ その他おすすめスキー場（2件）を反映
+      // ③ OTHER RECOMMENDED RESORTS（フラット構成）
       const othersGrid = document.getElementById('other-resorts-grid');
-      othersGrid.innerHTML = others.map(item => `
-        <article class="bg-white rounded-2xl overflow-hidden border border-stone-200/80 shadow-[0_4px_20px_rgba(20,25,31,0.03)] flex flex-col justify-between">
-          <div>
-            <div class="relative aspect-[16/9] bg-stone-100">
-              <img src="${item.img}"
-                   onerror="this.src='https://placehold.co/800x450/006899/FFFFFF?text=EARTH+HOPPER'"
-                   alt="${item.name}"
-                   class="w-full h-full object-cover">
-            </div>
-            <div class="p-6">
-              <p class="text-[11px] font-bold text-muted mb-1">${item.area}</p>
-              <h4 class="text-xl font-black text-ink tracking-tight mb-3">${item.name}</h4>
-              <div class="flex flex-wrap gap-1.5 mb-3.5">
-                ${item.tags.map(t => `<span class="px-2.5 py-0.5 rounded-full bg-paper text-[11px] font-bold text-muted">${t}</span>`).join('')}
+      othersGrid.innerHTML = others.map((item, idx) => {
+        const imgSrc = randomImages[idx + 1] || '/hp/images/review02.webp';
+        return `
+          <article class="bg-white rounded-3xl overflow-hidden border border-stone-200/90 shadow-[0_6px_24px_rgba(20,25,31,0.03)] flex flex-col justify-between">
+            <div>
+              <div class="grid grid-cols-12 border-b border-stone-200/70">
+                <div class="col-span-5 relative bg-stone-900 aspect-[3/4] overflow-hidden">
+                  <img src="${imgSrc}"
+                       onerror="this.onerror=null; this.src='https://placehold.co/540x960/006899/FFFFFF?text=EARTH+HOPPER';"
+                       alt="${escapeHtml(item.resort)}のイメージ"
+                       class="w-full h-full object-cover object-center">
+                  <div class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent pointer-events-none"></div>
+                  <span class="absolute bottom-2 left-2 right-2 text-[9px] text-white/85 leading-tight">
+                    ※写真はイメージです
+                  </span>
+                </div>
+
+                <div class="col-span-7 p-5 sm:p-6 flex flex-col justify-center">
+                  <p class="font-eng text-[10px] font-bold text-brand tracking-[0.18em] uppercase mb-1.5">
+                    OPTION 0${idx + 1}
+                  </p>
+                  <h4 class="text-lg sm:text-xl font-black text-ink tracking-tight leading-snug mb-3">
+                    ${escapeHtml(item.resort)}
+                  </h4>
+                  <p class="text-xs sm:text-[13px] text-ink/85 leading-[1.75]">
+                    ${escapeHtml(item.reason || '')}
+                  </p>
+                </div>
               </div>
-              <p class="text-sm text-muted leading-[1.75]">
-                ${item.desc}
-              </p>
+
+              <div class="p-5 sm:p-6">
+                <p class="text-[11px] font-bold text-muted mb-2">
+                  実際の滑走者レビュー
+                </p>
+                <blockquote class="pl-3 border-l-2 border-stone-300">
+                  <p class="text-xs sm:text-[13px] text-ink/80 leading-[1.75] whitespace-pre-line">
+                    ${escapeHtml(item.review || '')}
+                  </p>
+                </blockquote>
+              </div>
             </div>
-          </div>
-          <div class="px-6 pb-6 pt-3 border-t border-stone-100 flex items-center justify-between">
-            <span class="text-[11px] font-bold text-muted">QR発券・マイル対象</span>
-            <a href="https://lin.ee/zXFhtBh" target="_blank" rel="noopener noreferrer"
-               class="text-xs font-black text-brand hover:text-brandDark transition-colors inline-flex items-center gap-1">
-              <span>LINEでチケットを見る</span>
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </a>
-          </div>
-        </article>
-      `).join('');
+
+            <div class="px-5 sm:px-6 py-4 border-t border-stone-200/70 flex items-center justify-between">
+              <span class="text-[11px] font-bold text-muted">コード <span class="text-brand font-eng">HOPPER27</span> 対象</span>
+              <a href="https://lin.ee/zXFhtBh" target="_blank" rel="noopener noreferrer"
+                 class="text-xs font-black text-brand hover:text-brandDark transition-colors inline-flex items-center gap-1">
+                <span>LINEでチケットを見る</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </article>
+        `;
+      }).join('');
     }
 
-    // 最初からやり直す
+    function renderLoadError() {
+      viewLoading.innerHTML = `
+        <div class="max-w-sm w-full text-center bg-white rounded-2xl p-8 border border-stone-200/80">
+          <p class="font-eng text-xs font-bold text-brand tracking-[0.2em] uppercase mb-2">CONNECTION ERROR</p>
+          <h3 class="text-lg font-black text-ink mb-3">診断データの読み込みに失敗しました</h3>
+          <p class="text-xs text-muted leading-relaxed mb-6">
+            通信環境をご確認のうえ、もう一度お試しください。
+          </p>
+          <button onclick="location.reload()" class="w-full h-11 rounded-full bg-brand hover:bg-brandDark text-white font-black text-xs transition-colors">
+            ページを再読み込みする
+          </button>
+        </div>
+      `;
+    }
+
     function restartDiagnosis() {
       currentIndex = 0;
       selectedOptions = [null, null, null];
@@ -851,14 +902,6 @@
         renderQuestionStep(0);
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
-    }
-
-    // X（Twitter）シェア
-    function shareOnX() {
-      const tagsText = selectedOptions.filter(Boolean).map(o => o.tag).join(' × ');
-      const postText = `今の私にベストな雪山は【${currentBestResort.name}】でした！🏂\n希望条件：${tagsText || 'パウダースノー × 絶景ビュー'}\n\n15秒・3問で診断👇\n#アースホッパー #スキー場診断`;
-      const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(postText)}`;
-      window.open(shareUrl, '_blank', 'noopener,noreferrer');
     }
   </script>
 </body>
