@@ -130,8 +130,8 @@
       },
       {
         "@type": "WebPage",
-        "@id": "https://www.hopper.earth/hp/#webpage",
-        "url": "https://www.hopper.earth/hp/",
+        "@id": "https://www.hopper.earth/#webpage",
+        "url": "https://www.hopper.earth/",
         "name": "アースホッパー | まだ知らない、最高の雪山へ。",
         "description": "会員登録は不要。スマホひとつで全国約50のスキー場・アクティビティ施設を自由に巡れるリフト券購入プラットフォーム。決済金額の最大20%をマイル還元。",
         "isPartOf": { "@id": "https://www.hopper.earth/#website" },
@@ -155,7 +155,7 @@
       },
       {
         "@type": "HowTo",
-        "@id": "https://www.hopper.earth/hp/#howto",
+        "@id": "https://www.hopper.earth/#howto",
         "name": "アースホッパーの利用手順（スマホひとつで完結する3ステップ）",
         "description": "LINE公式アカウントからチケットを購入し、現地の発券機で発券してアクティビティを楽しむまでの手順。",
         "step": [
@@ -181,7 +181,7 @@
       },
       {
         "@type": "FAQPage",
-        "@id": "https://www.hopper.earth/hp/#faq",
+        "@id": "https://www.hopper.earth/#faq",
         "mainEntity": [
           {
             "@type": "Question",
@@ -236,7 +236,7 @@
   ====================================================================== -->
   <header id="site-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
     <div class="max-w-6xl mx-auto px-5 sm:px-8 h-16 md:h-20 flex justify-between items-center">
-      <a href="/hp/" class="flex items-center gap-2 transition-opacity hover:opacity-80">
+      <a href="/" class="flex items-center gap-2 transition-opacity hover:opacity-80">
         <img src="logo.png" alt="EARTH HOPPER" class="h-9 md:h-11 w-auto object-contain drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">
       </a>
       
@@ -249,13 +249,10 @@
       </nav>
 
       <div class="flex items-center gap-3">
-        <a href="/review" class="hidden sm:inline-flex text-xs font-bold text-white/90 hover:text-white px-3 py-2 transition-colors drop-shadow">
-          ゲレンデレビュー
-        </a>
-        <a href="https://lin.ee/zXFhtBh" target="_blank" rel="noopener noreferrer"
+        <a href="review.html"
            class="h-10 px-4 sm:px-5 rounded-full bg-white hover:bg-paper text-ink text-xs font-black inline-flex items-center gap-2 shadow-sm transition-transform active:scale-95">
           <span class="w-2 h-2 rounded-full bg-line"></span>
-          <span>LINEで施設を見る</span>
+          <span>ゲレンデレビュー</span>
         </a>
       </div>
     </div>
@@ -266,7 +263,7 @@
   ====================================================================== -->
   <section class="relative min-h-[90vh] md:min-h-screen flex items-end md:items-center overflow-hidden bg-ink text-white">
     <div class="absolute inset-0 w-full h-full z-0">
-      <video src="/hp/hero.mp4" autoplay loop muted playsinline class="w-full h-full object-cover"></video>
+      <video src="hero.mp4" autoplay loop muted playsinline class="w-full h-full object-cover"></video>
       <!-- 映像の美しさを活かしながら文字の輪郭を守る自然なグラデーション -->
       <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/35 to-ink/40 md:bg-gradient-to-r md:from-ink/85 md:via-ink/45 md:to-transparent z-10"></div>
     </div>
@@ -287,7 +284,7 @@
         </h1>
 
         <p class="text-[15px] sm:text-[17px] font-normal text-white/90 leading-[1.85] max-w-xl mb-9">
-          いつもと違うゲレンデの絶景も、誰かが絶賛していた穴場のコースも。アースホッパーは、全国約50のスキー場をスマホひとつで自由に巡れる「雪山の旅パス」です。
+          いつもと違うゲレンデの絶景も、誰かが絶賛していた穴場のコースも。アースホッパーは、全国約50のスキー場をスマホひとつで自由に巡れる「LINEリフト券」です。
         </p>
 
         <!-- アクション導線 -->
@@ -400,7 +397,7 @@
         <p class="text-sm font-bold text-ink text-center sm:text-left">
           「#パウダー」「#初心者向け」「#温泉・宿」など、気分に合わせて全国のレビューをスワイプできます。
         </p>
-        <a href="/review" class="shrink-0 px-5 py-2.5 rounded-full bg-ink hover:bg-slate-800 text-white text-xs font-bold inline-flex items-center gap-2 transition-colors">
+        <a href="review.html" class="shrink-0 px-5 py-2.5 rounded-full bg-ink hover:bg-slate-800 text-white text-xs font-bold inline-flex items-center gap-2 transition-colors">
           <span>レビューをもっと見る</span>
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -450,18 +447,18 @@
         <div class="md:col-span-6">
           <div class="grid grid-cols-12 gap-3.5 h-[360px] sm:h-[440px]">
             <div class="col-span-7 rounded-2xl relative overflow-hidden bg-stone-100">
-              <img src="/hp/snow.jpeg" alt="雪山・スキー場" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+              <img src="/images/snow.jpeg" alt="雪山・スキー場" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
               <span class="absolute bottom-3.5 left-4 font-eng text-[11px] font-bold tracking-widest text-white">WINTER / SNOW</span>
             </div>
             <div class="col-span-5 grid grid-rows-2 gap-3.5">
               <div class="rounded-2xl relative overflow-hidden bg-stone-100">
-                <img src="/hp/mtb.jpg" alt="マウンテンバイク" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                <img src="/images/mtb.jpg" alt="マウンテンバイク" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
                 <span class="absolute bottom-3 left-3.5 font-eng text-[10px] font-bold tracking-widest text-white">SUMMER / MTB</span>
               </div>
               <div class="rounded-2xl relative overflow-hidden bg-stone-100">
-                <img src="/hp/sup.png" alt="SUP" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                <img src="/images/sup.png" alt="SUP" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
                 <span class="absolute bottom-3 left-3.5 font-eng text-[10px] font-bold tracking-widest text-white">SUMMER / SUP</span>
               </div>
@@ -753,9 +750,9 @@
           </span>
           <span>LINEでおトクに遊ぶ</span>
         </a>
-        <a href="/review"
+        <a href="review.html"
            class="w-full sm:w-auto h-14 px-7 rounded-full bg-white/10 hover:bg-white/15 border border-white/20 text-white font-bold text-sm inline-flex items-center justify-center transition-colors">
-          みんなのゲレンデレビューを見る
+          ゲレンデレビューを見る
         </a>
       </div>
     </div>
@@ -775,7 +772,7 @@
         </span>
         <div class="flex flex-col min-w-0">
           <span class="text-[13px] font-black leading-tight truncate">LINEで提携スキー場を見る</span>
-          <span class="text-[10px] text-white/65 font-medium leading-tight mt-0.5 truncate">会員登録不要｜滑るほどマイル還元</span>
+          <span class="text-[10px] text-white/65 font-medium leading-tight mt-0.5 truncate">会員登録不要でおトクなリフト券</span>
         </div>
       </div>
       <svg class="w-4 h-4 text-white/50 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
@@ -794,11 +791,11 @@
         <p class="text-xs font-bold text-muted">日本中をあなたのホームゲレンデに</p>
       </div>
       <div class="flex flex-wrap justify-center items-center gap-6 text-xs font-bold text-muted">
-        <a href="/review" class="hover:text-ink transition-colors">ゲレンデレビュー</a>
+        <a href="review.html" class="hover:text-ink transition-colors">ゲレンデレビュー</a>
         <a href="https://prtimes.jp/main/html/searchrlp/company_id/58215" target="_blank" rel="noopener noreferrer" class="hover:text-ink transition-colors">お知らせ</a>
         <a href="https://note.com/earthhopper" target="_blank" rel="noopener noreferrer" class="hover:text-ink transition-colors">ブログ</a>
-        <a href="/hp/terms.html" class="hover:text-ink transition-colors">利用規約</a>
-        <a href="/hp/company.html" class="hover:text-ink transition-colors">運営会社</a>
+        <a href="terms.html" class="hover:text-ink transition-colors">利用規約</a>
+        <a href="company.html" class="hover:text-ink transition-colors">運営会社</a>
       </div>
     </div>
   </footer>

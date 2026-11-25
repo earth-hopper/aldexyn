@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>15秒でわかる！ベストゲレンデ診断 | アースホッパー</title>
-  <meta name="description" content="3つの質問に答えるだけ！累計1万人が利用する「アースホッパー」が、全国約50の人気スキー場からぴったりのゲレンデを診断。会員登録不要・LINE追加で¥500分マイル進呈中。">
+  <meta name="description" content="3つの質問に答えるだけ！スマホ1つで全国約50スキー場のリフト券が買える「アースホッパー」が、ぴったりのゲレンデを診断。会員登録不要・LINE追加で¥500分マイル進呈中。">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -96,11 +96,16 @@
       transform-origin: left;
     }
   </style>
+
+  <!-- =====================================================================
+       【広告運用メモ】Metaピクセル（Instagram）やXピクセルのベースコードは
+       この </head> の直前に貼り付けてください。
+  ====================================================================== -->
 </head>
 <body class="w-full relative overflow-x-hidden font-sans text-ink selection:bg-brand selection:text-white flex flex-col min-h-screen text-base leading-relaxed">
 
   <!-- =====================================================================
-       HEADER（さらに視認性を高めたサイズ設計）
+       HEADER
   ====================================================================== -->
   <header id="site-header" class="w-full z-40 bg-paper/95 backdrop-blur-md border-b border-stone-200/80 sticky top-0">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 h-16 flex justify-between items-center gap-2">
@@ -128,7 +133,7 @@
   <main class="flex-grow flex flex-col">
 
     <!-- =====================================================================
-         1. QUESTION FLOW（全3問：さらに読みやすい大きめフォント）
+         1. QUESTION FLOW（全3問）
     ====================================================================== -->
     <section id="view-question" class="view-panel view-fade-in flex-grow flex flex-col">
       <!-- プログレスバー -->
@@ -151,15 +156,15 @@
             </div>
           </div>
 
-          <!-- 特典＆権威性ピル -->
+          <!-- 特典＆サービス概要ピル（広告流入の初見ユーザー向けにサービス内容を1行補足） -->
           <div class="mb-6">
             <div class="p-4 rounded-2xl bg-white border border-brand/25 shadow-[0_2px_10px_rgba(0,136,198,0.05)]">
-              <div class="flex items-center gap-2 mb-1.5">
+              <div class="flex items-center justify-center sm:justify-start gap-2 mb-1.5">
                 <span class="px-2 py-0.5 rounded bg-brand text-white text-[13px] font-black tracking-wide shrink-0">診断特典</span>
                 <span class="text-[15px] sm:text-base font-black text-ink leading-snug">提携スキー場で使える¥500分進呈</span>
               </div>
-              <p class="text-[13px] sm:text-sm text-muted text-center font-medium leading-snug">
-                累計1万人利用「アースホッパー」公式
+              <p class="text-[13px] sm:text-sm text-muted text-center sm:text-left font-medium leading-snug">
+                スマホ1つで全国約50スキー場のリフト券が買える「アースホッパー」公式（累計1万人利用）
               </p>
             </div>
           </div>
@@ -205,7 +210,7 @@
     </section>
 
     <!-- =====================================================================
-         3. RESULT VIEW（本文16px基準・提携変更リスクを考慮した安全な表現）
+         3. RESULT VIEW
     ====================================================================== -->
     <section id="view-result" class="view-panel view-hidden pb-32">
 
@@ -215,10 +220,10 @@
         <article class="bg-white rounded-3xl overflow-hidden border border-stone-200/90 shadow-[0_8px_28px_rgba(20,25,31,0.05)]">
           <div class="grid md:grid-cols-12">
 
-            <!-- スキー場ビジュアル（縦長写真の上部35%位置を中心にトリミング） -->
+            <!-- スキー場ビジュアル -->
             <div class="md:col-span-5 relative bg-stone-900 h-[260px] sm:h-[330px] md:h-auto overflow-hidden">
               <img id="best-img"
-                   src="/hp/images/review01.webp"
+                   src="/images/review01.webp"
                    onerror="this.onerror=null; this.src='https://placehold.co/720x1280/0088C6/FFFFFF?text=EARTH+HOPPER';"
                    alt="おすすめスキー場のイメージ"
                    class="w-full h-full object-cover object-[center_35%]">
@@ -304,7 +309,7 @@
 
                 <!-- メインCTAボタン -->
                 <a href="https://lin.ee/yeWqlqU" target="_blank" rel="noopener noreferrer"
-                   onclick="silentCopyPromoCode()"
+                   onclick="handleLineCtaClick()"
                    id="best-cta-btn"
                    class="w-full py-4 px-5 rounded-full bg-line hover:bg-lineHover text-white font-black text-base sm:text-[17px] inline-flex items-center justify-center gap-2 shadow-md transition-transform active:scale-[0.98]">
                   <svg class="w-5 h-5 fill-white shrink-0" viewBox="0 0 24 24">
@@ -313,7 +318,7 @@
                   <span>LINEで¥500分マイルを受け取る</span>
                 </a>
 
-                <!-- 安心の3点マイクロコピー -->
+                <!-- 安心の3点マイクロコピー（リフト券購入サービスであることを明確化） -->
                 <div class="flex flex-wrap items-center justify-center gap-x-3.5 gap-y-1.5 mt-3.5 text-[13px] font-bold text-ink/85">
                   <span class="inline-flex items-center gap-1">
                     <svg class="w-4 h-4 text-line shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
@@ -325,7 +330,7 @@
                   </span>
                   <span class="inline-flex items-center gap-1">
                     <svg class="w-4 h-4 text-line shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
-                    全国約50スキー場提携
+                    全国約50スキー場のリフト券購入に対応
                   </span>
                 </div>
               </div>
@@ -335,7 +340,7 @@
         </article>
       </div>
 
-      <!-- ② その他おすすめスキー場（提携変更リスクを回避した表現） -->
+      <!-- ② その他おすすめスキー場 -->
       <div class="max-w-4xl mx-auto px-4 sm:px-6 pt-2">
         <div class="mb-5 bg-white rounded-2xl p-5 sm:p-6 border border-stone-200/80 shadow-[0_2px_10px_rgba(20,25,31,0.02)]">
           <div class="flex flex-wrap items-center gap-2 mb-2">
@@ -350,7 +355,7 @@
             こちらも相性抜群！<br class="sm:hidden">その他のおすすめゲレンデ
           </h3>
           <p class="text-[15px] text-muted leading-relaxed">
-            アースホッパーなら、全国約50の提携スキー場からその日の雪質や気分に合わせて自由に選べます。最新の対象ゲレンデ一覧はLINEで確認できます。
+            スマホ1つでリフト券が買えるアースホッパーなら、全国約50の提携スキー場からその日の雪質や気分に合わせて自由に選べます。最新の対象ゲレンデ一覧はLINEで確認できます。
           </p>
         </div>
 
@@ -374,11 +379,11 @@
   </main>
 
   <!-- =====================================================================
-       FLOATING DOCK（スマホ視認性・タップ領域最適化）
+       FLOATING DOCK
   ====================================================================== -->
   <div id="sticky-cta" class="fixed bottom-4 left-1/2 -translate-x-1/2 w-[94%] max-w-[440px] z-50 translate-y-24 opacity-0 pointer-events-none transition-all duration-500 ease-out">
     <a href="https://lin.ee/yeWqlqU" target="_blank" rel="noopener noreferrer"
-       onclick="silentCopyPromoCode()"
+       onclick="handleLineCtaClick()"
        class="w-full h-[68px] px-4 rounded-2xl bg-ink/95 hover:bg-ink backdrop-blur-xl border border-white/15 text-white shadow-[0_14px_34px_rgba(20,25,31,0.3)] flex items-center justify-between gap-3 transition-transform active:scale-[0.98]">
       <div class="flex items-center gap-3 min-w-0">
         <span class="w-10 h-10 rounded-xl bg-line flex items-center justify-center shrink-0">
@@ -404,7 +409,7 @@
     <div class="max-w-4xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center">
       <img src="logo.png" alt="EARTH HOPPER" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';" class="h-7 w-auto object-contain mb-2 grayscale opacity-70">
       <span style="display:none;" class="font-eng font-extrabold text-base tracking-tight text-stone-400 mb-2">EARTH HOPPER</span>
-      <p class="text-[13px] font-medium text-muted mb-1">累計1万人利用｜全国約50スキー場提携</p>
+      <p class="text-[13px] font-medium text-muted mb-1">累計1万人利用｜全国約50スキー場のリフト券購入プラットフォーム</p>
       <p class="text-[13px] text-muted/80">© EARTH HOPPER Inc. All Rights Reserved.</p>
     </div>
   </footer>
@@ -441,11 +446,11 @@
     ];
 
     // ==========================================
-    // 2. 画像プール（/hp/images/review01.webp 〜 review30.webp）
+    // 2. 画像プール（/images/review01.webp 〜 review30.webp）
     // ==========================================
     const IMAGE_POOL = Array.from({ length: 30 }, (_, i) => {
       const num = String(i + 1).padStart(2, '0');
-      return `/hp/images/review${num}.webp`;
+      return `/images/review${num}.webp`;
     });
 
     function getUniqueRandomImages(count) {
@@ -467,8 +472,19 @@
         .replace(/'/g, '&#039;');
     }
 
-    // プロモコード（HOP26）コピー処理
+    // プロモコード（HOP26）コピー処理＆広告コンバージョン計測フック
     const PROMO_CODE = 'HOP26';
+
+    function handleLineCtaClick() {
+      silentCopyPromoCode();
+      trackLineConversion();
+    }
+
+    function trackLineConversion() {
+      // 【広告運用メモ】ピクセル設置後、以下のようにイベント発火コードを記述します
+      // if (typeof fbq === 'function') { fbq('track', 'Lead'); }
+      // if (typeof twq === 'function') { twq('event', 'tw-xxxxx-xxxxx', {}); }
+    }
 
     function copyPromoCode(btnEl) {
       const originalHtml = btnEl.innerHTML;
@@ -722,14 +738,13 @@
       document.getElementById('best-reason').textContent = best.reason || '';
       document.getElementById('best-review').textContent = best.review || '';
 
-      // ② OTHER RECOMMENDED RESORTS（提携変更リスクを配慮し、個別利用保証表現を排除）
+      // ② OTHER RECOMMENDED RESORTS
       const othersGrid = document.getElementById('other-resorts-grid');
       othersGrid.innerHTML = others.map((item, idx) => {
-        const imgSrc = randomImages[idx + 1] || '/hp/images/review02.webp';
+        const imgSrc = randomImages[idx + 1] || '/images/review02.webp';
         return `
           <article class="bg-white rounded-2xl overflow-hidden border border-stone-200/90 shadow-[0_4px_16px_rgba(20,25,31,0.03)] flex flex-col justify-between">
             <div>
-              <!-- 上部：写真（縦長上部35%位置）＋ 施設名・理由 -->
               <div class="relative bg-stone-900 h-52 sm:h-56 overflow-hidden">
                 <img src="${imgSrc}"
                      onerror="this.onerror=null; this.src='https://placehold.co/640x480/006899/FFFFFF?text=EARTH+HOPPER';"
@@ -768,7 +783,7 @@
             <div class="px-5 py-4 border-t border-stone-200/80 bg-paper/40 flex items-center justify-between gap-2">
               <span class="text-[13px] font-bold text-muted">提携ゲレンデ一覧はLINEへ</span>
               <a href="https://lin.ee/yeWqlqU" target="_blank" rel="noopener noreferrer"
-                 onclick="silentCopyPromoCode()"
+                 onclick="handleLineCtaClick()"
                  class="text-[15px] font-black text-line hover:text-lineHover transition-colors inline-flex items-center gap-1">
                 <span>¥500分マイルをもらう</span>
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
